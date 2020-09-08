@@ -1,0 +1,53 @@
+{
+  "name": "Amenagement",
+  "fields": [
+    {
+      "fieldName": "superficieTotal",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "superficieEmbave",
+      "fieldType": "Long",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "etats",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeAmenagement",
+      "otherEntityRelationshipName": "amenagement",
+      "relationshipName": "typeamenagement",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "amenagement",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200822184721",
+  "entityTableName": "amenagement",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "TypeAmenagement",
+  "fields": [
+    {
+      "fieldName": "libelleTypeAmenagement",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200822184521",
+  "entityTableName": "type_amenagement",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

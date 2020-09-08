@@ -1,0 +1,33 @@
+{
+  "name": "ConditionAccess",
+  "fields": [
+    {
+      "fieldName": "libelleConditon",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "conditionaccess",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822183421",
+  "entityTableName": "condition_access",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

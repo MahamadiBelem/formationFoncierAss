@@ -1,0 +1,61 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.domaineFormation.home.title">Domaine Formations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-domaine-formation" [routerLink]="['/domaine-formation/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.domaineFormation.home.createLabel">
+            Create a new Domaine Formation
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="domaineFormations?.length === 0">
+        <span jhiTranslate="gestionFormationApp.domaineFormation.home.notFound">No domaineFormations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="domaineFormations && domaineFormations.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.domaineFormation.libelleDomaine">Libelle Domaine</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let domaineFormation of domaineFormations ;trackBy: trackId">
+                    <td><a [routerLink]="['/domaine-formation', domaineFormation.id, 'view']">{{ domaineFormation.id }}</a></td>
+                    <td>{{ domaineFormation.libelleDomaine }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/domaine-formation', domaineFormation.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/domaine-formation', domaineFormation.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(domaineFormation)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

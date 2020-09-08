@@ -1,0 +1,22 @@
+{
+  "gestionFormationApp": {
+    "typeInfratructure": {
+      "home": {
+        "title": "TypeInfratructures",
+        "createLabel": "Créer un nouveau Type Infratructure",
+        "createOrEditLabel": "Créer ou éditer un Type Infratructure",
+        "notFound": "Aucun Type Infratructure trouvé"
+      },
+      "created": "Un nouveau Type Infratructure a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Infratructure avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Infratructure avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Type Infratructure {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Infratructure"
+      },
+      "libelleTypeInfracture": "Libelle Type Infracture"
+    }
+  }
+}

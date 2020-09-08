@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="amenagement">
+            <h2><span jhiTranslate="gestionFormationApp.amenagement.detail.title">Amenagement</span> {{ amenagement.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.amenagement.superficieTotal">Superficie Total</span></dt>
+                <dd>
+                    <span>{{ amenagement.superficieTotal }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.amenagement.superficieEmbave">Superficie Embave</span></dt>
+                <dd>
+                    <span>{{ amenagement.superficieEmbave }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.amenagement.etats">Etats</span></dt>
+                <dd>
+                    <span>{{ amenagement.etats }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.amenagement.typeamenagement">Typeamenagement</span></dt>
+                <dd>
+                    <div *ngIf="amenagement.typeamenagement">
+                        <a [routerLink]="['/type-amenagement', amenagement.typeamenagement?.id, 'view']">{{ amenagement.typeamenagement?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.amenagement.centreformation">Centreformation</span></dt>
+                <dd>
+                    <div *ngIf="amenagement.centreformation">
+                        <a [routerLink]="['/centre-formation', amenagement.centreformation?.id, 'view']">{{ amenagement.centreformation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/amenagement', amenagement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

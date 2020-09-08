@@ -1,0 +1,33 @@
+{
+  "name": "NiveauRecrutement",
+  "fields": [
+    {
+      "fieldName": "libelleNiveau",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "niveaurecrutement",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822184221",
+  "entityTableName": "niveau_recrutement",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

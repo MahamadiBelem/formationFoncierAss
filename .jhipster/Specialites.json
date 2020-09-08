@@ -1,0 +1,33 @@
+{
+  "name": "Specialites",
+  "fields": [
+    {
+      "fieldName": "libelleSpecialite",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "specialites",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822183621",
+  "entityTableName": "specialites",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

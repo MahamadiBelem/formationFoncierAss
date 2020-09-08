@@ -1,0 +1,90 @@
+{
+  "name": "Apprenantes",
+  "fields": [
+    {
+      "fieldName": "matricule",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required",
+        "unique"
+      ]
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "dateNaissance",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "contact",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "iscandidat",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "situationMatrimonial",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "charger",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "localite",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "sortiePromotion",
+      "otherEntityRelationshipName": "apprenantes",
+      "relationshipName": "sortiepromotion",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "formations",
+      "otherEntityRelationshipName": "formation",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822184921",
+  "entityTableName": "apprenantes",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

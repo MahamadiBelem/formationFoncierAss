@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-formations-heading" jhiTranslate="gestionFormationApp.formations.home.createOrEditLabel">Create or edit a Formations</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.theme" for="field_theme">Theme</label>
+                    <input type="text" class="form-control" name="theme" id="field_theme"
+                           formControlName="theme"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.lebelleFormation" for="field_lebelleFormation">Lebelle Formation</label>
+                    <input type="text" class="form-control" name="lebelleFormation" id="field_lebelleFormation"
+                           formControlName="lebelleFormation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.coutFormation" for="field_coutFormation">Cout Formation</label>
+                    <input type="text" class="form-control" name="coutFormation" id="field_coutFormation"
+                           formControlName="coutFormation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.sourceFinancement" for="field_sourceFinancement">Source Financement</label>
+                    <input type="text" class="form-control" name="sourceFinancement" id="field_sourceFinancement"
+                           formControlName="sourceFinancement"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.typeamenagement" for="field_typeamenagement">Typeamenagement</label>
+                    <select class="form-control" id="field_typeamenagement" name="typeamenagement" formControlName="typeamenagement">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeFormationOption.id === editForm.get('typeamenagement')!.value?.id ? editForm.get('typeamenagement')!.value : typeFormationOption" *ngFor="let typeFormationOption of typeformations; trackBy: trackById">{{ typeFormationOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="gestionFormationApp.formations.formation" for="field_formations">Formation</label>
+                    <select class="form-control" id="field_formations" multiple name="formations" formControlName="formations">
+                        <option [ngValue]="getSelected(editForm.get('formations')!.value, apprenantesOption)" *ngFor="let apprenantesOption of apprenantes; trackBy: trackById">{{ apprenantesOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

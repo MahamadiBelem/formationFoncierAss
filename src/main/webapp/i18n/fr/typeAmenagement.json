@@ -1,0 +1,22 @@
+{
+  "gestionFormationApp": {
+    "typeAmenagement": {
+      "home": {
+        "title": "TypeAmenagements",
+        "createLabel": "Créer un nouveau Type Amenagement",
+        "createOrEditLabel": "Créer ou éditer un Type Amenagement",
+        "notFound": "Aucun Type Amenagement trouvé"
+      },
+      "created": "Un nouveau Type Amenagement a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Amenagement avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Amenagement avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Type Amenagement {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Amenagement"
+      },
+      "libelleTypeAmenagement": "Libelle Type Amenagement"
+    }
+  }
+}

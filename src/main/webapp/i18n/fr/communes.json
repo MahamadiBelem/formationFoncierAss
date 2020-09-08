@@ -1,0 +1,22 @@
+{
+  "gestionFormationApp": {
+    "communes": {
+      "home": {
+        "title": "Communes",
+        "createLabel": "Créer un nouveau Communes",
+        "createOrEditLabel": "Créer ou éditer un Communes",
+        "notFound": "Aucun Communes trouvé"
+      },
+      "created": "Un nouveau Communes a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Communes avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Communes avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Communes {{ id }} ?"
+      },
+      "detail": {
+        "title": "Communes"
+      },
+      "libelleCommune": "Libelle Commune"
+    }
+  }
+}

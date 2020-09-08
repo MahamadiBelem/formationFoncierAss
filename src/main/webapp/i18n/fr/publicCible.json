@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "publicCible": {
+      "home": {
+        "title": "PublicCibles",
+        "createLabel": "Créer un nouveau Public Cible",
+        "createOrEditLabel": "Créer ou éditer un Public Cible",
+        "notFound": "Aucun Public Cible trouvé"
+      },
+      "created": "Un nouveau Public Cible a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Public Cible avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Public Cible avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Public Cible {{ id }} ?"
+      },
+      "detail": {
+        "title": "Public Cible"
+      },
+      "libellePublic": "Libelle Public",
+      "centreformation": "Centreformation"
+    }
+  }
+}

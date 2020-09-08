@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "bf.agriculture.dgfomr",
+      "nativeLanguage": "fr"
+    },
+    "jhipsterVersion": "6.10.1",
+    "applicationType": "monolith",
+    "baseName": "gestionFormation",
+    "packageName": "bf.agriculture.dgfomr",
+    "packageFolder": "bf/agriculture/dgfomr",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZDhkNWMwNmNiNWQ4Y2Q5Yjc2ODYwMTMyNmVhYWIxMGI0MjZjZjdhYTJlZDVhNjc2YjA1NTU1ZTFiMDg4YzY2ZGY0OTRjMzc5ZWEwNjMxZWU5Njg1OTJkZWNkZmRhZDdhZTM5ZmQ3NTk1YmU2NGU1ZDFkMWViNDZkODBjZTA0MDA=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1598115831212,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": ["fr"],
+    "blueprints": []
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "promoteurs": {
+      "home": {
+        "title": "Promoteurs",
+        "createLabel": "Créer un nouveau Promoteurs",
+        "createOrEditLabel": "Créer ou éditer un Promoteurs",
+        "notFound": "Aucun Promoteurs trouvé"
+      },
+      "created": "Un nouveau Promoteurs a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Promoteurs avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Promoteurs avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Promoteurs {{ id }} ?"
+      },
+      "detail": {
+        "title": "Promoteurs"
+      },
+      "libellePromoteur": "Libelle Promoteur",
+      "contactPromoteur": "Contact Promoteur"
+    }
+  }
+}

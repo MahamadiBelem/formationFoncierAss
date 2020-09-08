@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "specialites": {
+      "home": {
+        "title": "Specialites",
+        "createLabel": "Créer un nouveau Specialites",
+        "createOrEditLabel": "Créer ou éditer un Specialites",
+        "notFound": "Aucun Specialites trouvé"
+      },
+      "created": "Un nouveau Specialites a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Specialites avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Specialites avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Specialites {{ id }} ?"
+      },
+      "detail": {
+        "title": "Specialites"
+      },
+      "libelleSpecialite": "Libelle Specialite",
+      "centreformation": "Centreformation"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "gestionFormationApp": {
+    "provinces": {
+      "home": {
+        "title": "Provinces",
+        "createLabel": "Créer un nouveau Provinces",
+        "createOrEditLabel": "Créer ou éditer un Provinces",
+        "notFound": "Aucun Provinces trouvé"
+      },
+      "created": "Un nouveau Provinces a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Provinces avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Provinces avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Provinces {{ id }} ?"
+      },
+      "detail": {
+        "title": "Provinces"
+      },
+      "libelleProvince": "Libelle Province"
+    }
+  }
+}

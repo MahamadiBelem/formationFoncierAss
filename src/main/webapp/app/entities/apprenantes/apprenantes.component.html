@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.apprenantes.home.title">Apprenantes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-apprenantes" [routerLink]="['/apprenantes/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.apprenantes.home.createLabel">
+            Create a new Apprenantes
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="apprenantes?.length === 0">
+        <span jhiTranslate="gestionFormationApp.apprenantes.home.notFound">No apprenantes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="apprenantes && apprenantes.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.matricule">Matricule</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.nom">Nom</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.prenom">Prenom</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.dateNaissance">Date Naissance</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.sexe">Sexe</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.contact">Contact</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.iscandidat">Iscandidat</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.situationMatrimonial">Situation Matrimonial</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.charger">Charger</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.localite">Localite</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.sortiepromotion">Sortiepromotion</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let apprenantes of apprenantes ;trackBy: trackId">
+                    <td><a [routerLink]="['/apprenantes', apprenantes.id, 'view']">{{ apprenantes.id }}</a></td>
+                    <td>{{ apprenantes.matricule }}</td>
+                    <td>{{ apprenantes.nom }}</td>
+                    <td>{{ apprenantes.prenom }}</td>
+                    <td>{{ apprenantes.dateNaissance | date:'mediumDate' }}</td>
+                    <td>{{ apprenantes.sexe }}</td>
+                    <td>{{ apprenantes.contact }}</td>
+                    <td>{{ apprenantes.iscandidat }}</td>
+                    <td>{{ apprenantes.situationMatrimonial }}</td>
+                    <td>{{ apprenantes.charger }}</td>
+                    <td>{{ apprenantes.localite }}</td>
+                    <td>
+                        <div *ngIf="apprenantes.sortiepromotion">
+                            <a [routerLink]="['/sortie-promotion', apprenantes.sortiepromotion?.id, 'view']" >{{ apprenantes.sortiepromotion?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/apprenantes', apprenantes.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/apprenantes', apprenantes.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(apprenantes)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

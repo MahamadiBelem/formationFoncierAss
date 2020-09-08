@@ -1,0 +1,33 @@
+{
+  "name": "ApprochePedagogique",
+  "fields": [
+    {
+      "fieldName": "libelleApproche",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "approchepedagogique",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822183521",
+  "entityTableName": "approche_pedagogique",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

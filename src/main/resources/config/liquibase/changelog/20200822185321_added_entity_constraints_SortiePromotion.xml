@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity SortiePromotion.
+    -->
+    <changeSet id="20200822185321-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="installation_id"
+                                 baseTableName="sortie_promotion"
+                                 constraintName="fk_sortie_promotion_installation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="installation"/>
+
+    </changeSet>
+</databaseChangeLog>

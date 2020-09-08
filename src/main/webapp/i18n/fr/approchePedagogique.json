@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "approchePedagogique": {
+      "home": {
+        "title": "ApprochePedagogiques",
+        "createLabel": "Créer un nouveau Approche Pedagogique",
+        "createOrEditLabel": "Créer ou éditer un Approche Pedagogique",
+        "notFound": "Aucun Approche Pedagogique trouvé"
+      },
+      "created": "Un nouveau Approche Pedagogique a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Approche Pedagogique avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Approche Pedagogique avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Approche Pedagogique {{ id }} ?"
+      },
+      "detail": {
+        "title": "Approche Pedagogique"
+      },
+      "libelleApproche": "Libelle Approche",
+      "centreformation": "Centreformation"
+    }
+  }
+}

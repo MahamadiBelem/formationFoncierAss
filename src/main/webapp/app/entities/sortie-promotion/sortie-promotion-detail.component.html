@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sortiePromotion">
+            <h2><span jhiTranslate="gestionFormationApp.sortiePromotion.detail.title">Sortie Promotion</span> {{ sortiePromotion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie">Date Sortie</span></dt>
+                <dd>
+                    <span>{{ sortiePromotion.dateSortie }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie">Annees Sortie</span></dt>
+                <dd>
+                    <span>{{ sortiePromotion.anneesSortie }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.sortiePromotion.motif">Motif</span></dt>
+                <dd>
+                    <span>{{ sortiePromotion.motif }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.sortiePromotion.installation">Installation</span></dt>
+                <dd>
+                    <div *ngIf="sortiePromotion.installation">
+                        <a [routerLink]="['/installation', sortiePromotion.installation?.id, 'view']">{{ sortiePromotion.installation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/sortie-promotion', sortiePromotion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

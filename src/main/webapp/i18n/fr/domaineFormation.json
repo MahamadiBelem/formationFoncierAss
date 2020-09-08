@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "domaineFormation": {
+      "home": {
+        "title": "DomaineFormations",
+        "createLabel": "Créer un nouveau Domaine Formation",
+        "createOrEditLabel": "Créer ou éditer un Domaine Formation",
+        "notFound": "Aucun Domaine Formation trouvé"
+      },
+      "created": "Un nouveau Domaine Formation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Domaine Formation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Domaine Formation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Domaine Formation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Domaine Formation"
+      },
+      "libelleDomaine": "Libelle Domaine",
+      "centreformation": "Centreformation"
+    }
+  }
+}

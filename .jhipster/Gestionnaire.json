@@ -1,0 +1,35 @@
+{
+  "name": "Gestionnaire",
+  "fields": [
+    {
+      "fieldName": "nomComplet",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "contactsGestionnaires",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "niveauEtude",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200822183921",
+  "entityTableName": "gestionnaire",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,26 @@
+{
+  "gestionFormationApp": {
+    "infrastructure": {
+      "home": {
+        "title": "Infrastructures",
+        "createLabel": "Créer un nouveau Infrastructure",
+        "createOrEditLabel": "Créer ou éditer un Infrastructure",
+        "notFound": "Aucun Infrastructure trouvé"
+      },
+      "created": "Un nouveau Infrastructure a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Infrastructure avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Infrastructure avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Infrastructure {{ id }} ?"
+      },
+      "detail": {
+        "title": "Infrastructure"
+      },
+      "dateElaboration": "Date Elaboration",
+      "fonctionnalite": "Fonctionnalite",
+      "etat": "Etat",
+      "typeinfrastructure": "Typeinfrastructure",
+      "centreformation": "Centreformation"
+    }
+  }
+}

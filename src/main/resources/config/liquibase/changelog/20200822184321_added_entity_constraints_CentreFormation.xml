@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity CentreFormation.
+    -->
+    <changeSet id="20200822184321-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="communes_id"
+                                 baseTableName="centre_formation"
+                                 constraintName="fk_centre_formation_communes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="communes"/>
+
+        <addForeignKeyConstraint baseColumnNames="promoteurs_id"
+                                 baseTableName="centre_formation"
+                                 constraintName="fk_centre_formation_promoteurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="promoteurs"/>
+
+        <addForeignKeyConstraint baseColumnNames="gestionnaires_id"
+                                 baseTableName="centre_formation"
+                                 constraintName="fk_centre_formation_gestionnaires_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gestionnaire"/>
+
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_approchepedagogique"
+                                 constraintName="fk_centre_formation_approchepedagogique_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="approchepedagogique_id"
+                                 baseTableName="centre_formation_approchepedagogique"
+                                 constraintName="fk_centre_formation_approchepedagogique_approchepedagogique_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="approche_pedagogique"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_publiccible"
+                                 constraintName="fk_centre_formation_publiccible_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="publiccible_id"
+                                 baseTableName="centre_formation_publiccible"
+                                 constraintName="fk_centre_formation_publiccible_publiccible_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="public_cible"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_specialites"
+                                 constraintName="fk_centre_formation_specialites_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="specialites_id"
+                                 baseTableName="centre_formation_specialites"
+                                 constraintName="fk_centre_formation_specialites_specialites_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="specialites"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_domaineformation"
+                                 constraintName="fk_centre_formation_domaineformation_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="domaineformation_id"
+                                 baseTableName="centre_formation_domaineformation"
+                                 constraintName="fk_centre_formation_domaineformation_domaineformation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="domaine_formation"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_contributions"
+                                 constraintName="fk_centre_formation_contributions_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="contributions_id"
+                                 baseTableName="centre_formation_contributions"
+                                 constraintName="fk_centre_formation_contributions_contributions_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contributions"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_niveaurecrutement"
+                                 constraintName="fk_centre_formation_niveaurecrutement_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="niveaurecrutement_id"
+                                 baseTableName="centre_formation_niveaurecrutement"
+                                 constraintName="fk_centre_formation_niveaurecrutement_niveaurecrutement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="niveau_recrutement"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_formateurs"
+                                 constraintName="fk_centre_formation_formateurs_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="formateurs_id"
+                                 baseTableName="centre_formation_formateurs"
+                                 constraintName="fk_centre_formation_formateurs_formateurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formateurs"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_conditionaccess"
+                                 constraintName="fk_centre_formation_conditionaccess_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="conditionaccess_id"
+                                 baseTableName="centre_formation_conditionaccess"
+                                 constraintName="fk_centre_formation_conditionaccess_conditionaccess_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="condition_access"/>
+        
+        <addForeignKeyConstraint baseColumnNames="centre_formation_id"
+                                 baseTableName="centre_formation_formations"
+                                 constraintName="fk_centre_formation_formations_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+        <addForeignKeyConstraint baseColumnNames="formations_id"
+                                 baseTableName="centre_formation_formations"
+                                 constraintName="fk_centre_formation_formations_formations_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formations"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.installation.home.title">Installations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-installation" [routerLink]="['/installation/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.installation.home.createLabel">
+            Create a new Installation
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="installations?.length === 0">
+        <span jhiTranslate="gestionFormationApp.installation.home.notFound">No installations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="installations && installations.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.anneesInstallation">Annees Installation</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.dateIntallation">Date Intallation</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.lieuInstallation">Lieu Installation</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.activiteinstallation">Activiteinstallation</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.kits">Kits</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let installation of installations ;trackBy: trackId">
+                    <td><a [routerLink]="['/installation', installation.id, 'view']">{{ installation.id }}</a></td>
+                    <td>{{ installation.anneesInstallation }}</td>
+                    <td>{{ installation.dateIntallation | date:'mediumDate' }}</td>
+                    <td>{{ installation.lieuInstallation }}</td>
+                    <td>
+                        <span *ngFor="let activiteinstallation of installation.activiteinstallations; let last = last">
+                            <a class="form-control-static" [routerLink]="['/activite-installation', activiteinstallation?.id, 'view']">{{ activiteinstallation.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span *ngFor="let kits of installation.kits; let last = last">
+                            <a class="form-control-static" [routerLink]="['/kits', kits?.id, 'view']">{{ kits.id }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/installation', installation.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/installation', installation.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(installation)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

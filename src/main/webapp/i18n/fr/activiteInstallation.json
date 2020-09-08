@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "activiteInstallation": {
+      "home": {
+        "title": "ActiviteInstallations",
+        "createLabel": "Créer un nouveau Activite Installation",
+        "createOrEditLabel": "Créer ou éditer un Activite Installation",
+        "notFound": "Aucun Activite Installation trouvé"
+      },
+      "created": "Un nouveau Activite Installation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Activite Installation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Activite Installation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Activite Installation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Activite Installation"
+      },
+      "libelleActivite": "Libelle Activite",
+      "installation": "Installation"
+    }
+  }
+}

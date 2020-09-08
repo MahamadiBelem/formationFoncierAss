@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.amenagement.home.title">Amenagements</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-amenagement" [routerLink]="['/amenagement/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.amenagement.home.createLabel">
+            Create a new Amenagement
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="amenagements?.length === 0">
+        <span jhiTranslate="gestionFormationApp.amenagement.home.notFound">No amenagements found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="amenagements && amenagements.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="superficieTotal"><span jhiTranslate="gestionFormationApp.amenagement.superficieTotal">Superficie Total</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="superficieEmbave"><span jhiTranslate="gestionFormationApp.amenagement.superficieEmbave">Superficie Embave</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="etats"><span jhiTranslate="gestionFormationApp.amenagement.etats">Etats</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="typeamenagement.id"><span jhiTranslate="gestionFormationApp.amenagement.typeamenagement">Typeamenagement</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="centreformation.id"><span jhiTranslate="gestionFormationApp.amenagement.centreformation">Centreformation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let amenagement of amenagements ;trackBy: trackId">
+                    <td><a [routerLink]="['/amenagement', amenagement.id, 'view']">{{ amenagement.id }}</a></td>
+                    <td>{{ amenagement.superficieTotal }}</td>
+                    <td>{{ amenagement.superficieEmbave }}</td>
+                    <td>{{ amenagement.etats }}</td>
+                    <td>
+                        <div *ngIf="amenagement.typeamenagement">
+                            <a [routerLink]="['/type-amenagement', amenagement.typeamenagement?.id, 'view']" >{{ amenagement.typeamenagement?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="amenagement.centreformation">
+                            <a [routerLink]="['/centre-formation', amenagement.centreformation?.id, 'view']" >{{ amenagement.centreformation?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/amenagement', amenagement.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/amenagement', amenagement.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(amenagement)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="amenagements && amenagements.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

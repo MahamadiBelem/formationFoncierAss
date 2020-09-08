@@ -1,0 +1,22 @@
+{
+  "gestionFormationApp": {
+    "villages": {
+      "home": {
+        "title": "Villages",
+        "createLabel": "Créer un nouveau Villages",
+        "createOrEditLabel": "Créer ou éditer un Villages",
+        "notFound": "Aucun Villages trouvé"
+      },
+      "created": "Un nouveau Villages a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Villages avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Villages avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Villages {{ id }} ?"
+      },
+      "detail": {
+        "title": "Villages"
+      },
+      "libelleVillage": "Libelle Village"
+    }
+  }
+}

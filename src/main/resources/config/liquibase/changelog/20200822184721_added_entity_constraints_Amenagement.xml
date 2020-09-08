@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Amenagement.
+    -->
+    <changeSet id="20200822184721-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="typeamenagement_id"
+                                 baseTableName="amenagement"
+                                 constraintName="fk_amenagement_typeamenagement_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_amenagement"/>
+
+        <addForeignKeyConstraint baseColumnNames="centreformation_id"
+                                 baseTableName="amenagement"
+                                 constraintName="fk_amenagement_centreformation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+    </changeSet>
+</databaseChangeLog>

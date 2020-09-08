@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-infrastructure-heading" jhiTranslate="gestionFormationApp.infrastructure.home.createOrEditLabel">Create or edit a Infrastructure</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.infrastructure.dateElaboration" for="field_dateElaboration">Date Elaboration</label>
+                    <div class="input-group">
+                        <input id="field_dateElaboration" type="text" class="form-control" name="dateElaboration" ngbDatepicker #dateElaborationDp="ngbDatepicker" formControlName="dateElaboration"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateElaborationDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('dateElaboration')!.invalid && (editForm.get('dateElaboration')!.dirty || editForm.get('dateElaboration')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateElaboration')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.infrastructure.fonctionnalite" for="field_fonctionnalite">Fonctionnalite</label>
+                    <input type="text" class="form-control" name="fonctionnalite" id="field_fonctionnalite"
+                           formControlName="fonctionnalite"/>
+                    <div *ngIf="editForm.get('fonctionnalite')!.invalid && (editForm.get('fonctionnalite')!.dirty || editForm.get('fonctionnalite')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fonctionnalite')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.infrastructure.etat" for="field_etat">Etat</label>
+                    <input type="text" class="form-control" name="etat" id="field_etat"
+                           formControlName="etat"/>
+                    <div *ngIf="editForm.get('etat')!.invalid && (editForm.get('etat')!.dirty || editForm.get('etat')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('etat')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.infrastructure.typeinfrastructure" for="field_typeinfrastructure">Typeinfrastructure</label>
+                    <select class="form-control" id="field_typeinfrastructure" name="typeinfrastructure" formControlName="typeinfrastructure">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeInfratructureOption.id === editForm.get('typeinfrastructure')!.value?.id ? editForm.get('typeinfrastructure')!.value : typeInfratructureOption" *ngFor="let typeInfratructureOption of typeinfratructures; trackBy: trackById">{{ typeInfratructureOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.infrastructure.centreformation" for="field_centreformation">Centreformation</label>
+                    <select class="form-control" id="field_centreformation" name="centreformation" formControlName="centreformation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="centreFormationOption.id === editForm.get('centreformation')!.value?.id ? editForm.get('centreformation')!.value : centreFormationOption" *ngFor="let centreFormationOption of centreformations; trackBy: trackById">{{ centreFormationOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

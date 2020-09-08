@@ -1,0 +1,24 @@
+{
+  "gestionFormationApp": {
+    "kits": {
+      "home": {
+        "title": "Kits",
+        "createLabel": "Créer un nouveau Kits",
+        "createOrEditLabel": "Créer ou éditer un Kits",
+        "notFound": "Aucun Kits trouvé"
+      },
+      "created": "Un nouveau Kits a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Kits avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Kits avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Kits {{ id }} ?"
+      },
+      "detail": {
+        "title": "Kits"
+      },
+      "isobtenu": "Isobtenu",
+      "installation": "Installation",
+      "installation": "Installation"
+    }
+  }
+}

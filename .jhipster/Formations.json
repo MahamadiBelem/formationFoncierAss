@@ -1,0 +1,57 @@
+{
+  "name": "Formations",
+  "fields": [
+    {
+      "fieldName": "theme",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lebelleFormation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "coutFormation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sourceFinancement",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeFormation",
+      "otherEntityRelationshipName": "formations",
+      "relationshipName": "typeamenagement",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "apprenantes",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "formation",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "formations",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822185021",
+  "entityTableName": "formations",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

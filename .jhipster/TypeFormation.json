@@ -1,0 +1,21 @@
+{
+  "name": "TypeFormation",
+  "fields": [
+    {
+      "fieldName": "libelleTypeFormation",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20200822185221",
+  "entityTableName": "type_formation",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

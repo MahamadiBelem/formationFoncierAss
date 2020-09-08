@@ -1,0 +1,34 @@
+{
+  "name": "CompositionKits",
+  "fields": [
+    {
+      "fieldName": "libelleKits",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantiteKits",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "kits",
+      "otherEntityRelationshipName": "installation",
+      "relationshipName": "kits",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200822185721",
+  "entityTableName": "composition_kits",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

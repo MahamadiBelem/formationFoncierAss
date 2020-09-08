@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.sortiePromotion.home.title">Sortie Promotions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-sortie-promotion" [routerLink]="['/sortie-promotion/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.sortiePromotion.home.createLabel">
+            Create a new Sortie Promotion
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="sortiePromotions?.length === 0">
+        <span jhiTranslate="gestionFormationApp.sortiePromotion.home.notFound">No sortiePromotions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="sortiePromotions && sortiePromotions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie">Date Sortie</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie">Annees Sortie</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.motif">Motif</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.installation">Installation</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sortiePromotion of sortiePromotions ;trackBy: trackId">
+                    <td><a [routerLink]="['/sortie-promotion', sortiePromotion.id, 'view']">{{ sortiePromotion.id }}</a></td>
+                    <td>{{ sortiePromotion.dateSortie | date:'mediumDate' }}</td>
+                    <td>{{ sortiePromotion.anneesSortie }}</td>
+                    <td>{{ sortiePromotion.motif }}</td>
+                    <td>
+                        <div *ngIf="sortiePromotion.installation">
+                            <a [routerLink]="['/installation', sortiePromotion.installation?.id, 'view']" >{{ sortiePromotion.installation?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/sortie-promotion', sortiePromotion.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/sortie-promotion', sortiePromotion.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(sortiePromotion)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

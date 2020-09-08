@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "contributions": {
+      "home": {
+        "title": "Contributions",
+        "createLabel": "Créer un nouveau Contributions",
+        "createOrEditLabel": "Créer ou éditer un Contributions",
+        "notFound": "Aucun Contributions trouvé"
+      },
+      "created": "Un nouveau Contributions a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Contributions avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Contributions avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Contributions {{ id }} ?"
+      },
+      "detail": {
+        "title": "Contributions"
+      },
+      "libelleContribution": "Libelle Contribution",
+      "centreformation": "Centreformation"
+    }
+  }
+}

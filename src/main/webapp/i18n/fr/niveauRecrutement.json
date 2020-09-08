@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "niveauRecrutement": {
+      "home": {
+        "title": "NiveauRecrutements",
+        "createLabel": "Créer un nouveau Niveau Recrutement",
+        "createOrEditLabel": "Créer ou éditer un Niveau Recrutement",
+        "notFound": "Aucun Niveau Recrutement trouvé"
+      },
+      "created": "Un nouveau Niveau Recrutement a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Niveau Recrutement avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Niveau Recrutement avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Niveau Recrutement {{ id }} ?"
+      },
+      "detail": {
+        "title": "Niveau Recrutement"
+      },
+      "libelleNiveau": "Libelle Niveau",
+      "centreformation": "Centreformation"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "gestionFormationApp": {
+    "apprenantes": {
+      "home": {
+        "title": "Apprenantes",
+        "createLabel": "Créer un nouveau Apprenantes",
+        "createOrEditLabel": "Créer ou éditer un Apprenantes",
+        "notFound": "Aucun Apprenantes trouvé"
+      },
+      "created": "Un nouveau Apprenantes a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Apprenantes avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Apprenantes avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Apprenantes {{ id }} ?"
+      },
+      "detail": {
+        "title": "Apprenantes"
+      },
+      "matricule": "Matricule",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "dateNaissance": "Date Naissance",
+      "sexe": "Sexe",
+      "contact": "Contact",
+      "iscandidat": "Iscandidat",
+      "situationMatrimonial": "Situation Matrimonial",
+      "charger": "Charger",
+      "localite": "Localite",
+      "sortiepromotion": "Sortiepromotion",
+      "centreformation": "Centreformation"
+    }
+  }
+}

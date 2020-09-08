@@ -1,0 +1,32 @@
+{
+  "name": "NiveauInstruction",
+  "fields": [
+    {
+      "fieldName": "niveauInstruction",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "apprenantes",
+      "otherEntityRelationshipName": "niveauInstruction",
+      "relationshipName": "apprenants",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200822185121",
+  "entityTableName": "niveau_instruction",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

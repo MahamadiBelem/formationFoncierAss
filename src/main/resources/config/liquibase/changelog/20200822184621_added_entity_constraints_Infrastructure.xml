@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Infrastructure.
+    -->
+    <changeSet id="20200822184621-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="typeinfrastructure_id"
+                                 baseTableName="infrastructure"
+                                 constraintName="fk_infrastructure_typeinfrastructure_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_infratructure"/>
+
+        <addForeignKeyConstraint baseColumnNames="centreformation_id"
+                                 baseTableName="infrastructure"
+                                 constraintName="fk_infrastructure_centreformation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
+
+    </changeSet>
+</databaseChangeLog>

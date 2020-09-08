@@ -1,0 +1,103 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.centreFormation.home.title">Centre Formations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-centre-formation" [routerLink]="['/centre-formation/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.centreFormation.home.createLabel">
+            Create a new Centre Formation
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="centreFormations?.length === 0">
+        <span jhiTranslate="gestionFormationApp.centreFormation.home.notFound">No centreFormations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="centreFormations && centreFormations.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="denomination"><span jhiTranslate="gestionFormationApp.centreFormation.denomination">Denomination</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="localisation"><span jhiTranslate="gestionFormationApp.centreFormation.localisation">Localisation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="adresse"><span jhiTranslate="gestionFormationApp.centreFormation.adresse">Adresse</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="statuts"><span jhiTranslate="gestionFormationApp.centreFormation.statuts">Statuts</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="capaciteacceuil"><span jhiTranslate="gestionFormationApp.centreFormation.capaciteacceuil">Capaciteacceuil</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="refOuverture"><span jhiTranslate="gestionFormationApp.centreFormation.refOuverture">Ref Ouverture</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateOuverture"><span jhiTranslate="gestionFormationApp.centreFormation.dateOuverture">Date Ouverture</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="regime"><span jhiTranslate="gestionFormationApp.centreFormation.regime">Regime</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="communes.id"><span jhiTranslate="gestionFormationApp.centreFormation.communes">Communes</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="promoteurs.id"><span jhiTranslate="gestionFormationApp.centreFormation.promoteurs">Promoteurs</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gestionnaires.id"><span jhiTranslate="gestionFormationApp.centreFormation.gestionnaires">Gestionnaires</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let centreFormation of centreFormations ;trackBy: trackId">
+                    <td><a [routerLink]="['/centre-formation', centreFormation.id, 'view']">{{ centreFormation.id }}</a></td>
+                    <td>{{ centreFormation.denomination }}</td>
+                    <td>{{ centreFormation.localisation }}</td>
+                    <td>{{ centreFormation.adresse }}</td>
+                    <td>{{ centreFormation.statuts }}</td>
+                    <td>{{ centreFormation.capaciteacceuil }}</td>
+                    <td>{{ centreFormation.refOuverture }}</td>
+                    <td>{{ centreFormation.dateOuverture | date:'mediumDate' }}</td>
+                    <td>{{ centreFormation.regime }}</td>
+                    <td>
+                        <div *ngIf="centreFormation.communes">
+                            <a [routerLink]="['/communes', centreFormation.communes?.id, 'view']" >{{ centreFormation.communes?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="centreFormation.promoteurs">
+                            <a [routerLink]="['/promoteurs', centreFormation.promoteurs?.id, 'view']" >{{ centreFormation.promoteurs?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="centreFormation.gestionnaires">
+                            <a [routerLink]="['/gestionnaire', centreFormation.gestionnaires?.id, 'view']" >{{ centreFormation.gestionnaires?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/centre-formation', centreFormation.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/centre-formation', centreFormation.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(centreFormation)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="centreFormations && centreFormations.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

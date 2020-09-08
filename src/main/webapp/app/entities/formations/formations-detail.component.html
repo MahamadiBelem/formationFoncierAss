@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="formations">
+            <h2><span jhiTranslate="gestionFormationApp.formations.detail.title">Formations</span> {{ formations.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.formations.theme">Theme</span></dt>
+                <dd>
+                    <span>{{ formations.theme }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formations.lebelleFormation">Lebelle Formation</span></dt>
+                <dd>
+                    <span>{{ formations.lebelleFormation }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formations.coutFormation">Cout Formation</span></dt>
+                <dd>
+                    <span>{{ formations.coutFormation }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formations.sourceFinancement">Source Financement</span></dt>
+                <dd>
+                    <span>{{ formations.sourceFinancement }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formations.typeamenagement">Typeamenagement</span></dt>
+                <dd>
+                    <div *ngIf="formations.typeamenagement">
+                        <a [routerLink]="['/type-formation', formations.typeamenagement?.id, 'view']">{{ formations.typeamenagement?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formations.formation">Formation</span></dt>
+                <dd>
+                    <span *ngFor="let formation of formations.formations; let last = last">
+                        <a [routerLink]="['/apprenantes', formation?.id, 'view']">{{ formation.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/formations', formations.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

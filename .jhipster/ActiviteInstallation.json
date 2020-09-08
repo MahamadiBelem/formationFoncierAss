@@ -1,0 +1,33 @@
+{
+  "name": "ActiviteInstallation",
+  "fields": [
+    {
+      "fieldName": "libelleActivite",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "installation",
+      "otherEntityRelationshipName": "activiteinstallation",
+      "relationshipName": "installation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822185521",
+  "entityTableName": "activite_installation",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

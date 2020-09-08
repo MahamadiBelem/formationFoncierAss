@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="infrastructure">
+            <h2><span jhiTranslate="gestionFormationApp.infrastructure.detail.title">Infrastructure</span> {{ infrastructure.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.infrastructure.dateElaboration">Date Elaboration</span></dt>
+                <dd>
+                    <span>{{ infrastructure.dateElaboration }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.infrastructure.fonctionnalite">Fonctionnalite</span></dt>
+                <dd>
+                    <span>{{ infrastructure.fonctionnalite }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.infrastructure.etat">Etat</span></dt>
+                <dd>
+                    <span>{{ infrastructure.etat }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.infrastructure.typeinfrastructure">Typeinfrastructure</span></dt>
+                <dd>
+                    <div *ngIf="infrastructure.typeinfrastructure">
+                        <a [routerLink]="['/type-infratructure', infrastructure.typeinfrastructure?.id, 'view']">{{ infrastructure.typeinfrastructure?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.infrastructure.centreformation">Centreformation</span></dt>
+                <dd>
+                    <div *ngIf="infrastructure.centreformation">
+                        <a [routerLink]="['/centre-formation', infrastructure.centreformation?.id, 'view']">{{ infrastructure.centreformation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/infrastructure', infrastructure.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

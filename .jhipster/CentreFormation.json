@@ -1,0 +1,164 @@
+{
+  "name": "CentreFormation",
+  "fields": [
+    {
+      "fieldName": "denomination",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "localisation",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "statuts",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "capaciteacceuil",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "refOuverture",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateOuverture",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "regime",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "infrastructure",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "infrastructure"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "amenagement",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "amenagement"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "communes",
+      "otherEntityRelationshipName": "centreFormation",
+      "relationshipName": "communes",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "promoteurs",
+      "otherEntityRelationshipName": "centreFormation",
+      "relationshipName": "promoteurs",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "gestionnaire",
+      "otherEntityRelationshipName": "centreFormation",
+      "relationshipName": "gestionnaires",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "approchePedagogique",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "approchepedagogique",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "publicCible",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "publiccible",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "specialites",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "specialites",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "domaineFormation",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "domaineformation",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "contributions",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "contributions",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "niveauRecrutement",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "niveaurecrutement",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "formateurs",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "formateurs",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "conditionAccess",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "conditionaccess",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "formations",
+      "otherEntityRelationshipName": "centreformation",
+      "relationshipName": "formations",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20200822184321",
+  "entityTableName": "centre_formation",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

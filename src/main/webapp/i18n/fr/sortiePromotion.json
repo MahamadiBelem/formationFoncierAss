@@ -1,0 +1,25 @@
+{
+  "gestionFormationApp": {
+    "sortiePromotion": {
+      "home": {
+        "title": "SortiePromotions",
+        "createLabel": "Créer un nouveau Sortie Promotion",
+        "createOrEditLabel": "Créer ou éditer un Sortie Promotion",
+        "notFound": "Aucun Sortie Promotion trouvé"
+      },
+      "created": "Un nouveau Sortie Promotion a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Sortie Promotion avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Sortie Promotion avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Sortie Promotion {{ id }} ?"
+      },
+      "detail": {
+        "title": "Sortie Promotion"
+      },
+      "dateSortie": "Date Sortie",
+      "anneesSortie": "Annees Sortie",
+      "motif": "Motif",
+      "installation": "Installation"
+    }
+  }
+}

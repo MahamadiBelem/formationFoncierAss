@@ -1,0 +1,25 @@
+{
+  "gestionFormationApp": {
+    "formateurs": {
+      "home": {
+        "title": "Formateurs",
+        "createLabel": "Créer un nouveau Formateurs",
+        "createOrEditLabel": "Créer ou éditer un Formateurs",
+        "notFound": "Aucun Formateurs trouvé"
+      },
+      "created": "Un nouveau Formateurs a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Formateurs avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Formateurs avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Formateurs {{ id }} ?"
+      },
+      "detail": {
+        "title": "Formateurs"
+      },
+      "nomComplet": "Nom Complet",
+      "specialite": "Specialite",
+      "regime": "Regime",
+      "centreformation": "Centreformation"
+    }
+  }
+}

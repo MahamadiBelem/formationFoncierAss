@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="installation">
+            <h2><span jhiTranslate="gestionFormationApp.installation.detail.title">Installation</span> {{ installation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.installation.anneesInstallation">Annees Installation</span></dt>
+                <dd>
+                    <span>{{ installation.anneesInstallation }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.installation.dateIntallation">Date Intallation</span></dt>
+                <dd>
+                    <span>{{ installation.dateIntallation }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.installation.lieuInstallation">Lieu Installation</span></dt>
+                <dd>
+                    <span>{{ installation.lieuInstallation }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.installation.activiteinstallation">Activiteinstallation</span></dt>
+                <dd>
+                    <span *ngFor="let activiteinstallation of installation.activiteinstallations; let last = last">
+                        <a [routerLink]="['/activite-installation', activiteinstallation?.id, 'view']">{{ activiteinstallation.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.installation.kits">Kits</span></dt>
+                <dd>
+                    <span *ngFor="let kits of installation.kits; let last = last">
+                        <a [routerLink]="['/kits', kits?.id, 'view']">{{ kits.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/installation', installation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

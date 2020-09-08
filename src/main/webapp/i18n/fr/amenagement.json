@@ -1,0 +1,26 @@
+{
+  "gestionFormationApp": {
+    "amenagement": {
+      "home": {
+        "title": "Amenagements",
+        "createLabel": "Créer un nouveau Amenagement",
+        "createOrEditLabel": "Créer ou éditer un Amenagement",
+        "notFound": "Aucun Amenagement trouvé"
+      },
+      "created": "Un nouveau Amenagement a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Amenagement avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Amenagement avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Amenagement {{ id }} ?"
+      },
+      "detail": {
+        "title": "Amenagement"
+      },
+      "superficieTotal": "Superficie Total",
+      "superficieEmbave": "Superficie Embave",
+      "etats": "Etats",
+      "typeamenagement": "Typeamenagement",
+      "centreformation": "Centreformation"
+    }
+  }
+}

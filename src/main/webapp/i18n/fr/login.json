@@ -1,0 +1,19 @@
+{
+  "login": {
+    "title": "CONNEXION",
+    "form": {
+      "password": "Mot de passe",
+      "password.placeholder": "Votre mot de passe",
+      "rememberme": "Se souvenir de moi ?",
+      "button": "Authentification"
+    },
+    "messages": {
+      "error": {
+        "authentication": "<strong>Erreur d'authentification !</strong> Veuillez vérifier vos identifiants de connexion."
+      }
+    },
+    "password": {
+      "forgot": "Mot de passe oublier  ?"
+    }
+  }
+}

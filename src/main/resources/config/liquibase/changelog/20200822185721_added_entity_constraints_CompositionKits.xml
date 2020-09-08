@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity CompositionKits.
+    -->
+    <changeSet id="20200822185721-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="composition_kits_id"
+                                 baseTableName="composition_kits_kits"
+                                 constraintName="fk_composition_kits_kits_composition_kits_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="composition_kits"/>
+
+        <addForeignKeyConstraint baseColumnNames="kits_id"
+                                 baseTableName="composition_kits_kits"
+                                 constraintName="fk_composition_kits_kits_kits_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="kits"/>
+        
+    </changeSet>
+</databaseChangeLog>

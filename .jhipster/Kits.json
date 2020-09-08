@@ -1,0 +1,38 @@
+{
+  "name": "Kits",
+  "fields": [
+    {
+      "fieldName": "isobtenu",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "installation",
+      "otherEntityRelationshipName": "kits",
+      "relationshipName": "installation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "compositionKits",
+      "otherEntityRelationshipName": "kits",
+      "relationshipName": "installation",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20200822185621",
+  "entityTableName": "kits",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

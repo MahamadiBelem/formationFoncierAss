@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md-9">
+
+        <div [ngSwitch]="isAuthenticated()">
+
+
+            <div  *ngSwitchCase="true">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4">
+                        <a>
+                            <div class="card-primary">
+                                <div class="card-header formation-card-title">
+                                    <div jhiTranslate="home.formationtitle"></div>
+                                </div>
+                                <div class="card-body">
+                                    <img src="../../content/images/formationlogo.png">
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4">
+                        <a>
+                            <div class="card-primary">
+                                <div class="card-header foncier-card-title">
+                                    <div jhiTranslate="home.fonciertitle"></div>
+                                </div>
+
+                                <div class="card-body">
+                                    <img src="../../content/images/fonciers.png">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xl-4">
+                        <a>
+                            <div class="card-primary">
+                                <div class="card-header op-card-title">
+                                    <div jhiTranslate="home.optitle"></div>
+                                </div>
+
+                                <div class="card-body">
+                                    <img src="../../content/images/oplogo.png">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngSwitchCase="false">
+                        <img class="armoirie-img" src="../../content/images/armoiries.png">
+            </div>
+
+            <div  *ngSwitchCase="false">
+
+            </div>
+        </div>
+
+    </div>
+</div>
