@@ -32,7 +32,8 @@
     },
     {
       "fieldName": "sexe",
-      "fieldType": "String",
+      "fieldType": "Sexe",
+      "fieldValues": "MASCULIN,FEMININ",
       "fieldValidateRules": [
         "required"
       ]
@@ -42,8 +43,9 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "iscandidat",
-      "fieldType": "Boolean"
+      "fieldName": "typecandidat",
+      "fieldType": "Examen",
+      "fieldValues": "CQP,CQB"
     },
     {
       "fieldName": "situationMatrimonial",
@@ -60,26 +62,17 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "sortiePromotion",
+      "relationshipType": "many-to-one",
+      "otherEntityName": "niveauInstruction",
       "otherEntityRelationshipName": "apprenantes",
-      "relationshipName": "sortiepromotion",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "formations",
-      "otherEntityRelationshipName": "formation",
-      "relationshipName": "centreformation",
-      "otherEntityField": "id",
-      "ownerSide": false
+      "relationshipName": "niveauapprenant",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20200822184921",
   "entityTableName": "apprenantes",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
