@@ -12,6 +12,12 @@
                 <dd>
                     <span>{{ communes.libelleCommune }}</span>
                 </dd>
+                <dt><span jhiTranslate="gestionFormationApp.communes.provinces">Provinces</span></dt>
+                <dd>
+                    <div *ngIf="communes.provinces">
+                        <a [routerLink]="['/provinces', communes.provinces?.id, 'view']">{{ communes.provinces?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

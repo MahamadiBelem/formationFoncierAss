@@ -37,10 +37,6 @@
     {
       "fieldName": "dateOuverture",
       "fieldType": "LocalDate"
-    },
-    {
-      "fieldName": "regime",
-      "fieldType": "String"
     }
   ],
   "relationships": [
@@ -127,14 +123,6 @@
     },
     {
       "relationshipType": "many-to-many",
-      "otherEntityName": "formateurs",
-      "otherEntityRelationshipName": "centreformation",
-      "relationshipName": "formateurs",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "many-to-many",
       "otherEntityName": "conditionAccess",
       "otherEntityRelationshipName": "centreformation",
       "relationshipName": "conditionaccess",
@@ -142,12 +130,11 @@
       "ownerSide": true
     },
     {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "formations",
-      "otherEntityRelationshipName": "centreformation",
-      "relationshipName": "formations",
-      "otherEntityField": "id",
-      "ownerSide": true
+      "relationshipType": "many-to-one",
+      "otherEntityName": "regime",
+      "otherEntityRelationshipName": "centreFormation",
+      "relationshipName": "regime",
+      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20200822184321",

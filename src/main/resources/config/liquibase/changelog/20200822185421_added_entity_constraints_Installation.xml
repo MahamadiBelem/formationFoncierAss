@@ -9,6 +9,12 @@
     <changeSet id="20200822185421-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="installation_id"
+                                 baseTableName="installation"
+                                 constraintName="fk_installation_installation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sortie_promotion"/>
+
+        <addForeignKeyConstraint baseColumnNames="installation_id"
                                  baseTableName="installation_activiteinstallation"
                                  constraintName="fk_installation_activiteinstallation_installation_id"
                                  referencedColumnNames="id"

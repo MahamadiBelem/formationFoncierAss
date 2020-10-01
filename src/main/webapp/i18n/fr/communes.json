@@ -3,20 +3,22 @@
     "communes": {
       "home": {
         "title": "Communes",
-        "createLabel": "Créer un nouveau Communes",
-        "createOrEditLabel": "Créer ou éditer un Communes",
-        "notFound": "Aucun Communes trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une commune",
+        "notFound": "Aucune Commune trouvé"
       },
-      "created": "Un nouveau Communes a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Communes avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Communes avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de la commune avec succès",
+      "updated": "Modification de la commune avec succès",
+      "deleted": "Suppression de la commune avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Communes {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Communes"
       },
-      "libelleCommune": "Libelle Commune"
+      "libelleCommune": "Communes",
+      "villages": "Villages",
+      "provinces": "Provinces"
     }
   }
 }

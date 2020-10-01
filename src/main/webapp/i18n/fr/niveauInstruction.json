@@ -2,22 +2,22 @@
   "gestionFormationApp": {
     "niveauInstruction": {
       "home": {
-        "title": "NiveauInstructions",
-        "createLabel": "Créer un nouveau Niveau Instruction",
-        "createOrEditLabel": "Créer ou éditer un Niveau Instruction",
-        "notFound": "Aucun Niveau Instruction trouvé"
+        "title": "Niveau d'instruction",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un Niveau d'instruction",
+        "notFound": "Aucun niveau d'instruction trouvé"
       },
-      "created": "Un nouveau Niveau Instruction a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Niveau Instruction avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Niveau Instruction avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau niveau instruction a été créé avec l'identifiant {{ param }}",
+      "updated": "Le niveau d'instruction avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le niveau d'instruction avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Niveau Instruction {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Niveau Instruction"
+        "title": "Niveau d'instruction"
       },
-      "niveauInstruction": "Niveau Instruction",
-      "apprenants": "Apprenants"
+      "niveauInstruction": "Niveau d'instruction",
+      "apprenantes": "Apprenantes"
     }
   }
 }

@@ -25,12 +25,10 @@ import { IContributions } from 'app/shared/model/contributions.model';
 import { ContributionsService } from 'app/entities/contributions/contributions.service';
 import { INiveauRecrutement } from 'app/shared/model/niveau-recrutement.model';
 import { NiveauRecrutementService } from 'app/entities/niveau-recrutement/niveau-recrutement.service';
-import { IFormateurs } from 'app/shared/model/formateurs.model';
-import { FormateursService } from 'app/entities/formateurs/formateurs.service';
 import { IConditionAccess } from 'app/shared/model/condition-access.model';
 import { ConditionAccessService } from 'app/entities/condition-access/condition-access.service';
-import { IFormations } from 'app/shared/model/formations.model';
-import { FormationsService } from 'app/entities/formations/formations.service';
+import { IRegime } from 'app/shared/model/regime.model';
+import { RegimeService } from 'app/entities/regime/regime.service';
 
 type SelectableEntity =
   | ICommunes
@@ -42,9 +40,8 @@ type SelectableEntity =
   | IDomaineFormation
   | IContributions
   | INiveauRecrutement
-  | IFormateurs
   | IConditionAccess
-  | IFormations;
+  | IRegime;
 
 type SelectableManyToManyEntity =
   | IApprochePedagogique
@@ -53,9 +50,7 @@ type SelectableManyToManyEntity =
   | IDomaineFormation
   | IContributions
   | INiveauRecrutement
-  | IFormateurs
-  | IConditionAccess
-  | IFormations;
+  | IConditionAccess;
 
 @Component({
   selector: 'jhi-centre-formation-update',
@@ -72,9 +67,8 @@ export class CentreFormationUpdateComponent implements OnInit {
   domaineformations: IDomaineFormation[] = [];
   contributions: IContributions[] = [];
   niveaurecrutements: INiveauRecrutement[] = [];
-  formateurs: IFormateurs[] = [];
   conditionaccesses: IConditionAccess[] = [];
-  formations: IFormations[] = [];
+  regimes: IRegime[] = [];
   dateOuvertureDp: any;
 
   editForm = this.fb.group({
@@ -86,7 +80,6 @@ export class CentreFormationUpdateComponent implements OnInit {
     capaciteacceuil: [],
     refOuverture: [],
     dateOuverture: [],
-    regime: [],
     communes: [],
     promoteurs: [],
     gestionnaires: [],
@@ -96,9 +89,8 @@ export class CentreFormationUpdateComponent implements OnInit {
     domaineformations: [],
     contributions: [],
     niveaurecrutements: [],
-    formateurs: [],
     conditionaccesses: [],
-    formations: [],
+    regime: [],
   });
 
   constructor(
@@ -112,9 +104,8 @@ export class CentreFormationUpdateComponent implements OnInit {
     protected domaineFormationService: DomaineFormationService,
     protected contributionsService: ContributionsService,
     protected niveauRecrutementService: NiveauRecrutementService,
-    protected formateursService: FormateursService,
     protected conditionAccessService: ConditionAccessService,
-    protected formationsService: FormationsService,
+    protected regimeService: RegimeService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -145,11 +136,9 @@ export class CentreFormationUpdateComponent implements OnInit {
         .query()
         .subscribe((res: HttpResponse<INiveauRecrutement[]>) => (this.niveaurecrutements = res.body || []));
 
-      this.formateursService.query().subscribe((res: HttpResponse<IFormateurs[]>) => (this.formateurs = res.body || []));
-
       this.conditionAccessService.query().subscribe((res: HttpResponse<IConditionAccess[]>) => (this.conditionaccesses = res.body || []));
 
-      this.formationsService.query().subscribe((res: HttpResponse<IFormations[]>) => (this.formations = res.body || []));
+      this.regimeService.query().subscribe((res: HttpResponse<IRegime[]>) => (this.regimes = res.body || []));
     });
   }
 
@@ -163,7 +152,6 @@ export class CentreFormationUpdateComponent implements OnInit {
       capaciteacceuil: centreFormation.capaciteacceuil,
       refOuverture: centreFormation.refOuverture,
       dateOuverture: centreFormation.dateOuverture,
-      regime: centreFormation.regime,
       communes: centreFormation.communes,
       promoteurs: centreFormation.promoteurs,
       gestionnaires: centreFormation.gestionnaires,
@@ -173,9 +161,8 @@ export class CentreFormationUpdateComponent implements OnInit {
       domaineformations: centreFormation.domaineformations,
       contributions: centreFormation.contributions,
       niveaurecrutements: centreFormation.niveaurecrutements,
-      formateurs: centreFormation.formateurs,
       conditionaccesses: centreFormation.conditionaccesses,
-      formations: centreFormation.formations,
+      regime: centreFormation.regime,
     });
   }
 
@@ -204,7 +191,6 @@ export class CentreFormationUpdateComponent implements OnInit {
       capaciteacceuil: this.editForm.get(['capaciteacceuil'])!.value,
       refOuverture: this.editForm.get(['refOuverture'])!.value,
       dateOuverture: this.editForm.get(['dateOuverture'])!.value,
-      regime: this.editForm.get(['regime'])!.value,
       communes: this.editForm.get(['communes'])!.value,
       promoteurs: this.editForm.get(['promoteurs'])!.value,
       gestionnaires: this.editForm.get(['gestionnaires'])!.value,
@@ -214,9 +200,8 @@ export class CentreFormationUpdateComponent implements OnInit {
       domaineformations: this.editForm.get(['domaineformations'])!.value,
       contributions: this.editForm.get(['contributions'])!.value,
       niveaurecrutements: this.editForm.get(['niveaurecrutements'])!.value,
-      formateurs: this.editForm.get(['formateurs'])!.value,
       conditionaccesses: this.editForm.get(['conditionaccesses'])!.value,
-      formations: this.editForm.get(['formations'])!.value,
+      regime: this.editForm.get(['regime'])!.value,
     };
   }
 

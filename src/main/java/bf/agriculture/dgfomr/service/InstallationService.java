@@ -5,7 +5,6 @@ import bf.agriculture.dgfomr.domain.Installation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -24,9 +23,10 @@ public interface InstallationService {
     /**
      * Get all the installations.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<Installation> findAll();
+    Page<Installation> findAll(Pageable pageable);
 
     /**
      * Get all the installations with eager load of many-to-many relationships.

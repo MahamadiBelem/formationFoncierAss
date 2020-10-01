@@ -1,5 +1,6 @@
 package bf.agriculture.dgfomr.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,6 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Communes.
@@ -26,6 +29,14 @@ public class Communes implements Serializable {
     @NotNull
     @Column(name = "libelle_commune", nullable = false)
     private String libelleCommune;
+
+    @OneToMany(mappedBy = "commune")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Villages> villages = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "communes", allowSetters = true)
+    private Provinces provinces;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -47,6 +58,44 @@ public class Communes implements Serializable {
 
     public void setLibelleCommune(String libelleCommune) {
         this.libelleCommune = libelleCommune;
+    }
+
+    public Set<Villages> getVillages() {
+        return villages;
+    }
+
+    public Communes villages(Set<Villages> villages) {
+        this.villages = villages;
+        return this;
+    }
+
+    public Communes addVillages(Villages villages) {
+        this.villages.add(villages);
+        villages.setCommune(this);
+        return this;
+    }
+
+    public Communes removeVillages(Villages villages) {
+        this.villages.remove(villages);
+        villages.setCommune(null);
+        return this;
+    }
+
+    public void setVillages(Set<Villages> villages) {
+        this.villages = villages;
+    }
+
+    public Provinces getProvinces() {
+        return provinces;
+    }
+
+    public Communes provinces(Provinces provinces) {
+        this.provinces = provinces;
+        return this;
+    }
+
+    public void setProvinces(Provinces provinces) {
+        this.provinces = provinces;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

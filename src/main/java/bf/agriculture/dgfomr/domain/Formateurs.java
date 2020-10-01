@@ -1,6 +1,5 @@
 package bf.agriculture.dgfomr.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Formateurs.
@@ -31,17 +28,11 @@ public class Formateurs implements Serializable {
     private String nomComplet;
 
     @NotNull
-    @Column(name = "specialite", nullable = false)
-    private String specialite;
+    @Column(name = "emplois", nullable = false)
+    private String emplois;
 
-    @NotNull
-    @Column(name = "regime", nullable = false)
-    private String regime;
-
-    @ManyToMany(mappedBy = "formateurs")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
-    private Set<CentreFormation> centreformations = new HashSet<>();
+    @Column(name = "contactformateur")
+    private String contactformateur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -65,55 +56,30 @@ public class Formateurs implements Serializable {
         this.nomComplet = nomComplet;
     }
 
-    public String getSpecialite() {
-        return specialite;
+    public String getEmplois() {
+        return emplois;
     }
 
-    public Formateurs specialite(String specialite) {
-        this.specialite = specialite;
+    public Formateurs emplois(String emplois) {
+        this.emplois = emplois;
         return this;
     }
 
-    public void setSpecialite(String specialite) {
-        this.specialite = specialite;
+    public void setEmplois(String emplois) {
+        this.emplois = emplois;
     }
 
-    public String getRegime() {
-        return regime;
+    public String getContactformateur() {
+        return contactformateur;
     }
 
-    public Formateurs regime(String regime) {
-        this.regime = regime;
+    public Formateurs contactformateur(String contactformateur) {
+        this.contactformateur = contactformateur;
         return this;
     }
 
-    public void setRegime(String regime) {
-        this.regime = regime;
-    }
-
-    public Set<CentreFormation> getCentreformations() {
-        return centreformations;
-    }
-
-    public Formateurs centreformations(Set<CentreFormation> centreFormations) {
-        this.centreformations = centreFormations;
-        return this;
-    }
-
-    public Formateurs addCentreformation(CentreFormation centreFormation) {
-        this.centreformations.add(centreFormation);
-        centreFormation.getFormateurs().add(this);
-        return this;
-    }
-
-    public Formateurs removeCentreformation(CentreFormation centreFormation) {
-        this.centreformations.remove(centreFormation);
-        centreFormation.getFormateurs().remove(this);
-        return this;
-    }
-
-    public void setCentreformations(Set<CentreFormation> centreFormations) {
-        this.centreformations = centreFormations;
+    public void setContactformateur(String contactformateur) {
+        this.contactformateur = contactformateur;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -139,8 +105,8 @@ public class Formateurs implements Serializable {
         return "Formateurs{" +
             "id=" + getId() +
             ", nomComplet='" + getNomComplet() + "'" +
-            ", specialite='" + getSpecialite() + "'" +
-            ", regime='" + getRegime() + "'" +
+            ", emplois='" + getEmplois() + "'" +
+            ", contactformateur='" + getContactformateur() + "'" +
             "}";
     }
 }

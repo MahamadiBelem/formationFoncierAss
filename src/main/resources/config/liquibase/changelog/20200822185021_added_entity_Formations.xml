@@ -27,7 +27,7 @@
             <column name="source_financement" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="typeamenagement_id" type="bigint">
+            <column name="formation_type_formation_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -36,17 +36,6 @@
 
     <changeSet id="20200822185021-1-relations" author="jhipster">
 
-        <createTable tableName="formations_formation">
-            <column name="formation_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="formations_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="formations_id, formation_id" tableName="formations_formation"/>
-        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 

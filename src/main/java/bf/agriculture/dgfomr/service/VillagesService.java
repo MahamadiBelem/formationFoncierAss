@@ -2,7 +2,9 @@ package bf.agriculture.dgfomr.service;
 
 import bf.agriculture.dgfomr.domain.Villages;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface VillagesService {
     /**
      * Get all the villages.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<Villages> findAll();
+    Page<Villages> findAll(Pageable pageable);
 
 
     /**

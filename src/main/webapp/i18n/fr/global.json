@@ -6,7 +6,7 @@
       "home": "Accueil",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "parametrage": {
-        "title": "Decoupage"
+        "title": "Paramètrages"
       },
       "gformation": {
         "title": "Formations"
@@ -40,13 +40,19 @@
         "formateurs": "Formateurs",
         "apprenantes": "Apprenantes",
         "formations": "Formations",
-        "niveauInstruction": "Niveau Instruction",
+        "niveauInstruction": "Niveau d'instruction",
         "typeFormation": "Type Formation",
         "sortiePromotion": "Sortie Promotion",
         "installation": "Installation",
         "activiteInstallation": "Activite Installation",
         "kits": "Kits",
         "compositionKits": "Composition Kits",
+        "typecandidat": "Typecandidat",
+        "regime": "Regime",
+        "inscription": "Inscription",
+        "inscriptionApprenants": " Affecter un apprenant",
+        "formateurCentre": "Affecter un formateur",
+        "formationCentreFormation": "Affecter une formation",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -134,11 +140,11 @@
       "addimage": "Ajouter image",
       "back": "Retour",
       "cancel": "Annuler",
-      "edit": "Editer",
+      "edit": "Modifier",
       "delete": "Supprimer",
       "open": "Ouvrir",
       "save": "Sauvegarder",
-      "view": "Voir"
+      "view": "Detail"
     },
     "detail": {
       "field": "Champs",

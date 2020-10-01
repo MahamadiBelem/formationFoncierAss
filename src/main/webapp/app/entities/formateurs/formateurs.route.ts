@@ -40,6 +40,7 @@ export const formateursRoute: Routes = [
     component: FormateursComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.formateurs.home.title',
     },
     canActivate: [UserRouteAccessService],

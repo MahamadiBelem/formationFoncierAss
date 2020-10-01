@@ -2,21 +2,21 @@
   "gestionFormationApp": {
     "conditionAccess": {
       "home": {
-        "title": "ConditionAccesses",
-        "createLabel": "Créer un nouveau Condition Access",
-        "createOrEditLabel": "Créer ou éditer un Condition Access",
-        "notFound": "Aucun Condition Access trouvé"
+        "title": "Conditions d'accès",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Enregistrer ou modifier une condition d'accès",
+        "notFound": "Aucune condition d'accès trouvé"
       },
-      "created": "Un nouveau Condition Access a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Condition Access avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Condition Access avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de la condition d'accès avec succès",
+      "updated": "Modification de la condition d'accès avec succès",
+      "deleted": "Suppression de la condition d'accès avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Condition Access {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Condition Access"
       },
-      "libelleConditon": "Libelle Conditon",
+      "libelleConditon": "Conditon d'accès",
       "centreformation": "Centreformation"
     }
   }

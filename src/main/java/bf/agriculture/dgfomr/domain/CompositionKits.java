@@ -83,7 +83,7 @@ public class CompositionKits implements Serializable {
 
     public CompositionKits addKits(Kits kits) {
         this.kits.add(kits);
-
+        kits.getInstallations().add(this);
         return this;
     }
 

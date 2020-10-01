@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IVillages, Villages } from 'app/shared/model/villages.model';
 import { VillagesService } from './villages.service';
+import { ICommunes } from 'app/shared/model/communes.model';
+import { CommunesService } from 'app/entities/communes/communes.service';
 
 @Component({
   selector: 'jhi-villages-update',
@@ -14,17 +16,26 @@ import { VillagesService } from './villages.service';
 })
 export class VillagesUpdateComponent implements OnInit {
   isSaving = false;
+  communes: ICommunes[] = [];
 
   editForm = this.fb.group({
     id: [],
     libelleVillage: [null, [Validators.required]],
+    commune: [],
   });
 
-  constructor(protected villagesService: VillagesService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected villagesService: VillagesService,
+    protected communesService: CommunesService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ villages }) => {
       this.updateForm(villages);
+
+      this.communesService.query().subscribe((res: HttpResponse<ICommunes[]>) => (this.communes = res.body || []));
     });
   }
 
@@ -32,6 +43,7 @@ export class VillagesUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: villages.id,
       libelleVillage: villages.libelleVillage,
+      commune: villages.commune,
     });
   }
 
@@ -54,6 +66,7 @@ export class VillagesUpdateComponent implements OnInit {
       ...new Villages(),
       id: this.editForm.get(['id'])!.value,
       libelleVillage: this.editForm.get(['libelleVillage'])!.value,
+      commune: this.editForm.get(['commune'])!.value,
     };
   }
 
@@ -71,5 +84,9 @@ export class VillagesUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: ICommunes): any {
+    return item.id;
   }
 }

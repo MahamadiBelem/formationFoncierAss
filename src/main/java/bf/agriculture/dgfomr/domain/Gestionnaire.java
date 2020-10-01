@@ -31,8 +31,8 @@ public class Gestionnaire implements Serializable {
     private String contactsGestionnaires;
 
     @NotNull
-    @Column(name = "niveau_etude", nullable = false)
-    private String niveauEtude;
+    @Column(name = "emploi", nullable = false)
+    private String emploi;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -69,17 +69,17 @@ public class Gestionnaire implements Serializable {
         this.contactsGestionnaires = contactsGestionnaires;
     }
 
-    public String getNiveauEtude() {
-        return niveauEtude;
+    public String getEmploi() {
+        return emploi;
     }
 
-    public Gestionnaire niveauEtude(String niveauEtude) {
-        this.niveauEtude = niveauEtude;
+    public Gestionnaire emploi(String emploi) {
+        this.emploi = emploi;
         return this;
     }
 
-    public void setNiveauEtude(String niveauEtude) {
-        this.niveauEtude = niveauEtude;
+    public void setEmploi(String emploi) {
+        this.emploi = emploi;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -106,7 +106,7 @@ public class Gestionnaire implements Serializable {
             "id=" + getId() +
             ", nomComplet='" + getNomComplet() + "'" +
             ", contactsGestionnaires='" + getContactsGestionnaires() + "'" +
-            ", niveauEtude='" + getNiveauEtude() + "'" +
+            ", emploi='" + getEmploi() + "'" +
             "}";
     }
 }

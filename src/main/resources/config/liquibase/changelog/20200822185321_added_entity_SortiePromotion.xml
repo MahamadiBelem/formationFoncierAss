@@ -24,8 +24,11 @@
             <column name="motif" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="installation_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_sortie_promotion_installation_id" />
+            <column name="sortiepromotion_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_sortie_promotion_sortiepromotion_id" />
+            </column>
+            <column name="sortie_centre_formation_id" type="bigint">
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_sortie_promotion_sortie_centre_formation_id" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>

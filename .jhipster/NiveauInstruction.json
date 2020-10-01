@@ -11,11 +11,10 @@
   ],
   "relationships": [
     {
-      "relationshipType": "many-to-one",
+      "relationshipType": "one-to-many",
       "otherEntityName": "apprenantes",
-      "otherEntityRelationshipName": "niveauInstruction",
-      "relationshipName": "apprenants",
-      "otherEntityField": "id"
+      "otherEntityRelationshipName": "niveauapprenant",
+      "relationshipName": "apprenantes"
     }
   ],
   "changelogDate": "20200822185121",

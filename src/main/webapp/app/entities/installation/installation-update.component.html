@@ -46,6 +46,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.installation" for="field_installation">Installation</label>
+                    <select class="form-control" id="field_installation" name="installation" formControlName="installation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sortiePromotionOption.id === editForm.get('installation')!.value?.id ? editForm.get('installation')!.value : sortiePromotionOption" *ngFor="let sortiePromotionOption of installations; trackBy: trackById">{{ sortiePromotionOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label jhiTranslate="gestionFormationApp.installation.activiteinstallation" for="field_activiteinstallations">Activiteinstallation</label>
                     <select class="form-control" id="field_activiteinstallations" multiple name="activiteinstallations" formControlName="activiteinstallations">
                         <option [ngValue]="getSelected(editForm.get('activiteinstallations')!.value, activiteInstallationOption)" *ngFor="let activiteInstallationOption of activiteinstallations; trackBy: trackById">{{ activiteInstallationOption.id }}</option>

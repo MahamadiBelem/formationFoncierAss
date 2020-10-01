@@ -1,72 +1,121 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="apprenantes">
-            <h2><span jhiTranslate="gestionFormationApp.apprenantes.detail.title">Apprenantes</span> {{ apprenantes.id }}</h2>
+           
 
-            <hr>
+            <div class="card">
+                <div class="card-header" style="background-color: #0070c0;color: white;">
+                    <h2 align="center"><span jhiTranslate="gestionFormationApp.apprenantes.detail.title">Apprenantes</span> {{ apprenantes.nom }} {{ apprenantes.prenom }}</h2>
+                    <hr>
 
-            <jhi-alert-error></jhi-alert-error>
-
-            <dl class="row-md jh-entity-details">
+                    <jhi-alert-error></jhi-alert-error>
+                </div>
+                <div class="card-body">
+                <dl class="row-md jh-entity-details">
+                  <div class="row">
+                      <div class="col-6">
+                        
                 <dt><span jhiTranslate="gestionFormationApp.apprenantes.matricule">Matricule</span></dt>
                 <dd>
                     <span>{{ apprenantes.matricule }}</span>
                 </dd>
+                      </div>
+            <div class="col-6">
+                    
                 <dt><span jhiTranslate="gestionFormationApp.apprenantes.nom">Nom</span></dt>
                 <dd>
                     <span>{{ apprenantes.nom }}</span>
                 </dd>
+                </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-6">
+                        
                 <dt><span jhiTranslate="gestionFormationApp.apprenantes.prenom">Prenom</span></dt>
                 <dd>
                     <span>{{ apprenantes.prenom }}</span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.apprenantes.dateNaissance">Date Naissance</span></dt>
-                <dd>
-                    <span>{{ apprenantes.dateNaissance }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.apprenantes.sexe">Sexe</span></dt>
-                <dd>
-                    <span>{{ apprenantes.sexe }}</span>
-                </dd>
+                      </div>
+                      <div class="col-6">
+                        <dt><span jhiTranslate="gestionFormationApp.apprenantes.dateNaissance">Date Naissance</span></dt>
+                        <dd>
+                            <span>{{ apprenantes.dateNaissance }}</span>
+                        </dd>
+                      </div>
+                      <div class="col-6">
+                        <dt><span jhiTranslate="gestionFormationApp.apprenantes.sexe">Sexe</span></dt>
+                        <dd>
+                            <span jhiTranslate="{{ 'gestionFormationApp.Sexe.' + apprenantes.sexe }}">{{ apprenantes.sexe }}</span>
+                        </dd>
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                        
                 <dt><span jhiTranslate="gestionFormationApp.apprenantes.contact">Contact</span></dt>
                 <dd>
                     <span>{{ apprenantes.contact }}</span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.apprenantes.iscandidat">Iscandidat</span></dt>
-                <dd>
-                    <span>{{ apprenantes.iscandidat }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.apprenantes.situationMatrimonial">Situation Matrimonial</span></dt>
-                <dd>
-                    <span>{{ apprenantes.situationMatrimonial }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.apprenantes.charger">Charger</span></dt>
-                <dd>
-                    <span>{{ apprenantes.charger }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.apprenantes.localite">Localite</span></dt>
-                <dd>
-                    <span>{{ apprenantes.localite }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.apprenantes.sortiepromotion">Sortiepromotion</span></dt>
-                <dd>
-                    <div *ngIf="apprenantes.sortiepromotion">
-                        <a [routerLink]="['/sortie-promotion', apprenantes.sortiepromotion?.id, 'view']">{{ apprenantes.sortiepromotion?.id }}</a>
                     </div>
+                    <div class="col-6">
+                        
+                <dt><span jhiTranslate="gestionFormationApp.apprenantes.typecandidat">Typecandidat</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gestionFormationApp.Examen.' + apprenantes.typecandidat }}">{{ apprenantes.typecandidat }}</span>
                 </dd>
-            </dl>
+                    </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-6">        
+                        <dt><span jhiTranslate="gestionFormationApp.apprenantes.situationMatrimonial">Situation Matrimonial</span></dt>
+                        <dd>
+                            <span>{{ apprenantes.situationMatrimonial }}</span>
+                        </dd>
+                      </div>
+                      <div class="col-6">
+                        <dt><span jhiTranslate="gestionFormationApp.apprenantes.charger">Charger</span></dt>
+                        <dd>
+                            <span>{{ apprenantes.charger }}</span>
+                        </dd>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-6">
+                        <dt><span jhiTranslate="gestionFormationApp.apprenantes.localite">Localite</span></dt>
+                        <dd>
+                            <span>{{ apprenantes.localite }}</span>
+                        </dd>
+                      </div>
+                      <div class="col-6">
+                        <dt><span jhiTranslate="gestionFormationApp.apprenantes.niveauapprenant">Niveauapprenant</span></dt>
+                        <dd>
+                            <div *ngIf="apprenantes.niveauapprenant">
+                                {{ apprenantes.niveauapprenant?.niveauInstruction }}
+                            </div>
+                        </dd>
+                   
+                      </div>
+                  </div>
+                </dl>
+                </div>
+                <div class="card-footer text-muted">
+                  <div class="row">
+                      <div class="col-12">
+                    <button type="submit"
+                            (click)="previousState()"
+                            class="btn btn-outline-warning">
+                        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                    </button>
 
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-            </button>
-
-            <button type="button"
-                    [routerLink]="['/apprenantes', apprenantes.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+                    <button type="button"
+                            [routerLink]="['/apprenantes', apprenantes.id, 'edit']"
+                            class="btn btn-outline-primary">
+                        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+                    </button>
+                      </div>
+                  </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

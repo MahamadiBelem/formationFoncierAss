@@ -1,0 +1,9 @@
+{
+  "gestionFormationApp": {
+    "RegimeFormateur": {
+      "null": "",
+      "Vacataire": "Vacataire",
+      "Permanent": "e"
+    }
+  }
+}

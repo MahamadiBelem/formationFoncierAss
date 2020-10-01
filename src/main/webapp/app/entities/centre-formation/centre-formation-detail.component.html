@@ -36,10 +36,6 @@
                 <dd>
                     <span>{{ centreFormation.dateOuverture }}</span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.regime">Regime</span></dt>
-                <dd>
-                    <span>{{ centreFormation.regime }}</span>
-                </dd>
                 <dt><span jhiTranslate="gestionFormationApp.centreFormation.communes">Communes</span></dt>
                 <dd>
                     <div *ngIf="centreFormation.communes">
@@ -94,23 +90,17 @@
                         <a [routerLink]="['/niveau-recrutement', niveaurecrutement?.id, 'view']">{{ niveaurecrutement.id }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.formateurs">Formateurs</span></dt>
-                <dd>
-                    <span *ngFor="let formateurs of centreFormation.formateurs; let last = last">
-                        <a [routerLink]="['/formateurs', formateurs?.id, 'view']">{{ formateurs.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
                 <dt><span jhiTranslate="gestionFormationApp.centreFormation.conditionaccess">Conditionaccess</span></dt>
                 <dd>
                     <span *ngFor="let conditionaccess of centreFormation.conditionaccesses; let last = last">
                         <a [routerLink]="['/condition-access', conditionaccess?.id, 'view']">{{ conditionaccess.id }}</a>{{ last ? '' : ', ' }}
                     </span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.formations">Formations</span></dt>
+                <dt><span jhiTranslate="gestionFormationApp.centreFormation.regime">Regime</span></dt>
                 <dd>
-                    <span *ngFor="let formations of centreFormation.formations; let last = last">
-                        <a [routerLink]="['/formations', formations?.id, 'view']">{{ formations.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
+                    <div *ngIf="centreFormation.regime">
+                        <a [routerLink]="['/regime', centreFormation.regime?.id, 'view']">{{ centreFormation.regime?.id }}</a>
+                    </div>
                 </dd>
             </dl>
 

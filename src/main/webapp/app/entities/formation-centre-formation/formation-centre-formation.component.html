@@ -1,0 +1,75 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.formationCentreFormation.home.title">Formation Centre Formations</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-formation-centre-formation" [routerLink]="['/formation-centre-formation/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.formationCentreFormation.home.createLabel">
+            Create a new Formation Centre Formation
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="formationCentreFormations?.length === 0">
+        <span jhiTranslate="gestionFormationApp.formationCentreFormation.home.notFound">No formationCentreFormations found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="formationCentreFormations && formationCentreFormations.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.datedebut">Datedebut</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.dateClore">Date Clore</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.formationcentre">Formationcentre</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.centreformation">Centreformation</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let formationCentreFormation of formationCentreFormations ;trackBy: trackId">
+                    <td><a [routerLink]="['/formation-centre-formation', formationCentreFormation.id, 'view']">{{ formationCentreFormation.id }}</a></td>
+                    <td>{{ formationCentreFormation.datedebut | date:'mediumDate' }}</td>
+                    <td>{{ formationCentreFormation.dateClore | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="formationCentreFormation.formationcentre">
+                            <a [routerLink]="['/centre-formation', formationCentreFormation.formationcentre?.id, 'view']" >{{ formationCentreFormation.formationcentre?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="formationCentreFormation.centreformation">
+                            <a [routerLink]="['/formations', formationCentreFormation.centreformation?.id, 'view']" >{{ formationCentreFormation.centreformation?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/formation-centre-formation', formationCentreFormation.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/formation-centre-formation', formationCentreFormation.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(formationCentreFormation)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -118,6 +118,29 @@ import { RouterModule } from '@angular/router';
         path: 'composition-kits',
         loadChildren: () => import('./composition-kits/composition-kits.module').then(m => m.GestionFormationCompositionKitsModule),
       },
+      {
+        path: 'typecandidat',
+        loadChildren: () => import('./typecandidat/typecandidat.module').then(m => m.GestionFormationTypecandidatModule),
+      },
+      {
+        path: 'regime',
+        loadChildren: () => import('./regime/regime.module').then(m => m.GestionFormationRegimeModule),
+      },
+      {
+        path: 'inscription',
+        loadChildren: () => import('./inscription/inscription.module').then(m => m.GestionFormationInscriptionModule),
+      },
+      {
+        path: 'formateur-centre',
+        loadChildren: () => import('./formateur-centre/formateur-centre.module').then(m => m.GestionFormationFormateurCentreModule),
+      },
+      {
+        path: 'formation-centre-formation',
+        loadChildren: () =>
+          import('./formation-centre-formation/formation-centre-formation.module').then(
+            m => m.GestionFormationFormationCentreFormationModule
+          ),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

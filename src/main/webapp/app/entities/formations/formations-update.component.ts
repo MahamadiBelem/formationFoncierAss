@@ -9,10 +9,6 @@ import { IFormations, Formations } from 'app/shared/model/formations.model';
 import { FormationsService } from './formations.service';
 import { ITypeFormation } from 'app/shared/model/type-formation.model';
 import { TypeFormationService } from 'app/entities/type-formation/type-formation.service';
-import { IApprenantes } from 'app/shared/model/apprenantes.model';
-import { ApprenantesService } from 'app/entities/apprenantes/apprenantes.service';
-
-type SelectableEntity = ITypeFormation | IApprenantes;
 
 @Component({
   selector: 'jhi-formations-update',
@@ -21,7 +17,6 @@ type SelectableEntity = ITypeFormation | IApprenantes;
 export class FormationsUpdateComponent implements OnInit {
   isSaving = false;
   typeformations: ITypeFormation[] = [];
-  apprenantes: IApprenantes[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -29,14 +24,12 @@ export class FormationsUpdateComponent implements OnInit {
     lebelleFormation: [],
     coutFormation: [],
     sourceFinancement: [],
-    typeamenagement: [],
-    formations: [],
+    formationTypeFormation: [],
   });
 
   constructor(
     protected formationsService: FormationsService,
     protected typeFormationService: TypeFormationService,
-    protected apprenantesService: ApprenantesService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -46,8 +39,6 @@ export class FormationsUpdateComponent implements OnInit {
       this.updateForm(formations);
 
       this.typeFormationService.query().subscribe((res: HttpResponse<ITypeFormation[]>) => (this.typeformations = res.body || []));
-
-      this.apprenantesService.query().subscribe((res: HttpResponse<IApprenantes[]>) => (this.apprenantes = res.body || []));
     });
   }
 
@@ -58,8 +49,7 @@ export class FormationsUpdateComponent implements OnInit {
       lebelleFormation: formations.lebelleFormation,
       coutFormation: formations.coutFormation,
       sourceFinancement: formations.sourceFinancement,
-      typeamenagement: formations.typeamenagement,
-      formations: formations.formations,
+      formationTypeFormation: formations.formationTypeFormation,
     });
   }
 
@@ -85,8 +75,7 @@ export class FormationsUpdateComponent implements OnInit {
       lebelleFormation: this.editForm.get(['lebelleFormation'])!.value,
       coutFormation: this.editForm.get(['coutFormation'])!.value,
       sourceFinancement: this.editForm.get(['sourceFinancement'])!.value,
-      typeamenagement: this.editForm.get(['typeamenagement'])!.value,
-      formations: this.editForm.get(['formations'])!.value,
+      formationTypeFormation: this.editForm.get(['formationTypeFormation'])!.value,
     };
   }
 
@@ -106,18 +95,7 @@ export class FormationsUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: SelectableEntity): any {
+  trackById(index: number, item: ITypeFormation): any {
     return item.id;
-  }
-
-  getSelected(selectedVals: IApprenantes[], option: IApprenantes): IApprenantes {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
-import { ISortiePromotion } from 'app/shared/model/sortie-promotion.model';
-import { IFormations } from 'app/shared/model/formations.model';
+import { INiveauInstruction } from 'app/shared/model/niveau-instruction.model';
+import { Sexe } from 'app/shared/model/enumerations/sexe.model';
+import { Examen } from 'app/shared/model/enumerations/examen.model';
 
 export interface IApprenantes {
   id?: number;
@@ -8,14 +9,13 @@ export interface IApprenantes {
   nom?: string;
   prenom?: string;
   dateNaissance?: Moment;
-  sexe?: string;
+  sexe?: Sexe;
   contact?: string;
-  iscandidat?: boolean;
+  typecandidat?: Examen;
   situationMatrimonial?: string;
   charger?: string;
   localite?: string;
-  sortiepromotion?: ISortiePromotion;
-  centreformations?: IFormations[];
+  niveauapprenant?: INiveauInstruction;
 }
 
 export class Apprenantes implements IApprenantes {
@@ -25,15 +25,12 @@ export class Apprenantes implements IApprenantes {
     public nom?: string,
     public prenom?: string,
     public dateNaissance?: Moment,
-    public sexe?: string,
+    public sexe?: Sexe,
     public contact?: string,
-    public iscandidat?: boolean,
+    public typecandidat?: Examen,
     public situationMatrimonial?: string,
     public charger?: string,
     public localite?: string,
-    public sortiepromotion?: ISortiePromotion,
-    public centreformations?: IFormations[]
-  ) {
-    this.iscandidat = this.iscandidat || false;
-  }
+    public niveauapprenant?: INiveauInstruction
+  ) {}
 }

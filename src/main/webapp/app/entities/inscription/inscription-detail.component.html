@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inscription">
+            <h2><span jhiTranslate="gestionFormationApp.inscription.detail.title">Inscription</span> {{ inscription.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.inscription.anneesAcademique">Annees Academique</span></dt>
+                <dd>
+                    <span>{{ inscription.anneesAcademique }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.inscription.dateInscription">Date Inscription</span></dt>
+                <dd>
+                    <span>{{ inscription.dateInscription }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.inscription.inscription">Inscription</span></dt>
+                <dd>
+                    <div *ngIf="inscription.inscription">
+                        <a [routerLink]="['/formations', inscription.inscription?.id, 'view']">{{ inscription.inscription?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.inscription.inscriptionApprenant">Inscription Apprenant</span></dt>
+                <dd>
+                    <div *ngIf="inscription.inscriptionApprenant">
+                        <a [routerLink]="['/apprenantes', inscription.inscriptionApprenant?.id, 'view']">{{ inscription.inscriptionApprenant?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.inscription.inscriptionCentreFormation">Inscription Centre Formation</span></dt>
+                <dd>
+                    <div *ngIf="inscription.inscriptionCentreFormation">
+                        <a [routerLink]="['/centre-formation', inscription.inscriptionCentreFormation?.id, 'view']">{{ inscription.inscriptionCentreFormation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inscription', inscription.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

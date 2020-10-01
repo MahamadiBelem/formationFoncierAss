@@ -21,13 +21,12 @@
     <div class="table-responsive" id="entities" *ngIf="installations && installations.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.anneesInstallation">Annees Installation</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.dateIntallation">Date Intallation</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.lieuInstallation">Lieu Installation</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.activiteinstallation">Activiteinstallation</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.installation.kits">Kits</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="anneesInstallation"><span jhiTranslate="gestionFormationApp.installation.anneesInstallation">Annees Installation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateIntallation"><span jhiTranslate="gestionFormationApp.installation.dateIntallation">Date Intallation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lieuInstallation"><span jhiTranslate="gestionFormationApp.installation.lieuInstallation">Lieu Installation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="installation.id"><span jhiTranslate="gestionFormationApp.installation.installation">Installation</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -38,14 +37,9 @@
                     <td>{{ installation.dateIntallation | date:'mediumDate' }}</td>
                     <td>{{ installation.lieuInstallation }}</td>
                     <td>
-                        <span *ngFor="let activiteinstallation of installation.activiteinstallations; let last = last">
-                            <a class="form-control-static" [routerLink]="['/activite-installation', activiteinstallation?.id, 'view']">{{ activiteinstallation.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
-                    </td>
-                    <td>
-                        <span *ngFor="let kits of installation.kits; let last = last">
-                            <a class="form-control-static" [routerLink]="['/kits', kits?.id, 'view']">{{ kits.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
+                        <div *ngIf="installation.installation">
+                            <a [routerLink]="['/sortie-promotion', installation.installation?.id, 'view']" >{{ installation.installation?.id }}</a>
+                        </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
@@ -73,5 +67,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="installations && installations.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

@@ -7,25 +7,18 @@ import bf.agriculture.dgfomr.service.FormationsService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -33,7 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Integration tests for the {@link FormationsResource} REST controller.
  */
 @SpringBootTest(classes = GestionFormationApp.class)
-@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 public class FormationsResourceIT {
@@ -52,12 +44,6 @@ public class FormationsResourceIT {
 
     @Autowired
     private FormationsRepository formationsRepository;
-
-    @Mock
-    private FormationsRepository formationsRepositoryMock;
-
-    @Mock
-    private FormationsService formationsServiceMock;
 
     @Autowired
     private FormationsService formationsService;
@@ -161,26 +147,6 @@ public class FormationsResourceIT {
             .andExpect(jsonPath("$.[*].sourceFinancement").value(hasItem(DEFAULT_SOURCE_FINANCEMENT)));
     }
     
-    @SuppressWarnings({"unchecked"})
-    public void getAllFormationsWithEagerRelationshipsIsEnabled() throws Exception {
-        when(formationsServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restFormationsMockMvc.perform(get("/api/formations?eagerload=true"))
-            .andExpect(status().isOk());
-
-        verify(formationsServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
-    @SuppressWarnings({"unchecked"})
-    public void getAllFormationsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        when(formationsServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
-
-        restFormationsMockMvc.perform(get("/api/formations?eagerload=true"))
-            .andExpect(status().isOk());
-
-        verify(formationsServiceMock, times(1)).findAllWithEagerRelationships(any());
-    }
-
     @Test
     @Transactional
     public void getFormations() throws Exception {

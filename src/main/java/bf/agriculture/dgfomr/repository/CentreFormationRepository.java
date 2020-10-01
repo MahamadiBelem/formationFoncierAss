@@ -17,13 +17,13 @@ import java.util.Optional;
 @Repository
 public interface CentreFormationRepository extends JpaRepository<CentreFormation, Long> {
 
-    @Query(value = "select distinct centreFormation from CentreFormation centreFormation left join fetch centreFormation.approchepedagogiques left join fetch centreFormation.publiccibles left join fetch centreFormation.specialites left join fetch centreFormation.domaineformations left join fetch centreFormation.contributions left join fetch centreFormation.niveaurecrutements left join fetch centreFormation.formateurs left join fetch centreFormation.conditionaccesses left join fetch centreFormation.formations",
+    @Query(value = "select distinct centreFormation from CentreFormation centreFormation left join fetch centreFormation.approchepedagogiques left join fetch centreFormation.publiccibles left join fetch centreFormation.specialites left join fetch centreFormation.domaineformations left join fetch centreFormation.contributions left join fetch centreFormation.niveaurecrutements left join fetch centreFormation.conditionaccesses",
         countQuery = "select count(distinct centreFormation) from CentreFormation centreFormation")
     Page<CentreFormation> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct centreFormation from CentreFormation centreFormation left join fetch centreFormation.approchepedagogiques left join fetch centreFormation.publiccibles left join fetch centreFormation.specialites left join fetch centreFormation.domaineformations left join fetch centreFormation.contributions left join fetch centreFormation.niveaurecrutements left join fetch centreFormation.formateurs left join fetch centreFormation.conditionaccesses left join fetch centreFormation.formations")
+    @Query("select distinct centreFormation from CentreFormation centreFormation left join fetch centreFormation.approchepedagogiques left join fetch centreFormation.publiccibles left join fetch centreFormation.specialites left join fetch centreFormation.domaineformations left join fetch centreFormation.contributions left join fetch centreFormation.niveaurecrutements left join fetch centreFormation.conditionaccesses")
     List<CentreFormation> findAllWithEagerRelationships();
 
-    @Query("select centreFormation from CentreFormation centreFormation left join fetch centreFormation.approchepedagogiques left join fetch centreFormation.publiccibles left join fetch centreFormation.specialites left join fetch centreFormation.domaineformations left join fetch centreFormation.contributions left join fetch centreFormation.niveaurecrutements left join fetch centreFormation.formateurs left join fetch centreFormation.conditionaccesses left join fetch centreFormation.formations where centreFormation.id =:id")
+    @Query("select centreFormation from CentreFormation centreFormation left join fetch centreFormation.approchepedagogiques left join fetch centreFormation.publiccibles left join fetch centreFormation.specialites left join fetch centreFormation.domaineformations left join fetch centreFormation.contributions left join fetch centreFormation.niveaurecrutements left join fetch centreFormation.conditionaccesses where centreFormation.id =:id")
     Optional<CentreFormation> findOneWithEagerRelationships(@Param("id") Long id);
 }

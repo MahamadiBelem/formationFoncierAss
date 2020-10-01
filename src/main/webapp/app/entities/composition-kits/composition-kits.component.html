@@ -21,11 +21,10 @@
     <div class="table-responsive" id="entities" *ngIf="compositionKits && compositionKits.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.compositionKits.libelleKits">Libelle Kits</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.compositionKits.quantiteKits">Quantite Kits</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.compositionKits.kits">Kits</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="libelleKits"><span jhiTranslate="gestionFormationApp.compositionKits.libelleKits">Libelle Kits</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="quantiteKits"><span jhiTranslate="gestionFormationApp.compositionKits.quantiteKits">Quantite Kits</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,11 +33,6 @@
                     <td><a [routerLink]="['/composition-kits', compositionKits.id, 'view']">{{ compositionKits.id }}</a></td>
                     <td>{{ compositionKits.libelleKits }}</td>
                     <td>{{ compositionKits.quantiteKits }}</td>
-                    <td>
-                        <span *ngFor="let kits of compositionKits.kits; let last = last">
-                            <a class="form-control-static" [routerLink]="['/kits', kits?.id, 'view']">{{ kits.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
@@ -65,5 +59,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="compositionKits && compositionKits.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

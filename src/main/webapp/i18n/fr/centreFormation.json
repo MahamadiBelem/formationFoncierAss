@@ -23,7 +23,6 @@
       "capaciteacceuil": "Capaciteacceuil",
       "refOuverture": "Ref Ouverture",
       "dateOuverture": "Date Ouverture",
-      "regime": "Regime",
       "infrastructure": "Infrastructure",
       "amenagement": "Amenagement",
       "communes": "Communes",
@@ -35,9 +34,8 @@
       "domaineformation": "Domaineformation",
       "contributions": "Contributions",
       "niveaurecrutement": "Niveaurecrutement",
-      "formateurs": "Formateurs",
       "conditionaccess": "Conditionaccess",
-      "formations": "Formations"
+      "regime": "Regime"
     }
   }
 }

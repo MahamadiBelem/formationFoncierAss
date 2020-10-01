@@ -56,7 +56,7 @@ describe('Service Tests', () => {
           {
             nomComplet: 'BBBBBB',
             contactsGestionnaires: 'BBBBBB',
-            niveauEtude: 'BBBBBB',
+            emploi: 'BBBBBB',
           },
           elemDefault
         );
@@ -75,7 +75,7 @@ describe('Service Tests', () => {
           {
             nomComplet: 'BBBBBB',
             contactsGestionnaires: 'BBBBBB',
-            niveauEtude: 'BBBBBB',
+            emploi: 'BBBBBB',
           },
           elemDefault
         );

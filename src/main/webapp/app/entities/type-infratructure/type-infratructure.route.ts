@@ -40,6 +40,7 @@ export const typeInfratructureRoute: Routes = [
     component: TypeInfratructureComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.typeInfratructure.home.title',
     },
     canActivate: [UserRouteAccessService],

@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -37,9 +36,9 @@ public class InstallationServiceImpl implements InstallationService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Installation> findAll() {
+    public Page<Installation> findAll(Pageable pageable) {
         log.debug("Request to get all Installations");
-        return installationRepository.findAllWithEagerRelationships();
+        return installationRepository.findAll(pageable);
     }
 
 

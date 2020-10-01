@@ -21,12 +21,13 @@
     <div class="table-responsive" id="entities" *ngIf="sortiePromotions && sortiePromotions.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie">Date Sortie</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie">Annees Sortie</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.motif">Motif</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.sortiePromotion.installation">Installation</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateSortie"><span jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie">Date Sortie</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="anneesSortie"><span jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie">Annees Sortie</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="motif"><span jhiTranslate="gestionFormationApp.sortiePromotion.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sortiepromotion.id"><span jhiTranslate="gestionFormationApp.sortiePromotion.sortiepromotion">Sortiepromotion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sortieCentreFormation.id"><span jhiTranslate="gestionFormationApp.sortiePromotion.sortieCentreFormation">Sortie Centre Formation</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -37,8 +38,13 @@
                     <td>{{ sortiePromotion.anneesSortie }}</td>
                     <td>{{ sortiePromotion.motif }}</td>
                     <td>
-                        <div *ngIf="sortiePromotion.installation">
-                            <a [routerLink]="['/installation', sortiePromotion.installation?.id, 'view']" >{{ sortiePromotion.installation?.id }}</a>
+                        <div *ngIf="sortiePromotion.sortiepromotion">
+                            <a [routerLink]="['/apprenantes', sortiePromotion.sortiepromotion?.id, 'view']" >{{ sortiePromotion.sortiepromotion?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="sortiePromotion.sortieCentreFormation">
+                            <a [routerLink]="['/centre-formation', sortiePromotion.sortieCentreFormation?.id, 'view']" >{{ sortiePromotion.sortieCentreFormation?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">
@@ -67,5 +73,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="sortiePromotions && sortiePromotions.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

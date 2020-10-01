@@ -40,6 +40,7 @@ export const compositionKitsRoute: Routes = [
     component: CompositionKitsComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.compositionKits.home.title',
     },
     canActivate: [UserRouteAccessService],

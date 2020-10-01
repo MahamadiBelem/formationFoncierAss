@@ -1,0 +1,22 @@
+{
+  "gestionFormationApp": {
+    "typecandidat": {
+      "home": {
+        "title": "Typecandidats",
+        "createLabel": "Créer un nouveau Typecandidat",
+        "createOrEditLabel": "Créer ou éditer un Typecandidat",
+        "notFound": "Aucun Typecandidat trouvé"
+      },
+      "created": "Un nouveau Typecandidat a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Typecandidat avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Typecandidat avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Typecandidat {{ id }} ?"
+      },
+      "detail": {
+        "title": "Typecandidat"
+      },
+      "libelleTypeCandidat": "Libelle Type Candidat"
+    }
+  }
+}

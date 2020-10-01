@@ -3,20 +3,22 @@
     "provinces": {
       "home": {
         "title": "Provinces",
-        "createLabel": "Créer un nouveau Provinces",
-        "createOrEditLabel": "Créer ou éditer un Provinces",
-        "notFound": "Aucun Provinces trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier  une Provinces",
+        "notFound": "Aucune province trouvé"
       },
-      "created": "Un nouveau Provinces a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Provinces avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Provinces avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de la province avec succés",
+      "updated": "Modification de la province avec succés ",
+      "deleted": "Suppression de la province avec succés",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Provinces {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Provinces"
       },
-      "libelleProvince": "Libelle Province"
+      "libelleProvince": "Provinces",
+      "communes": "Communes",
+      "region": "Region"
     }
   }
 }

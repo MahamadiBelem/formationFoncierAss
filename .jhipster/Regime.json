@@ -1,0 +1,31 @@
+{
+  "name": "Regime",
+  "fields": [
+    {
+      "fieldName": "libelleRegime",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "regime",
+      "relationshipName": "centreFormation"
+    }
+  ],
+  "changelogDate": "20200910234840",
+  "entityTableName": "regime",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

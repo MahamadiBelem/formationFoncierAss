@@ -8,11 +8,17 @@
     -->
     <changeSet id="20200822185321-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="installation_id"
+        <addForeignKeyConstraint baseColumnNames="sortiepromotion_id"
                                  baseTableName="sortie_promotion"
-                                 constraintName="fk_sortie_promotion_installation_id"
+                                 constraintName="fk_sortie_promotion_sortiepromotion_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="installation"/>
+                                 referencedTableName="apprenantes"/>
+
+        <addForeignKeyConstraint baseColumnNames="sortie_centre_formation_id"
+                                 baseTableName="sortie_promotion"
+                                 constraintName="fk_sortie_promotion_sortie_centre_formation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="centre_formation"/>
 
     </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,47 @@
+{
+  "name": "Inscription",
+  "fields": [
+    {
+      "fieldName": "anneesAcademique",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateInscription",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "formations",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "inscription",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "apprenantes",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "inscriptionApprenant",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "inscription",
+      "relationshipName": "inscriptionCentreFormation",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200917134648",
+  "entityTableName": "inscription",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

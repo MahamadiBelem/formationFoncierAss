@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-formateur-centre-heading" jhiTranslate="gestionFormationApp.formateurCentre.home.createOrEditLabel">Create or edit a Formateur Centre</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.dateEtablissement" for="field_dateEtablissement">Date Etablissement</label>
+                    <div class="input-group">
+                        <input id="field_dateEtablissement" type="text" class="form-control" name="dateEtablissement" ngbDatepicker #dateEtablissementDp="ngbDatepicker" formControlName="dateEtablissement"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateEtablissementDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.specialite" for="field_specialite">Specialite</label>
+                    <input type="text" class="form-control" name="specialite" id="field_specialite"
+                           formControlName="specialite"/>
+                    <div *ngIf="editForm.get('specialite')!.invalid && (editForm.get('specialite')!.dirty || editForm.get('specialite')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('specialite')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.regimeFormateur" for="field_regimeFormateur">Regime Formateur</label>
+                    <input type="text" class="form-control" name="regimeFormateur" id="field_regimeFormateur"
+                           formControlName="regimeFormateur"/>
+                    <div *ngIf="editForm.get('regimeFormateur')!.invalid && (editForm.get('regimeFormateur')!.dirty || editForm.get('regimeFormateur')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('regimeFormateur')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.formateurCentreFormation" for="field_formateurCentreFormation">Formateur Centre Formation</label>
+                    <select class="form-control" id="field_formateurCentreFormation" name="formateurCentreFormation" formControlName="formateurCentreFormation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="centreFormationOption.id === editForm.get('formateurCentreFormation')!.value?.id ? editForm.get('formateurCentreFormation')!.value : centreFormationOption" *ngFor="let centreFormationOption of centreformations; trackBy: trackById">{{ centreFormationOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.formateurCentre" for="field_formateurCentre">Formateur Centre</label>
+                    <select class="form-control" id="field_formateurCentre" name="formateurCentre" formControlName="formateurCentre">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="formateursOption.id === editForm.get('formateurCentre')!.value?.id ? editForm.get('formateurCentre')!.value : formateursOption" *ngFor="let formateursOption of formateurs; trackBy: trackById">{{ formateursOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

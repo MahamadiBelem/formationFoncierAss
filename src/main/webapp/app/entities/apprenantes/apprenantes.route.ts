@@ -40,6 +40,7 @@ export const apprenantesRoute: Routes = [
     component: ApprenantesComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.apprenantes.home.title',
     },
     canActivate: [UserRouteAccessService],

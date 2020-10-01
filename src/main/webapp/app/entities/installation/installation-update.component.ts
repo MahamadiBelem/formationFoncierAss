@@ -4,15 +4,20 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { IInstallation, Installation } from 'app/shared/model/installation.model';
 import { InstallationService } from './installation.service';
+import { ISortiePromotion } from 'app/shared/model/sortie-promotion.model';
+import { SortiePromotionService } from 'app/entities/sortie-promotion/sortie-promotion.service';
 import { IActiviteInstallation } from 'app/shared/model/activite-installation.model';
 import { ActiviteInstallationService } from 'app/entities/activite-installation/activite-installation.service';
 import { IKits } from 'app/shared/model/kits.model';
 import { KitsService } from 'app/entities/kits/kits.service';
 
-type SelectableEntity = IActiviteInstallation | IKits;
+type SelectableEntity = ISortiePromotion | IActiviteInstallation | IKits;
+
+type SelectableManyToManyEntity = IActiviteInstallation | IKits;
 
 @Component({
   selector: 'jhi-installation-update',
@@ -20,6 +25,7 @@ type SelectableEntity = IActiviteInstallation | IKits;
 })
 export class InstallationUpdateComponent implements OnInit {
   isSaving = false;
+  installations: ISortiePromotion[] = [];
   activiteinstallations: IActiviteInstallation[] = [];
   kits: IKits[] = [];
   dateIntallationDp: any;
@@ -29,12 +35,14 @@ export class InstallationUpdateComponent implements OnInit {
     anneesInstallation: [null, [Validators.required]],
     dateIntallation: [null, [Validators.required]],
     lieuInstallation: [],
+    installation: [],
     activiteinstallations: [],
     kits: [],
   });
 
   constructor(
     protected installationService: InstallationService,
+    protected sortiePromotionService: SortiePromotionService,
     protected activiteInstallationService: ActiviteInstallationService,
     protected kitsService: KitsService,
     protected activatedRoute: ActivatedRoute,
@@ -44,6 +52,28 @@ export class InstallationUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ installation }) => {
       this.updateForm(installation);
+
+      this.sortiePromotionService
+        .query({ filter: 'installation-is-null' })
+        .pipe(
+          map((res: HttpResponse<ISortiePromotion[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: ISortiePromotion[]) => {
+          if (!installation.installation || !installation.installation.id) {
+            this.installations = resBody;
+          } else {
+            this.sortiePromotionService
+              .find(installation.installation.id)
+              .pipe(
+                map((subRes: HttpResponse<ISortiePromotion>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: ISortiePromotion[]) => (this.installations = concatRes));
+          }
+        });
 
       this.activiteInstallationService
         .query()
@@ -59,6 +89,7 @@ export class InstallationUpdateComponent implements OnInit {
       anneesInstallation: installation.anneesInstallation,
       dateIntallation: installation.dateIntallation,
       lieuInstallation: installation.lieuInstallation,
+      installation: installation.installation,
       activiteinstallations: installation.activiteinstallations,
       kits: installation.kits,
     });
@@ -85,6 +116,7 @@ export class InstallationUpdateComponent implements OnInit {
       anneesInstallation: this.editForm.get(['anneesInstallation'])!.value,
       dateIntallation: this.editForm.get(['dateIntallation'])!.value,
       lieuInstallation: this.editForm.get(['lieuInstallation'])!.value,
+      installation: this.editForm.get(['installation'])!.value,
       activiteinstallations: this.editForm.get(['activiteinstallations'])!.value,
       kits: this.editForm.get(['kits'])!.value,
     };
@@ -110,7 +142,7 @@ export class InstallationUpdateComponent implements OnInit {
     return item.id;
   }
 
-  getSelected(selectedVals: SelectableEntity[], option: SelectableEntity): SelectableEntity {
+  getSelected(selectedVals: SelectableManyToManyEntity[], option: SelectableManyToManyEntity): SelectableManyToManyEntity {
     if (selectedVals) {
       for (let i = 0; i < selectedVals.length; i++) {
         if (option.id === selectedVals[i].id) {

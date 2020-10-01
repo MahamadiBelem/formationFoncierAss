@@ -55,8 +55,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nomComplet: 'BBBBBB',
-            specialite: 'BBBBBB',
-            regime: 'BBBBBB',
+            emplois: 'BBBBBB',
+            contactformateur: 'BBBBBB',
           },
           elemDefault
         );
@@ -74,8 +74,8 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nomComplet: 'BBBBBB',
-            specialite: 'BBBBBB',
-            regime: 'BBBBBB',
+            emplois: 'BBBBBB',
+            contactformateur: 'BBBBBB',
           },
           elemDefault
         );

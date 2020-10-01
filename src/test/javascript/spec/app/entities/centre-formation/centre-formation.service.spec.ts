@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new CentreFormation(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA');
+      elemDefault = new CentreFormation(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate);
     });
 
     describe('Service methods', () => {
@@ -76,7 +76,6 @@ describe('Service Tests', () => {
             capaciteacceuil: 'BBBBBB',
             refOuverture: 'BBBBBB',
             dateOuverture: currentDate.format(DATE_FORMAT),
-            regime: 'BBBBBB',
           },
           elemDefault
         );
@@ -105,7 +104,6 @@ describe('Service Tests', () => {
             capaciteacceuil: 'BBBBBB',
             refOuverture: 'BBBBBB',
             dateOuverture: currentDate.format(DATE_FORMAT),
-            regime: 'BBBBBB',
           },
           elemDefault
         );

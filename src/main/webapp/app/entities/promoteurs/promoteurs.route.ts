@@ -40,6 +40,7 @@ export const promoteursRoute: Routes = [
     component: PromoteursComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.promoteurs.home.title',
     },
     canActivate: [UserRouteAccessService],

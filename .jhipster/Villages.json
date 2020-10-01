@@ -9,11 +9,19 @@
       ]
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "communes",
+      "otherEntityRelationshipName": "villages",
+      "relationshipName": "commune",
+      "otherEntityField": "id"
+    }
+  ],
   "changelogDate": "20200822183321",
   "entityTableName": "villages",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

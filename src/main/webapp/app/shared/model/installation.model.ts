@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { ISortiePromotion } from 'app/shared/model/sortie-promotion.model';
 import { IActiviteInstallation } from 'app/shared/model/activite-installation.model';
 import { IKits } from 'app/shared/model/kits.model';
 
@@ -7,6 +8,7 @@ export interface IInstallation {
   anneesInstallation?: string;
   dateIntallation?: Moment;
   lieuInstallation?: string;
+  installation?: ISortiePromotion;
   activiteinstallations?: IActiviteInstallation[];
   kits?: IKits[];
 }
@@ -17,6 +19,7 @@ export class Installation implements IInstallation {
     public anneesInstallation?: string,
     public dateIntallation?: Moment,
     public lieuInstallation?: string,
+    public installation?: ISortiePromotion,
     public activiteinstallations?: IActiviteInstallation[],
     public kits?: IKits[]
   ) {}

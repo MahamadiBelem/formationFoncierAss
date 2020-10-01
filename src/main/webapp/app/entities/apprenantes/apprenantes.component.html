@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.apprenantes.home.title">Apprenantes</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-apprenantes" [routerLink]="['/apprenantes/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-apprenantes" [routerLink]="['/apprenantes/new']">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.apprenantes.home.createLabel">
             Create a new Apprenantes
@@ -17,44 +17,28 @@
     <div class="alert alert-warning" id="no-result" *ngIf="apprenantes?.length === 0">
         <span jhiTranslate="gestionFormationApp.apprenantes.home.notFound">No apprenantes found</span>
     </div>
-
+<br><br>
     <div class="table-responsive" id="entities" *ngIf="apprenantes && apprenantes.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.matricule">Matricule</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.nom">Nom</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.prenom">Prenom</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.dateNaissance">Date Naissance</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.sexe">Sexe</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.contact">Contact</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.iscandidat">Iscandidat</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.situationMatrimonial">Situation Matrimonial</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.charger">Charger</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.localite">Localite</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.apprenantes.sortiepromotion">Sortiepromotion</span></th>
+            <thead style="background-color: #0070c0;color: white;"> 
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="matricule"><span jhiTranslate="gestionFormationApp.apprenantes.matricule">Matricule</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nom"><span jhiTranslate="gestionFormationApp.apprenantes.nom">Nom</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="prenom"><span jhiTranslate="gestionFormationApp.apprenantes.prenom">Prenom</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sexe"><span jhiTranslate="gestionFormationApp.apprenantes.sexe">Sexe</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="typecandidat"><span jhiTranslate="gestionFormationApp.apprenantes.typecandidat">Typecandidat</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="localite"><span jhiTranslate="gestionFormationApp.apprenantes.localite">Localite</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let apprenantes of apprenantes ;trackBy: trackId">
-                    <td><a [routerLink]="['/apprenantes', apprenantes.id, 'view']">{{ apprenantes.id }}</a></td>
                     <td>{{ apprenantes.matricule }}</td>
                     <td>{{ apprenantes.nom }}</td>
                     <td>{{ apprenantes.prenom }}</td>
-                    <td>{{ apprenantes.dateNaissance | date:'mediumDate' }}</td>
-                    <td>{{ apprenantes.sexe }}</td>
-                    <td>{{ apprenantes.contact }}</td>
-                    <td>{{ apprenantes.iscandidat }}</td>
-                    <td>{{ apprenantes.situationMatrimonial }}</td>
-                    <td>{{ apprenantes.charger }}</td>
+                    <td jhiTranslate="{{ 'gestionFormationApp.Sexe.' + apprenantes.sexe }}">{{ apprenantes.sexe }}</td>
+                    <td jhiTranslate="{{ 'gestionFormationApp.Examen.' + apprenantes.typecandidat }}">{{ apprenantes.typecandidat }}</td>
                     <td>{{ apprenantes.localite }}</td>
-                    <td>
-                        <div *ngIf="apprenantes.sortiepromotion">
-                            <a [routerLink]="['/sortie-promotion', apprenantes.sortiepromotion?.id, 'view']" >{{ apprenantes.sortiepromotion?.id }}</a>
-                        </div>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
@@ -81,5 +65,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="apprenantes && apprenantes.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

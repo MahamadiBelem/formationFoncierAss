@@ -3,26 +3,24 @@
     "formations": {
       "home": {
         "title": "Formations",
-        "createLabel": "Créer un nouveau Formations",
-        "createOrEditLabel": "Créer ou éditer un Formations",
-        "notFound": "Aucun Formations trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Enregistrer ou modifier un Formations",
+        "notFound": "Aucune Formation trouvée"
       },
-      "created": "Un nouveau Formations a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Formations avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Formations avec l'identifiant {{ param }} a été supprimé",
+      "created": "La formation a été enregistée avec succès",
+      "updated": "La formation a été modifieé avec succès",
+      "deleted": "La formation a été supprimée avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Formations {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action"
       },
       "detail": {
-        "title": "Formations"
+        "title": "Details de la formation"
       },
       "theme": "Theme",
-      "lebelleFormation": "Lebelle Formation",
-      "coutFormation": "Cout Formation",
-      "sourceFinancement": "Source Financement",
-      "typeamenagement": "Typeamenagement",
-      "formation": "Formation",
-      "centreformation": "Centreformation"
+      "lebelleFormation": "Intitulé de la formation",
+      "coutFormation": "Cout de formation",
+      "sourceFinancement": "Source de financement",
+      "formationTypeFormation": "Le Type de la formation"
     }
   }
 }

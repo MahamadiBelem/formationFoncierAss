@@ -10,7 +10,7 @@
   "changelogDate": "20200822184421",
   "entityTableName": "type_infratructure",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

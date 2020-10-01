@@ -103,6 +103,18 @@ public class CacheConfiguration {
             createCache(cm, bf.agriculture.dgfomr.domain.Kits.class.getName() + ".installations");
             createCache(cm, bf.agriculture.dgfomr.domain.CompositionKits.class.getName());
             createCache(cm, bf.agriculture.dgfomr.domain.CompositionKits.class.getName() + ".kits");
+            createCache(cm, bf.agriculture.dgfomr.domain.Region.class.getName() + ".provinces");
+            createCache(cm, bf.agriculture.dgfomr.domain.Provinces.class.getName() + ".communes");
+            createCache(cm, bf.agriculture.dgfomr.domain.Communes.class.getName() + ".villages");
+            createCache(cm, bf.agriculture.dgfomr.domain.Typecandidat.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.Apprenantes.class.getName() + ".niveauInstructions");
+            createCache(cm, bf.agriculture.dgfomr.domain.Regime.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.Regime.class.getName() + ".centreFormations");
+            createCache(cm, bf.agriculture.dgfomr.domain.Inscription.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.NiveauInstruction.class.getName() + ".apprenantes");
+            createCache(cm, bf.agriculture.dgfomr.domain.Kits.class.getName() + ".installationKits");
+            createCache(cm, bf.agriculture.dgfomr.domain.FormateurCentre.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.FormationCentreFormation.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

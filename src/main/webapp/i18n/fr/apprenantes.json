@@ -2,19 +2,19 @@
   "gestionFormationApp": {
     "apprenantes": {
       "home": {
-        "title": "Apprenantes",
-        "createLabel": "Créer un nouveau Apprenantes",
-        "createOrEditLabel": "Créer ou éditer un Apprenantes",
-        "notFound": "Aucun Apprenantes trouvé"
+        "title": "Apprenant",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Enregistrer ou modifier un apprenant",
+        "notFound": "Aucun Apprenant trouvé"
       },
-      "created": "Un nouveau Apprenantes a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Apprenantes avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Apprenantes avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de l'apprenant avec succèss",
+      "updated": "Modification de l'apprenant avec succèss",
+      "deleted": "Suppression de l'apprenant avec succèss",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Apprenantes {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Apprenantes"
+        "title": "Details information sur l'apprenant"
       },
       "matricule": "Matricule",
       "nom": "Nom",
@@ -22,12 +22,11 @@
       "dateNaissance": "Date Naissance",
       "sexe": "Sexe",
       "contact": "Contact",
-      "iscandidat": "Iscandidat",
+      "typecandidat": "Type de candidat",
       "situationMatrimonial": "Situation Matrimonial",
-      "charger": "Charger",
+      "charger": "Nombre d'enfant",
       "localite": "Localite",
-      "sortiepromotion": "Sortiepromotion",
-      "centreformation": "Centreformation"
+      "niveauapprenant": "Niveau d'instruction"
     }
   }
 }

@@ -40,6 +40,7 @@ export const sortiePromotionRoute: Routes = [
     component: SortiePromotionComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.sortiePromotion.home.title',
     },
     canActivate: [UserRouteAccessService],

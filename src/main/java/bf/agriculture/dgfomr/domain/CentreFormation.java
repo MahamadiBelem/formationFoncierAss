@@ -51,9 +51,6 @@ public class CentreFormation implements Serializable {
     @Column(name = "date_ouverture")
     private LocalDate dateOuverture;
 
-    @Column(name = "regime")
-    private String regime;
-
     @OneToMany(mappedBy = "centreformation")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Infrastructure> infrastructures = new HashSet<>();
@@ -118,31 +115,15 @@ public class CentreFormation implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "centre_formation_formateurs",
-               joinColumns = @JoinColumn(name = "centre_formation_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "formateurs_id", referencedColumnName = "id"))
-    private Set<Formateurs> formateurs = new HashSet<>();
-
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "centre_formation_conditionaccess",
                joinColumns = @JoinColumn(name = "centre_formation_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "conditionaccess_id", referencedColumnName = "id"))
     private Set<ConditionAccess> conditionaccesses = new HashSet<>();
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "centre_formation_formations",
-               joinColumns = @JoinColumn(name = "centre_formation_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "formations_id", referencedColumnName = "id"))
-    private Set<Formations> formations = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "centreFormations", allowSetters = true)
+    private Regime regime;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "centre_formation_apprenantes",
-        joinColumns = @JoinColumn(name = "centre_formation_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "apprenantes_id", referencedColumnName = "id"))
-    private Set<Apprenantes> apprenantes = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -241,19 +222,6 @@ public class CentreFormation implements Serializable {
 
     public void setDateOuverture(LocalDate dateOuverture) {
         this.dateOuverture = dateOuverture;
-    }
-
-    public String getRegime() {
-        return regime;
-    }
-
-    public CentreFormation regime(String regime) {
-        this.regime = regime;
-        return this;
-    }
-
-    public void setRegime(String regime) {
-        this.regime = regime;
     }
 
     public Set<Infrastructure> getInfrastructures() {
@@ -495,31 +463,6 @@ public class CentreFormation implements Serializable {
         this.niveaurecrutements = niveauRecrutements;
     }
 
-    public Set<Formateurs> getFormateurs() {
-        return formateurs;
-    }
-
-    public CentreFormation formateurs(Set<Formateurs> formateurs) {
-        this.formateurs = formateurs;
-        return this;
-    }
-
-    public CentreFormation addFormateurs(Formateurs formateurs) {
-        this.formateurs.add(formateurs);
-        formateurs.getCentreformations().add(this);
-        return this;
-    }
-
-    public CentreFormation removeFormateurs(Formateurs formateurs) {
-        this.formateurs.remove(formateurs);
-        formateurs.getCentreformations().remove(this);
-        return this;
-    }
-
-    public void setFormateurs(Set<Formateurs> formateurs) {
-        this.formateurs = formateurs;
-    }
-
     public Set<ConditionAccess> getConditionaccesses() {
         return conditionaccesses;
     }
@@ -545,37 +488,17 @@ public class CentreFormation implements Serializable {
         this.conditionaccesses = conditionAccesses;
     }
 
-    public Set<Formations> getFormations() {
-        return formations;
+    public Regime getRegime() {
+        return regime;
     }
 
-    public CentreFormation formations(Set<Formations> formations) {
-        this.formations = formations;
+    public CentreFormation regime(Regime regime) {
+        this.regime = regime;
         return this;
     }
 
-    public CentreFormation addFormations(Formations formations) {
-        this.formations.add(formations);
-        formations.getCentreformations().add(this);
-        return this;
-    }
-
-    public CentreFormation removeFormations(Formations formations) {
-        this.formations.remove(formations);
-        formations.getCentreformations().remove(this);
-        return this;
-    }
-
-    public Set<Apprenantes> getApprenantes() {
-        return apprenantes;
-    }
-
-    public void setApprenantes(Set<Apprenantes> apprenantes) {
-        this.apprenantes = apprenantes;
-    }
-
-    public void setFormations(Set<Formations> formations) {
-        this.formations = formations;
+    public void setRegime(Regime regime) {
+        this.regime = regime;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -607,7 +530,6 @@ public class CentreFormation implements Serializable {
             ", capaciteacceuil='" + getCapaciteacceuil() + "'" +
             ", refOuverture='" + getRefOuverture() + "'" +
             ", dateOuverture='" + getDateOuverture() + "'" +
-            ", regime='" + getRegime() + "'" +
             "}";
     }
 }

@@ -40,6 +40,7 @@ export const typeAmenagementRoute: Routes = [
     component: TypeAmenagementComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.typeAmenagement.home.title',
     },
     canActivate: [UserRouteAccessService],

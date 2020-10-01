@@ -24,17 +24,11 @@
                 <dd>
                     <span>{{ formations.sourceFinancement }}</span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.formations.typeamenagement">Typeamenagement</span></dt>
+                <dt><span jhiTranslate="gestionFormationApp.formations.formationTypeFormation">Formation Type Formation</span></dt>
                 <dd>
-                    <div *ngIf="formations.typeamenagement">
-                        <a [routerLink]="['/type-formation', formations.typeamenagement?.id, 'view']">{{ formations.typeamenagement?.id }}</a>
+                    <div *ngIf="formations.formationTypeFormation">
+                        <a [routerLink]="['/type-formation', formations.formationTypeFormation?.id, 'view']">{{ formations.formationTypeFormation?.id }}</a>
                     </div>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.formations.formation">Formation</span></dt>
-                <dd>
-                    <span *ngFor="let formation of formations.formations; let last = last">
-                        <a [routerLink]="['/apprenantes', formation?.id, 'view']">{{ formation.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
                 </dd>
             </dl>
 

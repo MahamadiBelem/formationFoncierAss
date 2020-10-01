@@ -36,9 +36,6 @@
             <column name="date_ouverture" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="regime" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="communes_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -46,6 +43,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="gestionnaires_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="regime_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -120,17 +120,6 @@
 
         <addPrimaryKey columnNames="centre_formation_id, niveaurecrutement_id" tableName="centre_formation_niveaurecrutement"/>
         
-        <createTable tableName="centre_formation_formateurs">
-            <column name="formateurs_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="centre_formation_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="centre_formation_id, formateurs_id" tableName="centre_formation_formateurs"/>
-        
         <createTable tableName="centre_formation_conditionaccess">
             <column name="conditionaccess_id" type="bigint">
                 <constraints nullable="false"/>
@@ -141,17 +130,6 @@
         </createTable>
 
         <addPrimaryKey columnNames="centre_formation_id, conditionaccess_id" tableName="centre_formation_conditionaccess"/>
-        
-        <createTable tableName="centre_formation_formations">
-            <column name="formations_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="centre_formation_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="centre_formation_id, formations_id" tableName="centre_formation_formations"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -177,7 +155,6 @@
             <column name="capaciteacceuil" type="string"/>
             <column name="ref_ouverture" type="string"/>
             <column name="date_ouverture" type="date"/>
-            <column name="regime" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

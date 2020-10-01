@@ -9,11 +9,25 @@
       ]
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "communes",
+      "otherEntityRelationshipName": "provinces",
+      "relationshipName": "communes"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "region",
+      "otherEntityRelationshipName": "provinces",
+      "relationshipName": "region",
+      "otherEntityField": "id"
+    }
+  ],
   "changelogDate": "20200822183121",
   "entityTableName": "provinces",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

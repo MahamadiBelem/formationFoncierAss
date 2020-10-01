@@ -20,6 +20,12 @@
                 <dd>
                     <span>{{ installation.lieuInstallation }}</span>
                 </dd>
+                <dt><span jhiTranslate="gestionFormationApp.installation.installation">Installation</span></dt>
+                <dd>
+                    <div *ngIf="installation.installation">
+                        <a [routerLink]="['/sortie-promotion', installation.installation?.id, 'view']">{{ installation.installation?.id }}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="gestionFormationApp.installation.activiteinstallation">Activiteinstallation</span></dt>
                 <dd>
                     <span *ngFor="let activiteinstallation of installation.activiteinstallations; let last = last">

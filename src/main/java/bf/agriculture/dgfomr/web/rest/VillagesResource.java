@@ -5,10 +5,16 @@ import bf.agriculture.dgfomr.service.VillagesService;
 import bf.agriculture.dgfomr.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,12 +87,15 @@ public class VillagesResource {
     /**
      * {@code GET  /villages} : get all the villages.
      *
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of villages in body.
      */
     @GetMapping("/villages")
-    public List<Villages> getAllVillages() {
-        log.debug("REST request to get all Villages");
-        return villagesService.findAll();
+    public ResponseEntity<List<Villages>> getAllVillages(Pageable pageable) {
+        log.debug("REST request to get a page of Villages");
+        Page<Villages> page = villagesService.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**

@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Region.
@@ -26,6 +28,10 @@ public class Region implements Serializable {
     @NotNull
     @Column(name = "libelle_region", nullable = false)
     private String libelleRegion;
+
+    @OneToMany(mappedBy = "region")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Provinces> provinces = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -47,6 +53,31 @@ public class Region implements Serializable {
 
     public void setLibelleRegion(String libelleRegion) {
         this.libelleRegion = libelleRegion;
+    }
+
+    public Set<Provinces> getProvinces() {
+        return provinces;
+    }
+
+    public Region provinces(Set<Provinces> provinces) {
+        this.provinces = provinces;
+        return this;
+    }
+
+    public Region addProvinces(Provinces provinces) {
+        this.provinces.add(provinces);
+        provinces.setRegion(this);
+        return this;
+    }
+
+    public Region removeProvinces(Provinces provinces) {
+        this.provinces.remove(provinces);
+        provinces.setRegion(null);
+        return this;
+    }
+
+    public void setProvinces(Set<Provinces> provinces) {
+        this.provinces = provinces;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

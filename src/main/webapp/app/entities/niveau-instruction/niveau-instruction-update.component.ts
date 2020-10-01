@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 
 import { INiveauInstruction, NiveauInstruction } from 'app/shared/model/niveau-instruction.model';
 import { NiveauInstructionService } from './niveau-instruction.service';
-import { IApprenantes } from 'app/shared/model/apprenantes.model';
-import { ApprenantesService } from 'app/entities/apprenantes/apprenantes.service';
 
 @Component({
   selector: 'jhi-niveau-instruction-update',
@@ -16,17 +14,14 @@ import { ApprenantesService } from 'app/entities/apprenantes/apprenantes.service
 })
 export class NiveauInstructionUpdateComponent implements OnInit {
   isSaving = false;
-  apprenantes: IApprenantes[] = [];
 
   editForm = this.fb.group({
     id: [],
     niveauInstruction: [null, [Validators.required]],
-    apprenants: [],
   });
 
   constructor(
     protected niveauInstructionService: NiveauInstructionService,
-    protected apprenantesService: ApprenantesService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -34,8 +29,6 @@ export class NiveauInstructionUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ niveauInstruction }) => {
       this.updateForm(niveauInstruction);
-
-      this.apprenantesService.query().subscribe((res: HttpResponse<IApprenantes[]>) => (this.apprenantes = res.body || []));
     });
   }
 
@@ -43,7 +36,6 @@ export class NiveauInstructionUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: niveauInstruction.id,
       niveauInstruction: niveauInstruction.niveauInstruction,
-      apprenants: niveauInstruction.apprenants,
     });
   }
 
@@ -66,7 +58,6 @@ export class NiveauInstructionUpdateComponent implements OnInit {
       ...new NiveauInstruction(),
       id: this.editForm.get(['id'])!.value,
       niveauInstruction: this.editForm.get(['niveauInstruction'])!.value,
-      apprenants: this.editForm.get(['apprenants'])!.value,
     };
   }
 
@@ -84,9 +75,5 @@ export class NiveauInstructionUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IApprenantes): any {
-    return item.id;
   }
 }

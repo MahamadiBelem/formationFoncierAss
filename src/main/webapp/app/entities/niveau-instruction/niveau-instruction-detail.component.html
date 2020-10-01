@@ -12,12 +12,6 @@
                 <dd>
                     <span>{{ niveauInstruction.niveauInstruction }}</span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.niveauInstruction.apprenants">Apprenants</span></dt>
-                <dd>
-                    <div *ngIf="niveauInstruction.apprenants">
-                        <a [routerLink]="['/apprenantes', niveauInstruction.apprenants?.id, 'view']">{{ niveauInstruction.apprenants?.id }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

@@ -40,6 +40,7 @@ export const regionRoute: Routes = [
     component: RegionComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.region.home.title',
     },
     canActivate: [UserRouteAccessService],

@@ -2,7 +2,9 @@ package bf.agriculture.dgfomr.service;
 
 import bf.agriculture.dgfomr.domain.TypeAmenagement;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface TypeAmenagementService {
     /**
      * Get all the typeAmenagements.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<TypeAmenagement> findAll();
+    Page<TypeAmenagement> findAll(Pageable pageable);
 
 
     /**

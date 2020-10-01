@@ -76,12 +76,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.regime" for="field_regime">Regime</label>
-                    <input type="text" class="form-control" name="regime" id="field_regime"
-                           formControlName="regime"/>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.communes" for="field_communes">Communes</label>
                     <select class="form-control" id="field_communes" name="communes" formControlName="communes">
                         <option [ngValue]="null"></option>
@@ -148,13 +142,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.formateurs" for="field_formateurs">Formateurs</label>
-                    <select class="form-control" id="field_formateurs" multiple name="formateurs" formControlName="formateurs">
-                        <option [ngValue]="getSelected(editForm.get('formateurs')!.value, formateursOption)" *ngFor="let formateursOption of formateurs; trackBy: trackById">{{ formateursOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
                     <label jhiTranslate="gestionFormationApp.centreFormation.conditionaccess" for="field_conditionaccesses">Conditionaccess</label>
                     <select class="form-control" id="field_conditionaccesses" multiple name="conditionaccesses" formControlName="conditionaccesses">
                         <option [ngValue]="getSelected(editForm.get('conditionaccesses')!.value, conditionAccessOption)" *ngFor="let conditionAccessOption of conditionaccesses; trackBy: trackById">{{ conditionAccessOption.id }}</option>
@@ -162,9 +149,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.formations" for="field_formations">Formations</label>
-                    <select class="form-control" id="field_formations" multiple name="formations" formControlName="formations">
-                        <option [ngValue]="getSelected(editForm.get('formations')!.value, formationsOption)" *ngFor="let formationsOption of formations; trackBy: trackById">{{ formationsOption.id }}</option>
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.regime" for="field_regime">Regime</label>
+                    <select class="form-control" id="field_regime" name="regime" formControlName="regime">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="regimeOption.id === editForm.get('regime')!.value?.id ? editForm.get('regime')!.value : regimeOption" *ngFor="let regimeOption of regimes; trackBy: trackById">{{ regimeOption.id }}</option>
                     </select>
                 </div>
             </div>

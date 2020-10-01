@@ -40,6 +40,7 @@ export const installationRoute: Routes = [
     component: InstallationComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.installation.home.title',
     },
     canActivate: [UserRouteAccessService],

@@ -8,8 +8,12 @@ import { map } from 'rxjs/operators';
 
 import { ISortiePromotion, SortiePromotion } from 'app/shared/model/sortie-promotion.model';
 import { SortiePromotionService } from './sortie-promotion.service';
-import { IInstallation } from 'app/shared/model/installation.model';
-import { InstallationService } from 'app/entities/installation/installation.service';
+import { IApprenantes } from 'app/shared/model/apprenantes.model';
+import { ApprenantesService } from 'app/entities/apprenantes/apprenantes.service';
+import { ICentreFormation } from 'app/shared/model/centre-formation.model';
+import { CentreFormationService } from 'app/entities/centre-formation/centre-formation.service';
+
+type SelectableEntity = IApprenantes | ICentreFormation;
 
 @Component({
   selector: 'jhi-sortie-promotion-update',
@@ -17,7 +21,8 @@ import { InstallationService } from 'app/entities/installation/installation.serv
 })
 export class SortiePromotionUpdateComponent implements OnInit {
   isSaving = false;
-  installations: IInstallation[] = [];
+  sortiepromotions: IApprenantes[] = [];
+  sortiecentreformations: ICentreFormation[] = [];
   dateSortieDp: any;
 
   editForm = this.fb.group({
@@ -25,12 +30,14 @@ export class SortiePromotionUpdateComponent implements OnInit {
     dateSortie: [null, [Validators.required]],
     anneesSortie: [null, [Validators.required]],
     motif: [],
-    installation: [],
+    sortiepromotion: [],
+    sortieCentreFormation: [],
   });
 
   constructor(
     protected sortiePromotionService: SortiePromotionService,
-    protected installationService: InstallationService,
+    protected apprenantesService: ApprenantesService,
+    protected centreFormationService: CentreFormationService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -39,25 +46,47 @@ export class SortiePromotionUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ sortiePromotion }) => {
       this.updateForm(sortiePromotion);
 
-      this.installationService
+      this.apprenantesService
         .query({ filter: 'sortiepromotion-is-null' })
         .pipe(
-          map((res: HttpResponse<IInstallation[]>) => {
+          map((res: HttpResponse<IApprenantes[]>) => {
             return res.body || [];
           })
         )
-        .subscribe((resBody: IInstallation[]) => {
-          if (!sortiePromotion.installation || !sortiePromotion.installation.id) {
-            this.installations = resBody;
+        .subscribe((resBody: IApprenantes[]) => {
+          if (!sortiePromotion.sortiepromotion || !sortiePromotion.sortiepromotion.id) {
+            this.sortiepromotions = resBody;
           } else {
-            this.installationService
-              .find(sortiePromotion.installation.id)
+            this.apprenantesService
+              .find(sortiePromotion.sortiepromotion.id)
               .pipe(
-                map((subRes: HttpResponse<IInstallation>) => {
+                map((subRes: HttpResponse<IApprenantes>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
                 })
               )
-              .subscribe((concatRes: IInstallation[]) => (this.installations = concatRes));
+              .subscribe((concatRes: IApprenantes[]) => (this.sortiepromotions = concatRes));
+          }
+        });
+
+      this.centreFormationService
+        .query({ filter: 'sortiepromotion-is-null' })
+        .pipe(
+          map((res: HttpResponse<ICentreFormation[]>) => {
+            return res.body || [];
+          })
+        )
+        .subscribe((resBody: ICentreFormation[]) => {
+          if (!sortiePromotion.sortieCentreFormation || !sortiePromotion.sortieCentreFormation.id) {
+            this.sortiecentreformations = resBody;
+          } else {
+            this.centreFormationService
+              .find(sortiePromotion.sortieCentreFormation.id)
+              .pipe(
+                map((subRes: HttpResponse<ICentreFormation>) => {
+                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
+                })
+              )
+              .subscribe((concatRes: ICentreFormation[]) => (this.sortiecentreformations = concatRes));
           }
         });
     });
@@ -69,7 +98,8 @@ export class SortiePromotionUpdateComponent implements OnInit {
       dateSortie: sortiePromotion.dateSortie,
       anneesSortie: sortiePromotion.anneesSortie,
       motif: sortiePromotion.motif,
-      installation: sortiePromotion.installation,
+      sortiepromotion: sortiePromotion.sortiepromotion,
+      sortieCentreFormation: sortiePromotion.sortieCentreFormation,
     });
   }
 
@@ -94,7 +124,8 @@ export class SortiePromotionUpdateComponent implements OnInit {
       dateSortie: this.editForm.get(['dateSortie'])!.value,
       anneesSortie: this.editForm.get(['anneesSortie'])!.value,
       motif: this.editForm.get(['motif'])!.value,
-      installation: this.editForm.get(['installation'])!.value,
+      sortiepromotion: this.editForm.get(['sortiepromotion'])!.value,
+      sortieCentreFormation: this.editForm.get(['sortieCentreFormation'])!.value,
     };
   }
 
@@ -114,7 +145,7 @@ export class SortiePromotionUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IInstallation): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
   }
 }

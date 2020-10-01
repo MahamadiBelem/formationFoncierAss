@@ -1,6 +1,4 @@
 import { ITypeFormation } from 'app/shared/model/type-formation.model';
-import { IApprenantes } from 'app/shared/model/apprenantes.model';
-import { ICentreFormation } from 'app/shared/model/centre-formation.model';
 
 export interface IFormations {
   id?: number;
@@ -8,9 +6,7 @@ export interface IFormations {
   lebelleFormation?: string;
   coutFormation?: string;
   sourceFinancement?: string;
-  typeamenagement?: ITypeFormation;
-  formations?: IApprenantes[];
-  centreformations?: ICentreFormation[];
+  formationTypeFormation?: ITypeFormation;
 }
 
 export class Formations implements IFormations {
@@ -20,8 +16,6 @@ export class Formations implements IFormations {
     public lebelleFormation?: string,
     public coutFormation?: string,
     public sourceFinancement?: string,
-    public typeamenagement?: ITypeFormation,
-    public formations?: IApprenantes[],
-    public centreformations?: ICentreFormation[]
+    public formationTypeFormation?: ITypeFormation
   ) {}
 }

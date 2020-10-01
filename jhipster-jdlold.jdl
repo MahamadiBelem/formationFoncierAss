@@ -1,0 +1,228 @@
+entity Region {
+	libelleRegion String required
+}
+
+entity Provinces {
+	LibelleProvince String required,
+}
+
+entity Communes {
+	libelleCommune String required,
+}
+
+entity Villages {
+	libelleVillage String required,
+}
+entity ConditionAccess {
+	libelleConditon String required,
+}
+entity ApprochePedagogique
+{
+	libelleApproche String required,
+}
+entity Specialites
+{
+	libelleSpecialite String required,
+}
+entity DomaineFormation{
+	libelleDomaine String required,
+}
+entity Contributions{
+libelleContribution String required,
+}
+entity Gestionnaire
+{
+	nomComplet String required,
+    contactsGestionnaires String,
+    emploi String required,
+}
+entity Promoteurs 
+{
+	libellePromoteur String required,
+    contactPromoteur String ,
+}
+entity PublicCible
+{
+	libellePublic String required,
+}
+entity NiveauRecrutement
+{
+libelleNiveau String required, 
+}
+entity CentreFormation{
+denomination String required, 
+localisation String required, 
+adresse String required, 
+statuts String , 
+capaciteacceuil String , 
+refOuverture String ,
+dateOuverture LocalDate ,  
+}
+entity TypeInfratructure
+{
+libelleTypeInfracture String ,
+}
+entity TypeAmenagement
+{
+libelleTypeAmenagement String,
+}
+entity Infrastructure
+{
+	dateElaboration LocalDate required,
+    fonctionnalite String required,
+    etat String required,
+}
+entity Amenagement
+{
+superficieTotal Long required,
+superficieEmbave Long required,
+etats String required,
+}
+entity Formateurs{
+nomComplet String required,
+emplois String required, 
+regimeFormateur String required,
+
+}
+entity Typecandidat 
+{
+	libelleTypeCandidat String required,
+}
+entity Apprenantes
+{
+	matricule String required unique,
+    nom String required,
+    prenom String required,
+    dateNaissance LocalDate required,
+    sexe Sexe required,
+    contact String ,
+    typecandidat Examen , 
+    situationMatrimonial String,
+    charger String,
+    localite String,
+    
+}
+entity Formations 
+{
+theme String,
+lebelleFormation String,
+coutFormation String,
+sourceFinancement String,
+}
+entity NiveauInstruction
+{
+	niveauInstruction String required,
+}
+entity TypeFormation
+{
+	libelleTypeFormation String,
+}
+entity SortiePromotion 
+{
+dateSortie LocalDate required,
+anneesSortie Integer required, 
+motif String
+}
+entity Installation
+{
+	anneesInstallation String required,
+    dateIntallation LocalDate required,
+    lieuInstallation String, 
+    
+}
+entity ActiviteInstallation 
+{
+	libelleActivite String required, 
+    
+}
+entity Inscription
+{
+anneesAcademique String,
+dateInscription String
+}
+entity Kits
+{
+isobtenu Boolean,
+}
+entity CompositionKits
+{
+	libelleKits String, 
+    quantiteKits Long,
+}
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+enum Sexe 
+{
+	MASCULIN, FEMININ
+}
+enum Examen 
+{
+	CQP, CQB
+}
+entity Regime
+{
+libelleRegime String required,
+}
+relationship ManyToMany {
+	CentreFormation{approchepedagogique} to ApprochePedagogique{centreformation},
+    CentreFormation{publiccible} to PublicCible{centreformation},
+    CentreFormation{specialites} to Specialites{centreformation},
+    CentreFormation{domaineformation} to DomaineFormation{centreformation},
+    CentreFormation{contributions} to Contributions{centreformation},
+    CentreFormation{niveaurecrutement} to NiveauRecrutement{centreformation},
+    CentreFormation{formateurs} to Formateurs{centreformation},
+    CentreFormation{conditionaccess} to ConditionAccess{centreformation},
+    CentreFormation{formations} to Formations{centreformation},
+    Formations{formation} to Apprenantes{centreformation},
+    Installation{activiteinstallation} to ActiviteInstallation{installation},
+    Installation{kits} to Kits{installation},
+    CompositionKits{kits} to Kits{installation},
+   
+    
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	 CentreFormation{infrastructure} to Infrastructure{centreformation},
+      CentreFormation{amenagement} to Amenagement{centreformation},
+     Apprenantes  to NiveauInstruction {apprenants} ,
+     Region  to Provinces {region} ,
+     Communes  to Villages {commune} ,
+     Provinces  to Communes {provinces} ,
+      Regime  to CentreFormation {regime} ,
+}
+
+relationship ManyToOne {
+	CentreFormation{communes} to Communes,
+    CentreFormation{promoteurs} to Promoteurs,
+    CentreFormation{gestionnaires} to Gestionnaire,
+    Infrastructure{typeinfrastructure} to TypeInfratructure,
+    Amenagement{Typeamenagement} to TypeAmenagement,
+    Formations{inscription} to Inscription,
+    Apprenantes {inscriptionApprenant} to Inscription
+     CentreFormation {inscriptionCentreFormation} to Inscription
+    
+    
+    
+}
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+	Apprenantes{sortiepromotion} to SortiePromotion,
+	SortiePromotion{installation} to Installation,
+    
+}
+
+// Set pagination options
+paginate Formations with infinite-scroll
+paginate Formations, Infrastructure, CentreFormation, Amenagement with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

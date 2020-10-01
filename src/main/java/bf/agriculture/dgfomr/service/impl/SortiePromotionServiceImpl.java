@@ -6,10 +6,11 @@ import bf.agriculture.dgfomr.repository.SortiePromotionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -35,9 +36,9 @@ public class SortiePromotionServiceImpl implements SortiePromotionService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<SortiePromotion> findAll() {
+    public Page<SortiePromotion> findAll(Pageable pageable) {
         log.debug("Request to get all SortiePromotions");
-        return sortiePromotionRepository.findAll();
+        return sortiePromotionRepository.findAll(pageable);
     }
 
 

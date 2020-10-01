@@ -87,18 +87,12 @@ public class FormationsResource {
      * {@code GET  /formations} : get all the formations.
      *
      * @param pageable the pagination information.
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of formations in body.
      */
     @GetMapping("/formations")
-    public ResponseEntity<List<Formations>> getAllFormations(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public ResponseEntity<List<Formations>> getAllFormations(Pageable pageable) {
         log.debug("REST request to get a page of Formations");
-        Page<Formations> page;
-        if (eagerload) {
-            page = formationsService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = formationsService.findAll(pageable);
-        }
+        Page<Formations> page = formationsService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

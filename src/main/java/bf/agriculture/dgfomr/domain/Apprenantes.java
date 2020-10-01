@@ -1,6 +1,6 @@
 package bf.agriculture.dgfomr.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,8 +9,10 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+
+import bf.agriculture.dgfomr.domain.enumeration.Sexe;
+
+import bf.agriculture.dgfomr.domain.enumeration.Examen;
 
 /**
  * A Apprenantes.
@@ -44,14 +46,16 @@ public class Apprenantes implements Serializable {
     private LocalDate dateNaissance;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "sexe", nullable = false)
-    private String sexe;
+    private Sexe sexe;
 
     @Column(name = "contact")
     private String contact;
 
-    @Column(name = "iscandidat")
-    private Boolean iscandidat;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "typecandidat")
+    private Examen typecandidat;
 
     @Column(name = "situation_matrimonial")
     private String situationMatrimonial;
@@ -62,14 +66,9 @@ public class Apprenantes implements Serializable {
     @Column(name = "localite")
     private String localite;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private SortiePromotion sortiepromotion;
-
-    @ManyToMany(mappedBy = "formations")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
-    private Set<Formations> centreformations = new HashSet<>();
+    @ManyToOne
+    @JsonIgnoreProperties(value = "apprenantes", allowSetters = true)
+    private NiveauInstruction niveauapprenant;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -132,16 +131,16 @@ public class Apprenantes implements Serializable {
         this.dateNaissance = dateNaissance;
     }
 
-    public String getSexe() {
+    public Sexe getSexe() {
         return sexe;
     }
 
-    public Apprenantes sexe(String sexe) {
+    public Apprenantes sexe(Sexe sexe) {
         this.sexe = sexe;
         return this;
     }
 
-    public void setSexe(String sexe) {
+    public void setSexe(Sexe sexe) {
         this.sexe = sexe;
     }
 
@@ -158,17 +157,17 @@ public class Apprenantes implements Serializable {
         this.contact = contact;
     }
 
-    public Boolean isIscandidat() {
-        return iscandidat;
+    public Examen getTypecandidat() {
+        return typecandidat;
     }
 
-    public Apprenantes iscandidat(Boolean iscandidat) {
-        this.iscandidat = iscandidat;
+    public Apprenantes typecandidat(Examen typecandidat) {
+        this.typecandidat = typecandidat;
         return this;
     }
 
-    public void setIscandidat(Boolean iscandidat) {
-        this.iscandidat = iscandidat;
+    public void setTypecandidat(Examen typecandidat) {
+        this.typecandidat = typecandidat;
     }
 
     public String getSituationMatrimonial() {
@@ -210,42 +209,17 @@ public class Apprenantes implements Serializable {
         this.localite = localite;
     }
 
-    public SortiePromotion getSortiepromotion() {
-        return sortiepromotion;
+    public NiveauInstruction getNiveauapprenant() {
+        return niveauapprenant;
     }
 
-    public Apprenantes sortiepromotion(SortiePromotion sortiePromotion) {
-        this.sortiepromotion = sortiePromotion;
+    public Apprenantes niveauapprenant(NiveauInstruction niveauInstruction) {
+        this.niveauapprenant = niveauInstruction;
         return this;
     }
 
-    public void setSortiepromotion(SortiePromotion sortiePromotion) {
-        this.sortiepromotion = sortiePromotion;
-    }
-
-    public Set<Formations> getCentreformations() {
-        return centreformations;
-    }
-
-    public Apprenantes centreformations(Set<Formations> formations) {
-        this.centreformations = formations;
-        return this;
-    }
-
-    public Apprenantes addCentreformation(Formations formations) {
-        this.centreformations.add(formations);
-        formations.getFormations().add(this);
-        return this;
-    }
-
-    public Apprenantes removeCentreformation(Formations formations) {
-        this.centreformations.remove(formations);
-        formations.getFormations().remove(this);
-        return this;
-    }
-
-    public void setCentreformations(Set<Formations> formations) {
-        this.centreformations = formations;
+    public void setNiveauapprenant(NiveauInstruction niveauInstruction) {
+        this.niveauapprenant = niveauInstruction;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -276,7 +250,7 @@ public class Apprenantes implements Serializable {
             ", dateNaissance='" + getDateNaissance() + "'" +
             ", sexe='" + getSexe() + "'" +
             ", contact='" + getContact() + "'" +
-            ", iscandidat='" + isIscandidat() + "'" +
+            ", typecandidat='" + getTypecandidat() + "'" +
             ", situationMatrimonial='" + getSituationMatrimonial() + "'" +
             ", charger='" + getCharger() + "'" +
             ", localite='" + getLocalite() + "'" +

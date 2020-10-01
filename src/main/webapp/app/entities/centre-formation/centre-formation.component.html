@@ -30,10 +30,10 @@
                     <th scope="col"  jhiSortBy="capaciteacceuil"><span jhiTranslate="gestionFormationApp.centreFormation.capaciteacceuil">Capaciteacceuil</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="refOuverture"><span jhiTranslate="gestionFormationApp.centreFormation.refOuverture">Ref Ouverture</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dateOuverture"><span jhiTranslate="gestionFormationApp.centreFormation.dateOuverture">Date Ouverture</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="regime"><span jhiTranslate="gestionFormationApp.centreFormation.regime">Regime</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="communes.id"><span jhiTranslate="gestionFormationApp.centreFormation.communes">Communes</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="promoteurs.id"><span jhiTranslate="gestionFormationApp.centreFormation.promoteurs">Promoteurs</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="gestionnaires.id"><span jhiTranslate="gestionFormationApp.centreFormation.gestionnaires">Gestionnaires</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="regime.id"><span jhiTranslate="gestionFormationApp.centreFormation.regime">Regime</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -47,7 +47,6 @@
                     <td>{{ centreFormation.capaciteacceuil }}</td>
                     <td>{{ centreFormation.refOuverture }}</td>
                     <td>{{ centreFormation.dateOuverture | date:'mediumDate' }}</td>
-                    <td>{{ centreFormation.regime }}</td>
                     <td>
                         <div *ngIf="centreFormation.communes">
                             <a [routerLink]="['/communes', centreFormation.communes?.id, 'view']" >{{ centreFormation.communes?.id }}</a>
@@ -61,6 +60,11 @@
                     <td>
                         <div *ngIf="centreFormation.gestionnaires">
                             <a [routerLink]="['/gestionnaire', centreFormation.gestionnaires?.id, 'view']" >{{ centreFormation.gestionnaires?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="centreFormation.regime">
+                            <a [routerLink]="['/regime', centreFormation.regime?.id, 'view']" >{{ centreFormation.regime?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

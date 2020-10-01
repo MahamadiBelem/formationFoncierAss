@@ -40,6 +40,7 @@ export const gestionnaireRoute: Routes = [
     component: GestionnaireComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.gestionnaire.home.title',
     },
     canActivate: [UserRouteAccessService],

@@ -2,7 +2,9 @@ package bf.agriculture.dgfomr.service;
 
 import bf.agriculture.dgfomr.domain.Gestionnaire;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface GestionnaireService {
     /**
      * Get all the gestionnaires.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<Gestionnaire> findAll();
+    Page<Gestionnaire> findAll(Pageable pageable);
 
 
     /**

@@ -11,7 +11,7 @@
       "relationshipType": "many-to-many",
       "otherEntityName": "installation",
       "otherEntityRelationshipName": "kits",
-      "relationshipName": "installation",
+      "relationshipName": "installationKits",
       "otherEntityField": "id",
       "ownerSide": false
     },
@@ -27,7 +27,7 @@
   "changelogDate": "20200822185621",
   "entityTableName": "kits",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

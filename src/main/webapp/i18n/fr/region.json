@@ -3,20 +3,21 @@
     "region": {
       "home": {
         "title": "Regions",
-        "createLabel": "Créer un nouveau Region",
-        "createOrEditLabel": "Créer ou éditer un Region",
-        "notFound": "Aucun Region trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un Region",
+        "notFound": "Aucune region trouvé"
       },
-      "created": "Un nouveau Region a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Region avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Region avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de la région avec success ",
+      "updated": "Modification de la région avec success",
+      "deleted": "Suppression de la région",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Region {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action  ?"
       },
       "detail": {
         "title": "Region"
       },
-      "libelleRegion": "Libelle Region"
+      "libelleRegion": "Region",
+      "provinces": "Provinces"
     }
   }
 }

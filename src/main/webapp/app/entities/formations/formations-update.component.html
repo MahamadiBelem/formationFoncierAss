@@ -5,58 +5,70 @@
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
-
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                <div class="form-group" [hidden]="true">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
-
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.sourceFinancement" for="field_sourceFinancement">Source Financement</label>
+                            <input type="text" class="form-control" name="sourceFinancement" id="field_sourceFinancement"
+                                   formControlName="sourceFinancement"/>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.theme" for="field_theme">Theme</label>
                     <input type="text" class="form-control" name="theme" id="field_theme"
                            formControlName="theme"/>
                 </div>
-
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-6">
+                        
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.lebelleFormation" for="field_lebelleFormation">Lebelle Formation</label>
                     <input type="text" class="form-control" name="lebelleFormation" id="field_lebelleFormation"
                            formControlName="lebelleFormation"/>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.coutFormation" for="field_coutFormation">Cout Formation</label>
-                    <input type="text" class="form-control" name="coutFormation" id="field_coutFormation"
-                           formControlName="coutFormation"/>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.coutFormation" for="field_coutFormation">Cout Formation</label>
+                            <input type="text" class="form-control" name="coutFormation" id="field_coutFormation"
+                                   formControlName="coutFormation"/>
+                        </div>
+        
+                    </div>
                 </div>
 
+                <div class="row">
+                 
+                    <div class="col-6">
+                             
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.sourceFinancement" for="field_sourceFinancement">Source Financement</label>
-                    <input type="text" class="form-control" name="sourceFinancement" id="field_sourceFinancement"
-                           formControlName="sourceFinancement"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.typeamenagement" for="field_typeamenagement">Typeamenagement</label>
-                    <select class="form-control" id="field_typeamenagement" name="typeamenagement" formControlName="typeamenagement">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formations.formationTypeFormation" for="field_formationTypeFormation">Formation Type Formation</label>
+                    <select class="form-control" id="field_formationTypeFormation" name="formationTypeFormation" formControlName="formationTypeFormation">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="typeFormationOption.id === editForm.get('typeamenagement')!.value?.id ? editForm.get('typeamenagement')!.value : typeFormationOption" *ngFor="let typeFormationOption of typeformations; trackBy: trackById">{{ typeFormationOption.id }}</option>
+                        <option [ngValue]="typeFormationOption.id === editForm.get('formationTypeFormation')!.value?.id ? editForm.get('formationTypeFormation')!.value : typeFormationOption" *ngFor="let typeFormationOption of typeformations; trackBy: trackById">{{ typeFormationOption.libelleTypeFormation }}</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.formations.formation" for="field_formations">Formation</label>
-                    <select class="form-control" id="field_formations" multiple name="formations" formControlName="formations">
-                        <option [ngValue]="getSelected(editForm.get('formations')!.value, apprenantesOption)" *ngFor="let apprenantesOption of apprenantes; trackBy: trackById">{{ apprenantesOption.id }}</option>
-                    </select>
+                    </div>
                 </div>
+           
             </div>
 
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="previousState()">
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-outline-primary">
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>

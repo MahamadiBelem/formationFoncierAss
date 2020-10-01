@@ -1,0 +1,25 @@
+{
+  "gestionFormationApp": {
+    "formationCentreFormation": {
+      "home": {
+        "title": "FormationCentreFormations",
+        "createLabel": "Créer un nouveau Formation Centre Formation",
+        "createOrEditLabel": "Créer ou éditer un Formation Centre Formation",
+        "notFound": "Aucun Formation Centre Formation trouvé"
+      },
+      "created": "Un nouveau Formation Centre Formation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Formation Centre Formation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Formation Centre Formation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Formation Centre Formation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Formation Centre Formation"
+      },
+      "datedebut": "Datedebut",
+      "dateClore": "Date Clore",
+      "formationcentre": "Formationcentre",
+      "centreformation": "Centreformation"
+    }
+  }
+}

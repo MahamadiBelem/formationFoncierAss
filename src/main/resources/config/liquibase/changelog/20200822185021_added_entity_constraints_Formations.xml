@@ -8,23 +8,11 @@
     -->
     <changeSet id="20200822185021-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="typeamenagement_id"
+        <addForeignKeyConstraint baseColumnNames="formation_type_formation_id"
                                  baseTableName="formations"
-                                 constraintName="fk_formations_typeamenagement_id"
+                                 constraintName="fk_formations_formation_type_formation_id"
                                  referencedColumnNames="id"
                                  referencedTableName="type_formation"/>
 
-        <addForeignKeyConstraint baseColumnNames="formations_id"
-                                 baseTableName="formations_formation"
-                                 constraintName="fk_formations_formation_formations_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="formations"/>
-
-        <addForeignKeyConstraint baseColumnNames="formation_id"
-                                 baseTableName="formations_formation"
-                                 constraintName="fk_formations_formation_formation_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="apprenantes"/>
-        
     </changeSet>
 </databaseChangeLog>

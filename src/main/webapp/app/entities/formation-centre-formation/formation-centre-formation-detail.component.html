@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="formationCentreFormation">
+            <h2><span jhiTranslate="gestionFormationApp.formationCentreFormation.detail.title">Formation Centre Formation</span> {{ formationCentreFormation.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.formationCentreFormation.datedebut">Datedebut</span></dt>
+                <dd>
+                    <span>{{ formationCentreFormation.datedebut }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formationCentreFormation.dateClore">Date Clore</span></dt>
+                <dd>
+                    <span>{{ formationCentreFormation.dateClore }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formationCentreFormation.formationcentre">Formationcentre</span></dt>
+                <dd>
+                    <div *ngIf="formationCentreFormation.formationcentre">
+                        <a [routerLink]="['/centre-formation', formationCentreFormation.formationcentre?.id, 'view']">{{ formationCentreFormation.formationcentre?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formationCentreFormation.centreformation">Centreformation</span></dt>
+                <dd>
+                    <div *ngIf="formationCentreFormation.centreformation">
+                        <a [routerLink]="['/formations', formationCentreFormation.centreformation?.id, 'view']">{{ formationCentreFormation.centreformation?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/formation-centre-formation', formationCentreFormation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -4,12 +4,11 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { IApprenantes, Apprenantes } from 'app/shared/model/apprenantes.model';
 import { ApprenantesService } from './apprenantes.service';
-import { ISortiePromotion } from 'app/shared/model/sortie-promotion.model';
-import { SortiePromotionService } from 'app/entities/sortie-promotion/sortie-promotion.service';
+import { INiveauInstruction } from 'app/shared/model/niveau-instruction.model';
+import { NiveauInstructionService } from 'app/entities/niveau-instruction/niveau-instruction.service';
 
 @Component({
   selector: 'jhi-apprenantes-update',
@@ -17,7 +16,7 @@ import { SortiePromotionService } from 'app/entities/sortie-promotion/sortie-pro
 })
 export class ApprenantesUpdateComponent implements OnInit {
   isSaving = false;
-  sortiepromotions: ISortiePromotion[] = [];
+  niveauinstructions: INiveauInstruction[] = [];
   dateNaissanceDp: any;
 
   editForm = this.fb.group({
@@ -28,16 +27,16 @@ export class ApprenantesUpdateComponent implements OnInit {
     dateNaissance: [null, [Validators.required]],
     sexe: [null, [Validators.required]],
     contact: [],
-    iscandidat: [],
+    typecandidat: [],
     situationMatrimonial: [],
     charger: [],
     localite: [],
-    sortiepromotion: [],
+    niveauapprenant: [],
   });
 
   constructor(
     protected apprenantesService: ApprenantesService,
-    protected sortiePromotionService: SortiePromotionService,
+    protected niveauInstructionService: NiveauInstructionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -46,27 +45,9 @@ export class ApprenantesUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ apprenantes }) => {
       this.updateForm(apprenantes);
 
-      this.sortiePromotionService
-        .query({ filter: 'apprenantes-is-null' })
-        .pipe(
-          map((res: HttpResponse<ISortiePromotion[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: ISortiePromotion[]) => {
-          if (!apprenantes.sortiepromotion || !apprenantes.sortiepromotion.id) {
-            this.sortiepromotions = resBody;
-          } else {
-            this.sortiePromotionService
-              .find(apprenantes.sortiepromotion.id)
-              .pipe(
-                map((subRes: HttpResponse<ISortiePromotion>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: ISortiePromotion[]) => (this.sortiepromotions = concatRes));
-          }
-        });
+      this.niveauInstructionService
+        .query()
+        .subscribe((res: HttpResponse<INiveauInstruction[]>) => (this.niveauinstructions = res.body || []));
     });
   }
 
@@ -79,11 +60,11 @@ export class ApprenantesUpdateComponent implements OnInit {
       dateNaissance: apprenantes.dateNaissance,
       sexe: apprenantes.sexe,
       contact: apprenantes.contact,
-      iscandidat: apprenantes.iscandidat,
+      typecandidat: apprenantes.typecandidat,
       situationMatrimonial: apprenantes.situationMatrimonial,
       charger: apprenantes.charger,
       localite: apprenantes.localite,
-      sortiepromotion: apprenantes.sortiepromotion,
+      niveauapprenant: apprenantes.niveauapprenant,
     });
   }
 
@@ -111,11 +92,11 @@ export class ApprenantesUpdateComponent implements OnInit {
       dateNaissance: this.editForm.get(['dateNaissance'])!.value,
       sexe: this.editForm.get(['sexe'])!.value,
       contact: this.editForm.get(['contact'])!.value,
-      iscandidat: this.editForm.get(['iscandidat'])!.value,
+      typecandidat: this.editForm.get(['typecandidat'])!.value,
       situationMatrimonial: this.editForm.get(['situationMatrimonial'])!.value,
       charger: this.editForm.get(['charger'])!.value,
       localite: this.editForm.get(['localite'])!.value,
-      sortiepromotion: this.editForm.get(['sortiepromotion'])!.value,
+      niveauapprenant: this.editForm.get(['niveauapprenant'])!.value,
     };
   }
 
@@ -135,7 +116,7 @@ export class ApprenantesUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: ISortiePromotion): any {
+  trackById(index: number, item: INiveauInstruction): any {
     return item.id;
   }
 }

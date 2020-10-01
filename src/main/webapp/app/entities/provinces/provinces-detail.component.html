@@ -12,6 +12,12 @@
                 <dd>
                     <span>{{ provinces.libelleProvince }}</span>
                 </dd>
+                <dt><span jhiTranslate="gestionFormationApp.provinces.region">Region</span></dt>
+                <dd>
+                    <div *ngIf="provinces.region">
+                        <a [routerLink]="['/region', provinces.region?.id, 'view']">{{ provinces.region?.id }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

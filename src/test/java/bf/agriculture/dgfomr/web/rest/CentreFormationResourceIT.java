@@ -61,9 +61,6 @@ public class CentreFormationResourceIT {
     private static final LocalDate DEFAULT_DATE_OUVERTURE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_OUVERTURE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_REGIME = "AAAAAAAAAA";
-    private static final String UPDATED_REGIME = "BBBBBBBBBB";
-
     @Autowired
     private CentreFormationRepository centreFormationRepository;
 
@@ -98,8 +95,7 @@ public class CentreFormationResourceIT {
             .statuts(DEFAULT_STATUTS)
             .capaciteacceuil(DEFAULT_CAPACITEACCEUIL)
             .refOuverture(DEFAULT_REF_OUVERTURE)
-            .dateOuverture(DEFAULT_DATE_OUVERTURE)
-            .regime(DEFAULT_REGIME);
+            .dateOuverture(DEFAULT_DATE_OUVERTURE);
         return centreFormation;
     }
     /**
@@ -116,8 +112,7 @@ public class CentreFormationResourceIT {
             .statuts(UPDATED_STATUTS)
             .capaciteacceuil(UPDATED_CAPACITEACCEUIL)
             .refOuverture(UPDATED_REF_OUVERTURE)
-            .dateOuverture(UPDATED_DATE_OUVERTURE)
-            .regime(UPDATED_REGIME);
+            .dateOuverture(UPDATED_DATE_OUVERTURE);
         return centreFormation;
     }
 
@@ -147,7 +142,6 @@ public class CentreFormationResourceIT {
         assertThat(testCentreFormation.getCapaciteacceuil()).isEqualTo(DEFAULT_CAPACITEACCEUIL);
         assertThat(testCentreFormation.getRefOuverture()).isEqualTo(DEFAULT_REF_OUVERTURE);
         assertThat(testCentreFormation.getDateOuverture()).isEqualTo(DEFAULT_DATE_OUVERTURE);
-        assertThat(testCentreFormation.getRegime()).isEqualTo(DEFAULT_REGIME);
     }
 
     @Test
@@ -244,8 +238,7 @@ public class CentreFormationResourceIT {
             .andExpect(jsonPath("$.[*].statuts").value(hasItem(DEFAULT_STATUTS)))
             .andExpect(jsonPath("$.[*].capaciteacceuil").value(hasItem(DEFAULT_CAPACITEACCEUIL)))
             .andExpect(jsonPath("$.[*].refOuverture").value(hasItem(DEFAULT_REF_OUVERTURE)))
-            .andExpect(jsonPath("$.[*].dateOuverture").value(hasItem(DEFAULT_DATE_OUVERTURE.toString())))
-            .andExpect(jsonPath("$.[*].regime").value(hasItem(DEFAULT_REGIME)));
+            .andExpect(jsonPath("$.[*].dateOuverture").value(hasItem(DEFAULT_DATE_OUVERTURE.toString())));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -285,8 +278,7 @@ public class CentreFormationResourceIT {
             .andExpect(jsonPath("$.statuts").value(DEFAULT_STATUTS))
             .andExpect(jsonPath("$.capaciteacceuil").value(DEFAULT_CAPACITEACCEUIL))
             .andExpect(jsonPath("$.refOuverture").value(DEFAULT_REF_OUVERTURE))
-            .andExpect(jsonPath("$.dateOuverture").value(DEFAULT_DATE_OUVERTURE.toString()))
-            .andExpect(jsonPath("$.regime").value(DEFAULT_REGIME));
+            .andExpect(jsonPath("$.dateOuverture").value(DEFAULT_DATE_OUVERTURE.toString()));
     }
     @Test
     @Transactional
@@ -315,8 +307,7 @@ public class CentreFormationResourceIT {
             .statuts(UPDATED_STATUTS)
             .capaciteacceuil(UPDATED_CAPACITEACCEUIL)
             .refOuverture(UPDATED_REF_OUVERTURE)
-            .dateOuverture(UPDATED_DATE_OUVERTURE)
-            .regime(UPDATED_REGIME);
+            .dateOuverture(UPDATED_DATE_OUVERTURE);
 
         restCentreFormationMockMvc.perform(put("/api/centre-formations")
             .contentType(MediaType.APPLICATION_JSON)
@@ -334,7 +325,6 @@ public class CentreFormationResourceIT {
         assertThat(testCentreFormation.getCapaciteacceuil()).isEqualTo(UPDATED_CAPACITEACCEUIL);
         assertThat(testCentreFormation.getRefOuverture()).isEqualTo(UPDATED_REF_OUVERTURE);
         assertThat(testCentreFormation.getDateOuverture()).isEqualTo(UPDATED_DATE_OUVERTURE);
-        assertThat(testCentreFormation.getRegime()).isEqualTo(UPDATED_REGIME);
     }
 
     @Test

@@ -17,38 +17,38 @@
     <div class="alert alert-warning" id="no-result" *ngIf="conditionAccesses?.length === 0">
         <span jhiTranslate="gestionFormationApp.conditionAccess.home.notFound">No conditionAccesses found</span>
     </div>
-
+    <br><br>
     <div class="table-responsive" id="entities" *ngIf="conditionAccesses && conditionAccesses.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
+            <thead style="background-color: #0070c0;color: white;">
                 <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="gestionFormationApp.conditionAccess.libelleConditon">Libelle Conditon</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let conditionAccess of conditionAccesses ;trackBy: trackId">
-                    <td><a [routerLink]="['/condition-access', conditionAccess.id, 'view']">{{ conditionAccess.id }}</a></td>
                     <td>{{ conditionAccess.libelleConditon }}</td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
+                          <!-- 
+                              <button type="submit"
                                     [routerLink]="['/condition-access', conditionAccess.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
+                          -->
 
                             <button type="submit"
                                     [routerLink]="['/condition-access', conditionAccess.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-outline-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
                             <button type="submit" (click)="delete(conditionAccess)"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-outline-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>

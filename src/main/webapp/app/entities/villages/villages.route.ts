@@ -40,6 +40,7 @@ export const villagesRoute: Routes = [
     component: VillagesComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.villages.home.title',
     },
     canActivate: [UserRouteAccessService],

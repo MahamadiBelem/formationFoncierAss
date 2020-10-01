@@ -24,6 +24,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import bf.agriculture.dgfomr.domain.enumeration.Sexe;
+import bf.agriculture.dgfomr.domain.enumeration.Examen;
 /**
  * Integration tests for the {@link ApprenantesResource} REST controller.
  */
@@ -44,14 +46,14 @@ public class ApprenantesResourceIT {
     private static final LocalDate DEFAULT_DATE_NAISSANCE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_NAISSANCE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_SEXE = "AAAAAAAAAA";
-    private static final String UPDATED_SEXE = "BBBBBBBBBB";
+    private static final Sexe DEFAULT_SEXE = Sexe.MASCULIN;
+    private static final Sexe UPDATED_SEXE = Sexe.FEMININ;
 
     private static final String DEFAULT_CONTACT = "AAAAAAAAAA";
     private static final String UPDATED_CONTACT = "BBBBBBBBBB";
 
-    private static final Boolean DEFAULT_ISCANDIDAT = false;
-    private static final Boolean UPDATED_ISCANDIDAT = true;
+    private static final Examen DEFAULT_TYPECANDIDAT = Examen.CQP;
+    private static final Examen UPDATED_TYPECANDIDAT = Examen.CQB;
 
     private static final String DEFAULT_SITUATION_MATRIMONIAL = "AAAAAAAAAA";
     private static final String UPDATED_SITUATION_MATRIMONIAL = "BBBBBBBBBB";
@@ -90,7 +92,7 @@ public class ApprenantesResourceIT {
             .dateNaissance(DEFAULT_DATE_NAISSANCE)
             .sexe(DEFAULT_SEXE)
             .contact(DEFAULT_CONTACT)
-            .iscandidat(DEFAULT_ISCANDIDAT)
+            .typecandidat(DEFAULT_TYPECANDIDAT)
             .situationMatrimonial(DEFAULT_SITUATION_MATRIMONIAL)
             .charger(DEFAULT_CHARGER)
             .localite(DEFAULT_LOCALITE);
@@ -110,7 +112,7 @@ public class ApprenantesResourceIT {
             .dateNaissance(UPDATED_DATE_NAISSANCE)
             .sexe(UPDATED_SEXE)
             .contact(UPDATED_CONTACT)
-            .iscandidat(UPDATED_ISCANDIDAT)
+            .typecandidat(UPDATED_TYPECANDIDAT)
             .situationMatrimonial(UPDATED_SITUATION_MATRIMONIAL)
             .charger(UPDATED_CHARGER)
             .localite(UPDATED_LOCALITE);
@@ -142,7 +144,7 @@ public class ApprenantesResourceIT {
         assertThat(testApprenantes.getDateNaissance()).isEqualTo(DEFAULT_DATE_NAISSANCE);
         assertThat(testApprenantes.getSexe()).isEqualTo(DEFAULT_SEXE);
         assertThat(testApprenantes.getContact()).isEqualTo(DEFAULT_CONTACT);
-        assertThat(testApprenantes.isIscandidat()).isEqualTo(DEFAULT_ISCANDIDAT);
+        assertThat(testApprenantes.getTypecandidat()).isEqualTo(DEFAULT_TYPECANDIDAT);
         assertThat(testApprenantes.getSituationMatrimonial()).isEqualTo(DEFAULT_SITUATION_MATRIMONIAL);
         assertThat(testApprenantes.getCharger()).isEqualTo(DEFAULT_CHARGER);
         assertThat(testApprenantes.getLocalite()).isEqualTo(DEFAULT_LOCALITE);
@@ -278,9 +280,9 @@ public class ApprenantesResourceIT {
             .andExpect(jsonPath("$.[*].nom").value(hasItem(DEFAULT_NOM)))
             .andExpect(jsonPath("$.[*].prenom").value(hasItem(DEFAULT_PRENOM)))
             .andExpect(jsonPath("$.[*].dateNaissance").value(hasItem(DEFAULT_DATE_NAISSANCE.toString())))
-            .andExpect(jsonPath("$.[*].sexe").value(hasItem(DEFAULT_SEXE)))
+            .andExpect(jsonPath("$.[*].sexe").value(hasItem(DEFAULT_SEXE.toString())))
             .andExpect(jsonPath("$.[*].contact").value(hasItem(DEFAULT_CONTACT)))
-            .andExpect(jsonPath("$.[*].iscandidat").value(hasItem(DEFAULT_ISCANDIDAT.booleanValue())))
+            .andExpect(jsonPath("$.[*].typecandidat").value(hasItem(DEFAULT_TYPECANDIDAT.toString())))
             .andExpect(jsonPath("$.[*].situationMatrimonial").value(hasItem(DEFAULT_SITUATION_MATRIMONIAL)))
             .andExpect(jsonPath("$.[*].charger").value(hasItem(DEFAULT_CHARGER)))
             .andExpect(jsonPath("$.[*].localite").value(hasItem(DEFAULT_LOCALITE)));
@@ -301,9 +303,9 @@ public class ApprenantesResourceIT {
             .andExpect(jsonPath("$.nom").value(DEFAULT_NOM))
             .andExpect(jsonPath("$.prenom").value(DEFAULT_PRENOM))
             .andExpect(jsonPath("$.dateNaissance").value(DEFAULT_DATE_NAISSANCE.toString()))
-            .andExpect(jsonPath("$.sexe").value(DEFAULT_SEXE))
+            .andExpect(jsonPath("$.sexe").value(DEFAULT_SEXE.toString()))
             .andExpect(jsonPath("$.contact").value(DEFAULT_CONTACT))
-            .andExpect(jsonPath("$.iscandidat").value(DEFAULT_ISCANDIDAT.booleanValue()))
+            .andExpect(jsonPath("$.typecandidat").value(DEFAULT_TYPECANDIDAT.toString()))
             .andExpect(jsonPath("$.situationMatrimonial").value(DEFAULT_SITUATION_MATRIMONIAL))
             .andExpect(jsonPath("$.charger").value(DEFAULT_CHARGER))
             .andExpect(jsonPath("$.localite").value(DEFAULT_LOCALITE));
@@ -335,7 +337,7 @@ public class ApprenantesResourceIT {
             .dateNaissance(UPDATED_DATE_NAISSANCE)
             .sexe(UPDATED_SEXE)
             .contact(UPDATED_CONTACT)
-            .iscandidat(UPDATED_ISCANDIDAT)
+            .typecandidat(UPDATED_TYPECANDIDAT)
             .situationMatrimonial(UPDATED_SITUATION_MATRIMONIAL)
             .charger(UPDATED_CHARGER)
             .localite(UPDATED_LOCALITE);
@@ -355,7 +357,7 @@ public class ApprenantesResourceIT {
         assertThat(testApprenantes.getDateNaissance()).isEqualTo(UPDATED_DATE_NAISSANCE);
         assertThat(testApprenantes.getSexe()).isEqualTo(UPDATED_SEXE);
         assertThat(testApprenantes.getContact()).isEqualTo(UPDATED_CONTACT);
-        assertThat(testApprenantes.isIscandidat()).isEqualTo(UPDATED_ISCANDIDAT);
+        assertThat(testApprenantes.getTypecandidat()).isEqualTo(UPDATED_TYPECANDIDAT);
         assertThat(testApprenantes.getSituationMatrimonial()).isEqualTo(UPDATED_SITUATION_MATRIMONIAL);
         assertThat(testApprenantes.getCharger()).isEqualTo(UPDATED_CHARGER);
         assertThat(testApprenantes.getLocalite()).isEqualTo(UPDATED_LOCALITE);

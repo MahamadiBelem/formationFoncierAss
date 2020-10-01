@@ -1,0 +1,50 @@
+{
+  "name": "FormateurCentre",
+  "fields": [
+    {
+      "fieldName": "dateEtablissement",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "specialite",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "regimeFormateur",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "formateurCentre",
+      "relationshipName": "formateurCentreFormation",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "formateurs",
+      "otherEntityRelationshipName": "formateurCentre",
+      "relationshipName": "formateurCentre",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200924225604",
+  "entityTableName": "formateur_centre",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

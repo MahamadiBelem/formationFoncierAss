@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import './vendor';
 import { GestionFormationSharedModule } from 'app/shared/shared.module';
 import { GestionFormationCoreModule } from 'app/core/core.module';

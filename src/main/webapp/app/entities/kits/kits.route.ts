@@ -40,6 +40,7 @@ export const kitsRoute: Routes = [
     component: KitsComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.kits.home.title',
     },
     canActivate: [UserRouteAccessService],

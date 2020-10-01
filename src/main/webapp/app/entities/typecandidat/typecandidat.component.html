@@ -1,0 +1,61 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.typecandidat.home.title">Typecandidats</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-typecandidat" [routerLink]="['/typecandidat/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.typecandidat.home.createLabel">
+            Create a new Typecandidat
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="typecandidats?.length === 0">
+        <span jhiTranslate="gestionFormationApp.typecandidat.home.notFound">No typecandidats found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="typecandidats && typecandidats.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.typecandidat.libelleTypeCandidat">Libelle Type Candidat</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let typecandidat of typecandidats ;trackBy: trackId">
+                    <td><a [routerLink]="['/typecandidat', typecandidat.id, 'view']">{{ typecandidat.id }}</a></td>
+                    <td>{{ typecandidat.libelleTypeCandidat }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/typecandidat', typecandidat.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/typecandidat', typecandidat.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(typecandidat)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -2,7 +2,9 @@ package bf.agriculture.dgfomr.service;
 
 import bf.agriculture.dgfomr.domain.Apprenantes;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface ApprenantesService {
     /**
      * Get all the apprenantes.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<Apprenantes> findAll();
+    Page<Apprenantes> findAll(Pageable pageable);
 
 
     /**

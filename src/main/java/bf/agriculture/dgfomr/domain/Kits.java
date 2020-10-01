@@ -31,12 +31,12 @@ public class Kits implements Serializable {
     @ManyToMany(mappedBy = "kits")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
-    private Set<Installation> installations = new HashSet<>();
+    private Set<Installation> installationKits = new HashSet<>();
 
     @ManyToMany(mappedBy = "kits")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
-    private Set<CompositionKits> installationskit = new HashSet<>();
+    private Set<CompositionKits> installations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -60,38 +60,45 @@ public class Kits implements Serializable {
         this.isobtenu = isobtenu;
     }
 
-    public Set<Installation> getInstallation() {
-        return installations;
+    public Set<Installation> getInstallationKits() {
+        return installationKits;
     }
 
-    public Kits installation(Set<Installation> installations) {
-        this.installations = installations;
+    public Kits installationKits(Set<Installation> installations) {
+        this.installationKits = installations;
         return this;
     }
 
-    public Kits addInstallation(Installation installation) {
-        this.installations.add(installation);
+    public Kits addInstallationKits(Installation installation) {
+        this.installationKits.add(installation);
         installation.getKits().add(this);
         return this;
     }
 
-    public Kits removeInstallation(Installation installation) {
-        this.installations.remove(installation);
+    public Kits removeInstallationKits(Installation installation) {
+        this.installationKits.remove(installation);
         installation.getKits().remove(this);
         return this;
     }
 
-    public void setInstallation(Set<Installation> installations) {
-        this.installations = installations;
+    public void setInstallationKits(Set<Installation> installations) {
+        this.installationKits = installations;
     }
 
-    public Set<Installation> getInstallations() {
+    public Set<CompositionKits> getInstallations() {
         return installations;
     }
 
+    public Kits installations(Set<CompositionKits> compositionKits) {
+        this.installations = compositionKits;
+        return this;
+    }
 
-
-
+    public Kits addInstallation(CompositionKits compositionKits) {
+        this.installations.add(compositionKits);
+        compositionKits.getKits().add(this);
+        return this;
+    }
 
     public Kits removeInstallation(CompositionKits compositionKits) {
         this.installations.remove(compositionKits);
@@ -99,7 +106,9 @@ public class Kits implements Serializable {
         return this;
     }
 
-
+    public void setInstallations(Set<CompositionKits> compositionKits) {
+        this.installations = compositionKits;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override

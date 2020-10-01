@@ -1,0 +1,26 @@
+{
+  "gestionFormationApp": {
+    "inscription": {
+      "home": {
+        "title": "Inscriptions",
+        "createLabel": "Créer un nouveau Inscription",
+        "createOrEditLabel": "Créer ou éditer un Inscription",
+        "notFound": "Aucun Inscription trouvé"
+      },
+      "created": "Un nouveau Inscription a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Inscription avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Inscription avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Inscription {{ id }} ?"
+      },
+      "detail": {
+        "title": "Inscription"
+      },
+      "anneesAcademique": "Annees Academique",
+      "dateInscription": "Date Inscription",
+      "inscription": "Inscription",
+      "inscriptionApprenant": "Inscription Apprenant",
+      "inscriptionCentreFormation": "Inscription Centre Formation"
+    }
+  }
+}

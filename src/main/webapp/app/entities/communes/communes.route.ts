@@ -40,6 +40,7 @@ export const communesRoute: Routes = [
     component: CommunesComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.communes.home.title',
     },
     canActivate: [UserRouteAccessService],

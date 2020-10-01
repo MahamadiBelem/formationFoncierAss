@@ -9,11 +9,18 @@
       ]
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "provinces",
+      "otherEntityRelationshipName": "region",
+      "relationshipName": "provinces"
+    }
+  ],
   "changelogDate": "20200822183021",
   "entityTableName": "region",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

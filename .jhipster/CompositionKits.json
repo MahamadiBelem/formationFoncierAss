@@ -23,7 +23,7 @@
   "changelogDate": "20200822185721",
   "entityTableName": "composition_kits",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

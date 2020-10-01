@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.formateurCentre.home.title">Formateur Centres</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-formateur-centre" [routerLink]="['/formateur-centre/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.formateurCentre.home.createLabel">
+            Create a new Formateur Centre
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="formateurCentres?.length === 0">
+        <span jhiTranslate="gestionFormationApp.formateurCentre.home.notFound">No formateurCentres found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="formateurCentres && formateurCentres.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.dateEtablissement">Date Etablissement</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.specialite">Specialite</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.regimeFormateur">Regime Formateur</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentreFormation">Formateur Centre Formation</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentre">Formateur Centre</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let formateurCentre of formateurCentres ;trackBy: trackId">
+                    <td><a [routerLink]="['/formateur-centre', formateurCentre.id, 'view']">{{ formateurCentre.id }}</a></td>
+                    <td>{{ formateurCentre.dateEtablissement | date:'mediumDate' }}</td>
+                    <td>{{ formateurCentre.specialite }}</td>
+                    <td>{{ formateurCentre.regimeFormateur }}</td>
+                    <td>
+                        <div *ngIf="formateurCentre.formateurCentreFormation">
+                            <a [routerLink]="['/centre-formation', formateurCentre.formateurCentreFormation?.id, 'view']" >{{ formateurCentre.formateurCentreFormation?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="formateurCentre.formateurCentre">
+                            <a [routerLink]="['/formateurs', formateurCentre.formateurCentre?.id, 'view']" >{{ formateurCentre.formateurCentre?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/formateur-centre', formateurCentre.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/formateur-centre', formateurCentre.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(formateurCentre)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

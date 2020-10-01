@@ -3,23 +3,22 @@
     "formateurs": {
       "home": {
         "title": "Formateurs",
-        "createLabel": "Créer un nouveau Formateurs",
-        "createOrEditLabel": "Créer ou éditer un Formateurs",
-        "notFound": "Aucun Formateurs trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un formateur",
+        "notFound": "Aucun formateur trouvé"
       },
-      "created": "Un nouveau Formateurs a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Formateurs avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Formateurs avec l'identifiant {{ param }} a été supprimé",
+      "created": "Eregistrement d'un formateur avec succèss",
+      "updated": "Modification d'un formateur avec succèss",
+      "deleted": "Suppression d'un formateur avec succèss",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Formateurs {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Formateurs"
       },
-      "nomComplet": "Nom Complet",
-      "specialite": "Specialite",
-      "regime": "Regime",
-      "centreformation": "Centreformation"
+      "nomComplet": "Nom & Prénom",
+      "emplois": "Emplois",
+      "contactformateur": "Contact"
     }
   }
 }

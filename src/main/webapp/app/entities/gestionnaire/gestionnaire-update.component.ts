@@ -19,7 +19,7 @@ export class GestionnaireUpdateComponent implements OnInit {
     id: [],
     nomComplet: [null, [Validators.required]],
     contactsGestionnaires: [],
-    niveauEtude: [null, [Validators.required]],
+    emploi: [null, [Validators.required]],
   });
 
   constructor(protected gestionnaireService: GestionnaireService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -35,7 +35,7 @@ export class GestionnaireUpdateComponent implements OnInit {
       id: gestionnaire.id,
       nomComplet: gestionnaire.nomComplet,
       contactsGestionnaires: gestionnaire.contactsGestionnaires,
-      niveauEtude: gestionnaire.niveauEtude,
+      emploi: gestionnaire.emploi,
     });
   }
 
@@ -59,7 +59,7 @@ export class GestionnaireUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       nomComplet: this.editForm.get(['nomComplet'])!.value,
       contactsGestionnaires: this.editForm.get(['contactsGestionnaires'])!.value,
-      niveauEtude: this.editForm.get(['niveauEtude'])!.value,
+      emploi: this.editForm.get(['emploi'])!.value,
     };
   }
 

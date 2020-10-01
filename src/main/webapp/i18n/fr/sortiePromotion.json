@@ -19,7 +19,8 @@
       "dateSortie": "Date Sortie",
       "anneesSortie": "Annees Sortie",
       "motif": "Motif",
-      "installation": "Installation"
+      "sortiepromotion": "Sortiepromotion",
+      "sortieCentreFormation": "Sortie Centre Formation"
     }
   }
 }

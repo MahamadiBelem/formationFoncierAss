@@ -13,7 +13,7 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "niveauEtude",
+      "fieldName": "emploi",
       "fieldType": "String",
       "fieldValidateRules": [
         "required"
@@ -24,7 +24,7 @@
   "changelogDate": "20200822183921",
   "entityTableName": "gestionnaire",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

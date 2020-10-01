@@ -9,34 +9,22 @@
       ]
     },
     {
-      "fieldName": "specialite",
+      "fieldName": "emplois",
       "fieldType": "String",
       "fieldValidateRules": [
         "required"
       ]
     },
     {
-      "fieldName": "regime",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
+      "fieldName": "contactformateur",
+      "fieldType": "String"
     }
   ],
-  "relationships": [
-    {
-      "relationshipType": "many-to-many",
-      "otherEntityName": "centreFormation",
-      "otherEntityRelationshipName": "formateurs",
-      "relationshipName": "centreformation",
-      "otherEntityField": "id",
-      "ownerSide": false
-    }
-  ],
+  "relationships": [],
   "changelogDate": "20200822184821",
   "entityTableName": "formateurs",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

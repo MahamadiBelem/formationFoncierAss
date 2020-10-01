@@ -40,6 +40,7 @@ export const provincesRoute: Routes = [
     component: ProvincesComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.provinces.home.title',
     },
     canActivate: [UserRouteAccessService],

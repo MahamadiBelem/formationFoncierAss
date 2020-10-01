@@ -3,20 +3,21 @@
     "villages": {
       "home": {
         "title": "Villages",
-        "createLabel": "Créer un nouveau Villages",
-        "createOrEditLabel": "Créer ou éditer un Villages",
-        "notFound": "Aucun Villages trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un Village",
+        "notFound": "Aucun Village trouvé"
       },
-      "created": "Un nouveau Villages a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Villages avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Villages avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement du village avec succèss",
+      "updated": "Modification du village avec succèss",
+      "deleted": "Suppression du village avec succèss",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Villages {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Villages"
       },
-      "libelleVillage": "Libelle Village"
+      "libelleVillage": "Village",
+      "commune": "Communes"
     }
   }
 }

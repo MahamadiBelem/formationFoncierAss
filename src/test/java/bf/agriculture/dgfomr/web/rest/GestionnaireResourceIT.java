@@ -36,8 +36,8 @@ public class GestionnaireResourceIT {
     private static final String DEFAULT_CONTACTS_GESTIONNAIRES = "AAAAAAAAAA";
     private static final String UPDATED_CONTACTS_GESTIONNAIRES = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NIVEAU_ETUDE = "AAAAAAAAAA";
-    private static final String UPDATED_NIVEAU_ETUDE = "BBBBBBBBBB";
+    private static final String DEFAULT_EMPLOI = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOI = "BBBBBBBBBB";
 
     @Autowired
     private GestionnaireRepository gestionnaireRepository;
@@ -63,7 +63,7 @@ public class GestionnaireResourceIT {
         Gestionnaire gestionnaire = new Gestionnaire()
             .nomComplet(DEFAULT_NOM_COMPLET)
             .contactsGestionnaires(DEFAULT_CONTACTS_GESTIONNAIRES)
-            .niveauEtude(DEFAULT_NIVEAU_ETUDE);
+            .emploi(DEFAULT_EMPLOI);
         return gestionnaire;
     }
     /**
@@ -76,7 +76,7 @@ public class GestionnaireResourceIT {
         Gestionnaire gestionnaire = new Gestionnaire()
             .nomComplet(UPDATED_NOM_COMPLET)
             .contactsGestionnaires(UPDATED_CONTACTS_GESTIONNAIRES)
-            .niveauEtude(UPDATED_NIVEAU_ETUDE);
+            .emploi(UPDATED_EMPLOI);
         return gestionnaire;
     }
 
@@ -101,7 +101,7 @@ public class GestionnaireResourceIT {
         Gestionnaire testGestionnaire = gestionnaireList.get(gestionnaireList.size() - 1);
         assertThat(testGestionnaire.getNomComplet()).isEqualTo(DEFAULT_NOM_COMPLET);
         assertThat(testGestionnaire.getContactsGestionnaires()).isEqualTo(DEFAULT_CONTACTS_GESTIONNAIRES);
-        assertThat(testGestionnaire.getNiveauEtude()).isEqualTo(DEFAULT_NIVEAU_ETUDE);
+        assertThat(testGestionnaire.getEmploi()).isEqualTo(DEFAULT_EMPLOI);
     }
 
     @Test
@@ -145,10 +145,10 @@ public class GestionnaireResourceIT {
 
     @Test
     @Transactional
-    public void checkNiveauEtudeIsRequired() throws Exception {
+    public void checkEmploiIsRequired() throws Exception {
         int databaseSizeBeforeTest = gestionnaireRepository.findAll().size();
         // set the field null
-        gestionnaire.setNiveauEtude(null);
+        gestionnaire.setEmploi(null);
 
         // Create the Gestionnaire, which fails.
 
@@ -175,7 +175,7 @@ public class GestionnaireResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(gestionnaire.getId().intValue())))
             .andExpect(jsonPath("$.[*].nomComplet").value(hasItem(DEFAULT_NOM_COMPLET)))
             .andExpect(jsonPath("$.[*].contactsGestionnaires").value(hasItem(DEFAULT_CONTACTS_GESTIONNAIRES)))
-            .andExpect(jsonPath("$.[*].niveauEtude").value(hasItem(DEFAULT_NIVEAU_ETUDE)));
+            .andExpect(jsonPath("$.[*].emploi").value(hasItem(DEFAULT_EMPLOI)));
     }
     
     @Test
@@ -191,7 +191,7 @@ public class GestionnaireResourceIT {
             .andExpect(jsonPath("$.id").value(gestionnaire.getId().intValue()))
             .andExpect(jsonPath("$.nomComplet").value(DEFAULT_NOM_COMPLET))
             .andExpect(jsonPath("$.contactsGestionnaires").value(DEFAULT_CONTACTS_GESTIONNAIRES))
-            .andExpect(jsonPath("$.niveauEtude").value(DEFAULT_NIVEAU_ETUDE));
+            .andExpect(jsonPath("$.emploi").value(DEFAULT_EMPLOI));
     }
     @Test
     @Transactional
@@ -216,7 +216,7 @@ public class GestionnaireResourceIT {
         updatedGestionnaire
             .nomComplet(UPDATED_NOM_COMPLET)
             .contactsGestionnaires(UPDATED_CONTACTS_GESTIONNAIRES)
-            .niveauEtude(UPDATED_NIVEAU_ETUDE);
+            .emploi(UPDATED_EMPLOI);
 
         restGestionnaireMockMvc.perform(put("/api/gestionnaires")
             .contentType(MediaType.APPLICATION_JSON)
@@ -229,7 +229,7 @@ public class GestionnaireResourceIT {
         Gestionnaire testGestionnaire = gestionnaireList.get(gestionnaireList.size() - 1);
         assertThat(testGestionnaire.getNomComplet()).isEqualTo(UPDATED_NOM_COMPLET);
         assertThat(testGestionnaire.getContactsGestionnaires()).isEqualTo(UPDATED_CONTACTS_GESTIONNAIRES);
-        assertThat(testGestionnaire.getNiveauEtude()).isEqualTo(UPDATED_NIVEAU_ETUDE);
+        assertThat(testGestionnaire.getEmploi()).isEqualTo(UPDATED_EMPLOI);
     }
 
     @Test

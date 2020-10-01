@@ -33,7 +33,7 @@
             <column name="contact" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="iscandidat" type="boolean">
+            <column name="typecandidat" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="situation_matrimonial" type="varchar(255)">
@@ -45,8 +45,8 @@
             <column name="localite" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="sortiepromotion_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_apprenantes_sortiepromotion_id" />
+            <column name="niveauapprenant_id" type="bigint">
+                <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -77,7 +77,7 @@
             <column name="date_naissance" type="date"/>
             <column name="sexe" type="string"/>
             <column name="contact" type="string"/>
-            <column name="iscandidat" type="boolean"/>
+            <column name="typecandidat" type="string"/>
             <column name="situation_matrimonial" type="string"/>
             <column name="charger" type="string"/>
             <column name="localite" type="string"/>

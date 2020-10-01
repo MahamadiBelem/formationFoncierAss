@@ -37,6 +37,10 @@ public class Installation implements Serializable {
     @Column(name = "lieu_installation")
     private String lieuInstallation;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private SortiePromotion installation;
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "installation_activiteinstallation",
@@ -99,6 +103,19 @@ public class Installation implements Serializable {
         this.lieuInstallation = lieuInstallation;
     }
 
+    public SortiePromotion getInstallation() {
+        return installation;
+    }
+
+    public Installation installation(SortiePromotion sortiePromotion) {
+        this.installation = sortiePromotion;
+        return this;
+    }
+
+    public void setInstallation(SortiePromotion sortiePromotion) {
+        this.installation = sortiePromotion;
+    }
+
     public Set<ActiviteInstallation> getActiviteinstallations() {
         return activiteinstallations;
     }
@@ -135,13 +152,13 @@ public class Installation implements Serializable {
 
     public Installation addKits(Kits kits) {
         this.kits.add(kits);
-        kits.getInstallations().add(this);
+        kits.getInstallationKits().add(this);
         return this;
     }
 
     public Installation removeKits(Kits kits) {
         this.kits.remove(kits);
-        kits.getInstallations().remove(this);
+        kits.getInstallationKits().remove(this);
         return this;
     }
 

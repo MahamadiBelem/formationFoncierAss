@@ -1,12 +1,14 @@
 import { Moment } from 'moment';
-import { IInstallation } from 'app/shared/model/installation.model';
+import { IApprenantes } from 'app/shared/model/apprenantes.model';
+import { ICentreFormation } from 'app/shared/model/centre-formation.model';
 
 export interface ISortiePromotion {
   id?: number;
   dateSortie?: Moment;
   anneesSortie?: number;
   motif?: string;
-  installation?: IInstallation;
+  sortiepromotion?: IApprenantes;
+  sortieCentreFormation?: ICentreFormation;
 }
 
 export class SortiePromotion implements ISortiePromotion {
@@ -15,6 +17,7 @@ export class SortiePromotion implements ISortiePromotion {
     public dateSortie?: Moment,
     public anneesSortie?: number,
     public motif?: string,
-    public installation?: IInstallation
+    public sortiepromotion?: IApprenantes,
+    public sortieCentreFormation?: ICentreFormation
   ) {}
 }

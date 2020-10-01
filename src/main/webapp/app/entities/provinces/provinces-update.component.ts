@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IProvinces, Provinces } from 'app/shared/model/provinces.model';
 import { ProvincesService } from './provinces.service';
+import { IRegion } from 'app/shared/model/region.model';
+import { RegionService } from 'app/entities/region/region.service';
 
 @Component({
   selector: 'jhi-provinces-update',
@@ -14,17 +16,26 @@ import { ProvincesService } from './provinces.service';
 })
 export class ProvincesUpdateComponent implements OnInit {
   isSaving = false;
+  regions: IRegion[] = [];
 
   editForm = this.fb.group({
     id: [],
     libelleProvince: [null, [Validators.required]],
+    region: [],
   });
 
-  constructor(protected provincesService: ProvincesService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected provincesService: ProvincesService,
+    protected regionService: RegionService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ provinces }) => {
       this.updateForm(provinces);
+
+      this.regionService.query().subscribe((res: HttpResponse<IRegion[]>) => (this.regions = res.body || []));
     });
   }
 
@@ -32,6 +43,7 @@ export class ProvincesUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: provinces.id,
       libelleProvince: provinces.libelleProvince,
+      region: provinces.region,
     });
   }
 
@@ -54,6 +66,7 @@ export class ProvincesUpdateComponent implements OnInit {
       ...new Provinces(),
       id: this.editForm.get(['id'])!.value,
       libelleProvince: this.editForm.get(['libelleProvince'])!.value,
+      region: this.editForm.get(['region'])!.value,
     };
   }
 
@@ -71,5 +84,9 @@ export class ProvincesUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IRegion): any {
+    return item.id;
   }
 }

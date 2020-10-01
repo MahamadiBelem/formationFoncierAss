@@ -42,15 +42,11 @@ public class FormationsServiceImpl implements FormationsService {
     }
 
 
-    public Page<Formations> findAllWithEagerRelationships(Pageable pageable) {
-        return formationsRepository.findAllWithEagerRelationships(pageable);
-    }
-
     @Override
     @Transactional(readOnly = true)
     public Optional<Formations> findOne(Long id) {
         log.debug("Request to get Formations : {}", id);
-        return formationsRepository.findOneWithEagerRelationships(id);
+        return formationsRepository.findById(id);
     }
 
     @Override

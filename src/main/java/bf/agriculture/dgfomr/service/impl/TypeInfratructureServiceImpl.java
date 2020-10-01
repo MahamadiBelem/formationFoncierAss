@@ -6,10 +6,11 @@ import bf.agriculture.dgfomr.repository.TypeInfratructureRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -35,9 +36,9 @@ public class TypeInfratructureServiceImpl implements TypeInfratructureService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<TypeInfratructure> findAll() {
+    public Page<TypeInfratructure> findAll(Pageable pageable) {
         log.debug("Request to get all TypeInfratructures");
-        return typeInfratructureRepository.findAll();
+        return typeInfratructureRepository.findAll(pageable);
     }
 
 

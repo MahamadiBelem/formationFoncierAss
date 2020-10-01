@@ -34,7 +34,7 @@ entity Gestionnaire
 {
 	nomComplet String required,
     contactsGestionnaires String,
-    niveauEtude String required,
+    emploi String required,
 }
 entity Promoteurs 
 {
@@ -57,7 +57,6 @@ statuts String ,
 capaciteacceuil String , 
 refOuverture String ,
 dateOuverture LocalDate , 
-regime String , 
 }
 entity TypeInfratructure
 {
@@ -81,9 +80,12 @@ etats String required,
 }
 entity Formateurs{
 nomComplet String required,
-specialite String required, 
-regime String required,
-
+emplois String required, 
+contactformateur String,
+}
+entity Typecandidat 
+{
+	libelleTypeCandidat String required,
 }
 entity Apprenantes
 {
@@ -91,9 +93,9 @@ entity Apprenantes
     nom String required,
     prenom String required,
     dateNaissance LocalDate required,
-    sexe String required,
+    sexe Sexe required,
     contact String ,
-    iscandidat Boolean,
+    typecandidat Examen , 
     situationMatrimonial String,
     charger String,
     localite String,
@@ -132,6 +134,22 @@ entity ActiviteInstallation
 	libelleActivite String required, 
     
 }
+entity FormationCentreFormation
+{
+ datedebut LocalDate, 
+ dateClore LocalDate,
+}
+entity FormateurCentre
+{
+	dateEtablissement LocalDate,
+	specialite String required,
+	regimeFormateur String required,
+}
+entity Inscription
+{
+anneesAcademique String,
+dateInscription String
+}
 entity Kits
 {
 isobtenu Boolean,
@@ -144,6 +162,18 @@ entity CompositionKits
 enum Language {
     FRENCH, ENGLISH, SPANISH
 }
+enum Sexe 
+{
+	MASCULIN, FEMININ
+}
+enum Examen 
+{
+	CQP, CQB
+}
+entity Regime
+{
+libelleRegime String required,
+}
 relationship ManyToMany {
 	CentreFormation{approchepedagogique} to ApprochePedagogique{centreformation},
     CentreFormation{publiccible} to PublicCible{centreformation},
@@ -151,12 +181,9 @@ relationship ManyToMany {
     CentreFormation{domaineformation} to DomaineFormation{centreformation},
     CentreFormation{contributions} to Contributions{centreformation},
     CentreFormation{niveaurecrutement} to NiveauRecrutement{centreformation},
-    CentreFormation{formateurs} to Formateurs{centreformation},
     CentreFormation{conditionaccess} to ConditionAccess{centreformation},
-    CentreFormation{formations} to Formations{centreformation},
-    Formations{formation} to Apprenantes{centreformation},
     Installation{activiteinstallation} to ActiviteInstallation{installation},
-    Installation{kits} to Kits{installation},
+    Installation{kits} to Kits{installationKits},
     CompositionKits{kits} to Kits{installation},
    
     
@@ -166,6 +193,11 @@ relationship ManyToMany {
 relationship OneToMany {
 	 CentreFormation{infrastructure} to Infrastructure{centreformation},
       CentreFormation{amenagement} to Amenagement{centreformation},
+     NiveauInstruction  to   Apprenantes{niveauapprenant} ,
+     Region  to Provinces {region} ,
+     Communes  to Villages {commune} ,
+     Provinces  to Communes {provinces} ,
+      Regime  to CentreFormation {regime} ,
 }
 
 relationship ManyToOne {
@@ -174,21 +206,29 @@ relationship ManyToOne {
     CentreFormation{gestionnaires} to Gestionnaire,
     Infrastructure{typeinfrastructure} to TypeInfratructure,
     Amenagement{Typeamenagement} to TypeAmenagement,
-    Formations{Typeamenagement} to TypeFormation,
-    NiveauInstruction{apprenants} to Apprenantes,
-    
+    Inscription {inscription} to Formations ,
+     Inscription {inscriptionApprenant} to Apprenantes,
+     Inscription  {inscriptionCentreFormation} to CentreFormation,
+    Formations {formationTypeFormation} to TypeFormation,
+	FormateurCentre {formateurCentreFormation} to CentreFormation,
+	FormateurCentre {formateurCentre} to Formateurs
+	FormationCentreFormation {formationcentre} to CentreFormation,
+	FormationCentreFormation {centreformation} to Formations,
+	
+	  
     
 }
 
 // defining multiple oneToOne relationships
 relationship OneToOne {
-	Apprenantes{sortiepromotion} to SortiePromotion,
-	SortiePromotion{installation} to Installation,
+    SortiePromotion {sortiepromotion} to Apprenantes  ,
+	SortiePromotion {SortieCentreFormation} to CentreFormation ,
+	Installation {installation}  to SortiePromotion ,
 }
 
 // Set pagination options
 paginate Formations with infinite-scroll
-paginate Formations, Infrastructure, CentreFormation, Amenagement with pagination
+paginate Formations, Infrastructure, CentreFormation,Inscription, Amenagement, Formateurs, Apprenantes, Provinces, Region, Communes, Villages, SortiePromotion, Installation, Kits, CompositionKits, TypeInfratructure, TypeAmenagement,Gestionnaire,Promoteurs  with pagination 
 
 // Use Data Transfert Objects (DTO)
 // dto * with mapstruct

@@ -1,0 +1,40 @@
+{
+  "name": "FormationCentreFormation",
+  "fields": [
+    {
+      "fieldName": "datedebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateClore",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "formationCentreFormation",
+      "relationshipName": "formationcentre",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "formations",
+      "otherEntityRelationshipName": "formationCentreFormation",
+      "relationshipName": "centreformation",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200924230751",
+  "entityTableName": "formation_centre_formation",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

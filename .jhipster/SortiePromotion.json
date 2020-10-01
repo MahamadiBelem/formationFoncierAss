@@ -23,9 +23,17 @@
   "relationships": [
     {
       "relationshipType": "one-to-one",
-      "otherEntityName": "installation",
+      "otherEntityName": "apprenantes",
       "otherEntityRelationshipName": "sortiePromotion",
-      "relationshipName": "installation",
+      "relationshipName": "sortiepromotion",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "centreFormation",
+      "otherEntityRelationshipName": "sortiePromotion",
+      "relationshipName": "sortieCentreFormation",
       "otherEntityField": "id",
       "ownerSide": true
     }
@@ -33,7 +41,7 @@
   "changelogDate": "20200822185321",
   "entityTableName": "sortie_promotion",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

@@ -50,10 +50,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.installation" for="field_installation">Installation</label>
-                    <select class="form-control" id="field_installation" name="installation" formControlName="installation">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.sortiepromotion" for="field_sortiepromotion">Sortiepromotion</label>
+                    <select class="form-control" id="field_sortiepromotion" name="sortiepromotion" formControlName="sortiepromotion">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="installationOption.id === editForm.get('installation')!.value?.id ? editForm.get('installation')!.value : installationOption" *ngFor="let installationOption of installations; trackBy: trackById">{{ installationOption.id }}</option>
+                        <option [ngValue]="apprenantesOption.id === editForm.get('sortiepromotion')!.value?.id ? editForm.get('sortiepromotion')!.value : apprenantesOption" *ngFor="let apprenantesOption of sortiepromotions; trackBy: trackById">{{ apprenantesOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.sortieCentreFormation" for="field_sortieCentreFormation">Sortie Centre Formation</label>
+                    <select class="form-control" id="field_sortieCentreFormation" name="sortieCentreFormation" formControlName="sortieCentreFormation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="centreFormationOption.id === editForm.get('sortieCentreFormation')!.value?.id ? editForm.get('sortieCentreFormation')!.value : centreFormationOption" *ngFor="let centreFormationOption of sortiecentreformations; trackBy: trackById">{{ centreFormationOption.id }}</option>
                     </select>
                 </div>
             </div>

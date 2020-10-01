@@ -1,6 +1,5 @@
 package bf.agriculture.dgfomr.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A NiveauInstruction.
@@ -28,9 +29,9 @@ public class NiveauInstruction implements Serializable {
     @Column(name = "niveau_instruction", nullable = false)
     private String niveauInstruction;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "niveauInstructions", allowSetters = true)
-    private Apprenantes apprenants;
+    @OneToMany(mappedBy = "niveauapprenant")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Apprenantes> apprenantes = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -54,17 +55,29 @@ public class NiveauInstruction implements Serializable {
         this.niveauInstruction = niveauInstruction;
     }
 
-    public Apprenantes getApprenants() {
-        return apprenants;
+    public Set<Apprenantes> getApprenantes() {
+        return apprenantes;
     }
 
-    public NiveauInstruction apprenants(Apprenantes apprenantes) {
-        this.apprenants = apprenantes;
+    public NiveauInstruction apprenantes(Set<Apprenantes> apprenantes) {
+        this.apprenantes = apprenantes;
         return this;
     }
 
-    public void setApprenants(Apprenantes apprenantes) {
-        this.apprenants = apprenantes;
+    public NiveauInstruction addApprenantes(Apprenantes apprenantes) {
+        this.apprenantes.add(apprenantes);
+        apprenantes.setNiveauapprenant(this);
+        return this;
+    }
+
+    public NiveauInstruction removeApprenantes(Apprenantes apprenantes) {
+        this.apprenantes.remove(apprenantes);
+        apprenantes.setNiveauapprenant(null);
+        return this;
+    }
+
+    public void setApprenantes(Set<Apprenantes> apprenantes) {
+        this.apprenantes = apprenantes;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

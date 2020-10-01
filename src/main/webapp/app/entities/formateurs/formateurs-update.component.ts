@@ -18,8 +18,8 @@ export class FormateursUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nomComplet: [null, [Validators.required]],
-    specialite: [null, [Validators.required]],
-    regime: [null, [Validators.required]],
+    emplois: [null, [Validators.required]],
+    contactformateur: [],
   });
 
   constructor(protected formateursService: FormateursService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -34,8 +34,8 @@ export class FormateursUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: formateurs.id,
       nomComplet: formateurs.nomComplet,
-      specialite: formateurs.specialite,
-      regime: formateurs.regime,
+      emplois: formateurs.emplois,
+      contactformateur: formateurs.contactformateur,
     });
   }
 
@@ -58,8 +58,8 @@ export class FormateursUpdateComponent implements OnInit {
       ...new Formateurs(),
       id: this.editForm.get(['id'])!.value,
       nomComplet: this.editForm.get(['nomComplet'])!.value,
-      specialite: this.editForm.get(['specialite'])!.value,
-      regime: this.editForm.get(['regime'])!.value,
+      emplois: this.editForm.get(['emplois'])!.value,
+      contactformateur: this.editForm.get(['contactformateur'])!.value,
     };
   }
 

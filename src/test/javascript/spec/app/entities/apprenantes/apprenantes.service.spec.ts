@@ -4,6 +4,8 @@ import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { ApprenantesService } from 'app/entities/apprenantes/apprenantes.service';
 import { IApprenantes, Apprenantes } from 'app/shared/model/apprenantes.model';
+import { Sexe } from 'app/shared/model/enumerations/sexe.model';
+import { Examen } from 'app/shared/model/enumerations/examen.model';
 
 describe('Service Tests', () => {
   describe('Apprenantes Service', () => {
@@ -30,9 +32,9 @@ describe('Service Tests', () => {
         'AAAAAAA',
         'AAAAAAA',
         currentDate,
+        Sexe.MASCULIN,
         'AAAAAAA',
-        'AAAAAAA',
-        false,
+        Examen.CQP,
         'AAAAAAA',
         'AAAAAAA',
         'AAAAAAA'
@@ -87,7 +89,7 @@ describe('Service Tests', () => {
             dateNaissance: currentDate.format(DATE_FORMAT),
             sexe: 'BBBBBB',
             contact: 'BBBBBB',
-            iscandidat: true,
+            typecandidat: 'BBBBBB',
             situationMatrimonial: 'BBBBBB',
             charger: 'BBBBBB',
             localite: 'BBBBBB',
@@ -118,7 +120,7 @@ describe('Service Tests', () => {
             dateNaissance: currentDate.format(DATE_FORMAT),
             sexe: 'BBBBBB',
             contact: 'BBBBBB',
-            iscandidat: true,
+            typecandidat: 'BBBBBB',
             situationMatrimonial: 'BBBBBB',
             charger: 'BBBBBB',
             localite: 'BBBBBB',

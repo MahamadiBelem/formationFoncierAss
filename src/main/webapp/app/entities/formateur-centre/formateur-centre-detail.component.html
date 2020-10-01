@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="formateurCentre">
+            <h2><span jhiTranslate="gestionFormationApp.formateurCentre.detail.title">Formateur Centre</span> {{ formateurCentre.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.formateurCentre.dateEtablissement">Date Etablissement</span></dt>
+                <dd>
+                    <span>{{ formateurCentre.dateEtablissement }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formateurCentre.specialite">Specialite</span></dt>
+                <dd>
+                    <span>{{ formateurCentre.specialite }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formateurCentre.regimeFormateur">Regime Formateur</span></dt>
+                <dd>
+                    <span>{{ formateurCentre.regimeFormateur }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentreFormation">Formateur Centre Formation</span></dt>
+                <dd>
+                    <div *ngIf="formateurCentre.formateurCentreFormation">
+                        <a [routerLink]="['/centre-formation', formateurCentre.formateurCentreFormation?.id, 'view']">{{ formateurCentre.formateurCentreFormation?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentre">Formateur Centre</span></dt>
+                <dd>
+                    <div *ngIf="formateurCentre.formateurCentre">
+                        <a [routerLink]="['/formateurs', formateurCentre.formateurCentre?.id, 'view']">{{ formateurCentre.formateurCentre?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/formateur-centre', formateurCentre.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

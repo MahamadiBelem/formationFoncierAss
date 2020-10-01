@@ -37,7 +37,11 @@ public class SortiePromotion implements Serializable {
 
     @OneToOne
     @JoinColumn(unique = true)
-    private Installation installation;
+    private Apprenantes sortiepromotion;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private CentreFormation sortieCentreFormation;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -87,17 +91,30 @@ public class SortiePromotion implements Serializable {
         this.motif = motif;
     }
 
-    public Installation getInstallation() {
-        return installation;
+    public Apprenantes getSortiepromotion() {
+        return sortiepromotion;
     }
 
-    public SortiePromotion installation(Installation installation) {
-        this.installation = installation;
+    public SortiePromotion sortiepromotion(Apprenantes apprenantes) {
+        this.sortiepromotion = apprenantes;
         return this;
     }
 
-    public void setInstallation(Installation installation) {
-        this.installation = installation;
+    public void setSortiepromotion(Apprenantes apprenantes) {
+        this.sortiepromotion = apprenantes;
+    }
+
+    public CentreFormation getSortieCentreFormation() {
+        return sortieCentreFormation;
+    }
+
+    public SortiePromotion sortieCentreFormation(CentreFormation centreFormation) {
+        this.sortieCentreFormation = centreFormation;
+        return this;
+    }
+
+    public void setSortieCentreFormation(CentreFormation centreFormation) {
+        this.sortieCentreFormation = centreFormation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

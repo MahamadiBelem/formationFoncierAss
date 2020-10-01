@@ -2,14 +2,14 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.formateurs.home.title">Formateurs</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-formateurs" [routerLink]="['/formateurs/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-formateurs" [routerLink]="['/formateurs/new']">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.formateurs.home.createLabel">
             Create a new Formateurs
             </span>
         </button>
     </h2>
-
+    <br><br>
     <jhi-alert-error></jhi-alert-error>
 
     <jhi-alert></jhi-alert>
@@ -20,39 +20,39 @@
 
     <div class="table-responsive" id="entities" *ngIf="formateurs && formateurs.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurs.nomComplet">Nom Complet</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurs.specialite">Specialite</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurs.regime">Regime</span></th>
+            <thead style="background-color: #0070c0;color: white;">
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="nomComplet"><span jhiTranslate="gestionFormationApp.formateurs.nomComplet">Nom Complet</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="emplois"><span jhiTranslate="gestionFormationApp.formateurs.emplois">Emplois</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="contactformateur"><span jhiTranslate="gestionFormationApp.formateurs.contactformateur">Contactformateur</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let formateurs of formateurs ;trackBy: trackId">
-                    <td><a [routerLink]="['/formateurs', formateurs.id, 'view']">{{ formateurs.id }}</a></td>
                     <td>{{ formateurs.nomComplet }}</td>
-                    <td>{{ formateurs.specialite }}</td>
-                    <td>{{ formateurs.regime }}</td>
+                    <td>{{ formateurs.emplois }}</td>
+                    <td>{{ formateurs.contactformateur }}</td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
+                        <!--
+                                <button type="submit"
                                     [routerLink]="['/formateurs', formateurs.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
+                        -->
 
                             <button type="submit"
                                     [routerLink]="['/formateurs', formateurs.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-outline-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
                             <button type="submit" (click)="delete(formateurs)"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-outline-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>
@@ -61,5 +61,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="formateurs && formateurs.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

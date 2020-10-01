@@ -33,11 +33,11 @@ public class FormateursResourceIT {
     private static final String DEFAULT_NOM_COMPLET = "AAAAAAAAAA";
     private static final String UPDATED_NOM_COMPLET = "BBBBBBBBBB";
 
-    private static final String DEFAULT_SPECIALITE = "AAAAAAAAAA";
-    private static final String UPDATED_SPECIALITE = "BBBBBBBBBB";
+    private static final String DEFAULT_EMPLOIS = "AAAAAAAAAA";
+    private static final String UPDATED_EMPLOIS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_REGIME = "AAAAAAAAAA";
-    private static final String UPDATED_REGIME = "BBBBBBBBBB";
+    private static final String DEFAULT_CONTACTFORMATEUR = "AAAAAAAAAA";
+    private static final String UPDATED_CONTACTFORMATEUR = "BBBBBBBBBB";
 
     @Autowired
     private FormateursRepository formateursRepository;
@@ -62,8 +62,8 @@ public class FormateursResourceIT {
     public static Formateurs createEntity(EntityManager em) {
         Formateurs formateurs = new Formateurs()
             .nomComplet(DEFAULT_NOM_COMPLET)
-            .specialite(DEFAULT_SPECIALITE)
-            .regime(DEFAULT_REGIME);
+            .emplois(DEFAULT_EMPLOIS)
+            .contactformateur(DEFAULT_CONTACTFORMATEUR);
         return formateurs;
     }
     /**
@@ -75,8 +75,8 @@ public class FormateursResourceIT {
     public static Formateurs createUpdatedEntity(EntityManager em) {
         Formateurs formateurs = new Formateurs()
             .nomComplet(UPDATED_NOM_COMPLET)
-            .specialite(UPDATED_SPECIALITE)
-            .regime(UPDATED_REGIME);
+            .emplois(UPDATED_EMPLOIS)
+            .contactformateur(UPDATED_CONTACTFORMATEUR);
         return formateurs;
     }
 
@@ -100,8 +100,8 @@ public class FormateursResourceIT {
         assertThat(formateursList).hasSize(databaseSizeBeforeCreate + 1);
         Formateurs testFormateurs = formateursList.get(formateursList.size() - 1);
         assertThat(testFormateurs.getNomComplet()).isEqualTo(DEFAULT_NOM_COMPLET);
-        assertThat(testFormateurs.getSpecialite()).isEqualTo(DEFAULT_SPECIALITE);
-        assertThat(testFormateurs.getRegime()).isEqualTo(DEFAULT_REGIME);
+        assertThat(testFormateurs.getEmplois()).isEqualTo(DEFAULT_EMPLOIS);
+        assertThat(testFormateurs.getContactformateur()).isEqualTo(DEFAULT_CONTACTFORMATEUR);
     }
 
     @Test
@@ -145,29 +145,10 @@ public class FormateursResourceIT {
 
     @Test
     @Transactional
-    public void checkSpecialiteIsRequired() throws Exception {
+    public void checkEmploisIsRequired() throws Exception {
         int databaseSizeBeforeTest = formateursRepository.findAll().size();
         // set the field null
-        formateurs.setSpecialite(null);
-
-        // Create the Formateurs, which fails.
-
-
-        restFormateursMockMvc.perform(post("/api/formateurs")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(formateurs)))
-            .andExpect(status().isBadRequest());
-
-        List<Formateurs> formateursList = formateursRepository.findAll();
-        assertThat(formateursList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkRegimeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = formateursRepository.findAll().size();
-        // set the field null
-        formateurs.setRegime(null);
+        formateurs.setEmplois(null);
 
         // Create the Formateurs, which fails.
 
@@ -193,8 +174,8 @@ public class FormateursResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(formateurs.getId().intValue())))
             .andExpect(jsonPath("$.[*].nomComplet").value(hasItem(DEFAULT_NOM_COMPLET)))
-            .andExpect(jsonPath("$.[*].specialite").value(hasItem(DEFAULT_SPECIALITE)))
-            .andExpect(jsonPath("$.[*].regime").value(hasItem(DEFAULT_REGIME)));
+            .andExpect(jsonPath("$.[*].emplois").value(hasItem(DEFAULT_EMPLOIS)))
+            .andExpect(jsonPath("$.[*].contactformateur").value(hasItem(DEFAULT_CONTACTFORMATEUR)));
     }
     
     @Test
@@ -209,8 +190,8 @@ public class FormateursResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(formateurs.getId().intValue()))
             .andExpect(jsonPath("$.nomComplet").value(DEFAULT_NOM_COMPLET))
-            .andExpect(jsonPath("$.specialite").value(DEFAULT_SPECIALITE))
-            .andExpect(jsonPath("$.regime").value(DEFAULT_REGIME));
+            .andExpect(jsonPath("$.emplois").value(DEFAULT_EMPLOIS))
+            .andExpect(jsonPath("$.contactformateur").value(DEFAULT_CONTACTFORMATEUR));
     }
     @Test
     @Transactional
@@ -234,8 +215,8 @@ public class FormateursResourceIT {
         em.detach(updatedFormateurs);
         updatedFormateurs
             .nomComplet(UPDATED_NOM_COMPLET)
-            .specialite(UPDATED_SPECIALITE)
-            .regime(UPDATED_REGIME);
+            .emplois(UPDATED_EMPLOIS)
+            .contactformateur(UPDATED_CONTACTFORMATEUR);
 
         restFormateursMockMvc.perform(put("/api/formateurs")
             .contentType(MediaType.APPLICATION_JSON)
@@ -247,8 +228,8 @@ public class FormateursResourceIT {
         assertThat(formateursList).hasSize(databaseSizeBeforeUpdate);
         Formateurs testFormateurs = formateursList.get(formateursList.size() - 1);
         assertThat(testFormateurs.getNomComplet()).isEqualTo(UPDATED_NOM_COMPLET);
-        assertThat(testFormateurs.getSpecialite()).isEqualTo(UPDATED_SPECIALITE);
-        assertThat(testFormateurs.getRegime()).isEqualTo(UPDATED_REGIME);
+        assertThat(testFormateurs.getEmplois()).isEqualTo(UPDATED_EMPLOIS);
+        assertThat(testFormateurs.getContactformateur()).isEqualTo(UPDATED_CONTACTFORMATEUR);
     }
 
     @Test

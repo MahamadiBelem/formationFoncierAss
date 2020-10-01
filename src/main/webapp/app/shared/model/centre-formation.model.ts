@@ -10,9 +10,8 @@ import { ISpecialites } from 'app/shared/model/specialites.model';
 import { IDomaineFormation } from 'app/shared/model/domaine-formation.model';
 import { IContributions } from 'app/shared/model/contributions.model';
 import { INiveauRecrutement } from 'app/shared/model/niveau-recrutement.model';
-import { IFormateurs } from 'app/shared/model/formateurs.model';
 import { IConditionAccess } from 'app/shared/model/condition-access.model';
-import { IFormations } from 'app/shared/model/formations.model';
+import { IRegime } from 'app/shared/model/regime.model';
 
 export interface ICentreFormation {
   id?: number;
@@ -23,7 +22,6 @@ export interface ICentreFormation {
   capaciteacceuil?: string;
   refOuverture?: string;
   dateOuverture?: Moment;
-  regime?: string;
   infrastructures?: IInfrastructure[];
   amenagements?: IAmenagement[];
   communes?: ICommunes;
@@ -35,9 +33,8 @@ export interface ICentreFormation {
   domaineformations?: IDomaineFormation[];
   contributions?: IContributions[];
   niveaurecrutements?: INiveauRecrutement[];
-  formateurs?: IFormateurs[];
   conditionaccesses?: IConditionAccess[];
-  formations?: IFormations[];
+  regime?: IRegime;
 }
 
 export class CentreFormation implements ICentreFormation {
@@ -50,7 +47,6 @@ export class CentreFormation implements ICentreFormation {
     public capaciteacceuil?: string,
     public refOuverture?: string,
     public dateOuverture?: Moment,
-    public regime?: string,
     public infrastructures?: IInfrastructure[],
     public amenagements?: IAmenagement[],
     public communes?: ICommunes,
@@ -62,8 +58,7 @@ export class CentreFormation implements ICentreFormation {
     public domaineformations?: IDomaineFormation[],
     public contributions?: IContributions[],
     public niveaurecrutements?: INiveauRecrutement[],
-    public formateurs?: IFormateurs[],
     public conditionaccesses?: IConditionAccess[],
-    public formations?: IFormations[]
+    public regime?: IRegime
   ) {}
 }

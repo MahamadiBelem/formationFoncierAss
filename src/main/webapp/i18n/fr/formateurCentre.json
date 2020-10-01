@@ -1,0 +1,26 @@
+{
+  "gestionFormationApp": {
+    "formateurCentre": {
+      "home": {
+        "title": "FormateurCentres",
+        "createLabel": "Créer un nouveau Formateur Centre",
+        "createOrEditLabel": "Créer ou éditer un Formateur Centre",
+        "notFound": "Aucun Formateur Centre trouvé"
+      },
+      "created": "Un nouveau Formateur Centre a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Formateur Centre avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Formateur Centre avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Formateur Centre {{ id }} ?"
+      },
+      "detail": {
+        "title": "Formateur Centre"
+      },
+      "dateEtablissement": "Date Etablissement",
+      "specialite": "Specialite",
+      "regimeFormateur": "Regime Formateur",
+      "formateurCentreFormation": "Formateur Centre Formation",
+      "formateurCentre": "Formateur Centre"
+    }
+  }
+}
