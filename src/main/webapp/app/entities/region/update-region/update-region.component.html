@@ -1,19 +1,14 @@
-
-
-
-
-<!--
-
-    
--->
-<div class="row justify-content-center">
-    <div class="col-8">
-        <h2 id="jhi-region-heading" jhiTranslate="gestionFormationApp.region.home.createOrEditLabel">Create or edit a Region</h2>
+<div class="card card-primary">
+<div class="card-header">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h2 id="jhi-region-heading" jhiTranslate="gestionFormationApp.region.home.createOrEditLabel">Create or edit a Region</h2>
+        </div>
     </div>
 </div>
 <div class="row justify-content-center">
     <div class="col-4">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()"  [formGroup]="editForm">
             <div>
                 <jhi-alert-error></jhi-alert-error>
 
@@ -34,9 +29,10 @@
                     </div>
                 </div>
             </div>
-
+            
+            <br><br> 
             <div>
-                <button  type="button" id="cancel-save" class="btn btn-outline-warning" (click)="previousState()">
+                <button  type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancel()" >
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
@@ -44,6 +40,10 @@
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
+            <br><br> 
         </form>
     </div>
 </div>
+</div>
+
+

@@ -4,8 +4,9 @@
       "home": {
         "title": "Regions",
         "createLabel": "Nouveau",
-        "createOrEditLabel": "Créer ou modifier un Region",
-        "notFound": "Aucune region trouvé"
+        "createOrEditLabel": "Enregistrement d'une Region",
+        "notFound": "Aucune region trouvé",
+        "updateLabel": "Modification d'une region"
       },
       "created": "Enregistrement de la région avec success ",
       "updated": "Modification de la région avec success",

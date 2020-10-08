@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.provinces.home.title">Provinces</span>
 
-        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-provinces" [routerLink]="['/provinces/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-provinces" (click)="saveModal()">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.provinces.home.createLabel">
             Create a new Provinces

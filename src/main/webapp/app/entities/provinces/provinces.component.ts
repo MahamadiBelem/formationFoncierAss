@@ -10,6 +10,7 @@ import { IProvinces } from 'app/shared/model/provinces.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { ProvincesService } from './provinces.service';
 import { ProvincesDeleteDialogComponent } from './provinces-delete-dialog.component';
+import { SaveProvinceComponent } from './save-province/save-province.component';
 
 @Component({
   selector: 'jhi-provinces',
@@ -114,5 +115,9 @@ export class ProvincesComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  saveModal(): void {
+    const refmodal = this.modalService.open(SaveProvinceComponent, { size: 'lg', backdrop: 'static' });
   }
 }

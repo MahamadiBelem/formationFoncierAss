@@ -10,6 +10,9 @@ import { IRegion } from 'app/shared/model/region.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { RegionService } from './region.service';
 import { RegionDeleteDialogComponent } from './region-delete-dialog.component';
+import { SaveRegionComponent } from './save-region/save-region.component';
+import { RegionUpdateComponent } from './region-update.component';
+import { UpdateRegionComponent } from './update-region/update-region.component';
 
 @Component({
   selector: 'jhi-region',
@@ -24,7 +27,8 @@ export class RegionComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
-
+  modalSaveData: any;
+  updateModal: any;
   constructor(
     protected regionService: RegionService,
     protected activatedRoute: ActivatedRoute,
@@ -114,5 +118,18 @@ export class RegionComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  saveRegionModal(): void {
+    this.modalSaveData = this.modalService.open(SaveRegionComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updateModale(region: IRegion): void {
+    this.updateModal = this.modalService.open(UpdateRegionComponent, { size: 'lg', backdrop: 'static' });
+    this.updateModal.componentInstance.region = region;
+  }
+
+  cancelSaveModal(): void {
+    this.modalSaveData.dismiss();
   }
 }
