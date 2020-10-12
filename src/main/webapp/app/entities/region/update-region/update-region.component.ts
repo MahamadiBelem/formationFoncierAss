@@ -53,7 +53,7 @@ export class UpdateRegionComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.regionService.create(region));
     }
-    this.eventManager.broadcast('regionListModification');
+
     this.activeModal.close();
   }
 
@@ -71,9 +71,11 @@ export class UpdateRegionComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
+    this.eventManager.broadcast('regionListModification');
   }
 
   protected onSaveError(): void {
     this.isSaving = false;
+    this.eventManager.broadcast('regionListModification');
   }
 }

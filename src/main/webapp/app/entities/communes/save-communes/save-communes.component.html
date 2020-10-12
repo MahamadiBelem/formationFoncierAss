@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-header save-card-design">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 id="jhi-communes-heading" jhiTranslate="gestionFormationApp.communes.home.createOrEditLabel">Create or edit a Communes</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                  
+        
+                    <div>
+                        <jhi-alert-error></jhi-alert-error>
+        
+                        <div class="form-group" [hidden]="true">
+                            <label for="id" jhiTranslate="global.field.id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" jhiTranslate="gestionFormationApp.communes.libelleCommune" for="field_libelleCommune">Libelle Commune</label>
+                                    <input type="text" class="form-control" name="libelleCommune" id="field_libelleCommune"
+                                           formControlName="libelleCommune"/>
+                                    <div *ngIf="editForm.get('libelleCommune')!.invalid && (editForm.get('libelleCommune')!.dirty || editForm.get('libelleCommune')!.touched)">
+                                        <small class="form-text text-danger"
+                                               *ngIf="editForm.get('libelleCommune')?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">  
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.communes.provinces" for="field_provinces">Provinces</label>
+                                <select class="form-control" id="field_provinces" name="provinces" formControlName="provinces">
+                                    <option [ngValue]="null"></option>
+                                    <option [ngValue]="provincesOption.id === editForm.get('provinces')!.value?.id ? editForm.get('provinces')!.value : provincesOption" *ngFor="let provincesOption of provinces; trackBy: trackById">{{ provincesOption.libelleProvince }}</option>
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                 
+                    </div>
+        
+                    <div>
+                        <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancel()">
+                            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+        
+                        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-outline-primary">
+                            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+

@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { IProvinces, Provinces } from 'app/shared/model/provinces.model';
 import { Observable } from 'rxjs';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { JhiEventManager } from 'ng-jhipster';
 
 @Component({
   selector: 'jhi-save-province',
@@ -27,7 +29,9 @@ export class SaveProvinceComponent implements OnInit {
     protected provincesService: ProvincesService,
     protected regionService: RegionService,
     protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private activeModal: NgbActiveModal,
+    protected eventManager: JhiEventManager
   ) {}
 
   ngOnInit(): void {
@@ -53,11 +57,15 @@ export class SaveProvinceComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const provinces = this.createFromForm();
+    this.subscribeToSaveResponse(this.provincesService.create(provinces));
+    this.cancle();
+    /*
     if (provinces.id !== undefined) {
       this.subscribeToSaveResponse(this.provincesService.update(provinces));
     } else {
-      this.subscribeToSaveResponse(this.provincesService.create(provinces));
+     
     }
+    */
   }
 
   private createFromForm(): IProvinces {
@@ -78,7 +86,8 @@ export class SaveProvinceComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+    this.eventManager.broadcast('provincesListModification');
+    //this.previousState();
   }
 
   protected onSaveError(): void {
@@ -87,5 +96,9 @@ export class SaveProvinceComponent implements OnInit {
 
   trackById(index: number, item: IRegion): any {
     return item.id;
+  }
+
+  cancle(): void {
+    this.activeModal.dismiss();
   }
 }

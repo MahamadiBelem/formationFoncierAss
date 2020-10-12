@@ -7,6 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ITypeFormation } from 'app/shared/model/type-formation.model';
 import { TypeFormationService } from './type-formation.service';
 import { TypeFormationDeleteDialogComponent } from './type-formation-delete-dialog.component';
+import { SaveTypeFormationComponent } from './save-type-formation/save-type-formation.component';
+import { UpdateTypeFormationComponent } from './update-type-formation/update-type-formation.component';
 
 @Component({
   selector: 'jhi-type-formation',
@@ -49,5 +51,15 @@ export class TypeFormationComponent implements OnInit, OnDestroy {
   delete(typeFormation: ITypeFormation): void {
     const modalRef = this.modalService.open(TypeFormationDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.typeFormation = typeFormation;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveTypeFormationComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodal(typeformation: ITypeFormation): void {
+    const updatemodale = this.modalService.open(UpdateTypeFormationComponent, { size: 'lg', backdrop: 'static' });
+
+    updatemodale.componentInstance.typeFormation = typeformation;
   }
 }

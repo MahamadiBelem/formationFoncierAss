@@ -147,12 +147,7 @@
                             <span jhiTranslate="global.menu.entities.specialites">Specialites</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" routerLink="domaine-formation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-
-                            <span jhiTranslate="global.menu.entities.domaineFormation">Domaine Formation</span>
-                        </a>
-                    </li>
+                  
                     <li>
                         <a class="dropdown-item" routerLink="contributions" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
 
@@ -205,6 +200,12 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item" routerLink="domaine-formation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+
+                            <span jhiTranslate="global.menu.entities.domaineFormation">Domaine Formation</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="dropdown-item" routerLink="type-formation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
 

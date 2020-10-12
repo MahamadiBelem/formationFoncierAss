@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.villages.home.title">Villages</span>
 
-        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-villages" [routerLink]="['/villages/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-villages" (click)="savemodal()">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.villages.home.createLabel">
             Create a new Villages
@@ -47,7 +47,7 @@
                            -->
 
                             <button type="submit"
-                                    [routerLink]="['/villages', villages.id, 'edit']"
+                            (click)="updatemodal(villages)"  
                                     class="btn btn-outline-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>

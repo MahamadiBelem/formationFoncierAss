@@ -31,6 +31,7 @@
   },
   "defaultProject": "gestion-formation",
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "024ae506-e4a4-4902-860c-f708eb890f5d"
   }
 }

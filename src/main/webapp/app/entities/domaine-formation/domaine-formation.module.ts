@@ -7,6 +7,8 @@ import { DomaineFormationDetailComponent } from './domaine-formation-detail.comp
 import { DomaineFormationUpdateComponent } from './domaine-formation-update.component';
 import { DomaineFormationDeleteDialogComponent } from './domaine-formation-delete-dialog.component';
 import { domaineFormationRoute } from './domaine-formation.route';
+import { SaveDomaineFormationComponent } from './save-domaine-formation/save-domaine-formation.component';
+import { UpdateDomaineFormationComponent } from './update-domaine-formation/update-domaine-formation.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(domaineFormationRoute)],
@@ -15,6 +17,8 @@ import { domaineFormationRoute } from './domaine-formation.route';
     DomaineFormationDetailComponent,
     DomaineFormationUpdateComponent,
     DomaineFormationDeleteDialogComponent,
+    SaveDomaineFormationComponent,
+    UpdateDomaineFormationComponent,
   ],
   entryComponents: [DomaineFormationDeleteDialogComponent],
 })

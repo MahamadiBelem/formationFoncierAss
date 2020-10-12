@@ -1,0 +1,61 @@
+<div class="card">
+    <div class="card-header save-card-design">
+        <div class="row">
+            <div class="col-12">
+                <h2 id="jhi-provinces-heading" jhiTranslate="gestionFormationApp.provinces.home.createOrEditLabel">Create or edit a Provinces</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+       
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate  [formGroup]="editForm" >
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="true">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.provinces.libelleProvince" for="field_libelleProvince">Libelle Province</label>
+                            <input type="text" class="form-control" name="libelleProvince" id="field_libelleProvince"
+                                   formControlName="libelleProvince"/>
+                            <div *ngIf="editForm.get('libelleProvince')!.invalid && (editForm.get('libelleProvince')!.dirty || editForm.get('libelleProvince')!.touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('libelleProvince')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.provinces.region" for="field_region">Region</label>
+                        <select class="form-control" id="field_region" name="region" formControlName="region">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="regionOption.id === editForm.get('region')!.value?.id ? editForm.get('region')!.value : regionOption" *ngFor="let regionOption of regions; trackBy: trackById">{{ regionOption.libelleRegion }}</option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancel()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-outline-primary" (click)="update()">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+    </div>
+</div>
+
+

@@ -7,6 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { INiveauInstruction } from 'app/shared/model/niveau-instruction.model';
 import { NiveauInstructionService } from './niveau-instruction.service';
 import { NiveauInstructionDeleteDialogComponent } from './niveau-instruction-delete-dialog.component';
+import { SaveNiveauComponent } from './save-niveau/save-niveau.component';
+import { UpdateNiveauComponent } from './update-niveau/update-niveau.component';
 
 @Component({
   selector: 'jhi-niveau-instruction',
@@ -51,5 +53,14 @@ export class NiveauInstructionComponent implements OnInit, OnDestroy {
   delete(niveauInstruction: INiveauInstruction): void {
     const modalRef = this.modalService.open(NiveauInstructionDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.niveauInstruction = niveauInstruction;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveNiveauComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updateModale(niveau: INiveauInstruction): void {
+    const updatemodale = this.modalService.open(UpdateNiveauComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.niveauInstruction = niveau;
   }
 }

@@ -11,6 +11,9 @@ import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { ProvincesService } from './provinces.service';
 import { ProvincesDeleteDialogComponent } from './provinces-delete-dialog.component';
 import { SaveProvinceComponent } from './save-province/save-province.component';
+import { IRegion } from 'app/shared/model/region.model';
+import { RegionService } from '../region/region.service';
+import { UpdateProvincesComponent } from './update-provinces/update-provinces.component';
 
 @Component({
   selector: 'jhi-provinces',
@@ -25,13 +28,14 @@ export class ProvincesComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
-
+  regions: IRegion[] = [];
   constructor(
     protected provincesService: ProvincesService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    private regionService: RegionService
   ) {}
 
   loadPage(page?: number, dontNavigate?: boolean): void {
@@ -52,6 +56,7 @@ export class ProvincesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.handleNavigation();
     this.registerChangeInProvinces();
+    this.regionService.query().subscribe((res: HttpResponse<IRegion[]>) => (this.regions = res.body || []));
   }
 
   protected handleNavigation(): void {
@@ -119,5 +124,10 @@ export class ProvincesComponent implements OnInit, OnDestroy {
 
   saveModal(): void {
     const refmodal = this.modalService.open(SaveProvinceComponent, { size: 'lg', backdrop: 'static' });
+    refmodal.componentInstance.regions = this.regions;
+  }
+  upateModal(provinces: IProvinces): void {
+    const updatemodal = this.modalService.open(UpdateProvincesComponent, { size: 'lg', backdrop: 'static' });
+    updatemodal.componentInstance.provinces = provinces;
   }
 }

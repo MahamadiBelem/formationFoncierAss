@@ -45,7 +45,6 @@ export class SaveRegionComponent implements OnInit {
     const region = this.createFromForm();
     this.isSaving = true;
     this.subscribeToSaveResponse(this.regionService.create(region));
-    this.eventManager.broadcast('regionListModification');
     this.activeModal.close();
 
     /*
@@ -75,7 +74,7 @@ export class SaveRegionComponent implements OnInit {
 
   protected onSaveSuccess(): void {
     this.isSaving = false;
-    this.previousState();
+    this.eventManager.broadcast('regionListModification');
   }
 
   protected onSaveError(): void {

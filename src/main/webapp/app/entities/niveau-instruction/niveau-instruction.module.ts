@@ -7,6 +7,8 @@ import { NiveauInstructionDetailComponent } from './niveau-instruction-detail.co
 import { NiveauInstructionUpdateComponent } from './niveau-instruction-update.component';
 import { NiveauInstructionDeleteDialogComponent } from './niveau-instruction-delete-dialog.component';
 import { niveauInstructionRoute } from './niveau-instruction.route';
+import { SaveNiveauComponent } from './save-niveau/save-niveau.component';
+import { UpdateNiveauComponent } from './update-niveau/update-niveau.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(niveauInstructionRoute)],
@@ -15,6 +17,8 @@ import { niveauInstructionRoute } from './niveau-instruction.route';
     NiveauInstructionDetailComponent,
     NiveauInstructionUpdateComponent,
     NiveauInstructionDeleteDialogComponent,
+    SaveNiveauComponent,
+    UpdateNiveauComponent,
   ],
   entryComponents: [NiveauInstructionDeleteDialogComponent],
 })

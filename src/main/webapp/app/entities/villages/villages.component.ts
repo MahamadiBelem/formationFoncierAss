@@ -10,6 +10,10 @@ import { IVillages } from 'app/shared/model/villages.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { VillagesService } from './villages.service';
 import { VillagesDeleteDialogComponent } from './villages-delete-dialog.component';
+import { SaveVillagesComponent } from './save-villages/save-villages.component';
+import { ICommunes } from 'app/shared/model/communes.model';
+import { CommunesService } from '../communes/communes.service';
+import { UpdateVillagesComponent } from './update-villages/update-villages.component';
 
 @Component({
   selector: 'jhi-villages',
@@ -25,12 +29,15 @@ export class VillagesComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  communes?: ICommunes[];
+
   constructor(
     protected villagesService: VillagesService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    private communesService: CommunesService
   ) {}
 
   loadPage(page?: number, dontNavigate?: boolean): void {
@@ -71,6 +78,7 @@ export class VillagesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.eventSubscriber) {
       this.eventManager.destroy(this.eventSubscriber);
+      this.communesService.query().subscribe((res: HttpResponse<ICommunes[]>) => (this.communes = res.body || []));
     }
   }
 
@@ -114,5 +122,14 @@ export class VillagesComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveVillagesComponent, { size: 'lg', backdrop: 'static' });
+    savemodale.componentInstance.communes = this.communes;
+  }
+
+  updatemodal(village: IVillages): void {
+    const updatemodale = this.modalService.open(UpdateVillagesComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.villages = village;
   }
 }

@@ -10,6 +10,10 @@ import { ICommunes } from 'app/shared/model/communes.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { CommunesService } from './communes.service';
 import { CommunesDeleteDialogComponent } from './communes-delete-dialog.component';
+import { SaveCommunesComponent } from './save-communes/save-communes.component';
+import { IProvinces } from 'app/shared/model/provinces.model';
+import { ProvincesService } from '../provinces/provinces.service';
+import { UpdateCommunesComponent } from './update-communes/update-communes.component';
 
 @Component({
   selector: 'jhi-communes',
@@ -24,13 +28,14 @@ export class CommunesComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
-
+  provinces?: IProvinces[];
   constructor(
     protected communesService: CommunesService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    private provinceService: ProvincesService
   ) {}
 
   loadPage(page?: number, dontNavigate?: boolean): void {
@@ -51,6 +56,7 @@ export class CommunesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.handleNavigation();
     this.registerChangeInCommunes();
+    this.provinceService.query().subscribe((res: HttpResponse<IProvinces[]>) => (this.provinces = res.body || []));
   }
 
   protected handleNavigation(): void {
@@ -114,5 +120,15 @@ export class CommunesComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  savemodal(): void {
+    const refModal = this.modalService.open(SaveCommunesComponent, { size: 'lg', backdrop: 'static' });
+    refModal.componentInstance.provinces = this.provinces;
+  }
+
+  updatemodal(communes: ICommunes): void {
+    const updatemodale = this.modalService.open(UpdateCommunesComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.communes = communes;
   }
 }
