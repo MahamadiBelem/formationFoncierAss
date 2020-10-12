@@ -2,21 +2,21 @@
   "gestionFormationApp": {
     "approchePedagogique": {
       "home": {
-        "title": "ApprochePedagogiques",
-        "createLabel": "Créer un nouveau Approche Pedagogique",
-        "createOrEditLabel": "Créer ou éditer un Approche Pedagogique",
-        "notFound": "Aucun Approche Pedagogique trouvé"
+        "title": "Approche pédagogique",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une approche pédagogique",
+        "notFound": "Aucune Approche pédagogique trouvé"
       },
-      "created": "Un nouveau Approche Pedagogique a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Approche Pedagogique avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Approche Pedagogique avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de l'approche pédagogique avec succès",
+      "updated": "Modification de l'approche pédagogique avec succès",
+      "deleted": "Suppression de l'approche pédagogique avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Approche Pedagogique {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Approche Pedagogique"
+        "title": "Approche pédagogique"
       },
-      "libelleApproche": "Libelle Approche",
+      "libelleApproche": "Approche pédagogique",
       "centreformation": "Centreformation"
     }
   }

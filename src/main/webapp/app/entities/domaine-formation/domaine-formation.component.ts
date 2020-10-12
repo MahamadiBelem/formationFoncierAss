@@ -8,6 +8,7 @@ import { IDomaineFormation } from 'app/shared/model/domaine-formation.model';
 import { DomaineFormationService } from './domaine-formation.service';
 import { DomaineFormationDeleteDialogComponent } from './domaine-formation-delete-dialog.component';
 import { SaveDomaineFormationComponent } from './save-domaine-formation/save-domaine-formation.component';
+import { UpdateDomaineFormationComponent } from './update-domaine-formation/update-domaine-formation.component';
 
 @Component({
   selector: 'jhi-domaine-formation',
@@ -57,8 +58,7 @@ export class DomaineFormationComponent implements OnInit, OnDestroy {
   }
 
   updatemodal(domaineFormation: IDomaineFormation): void {
-    const updatemodale = this.modalService.open(SaveDomaineFormationComponent, { size: 'lg', backdrop: 'static' });
-
+    const updatemodale = this.modalService.open(UpdateDomaineFormationComponent, { size: 'lg', backdrop: 'static' });
     updatemodale.componentInstance.domaineFormation = domaineFormation;
   }
 }

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header save-card-design">
-        <h2 id="jhi-domaine-formation-heading" jhiTranslate="gestionFormationApp.domaineFormation.home.createOrEditLabel">Create or edit a Domaine Formation</h2>
+        <h2 id="jhi-approche-pedagogique-heading" jhiTranslate="gestionFormationApp.approchePedagogique.home.createOrEditLabel">Create or edit a Approche Pedagogique</h2>
     </div>
     <div class="card-body">
         <div class="row justify-content-center">
@@ -17,12 +17,12 @@
                         </div>
         
                         <div class="form-group">
-                            <label class="form-control-label" jhiTranslate="gestionFormationApp.domaineFormation.libelleDomaine" for="field_libelleDomaine">Libelle Domaine</label>
-                            <input type="text" class="form-control" name="libelleDomaine" id="field_libelleDomaine"
-                                   formControlName="libelleDomaine"/>
-                            <div *ngIf="editForm.get('libelleDomaine')!.invalid && (editForm.get('libelleDomaine')!.dirty || editForm.get('libelleDomaine')!.touched)">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.approchePedagogique.libelleApproche" for="field_libelleApproche">Libelle Approche</label>
+                            <input type="text" class="form-control" name="libelleApproche" id="field_libelleApproche"
+                                   formControlName="libelleApproche"/>
+                            <div *ngIf="editForm.get('libelleApproche')!.invalid && (editForm.get('libelleApproche')!.dirty || editForm.get('libelleApproche')!.touched)">
                                 <small class="form-text text-danger"
-                                       *ngIf="editForm.get('libelleDomaine')?.errors?.required" jhiTranslate="entity.validation.required">
+                                       *ngIf="editForm.get('libelleApproche')?.errors?.required" jhiTranslate="entity.validation.required">
                                 This field is required.
                                 </small>
                             </div>
@@ -44,5 +44,3 @@
         
     </div>
 </div>
-
-

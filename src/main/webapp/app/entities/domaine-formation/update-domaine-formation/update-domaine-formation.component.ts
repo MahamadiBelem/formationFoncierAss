@@ -31,7 +31,6 @@ export class UpdateDomaineFormationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    alert('salut' + this.domaineFormation.libelleDomaine);
     this.updateForm(this.domaineFormation);
   }
 

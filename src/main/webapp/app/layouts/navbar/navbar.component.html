@@ -136,12 +136,6 @@
        
                 
                     <li>
-                        <a class="dropdown-item" routerLink="approche-pedagogique" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-
-                            <span jhiTranslate="global.menu.entities.approchePedagogique">Approche Pedagogique</span>
-                        </a>
-                    </li>
-                    <li>
                         <a class="dropdown-item" routerLink="specialites" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
 
                             <span jhiTranslate="global.menu.entities.specialites">Specialites</span>
@@ -199,7 +193,16 @@
                         </span>
                     </span>
                 </a>
+                
+                
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                   
+                    <li>
+                        <a class="dropdown-item" routerLink="approche-pedagogique" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+    
+                            <span jhiTranslate="global.menu.entities.approchePedagogique">Approche Pedagogique</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="dropdown-item" routerLink="domaine-formation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
 

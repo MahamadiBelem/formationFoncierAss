@@ -7,6 +7,8 @@ import { ApprochePedagogiqueDetailComponent } from './approche-pedagogique-detai
 import { ApprochePedagogiqueUpdateComponent } from './approche-pedagogique-update.component';
 import { ApprochePedagogiqueDeleteDialogComponent } from './approche-pedagogique-delete-dialog.component';
 import { approchePedagogiqueRoute } from './approche-pedagogique.route';
+import { SaveApprochePedagogiqueComponent } from './save-approche-pedagogique/save-approche-pedagogique.component';
+import { UpdateApprochePedagogiqueComponent } from './update-approche-pedagogique/update-approche-pedagogique.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(approchePedagogiqueRoute)],
@@ -15,6 +17,8 @@ import { approchePedagogiqueRoute } from './approche-pedagogique.route';
     ApprochePedagogiqueDetailComponent,
     ApprochePedagogiqueUpdateComponent,
     ApprochePedagogiqueDeleteDialogComponent,
+    SaveApprochePedagogiqueComponent,
+    UpdateApprochePedagogiqueComponent,
   ],
   entryComponents: [ApprochePedagogiqueDeleteDialogComponent],
 })
