@@ -1273,6 +1273,13 @@
   resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-6.1.0.tgz#fce7550a095aeac42108f76ac1ebd63caf8304e9"
   integrity sha512-2GzkNJBKdeHkaUqaCAqSILPft0IzzHjMfAlAuGY6/ZLlVQ0glt5MTbIXtIhSbjR+OvlrljoXFLrvzs1LGdmE+A==
 
+"@ng-select/ng-select@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@ng-select/ng-select/-/ng-select-5.0.8.tgz#68299204199d8ad2004976f2afeb54e367677f31"
+  integrity sha512-Q7W0NjmTnO2+yUoMfOqOaZyMTCcIRKZUzCaeSW/ucyWk2OwgMwlBLKc+IpzfTWdnInjVtkR0LzC5w1tdrTdLVg==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@10.0.0":
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-10.0.0.tgz#52a86105b04aaeafe7c35461e694b3fa9a838e50"

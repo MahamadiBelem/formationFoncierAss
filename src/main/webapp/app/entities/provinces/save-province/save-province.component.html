@@ -34,15 +34,22 @@
                     <div class="col-6">
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="gestionFormationApp.provinces.region" for="field_region">Region</label>
-                        <select class="form-control" id="field_region" name="region" formControlName="region">
+                        <!-- <select class="form-control" id="field_region" name="region" formControlName="region">
                             <option [ngValue]="null"></option>
                             <option [ngValue]="regionOption.id === editForm.get('region')!.value?.id ? editForm.get('region')!.value : regionOption" *ngFor="let regionOption of regions; trackBy: trackById">{{ regionOption.libelleRegion }}</option>
                         </select>
+                         -->
+                        <ng-select  id="field_region" name="region" formControlName="region">
+                            <ng-option [value]="regionOption.id === editForm.get('region')!.value?.id ? editForm.get('region')!.value : regionOption" *ngFor="let regionOption of regions; trackBy: trackById">{{ regionOption.libelleRegion }}</ng-option>
+                         </ng-select>
+                    
                     </div>
                     </div>
                 </div>
             </div>
-
+                <div>
+                   
+                </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancle()" >
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

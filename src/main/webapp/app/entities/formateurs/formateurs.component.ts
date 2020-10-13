@@ -10,6 +10,8 @@ import { IFormateurs } from 'app/shared/model/formateurs.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { FormateursService } from './formateurs.service';
 import { FormateursDeleteDialogComponent } from './formateurs-delete-dialog.component';
+import { SaveFormateurComponent } from './save-formateur/save-formateur.component';
+import { UpdateFormateurComponent } from './update-formateur/update-formateur.component';
 
 @Component({
   selector: 'jhi-formateurs',
@@ -114,5 +116,13 @@ export class FormateursComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveFormateurComponent, { size: 'lg', backdrop: 'static' });
+  }
+  updatemodal(formateurs: IFormateurs): void {
+    const updatemodale = this.modalService.open(UpdateFormateurComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.formateurs = formateurs;
   }
 }

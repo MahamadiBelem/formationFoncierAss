@@ -19,6 +19,15 @@ export class SaveProvinceComponent implements OnInit {
   isSaving = false;
   regions: IRegion[] = [];
 
+  selectedCar: number | undefined;
+
+  cars = [
+    { id: 1, name: 'Volvo' },
+    { id: 2, name: 'Saab' },
+    { id: 3, name: 'Opel' },
+    { id: 4, name: 'Audi' },
+  ];
+
   editForm = this.fb.group({
     id: [],
     libelleProvince: [null, [Validators.required]],
