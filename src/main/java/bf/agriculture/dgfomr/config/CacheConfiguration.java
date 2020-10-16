@@ -115,6 +115,7 @@ public class CacheConfiguration {
             createCache(cm, bf.agriculture.dgfomr.domain.Kits.class.getName() + ".installationKits");
             createCache(cm, bf.agriculture.dgfomr.domain.FormateurCentre.class.getName());
             createCache(cm, bf.agriculture.dgfomr.domain.FormationCentreFormation.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.Regime.class.getName() + ".formateurCentres");
             // jhipster-needle-ehcache-add-entry
         };
     }

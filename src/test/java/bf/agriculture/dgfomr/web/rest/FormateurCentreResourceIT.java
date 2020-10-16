@@ -24,6 +24,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import bf.agriculture.dgfomr.domain.enumeration.RegimeFormateur;
 /**
  * Integration tests for the {@link FormateurCentreResource} REST controller.
  */
@@ -35,11 +36,8 @@ public class FormateurCentreResourceIT {
     private static final LocalDate DEFAULT_DATE_ETABLISSEMENT = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_ETABLISSEMENT = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_SPECIALITE = "AAAAAAAAAA";
-    private static final String UPDATED_SPECIALITE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_REGIME_FORMATEUR = "AAAAAAAAAA";
-    private static final String UPDATED_REGIME_FORMATEUR = "BBBBBBBBBB";
+    private static final RegimeFormateur DEFAULT_REGIME_FORMATEUR = RegimeFormateur.Vacataire;
+    private static final RegimeFormateur UPDATED_REGIME_FORMATEUR = RegimeFormateur.Permanent;
 
     @Autowired
     private FormateurCentreRepository formateurCentreRepository;
@@ -64,7 +62,6 @@ public class FormateurCentreResourceIT {
     public static FormateurCentre createEntity(EntityManager em) {
         FormateurCentre formateurCentre = new FormateurCentre()
             .dateEtablissement(DEFAULT_DATE_ETABLISSEMENT)
-            .specialite(DEFAULT_SPECIALITE)
             .regimeFormateur(DEFAULT_REGIME_FORMATEUR);
         return formateurCentre;
     }
@@ -77,7 +74,6 @@ public class FormateurCentreResourceIT {
     public static FormateurCentre createUpdatedEntity(EntityManager em) {
         FormateurCentre formateurCentre = new FormateurCentre()
             .dateEtablissement(UPDATED_DATE_ETABLISSEMENT)
-            .specialite(UPDATED_SPECIALITE)
             .regimeFormateur(UPDATED_REGIME_FORMATEUR);
         return formateurCentre;
     }
@@ -102,7 +98,6 @@ public class FormateurCentreResourceIT {
         assertThat(formateurCentreList).hasSize(databaseSizeBeforeCreate + 1);
         FormateurCentre testFormateurCentre = formateurCentreList.get(formateurCentreList.size() - 1);
         assertThat(testFormateurCentre.getDateEtablissement()).isEqualTo(DEFAULT_DATE_ETABLISSEMENT);
-        assertThat(testFormateurCentre.getSpecialite()).isEqualTo(DEFAULT_SPECIALITE);
         assertThat(testFormateurCentre.getRegimeFormateur()).isEqualTo(DEFAULT_REGIME_FORMATEUR);
     }
 
@@ -125,25 +120,6 @@ public class FormateurCentreResourceIT {
         assertThat(formateurCentreList).hasSize(databaseSizeBeforeCreate);
     }
 
-
-    @Test
-    @Transactional
-    public void checkSpecialiteIsRequired() throws Exception {
-        int databaseSizeBeforeTest = formateurCentreRepository.findAll().size();
-        // set the field null
-        formateurCentre.setSpecialite(null);
-
-        // Create the FormateurCentre, which fails.
-
-
-        restFormateurCentreMockMvc.perform(post("/api/formateur-centres")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(formateurCentre)))
-            .andExpect(status().isBadRequest());
-
-        List<FormateurCentre> formateurCentreList = formateurCentreRepository.findAll();
-        assertThat(formateurCentreList).hasSize(databaseSizeBeforeTest);
-    }
 
     @Test
     @Transactional
@@ -176,8 +152,7 @@ public class FormateurCentreResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(formateurCentre.getId().intValue())))
             .andExpect(jsonPath("$.[*].dateEtablissement").value(hasItem(DEFAULT_DATE_ETABLISSEMENT.toString())))
-            .andExpect(jsonPath("$.[*].specialite").value(hasItem(DEFAULT_SPECIALITE)))
-            .andExpect(jsonPath("$.[*].regimeFormateur").value(hasItem(DEFAULT_REGIME_FORMATEUR)));
+            .andExpect(jsonPath("$.[*].regimeFormateur").value(hasItem(DEFAULT_REGIME_FORMATEUR.toString())));
     }
     
     @Test
@@ -192,8 +167,7 @@ public class FormateurCentreResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(formateurCentre.getId().intValue()))
             .andExpect(jsonPath("$.dateEtablissement").value(DEFAULT_DATE_ETABLISSEMENT.toString()))
-            .andExpect(jsonPath("$.specialite").value(DEFAULT_SPECIALITE))
-            .andExpect(jsonPath("$.regimeFormateur").value(DEFAULT_REGIME_FORMATEUR));
+            .andExpect(jsonPath("$.regimeFormateur").value(DEFAULT_REGIME_FORMATEUR.toString()));
     }
     @Test
     @Transactional
@@ -217,7 +191,6 @@ public class FormateurCentreResourceIT {
         em.detach(updatedFormateurCentre);
         updatedFormateurCentre
             .dateEtablissement(UPDATED_DATE_ETABLISSEMENT)
-            .specialite(UPDATED_SPECIALITE)
             .regimeFormateur(UPDATED_REGIME_FORMATEUR);
 
         restFormateurCentreMockMvc.perform(put("/api/formateur-centres")
@@ -230,7 +203,6 @@ public class FormateurCentreResourceIT {
         assertThat(formateurCentreList).hasSize(databaseSizeBeforeUpdate);
         FormateurCentre testFormateurCentre = formateurCentreList.get(formateurCentreList.size() - 1);
         assertThat(testFormateurCentre.getDateEtablissement()).isEqualTo(UPDATED_DATE_ETABLISSEMENT);
-        assertThat(testFormateurCentre.getSpecialite()).isEqualTo(UPDATED_SPECIALITE);
         assertThat(testFormateurCentre.getRegimeFormateur()).isEqualTo(UPDATED_REGIME_FORMATEUR);
     }
 

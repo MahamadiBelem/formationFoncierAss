@@ -15,7 +15,8 @@ type EntityArrayResponseType = HttpResponse<IApprenantes[]>;
 @Injectable({ providedIn: 'root' })
 export class ApprenantesService {
   public resourceUrl = SERVER_API_URL + 'api/apprenantes';
-
+  public matriculeUrl = SERVER_API_URL + 'api/generate-matricule';
+  private matricule: any;
   constructor(protected http: HttpClient) {}
 
   create(apprenantes: IApprenantes): Observable<EntityResponseType> {
@@ -36,6 +37,9 @@ export class ApprenantesService {
     return this.http
       .get<IApprenantes>(`${this.resourceUrl}/${id}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+  getmatricule(): Observable<EntityResponseType> {
+    return this.http.get<any>(`${this.matriculeUrl}`, { observe: 'response', responseType: 'json' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

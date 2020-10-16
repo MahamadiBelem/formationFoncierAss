@@ -7,6 +7,8 @@ import { NiveauRecrutementDetailComponent } from './niveau-recrutement-detail.co
 import { NiveauRecrutementUpdateComponent } from './niveau-recrutement-update.component';
 import { NiveauRecrutementDeleteDialogComponent } from './niveau-recrutement-delete-dialog.component';
 import { niveauRecrutementRoute } from './niveau-recrutement.route';
+import { SaveNiveauRecrutementComponent } from './save-niveau-recrutement/save-niveau-recrutement.component';
+import { UpdateNiveauRecrutementComponent } from './update-niveau-recrutement/update-niveau-recrutement.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(niveauRecrutementRoute)],
@@ -15,6 +17,8 @@ import { niveauRecrutementRoute } from './niveau-recrutement.route';
     NiveauRecrutementDetailComponent,
     NiveauRecrutementUpdateComponent,
     NiveauRecrutementDeleteDialogComponent,
+    SaveNiveauRecrutementComponent,
+    UpdateNiveauRecrutementComponent,
   ],
   entryComponents: [NiveauRecrutementDeleteDialogComponent],
 })

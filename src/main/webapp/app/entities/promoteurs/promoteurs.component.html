@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.promoteurs.home.title">Promoteurs</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-promoteurs" [routerLink]="['/promoteurs/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-promoteurs" (click)="savemodal()">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.promoteurs.home.createLabel">
             Create a new Promoteurs
@@ -20,9 +20,8 @@
 
     <div class="table-responsive" id="entities" *ngIf="promoteurs && promoteurs.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
+            <thead class="f-table-header">
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="libellePromoteur"><span jhiTranslate="gestionFormationApp.promoteurs.libellePromoteur">Libelle Promoteur</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="contactPromoteur"><span jhiTranslate="gestionFormationApp.promoteurs.contactPromoteur">Contact Promoteur</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
@@ -30,27 +29,26 @@
             </thead>
             <tbody>
                 <tr *ngFor="let promoteurs of promoteurs ;trackBy: trackId">
-                    <td><a [routerLink]="['/promoteurs', promoteurs.id, 'view']">{{ promoteurs.id }}</a></td>
                     <td>{{ promoteurs.libellePromoteur }}</td>
                     <td>{{ promoteurs.contactPromoteur }}</td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
+                            <!-- <button type="submit"
                                     [routerLink]="['/promoteurs', promoteurs.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                            </button>
+                            </button> -->
 
                             <button type="submit"
-                                    [routerLink]="['/promoteurs', promoteurs.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                                    (click)="updatemodal(promoteurs)"
+                                    class="btn btn-outline-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
                             <button type="submit" (click)="delete(promoteurs)"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-outline-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>

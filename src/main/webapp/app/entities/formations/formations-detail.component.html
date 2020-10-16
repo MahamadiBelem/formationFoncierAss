@@ -1,48 +1,67 @@
-<div class="row justify-content-center">
-    <div class="col-8">
+<div class="row justify-content-center" >
+    <div class="col-12">
         <div *ngIf="formations">
-            <h2><span jhiTranslate="gestionFormationApp.formations.detail.title">Formations</span> {{ formations.id }}</h2>
 
-            <hr>
+            <div class="card">
+                <div class="card-header">
+                    <h2><strong><span jhiTranslate="gestionFormationApp.formations.detail.title">Formations</span> {{ formations.lebelleFormation }}</strong></h2>
+                    <hr>
+                </div>
+                <div class="card-body">
+                    <jhi-alert-error></jhi-alert-error>
 
-            <jhi-alert-error></jhi-alert-error>
-
-            <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="gestionFormationApp.formations.theme">Theme</span></dt>
-                <dd>
-                    <span>{{ formations.theme }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.formations.lebelleFormation">Lebelle Formation</span></dt>
-                <dd>
-                    <span>{{ formations.lebelleFormation }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.formations.coutFormation">Cout Formation</span></dt>
-                <dd>
-                    <span>{{ formations.coutFormation }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.formations.sourceFinancement">Source Financement</span></dt>
-                <dd>
-                    <span>{{ formations.sourceFinancement }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.formations.formationTypeFormation">Formation Type Formation</span></dt>
-                <dd>
-                    <div *ngIf="formations.formationTypeFormation">
-                        <a [routerLink]="['/type-formation', formations.formationTypeFormation?.id, 'view']">{{ formations.formationTypeFormation?.id }}</a>
-                    </div>
-                </dd>
-            </dl>
-
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-            </button>
-
-            <button type="button"
-                    [routerLink]="['/formations', formations.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+                    <dl class="row-md jh-entity-details">
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.formations.theme">Theme</span></dt>
+                                <dd>
+                                    <span>{{ formations.theme }}</span>
+                                </dd>
+                            </div>
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.formations.lebelleFormation">Lebelle Formation</span></dt>
+                        <dd>
+                            <span>{{ formations.lebelleFormation }}</span>
+                        </dd>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.formations.coutFormation">Cout Formation</span></dt>
+                                <dd>
+                                    <span>{{ formations.coutFormation }}</span>
+                                </dd>
+                            </div>
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.formations.sourceFinancement">Source Financement</span></dt>
+                        <dd>
+                            <span>{{ formations.sourceFinancement }}</span>
+                        </dd>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.formations.formationTypeFormation">Formation Type Formation</span></dt>
+                                <dd>
+                                    <div *ngIf="formations.formationTypeFormation">
+                                        {{ formations.formationTypeFormation?.libelleTypeFormation }}
+                                    </div>
+                                </dd>
+                            </div>
+                        </div>
+                    </dl>
+        
+                    <button type="submit"
+                            (click)="cancel()"
+                            class="btn btn-outline-warning">
+                        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+<br><br>
+

@@ -3,24 +3,24 @@
     "inscription": {
       "home": {
         "title": "Inscriptions",
-        "createLabel": "Créer un nouveau Inscription",
-        "createOrEditLabel": "Créer ou éditer un Inscription",
-        "notFound": "Aucun Inscription trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une inscription ",
+        "notFound": "Aucune inscription trouvée"
       },
-      "created": "Un nouveau Inscription a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Inscription avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Inscription avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle inscription a été créé avec succès",
+      "updated": "La modification d'une inscription a été effectuer  avec succès",
+      "deleted": "La suppression d'une inscription a été effectuer  avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Inscription {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Inscription"
       },
-      "anneesAcademique": "Annees Academique",
-      "dateInscription": "Date Inscription",
-      "inscription": "Inscription",
-      "inscriptionApprenant": "Inscription Apprenant",
-      "inscriptionCentreFormation": "Inscription Centre Formation"
+      "anneesAcademique": "Annees ",
+      "dateInscription": "Date d'inscription",
+      "inscription": "Formation",
+      "inscriptionApprenant": "Apprenant",
+      "inscriptionCentreFormation": "Centre de formation"
     }
   }
 }

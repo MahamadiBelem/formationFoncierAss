@@ -25,6 +25,7 @@ export class InscriptionUpdateComponent implements OnInit {
   formations: IFormations[] = [];
   apprenantes: IApprenantes[] = [];
   centreformations: ICentreFormation[] = [];
+  dateInscriptionDp: any;
 
   editForm = this.fb.group({
     id: [],

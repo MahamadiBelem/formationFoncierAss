@@ -10,6 +10,7 @@ import { IApprenantes } from 'app/shared/model/apprenantes.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { ApprenantesService } from './apprenantes.service';
 import { ApprenantesDeleteDialogComponent } from './apprenantes-delete-dialog.component';
+import { MatriculesComponent } from './matricules/matricules.component';
 
 @Component({
   selector: 'jhi-apprenantes',
@@ -114,5 +115,9 @@ export class ApprenantesComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  matriculemodale(): void {
+    const modale = this.modalService.open(MatriculesComponent, { size: 'lg', backdrop: 'static' });
   }
 }

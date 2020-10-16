@@ -10,6 +10,8 @@ import { IPromoteurs } from 'app/shared/model/promoteurs.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { PromoteursService } from './promoteurs.service';
 import { PromoteursDeleteDialogComponent } from './promoteurs-delete-dialog.component';
+import { SavePromoteurComponent } from './save-promoteur/save-promoteur.component';
+import { UpdatePromoteurComponent } from './update-promoteur/update-promoteur.component';
 
 @Component({
   selector: 'jhi-promoteurs',
@@ -114,5 +116,14 @@ export class PromoteursComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SavePromoteurComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodal(promoteur: IPromoteurs): void {
+    const updatemodale = this.modalService.open(UpdatePromoteurComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.promoteurs = promoteur;
   }
 }

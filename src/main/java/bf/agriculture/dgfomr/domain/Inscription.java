@@ -7,6 +7,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * A Inscription.
@@ -27,7 +28,7 @@ public class Inscription implements Serializable {
     private String anneesAcademique;
 
     @Column(name = "date_inscription")
-    private String dateInscription;
+    private LocalDate dateInscription;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "inscriptions", allowSetters = true)
@@ -63,16 +64,16 @@ public class Inscription implements Serializable {
         this.anneesAcademique = anneesAcademique;
     }
 
-    public String getDateInscription() {
+    public LocalDate getDateInscription() {
         return dateInscription;
     }
 
-    public Inscription dateInscription(String dateInscription) {
+    public Inscription dateInscription(LocalDate dateInscription) {
         this.dateInscription = dateInscription;
         return this;
     }
 
-    public void setDateInscription(String dateInscription) {
+    public void setDateInscription(LocalDate dateInscription) {
         this.dateInscription = dateInscription;
     }
 

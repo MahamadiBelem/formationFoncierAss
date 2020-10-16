@@ -25,6 +25,16 @@ a:hover {
   color: #533f03;
 }
 
+.save-card-design {
+  background-color: #3e8acc;
+  color: #fff;
+}
+
+.f-table-header {
+  background-color: #0070c0;
+  color: white;
+}
+
 /* override hover color for dropdown-item forced by bootstrap to all a:not([href]):not([tabindex]) elements in _reboot.scss */
 a:not([href]):not([tabindex]):hover.dropdown-item {
   color: $dropdown-link-hover-color;

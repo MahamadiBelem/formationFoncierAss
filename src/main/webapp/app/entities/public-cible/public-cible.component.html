@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.publicCible.home.title">Public Cibles</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-public-cible" [routerLink]="['/public-cible/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-public-cible" (click)="savemodal()">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.publicCible.home.createLabel">
             Create a new Public Cible
@@ -20,35 +20,35 @@
 
     <div class="table-responsive" id="entities" *ngIf="publicCibles && publicCibles.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
+            <thead class="f-table-header">
                 <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+
                     <th scope="col" ><span jhiTranslate="gestionFormationApp.publicCible.libellePublic">Libelle Public</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let publicCible of publicCibles ;trackBy: trackId">
-                    <td><a [routerLink]="['/public-cible', publicCible.id, 'view']">{{ publicCible.id }}</a></td>
+    
                     <td>{{ publicCible.libellePublic }}</td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
+                          <!--   <button type="submit"
                                     [routerLink]="['/public-cible', publicCible.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                            </button>
+                            </button> -->
 
                             <button type="submit"
-                                    [routerLink]="['/public-cible', publicCible.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                                    (click)="updatemodal(publicCible)"
+                                    class="btn btn-outline-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
                             <button type="submit" (click)="delete(publicCible)"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-outline-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>

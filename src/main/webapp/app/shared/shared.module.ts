@@ -6,13 +6,15 @@ import { AlertErrorComponent } from './alert/alert-error.component';
 import { LoginModalComponent } from './login/login.component';
 import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 @NgModule({
-  imports: [GestionFormationSharedLibsModule, NgSelectModule],
+  imports: [GestionFormationSharedLibsModule, NgSelectModule, NgMultiSelectDropDownModule],
   declarations: [FindLanguageFromKeyPipe, AlertComponent, AlertErrorComponent, LoginModalComponent, HasAnyAuthorityDirective],
   entryComponents: [LoginModalComponent],
   exports: [
     GestionFormationSharedLibsModule,
     NgSelectModule,
+    NgMultiSelectDropDownModule,
     FindLanguageFromKeyPipe,
     AlertComponent,
     AlertErrorComponent,

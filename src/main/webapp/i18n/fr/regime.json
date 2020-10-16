@@ -2,22 +2,23 @@
   "gestionFormationApp": {
     "regime": {
       "home": {
-        "title": "Régimes",
-        "createLabel": "Nouveau",
-        "createOrEditLabel": "Créer ou modifier un régime",
-        "notFound": "Aucun régime trouvé"
+        "title": "Regimes",
+        "createLabel": "Créer un nouveau Regime",
+        "createOrEditLabel": "Créer ou éditer un Regime",
+        "notFound": "Aucun Regime trouvé"
       },
-      "created": "Un nouveau Regime a été créé avec succès",
-      "updated": "Modification du régime avec éffectuée avec succès",
-      "deleted": "Suppression du régime avec éffectuée avec succès",
+      "created": "Un nouveau Regime a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Regime avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Regime avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir effectuer cette action ?"
+        "question": "Etes-vous certain de vouloir supprimer le Regime {{ id }} ?"
       },
       "detail": {
         "title": "Regime"
       },
-      "libelleRegime": "Régime",
-      "centreFormation": "Centre Formation"
+      "libelleRegime": "Libelle Regime",
+      "centreFormation": "Centre Formation",
+      "formateurCentre": "Formateur Centre"
     }
   }
 }

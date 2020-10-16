@@ -15,6 +15,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,8 +35,8 @@ public class InscriptionResourceIT {
     private static final String DEFAULT_ANNEES_ACADEMIQUE = "AAAAAAAAAA";
     private static final String UPDATED_ANNEES_ACADEMIQUE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_DATE_INSCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DATE_INSCRIPTION = "BBBBBBBBBB";
+    private static final LocalDate DEFAULT_DATE_INSCRIPTION = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE_INSCRIPTION = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private InscriptionRepository inscriptionRepository;
@@ -130,7 +132,7 @@ public class InscriptionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(inscription.getId().intValue())))
             .andExpect(jsonPath("$.[*].anneesAcademique").value(hasItem(DEFAULT_ANNEES_ACADEMIQUE)))
-            .andExpect(jsonPath("$.[*].dateInscription").value(hasItem(DEFAULT_DATE_INSCRIPTION)));
+            .andExpect(jsonPath("$.[*].dateInscription").value(hasItem(DEFAULT_DATE_INSCRIPTION.toString())));
     }
     
     @Test
@@ -145,7 +147,7 @@ public class InscriptionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(inscription.getId().intValue()))
             .andExpect(jsonPath("$.anneesAcademique").value(DEFAULT_ANNEES_ACADEMIQUE))
-            .andExpect(jsonPath("$.dateInscription").value(DEFAULT_DATE_INSCRIPTION));
+            .andExpect(jsonPath("$.dateInscription").value(DEFAULT_DATE_INSCRIPTION.toString()));
     }
     @Test
     @Transactional

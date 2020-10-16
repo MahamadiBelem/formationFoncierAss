@@ -5,9 +5,12 @@ import bf.agriculture.dgfomr.config.ApplicationProperties;
 import io.github.jhipster.config.DefaultProfileUtil;
 import io.github.jhipster.config.JHipsterConstants;
 
+import io.github.jhipster.security.RandomUtil;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
@@ -22,7 +25,7 @@ import java.util.Collection;
 
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
-public class GestionFormationApp {
+public class GestionFormationApp implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(GestionFormationApp.class);
 
@@ -94,5 +97,10 @@ public class GestionFormationApp {
             serverPort,
             contextPath,
             env.getActiveProfiles());
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
     }
 }

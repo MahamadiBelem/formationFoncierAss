@@ -11,6 +11,7 @@ import { ApprenantesService } from './apprenantes.service';
 import { ApprenantesComponent } from './apprenantes.component';
 import { ApprenantesDetailComponent } from './apprenantes-detail.component';
 import { ApprenantesUpdateComponent } from './apprenantes-update.component';
+import { SaveApprenantesComponent } from './save-apprenantes/save-apprenantes.component';
 
 @Injectable({ providedIn: 'root' })
 export class ApprenantesResolve implements Resolve<IApprenantes> {
@@ -59,7 +60,7 @@ export const apprenantesRoute: Routes = [
   },
   {
     path: 'new',
-    component: ApprenantesUpdateComponent,
+    component: SaveApprenantesComponent,
     resolve: {
       apprenantes: ApprenantesResolve,
     },

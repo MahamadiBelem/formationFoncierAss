@@ -1,171 +1,276 @@
-<div class="row justify-content-center">
-    <div class="col-8">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-centre-formation-heading" jhiTranslate="gestionFormationApp.centreFormation.home.createOrEditLabel">Create or edit a Centre Formation</h2>
-
-            <div>
-                <jhi-alert-error></jhi-alert-error>
-
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.denomination" for="field_denomination">Denomination</label>
-                    <input type="text" class="form-control" name="denomination" id="field_denomination"
-                           formControlName="denomination"/>
-                    <div *ngIf="editForm.get('denomination')!.invalid && (editForm.get('denomination')!.dirty || editForm.get('denomination')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('denomination')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ;border-radius: 25px;">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                <h2 id="jhi-centre-formation-heading" jhiTranslate="gestionFormationApp.centreFormation.home.createOrEditLabel">Create or edit a Centre Formation</h2>
+    
+                <div>
+                    <jhi-alert-error></jhi-alert-error>
+    
+                    <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                        <label for="id" jhiTranslate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                     </div>
-                </div>
+    
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.denomination" for="field_denomination">Denomination</label>
+                                <input type="text" class="form-control" name="denomination" id="field_denomination"
+                                       formControlName="denomination"/>
+                                <div *ngIf="editForm.get('denomination')!.invalid && (editForm.get('denomination')!.dirty || editForm.get('denomination')!.touched)">
+                                    <small class="form-text text-danger"
+                                           *ngIf="editForm.get('denomination')?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.localisation" for="field_localisation">Localisation</label>
-                    <input type="text" class="form-control" name="localisation" id="field_localisation"
-                           formControlName="localisation"/>
-                    <div *ngIf="editForm.get('localisation')!.invalid && (editForm.get('localisation')!.dirty || editForm.get('localisation')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('localisation')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.localisation" for="field_localisation">Localisation</label>
+                                <input type="text" class="form-control" name="localisation" id="field_localisation"
+                                       formControlName="localisation"/>
+                                <div *ngIf="editForm.get('localisation')!.invalid && (editForm.get('localisation')!.dirty || editForm.get('localisation')!.touched)">
+                                    <small class="form-text text-danger"
+                                           *ngIf="editForm.get('localisation')?.errors?.required" jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                   <div class="row">
+                       <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.adresse" for="field_adresse">Adresse</label>
+                            <input type="text" class="form-control" name="adresse" id="field_adresse"
+                                   formControlName="adresse"/>
+                            <div *ngIf="editForm.get('adresse')!.invalid && (editForm.get('adresse')!.dirty || editForm.get('adresse')!.touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('adresse')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                                </small>
+                            </div>
+                        </div>
+        
+                       </div>
+                       <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.statuts" for="field_statuts">Statuts</label>
+                            <input type="text" class="form-control" name="statuts" id="field_statuts"
+                                   formControlName="statuts"/>
+                        </div>
+                       </div>
+                   </div>
+    
+                   <div class="row">
+                       <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.capaciteacceuil" for="field_capaciteacceuil">Capaciteacceuil</label>
+                            <input type="text" class="form-control" name="capaciteacceuil" id="field_capaciteacceuil"
+                                   formControlName="capaciteacceuil"/>
+                        </div>
+                       </div>
+                       <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.refOuverture" for="field_refOuverture">Ref Ouverture</label>
+                            <input type="text" class="form-control" name="refOuverture" id="field_refOuverture"
+                                   formControlName="refOuverture"/>
+                        </div>
+                       </div>
+                   </div>
+    
+                   <div class="row">
+                       <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.dateOuverture" for="field_dateOuverture">Date Ouverture</label>
+                            <div class="input-group">
+                                <input id="field_dateOuverture" type="text" class="form-control" name="dateOuverture" ngbDatepicker #dateOuvertureDp="ngbDatepicker" formControlName="dateOuverture"/>
+                                <span class="input-group-append">
+                                    <button type="button" class="btn btn-secondary" (click)="dateOuvertureDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                                </span>
+                            </div>
+                        </div>
+                       </div>
+                       <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.communes" for="field_communes">Communes</label>
+                            <select class="form-control" id="field_communes" name="communes" formControlName="communes">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="communesOption.id === editForm.get('communes')!.value?.id ? editForm.get('communes')!.value : communesOption" *ngFor="let communesOption of communes; trackBy: trackById">{{ communesOption.libelleCommune }}</option>
+                            </select>
+                        </div>
+                       </div>
+                   </div>
+    
+                  <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.promoteurs" for="field_promoteurs">Promoteurs</label>
+                            <select class="form-control" id="field_promoteurs" name="promoteurs" formControlName="promoteurs">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="promoteursOption.id === editForm.get('promoteurs')!.value?.id ? editForm.get('promoteurs')!.value : promoteursOption" *ngFor="let promoteursOption of promoteurs; trackBy: trackById">{{ promoteursOption.libellePromoteur }} {{promoteursOption.contactPromoteur}}</option>
+                            </select>
+                        </div>
+                      </div>
+                      <div class="col-6">
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.gestionnaires" for="field_gestionnaires">Gestionnaires</label>
+                            <select class="form-control" id="field_gestionnaires" name="gestionnaires" formControlName="gestionnaires">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="gestionnaireOption.id === editForm.get('gestionnaires')!.value?.id ? editForm.get('gestionnaires')!.value : gestionnaireOption" *ngFor="let gestionnaireOption of gestionnaires; trackBy: trackById">{{ gestionnaireOption.nomComplet }} {{gestionnaireOption.contactsGestionnaires}}</option>
+                            </select>
+                        </div>
+                      </div>
+                  </div>
+    
+                 
+                  <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label jhiTranslate="gestionFormationApp.centreFormation.approchepedagogique" for="field_approchepedagogiques">Approchepedagogique</label>
+                            <!-- 
+                            <select class="form-control" id="field_approchepedagogiques" multiple name="approchepedagogiques" formControlName="approchepedagogiques">
+                                <option [ngValue]="getSelected(editForm.get('approchepedagogiques')!.value, approchePedagogiqueOption)" *ngFor="let approchePedagogiqueOption of approchepedagogiques; trackBy: trackById">{{ approchePedagogiqueOption.libelleApproche }}</option>
+                            </select> -->
+                           
+                       <ng-select
+                        name="approchepedagogiques" formControlName="approchepedagogiques"
+                        [multiple]="true"
+                        [closeOnSelect]="false"
+                        [searchable]="true"
+                        placeholder="Selectionner les approches pédagogiques"  >
+                        <ng-option [value]="getSelected(editForm.get('approchepedagogiques')!.value, approchePedagogiqueOption)" *ngFor="let approchePedagogiqueOption of approchepedagogiques; trackBy: trackById">{{ approchePedagogiqueOption.libelleApproche }}</ng-option>
+                        </ng-select>
+        </div>
+         </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label jhiTranslate="gestionFormationApp.centreFormation.publiccible" for="field_publiccibles">Publiccible</label>
+                            <!-- <select class="form-control" id="field_publiccibles" multiple name="publiccibles" formControlName="publiccibles">
+                                <option [ngValue]="getSelected(editForm.get('publiccibles')!.value, publicCibleOption)" *ngFor="let publicCibleOption of publiccibles; trackBy: trackById">{{ publicCibleOption.libellePublic }}</option>
+                            </select> -->
+
+                            <ng-select name="publiccibles" formControlName="publiccibles"
+                            [multiple]="true"  [closeOnSelect]="false" [searchable]="true"
+                            placeholder="Selectionner les publiques cibles ">
+                                <ng-option [value]="getSelected(editForm.get('publiccibles')!.value, publicCibleOption)" *ngFor="let publicCibleOption of publiccibles; trackBy: trackById">{{ publicCibleOption.libellePublic }}</ng-option>
+                            </ng-select>
+                        </div>
+                      </div>
+                  </div>
+    
+                  <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label jhiTranslate="gestionFormationApp.centreFormation.specialites" for="field_specialites">Specialites</label>
+                            <!-- <select class="form-control" id="field_specialites" multiple name="specialites" formControlName="specialites">
+                                <option [ngValue]="getSelected(editForm.get('specialites')!.value, specialitesOption)" *ngFor="let specialitesOption of specialites; trackBy: trackById">{{ specialitesOption.libelleSpecialite }}</option>
+                            </select> -->
+                            <ng-select name="specialites" formControlName="specialites"
+                            [multiple]="true"  [closeOnSelect]="false" [searchable]="true"
+                            placeholder="Selectionner les spécialité ">
+                                <ng-option [value]="getSelected(editForm.get('specialites')!.value, specialitesOption)" *ngFor="let specialitesOption of specialites; trackBy: trackById">{{ specialitesOption.libelleSpecialite }}</ng-option>
+                            </ng-select>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label jhiTranslate="gestionFormationApp.centreFormation.domaineformation" for="field_domaineformations">Domaineformation</label>
+                           <!--  <select class="form-control" id="field_domaineformations" multiple name="domaineformations" formControlName="domaineformations">
+                                <option [ngValue]="getSelected(editForm.get('domaineformations')!.value, domaineFormationOption)" *ngFor="let domaineFormationOption of domaineformations; trackBy: trackById">{{ domaineFormationOption.libelleDomaine }}</option>
+                            </select> -->
+
+                            <ng-select name="domaineformations" formControlName="domaineformations"
+                            [multiple]="true"  [closeOnSelect]="false" [searchable]="true"
+                            placeholder="Selectionner les dommaines de formations ">
+                            <ng-option [value]="getSelected(editForm.get('domaineformations')!.value, domaineFormationOption)" *ngFor="let domaineFormationOption of domaineformations; trackBy: trackById">{{ domaineFormationOption.libelleDomaine }}</ng-option>
+                            </ng-select>
+
+                        </div>
+                        
+                      </div>
+                  </div>
+    
+                   
+                  <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label jhiTranslate="gestionFormationApp.centreFormation.contributions" for="field_contributions">Contributions</label>
+                           <!--  <select class="form-control" id="field_contributions" multiple name="contributions" formControlName="contributions">
+                                <option [ngValue]="getSelected(editForm.get('contributions')!.value, contributionsOption)" *ngFor="let contributionsOption of contributions; trackBy: trackById">{{ contributionsOption.libelleContribution }}</option>
+                            </select> -->
+
+                            <ng-select name="contributions" formControlName="contributions"
+                            [multiple]="true"  [closeOnSelect]="false" [searchable]="true"
+                            placeholder="Selectionner les contributions  ">
+                            <ng-option [value]="getSelected(editForm.get('contributions')!.value, contributionsOption)" *ngFor="let contributionsOption of contributions; trackBy: trackById">{{ contributionsOption.libelleContribution }}</ng-option>
+                            </ng-select>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label jhiTranslate="gestionFormationApp.centreFormation.niveaurecrutement" for="field_niveaurecrutements">Niveaurecrutement</label>
+                           <!--  <select class="form-control" id="field_niveaurecrutements" multiple name="niveaurecrutements" formControlName="niveaurecrutements">
+                                <option [ngValue]="getSelected(editForm.get('niveaurecrutements')!.value, niveauRecrutementOption)" *ngFor="let niveauRecrutementOption of niveaurecrutements; trackBy: trackById">{{ niveauRecrutementOption.libelleNiveau }}</option>
+                            </select> -->
+
+                            <ng-select name="niveaurecrutements" formControlName="niveaurecrutements"
+                            [multiple]="true"  [closeOnSelect]="false" [searchable]="true"
+                            placeholder="Selectionner les niveau de récrutements  ">
+                            <ng-option [value]="getSelected(editForm.get('niveaurecrutements')!.value, niveauRecrutementOption)" *ngFor="let niveauRecrutementOption of niveaurecrutements; trackBy: trackById">{{ niveauRecrutementOption.libelleNiveau }}</ng-option>
+                            </ng-select>
+
+                        </div>
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                            <label jhiTranslate="gestionFormationApp.centreFormation.conditionaccess" for="field_conditionaccesses">Conditionaccess</label>
+                           <!--  <select class="form-control" id="field_conditionaccesses" multiple name="conditionaccesses" formControlName="conditionaccesses">
+                                <option [ngValue]="getSelected(editForm.get('conditionaccesses')!.value, conditionAccessOption)" *ngFor="let conditionAccessOption of conditionaccesses; trackBy: trackById">{{ conditionAccessOption.libelleConditon }}</option>
+                            </select> -->
+
+                            <ng-select name="conditionaccesses" formControlName="conditionaccesses"
+                            [multiple]="true"  [closeOnSelect]="false" [searchable]="true"
+                            placeholder="Selectionner les condition accès">
+                            <ng-option [value]="getSelected(editForm.get('conditionaccesses')!.value, conditionAccessOption)" *ngFor="let conditionAccessOption of conditionaccesses; trackBy: trackById">{{ conditionAccessOption.libelleConditon }}</ng-option>
+                            </ng-select>
+
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.regime" for="field_regime">Regime</label>
+                            <select class="form-control" id="field_regime" name="regime" formControlName="regime">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="regimeOption.id === editForm.get('regime')!.value?.id ? editForm.get('regime')!.value : regimeOption" *ngFor="let regimeOption of regimes; trackBy: trackById">{{ regimeOption.libelleRegime }}</option>
+                            </select>
+                        </div>
+                      </div>
+                  </div>
+    
+                 
+    
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.adresse" for="field_adresse">Adresse</label>
-                    <input type="text" class="form-control" name="adresse" id="field_adresse"
-                           formControlName="adresse"/>
-                    <div *ngIf="editForm.get('adresse')!.invalid && (editForm.get('adresse')!.dirty || editForm.get('adresse')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('adresse')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
+    
+                <div>
+                    <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="previousState()">
+                        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    </button>
+    
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-outline-primary">
+                        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    </button>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.statuts" for="field_statuts">Statuts</label>
-                    <input type="text" class="form-control" name="statuts" id="field_statuts"
-                           formControlName="statuts"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.capaciteacceuil" for="field_capaciteacceuil">Capaciteacceuil</label>
-                    <input type="text" class="form-control" name="capaciteacceuil" id="field_capaciteacceuil"
-                           formControlName="capaciteacceuil"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.refOuverture" for="field_refOuverture">Ref Ouverture</label>
-                    <input type="text" class="form-control" name="refOuverture" id="field_refOuverture"
-                           formControlName="refOuverture"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.dateOuverture" for="field_dateOuverture">Date Ouverture</label>
-                    <div class="input-group">
-                        <input id="field_dateOuverture" type="text" class="form-control" name="dateOuverture" ngbDatepicker #dateOuvertureDp="ngbDatepicker" formControlName="dateOuverture"/>
-                        <span class="input-group-append">
-                            <button type="button" class="btn btn-secondary" (click)="dateOuvertureDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.communes" for="field_communes">Communes</label>
-                    <select class="form-control" id="field_communes" name="communes" formControlName="communes">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="communesOption.id === editForm.get('communes')!.value?.id ? editForm.get('communes')!.value : communesOption" *ngFor="let communesOption of communes; trackBy: trackById">{{ communesOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.promoteurs" for="field_promoteurs">Promoteurs</label>
-                    <select class="form-control" id="field_promoteurs" name="promoteurs" formControlName="promoteurs">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="promoteursOption.id === editForm.get('promoteurs')!.value?.id ? editForm.get('promoteurs')!.value : promoteursOption" *ngFor="let promoteursOption of promoteurs; trackBy: trackById">{{ promoteursOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.gestionnaires" for="field_gestionnaires">Gestionnaires</label>
-                    <select class="form-control" id="field_gestionnaires" name="gestionnaires" formControlName="gestionnaires">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="gestionnaireOption.id === editForm.get('gestionnaires')!.value?.id ? editForm.get('gestionnaires')!.value : gestionnaireOption" *ngFor="let gestionnaireOption of gestionnaires; trackBy: trackById">{{ gestionnaireOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.approchepedagogique" for="field_approchepedagogiques">Approchepedagogique</label>
-                    <select class="form-control" id="field_approchepedagogiques" multiple name="approchepedagogiques" formControlName="approchepedagogiques">
-                        <option [ngValue]="getSelected(editForm.get('approchepedagogiques')!.value, approchePedagogiqueOption)" *ngFor="let approchePedagogiqueOption of approchepedagogiques; trackBy: trackById">{{ approchePedagogiqueOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.publiccible" for="field_publiccibles">Publiccible</label>
-                    <select class="form-control" id="field_publiccibles" multiple name="publiccibles" formControlName="publiccibles">
-                        <option [ngValue]="getSelected(editForm.get('publiccibles')!.value, publicCibleOption)" *ngFor="let publicCibleOption of publiccibles; trackBy: trackById">{{ publicCibleOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.specialites" for="field_specialites">Specialites</label>
-                    <select class="form-control" id="field_specialites" multiple name="specialites" formControlName="specialites">
-                        <option [ngValue]="getSelected(editForm.get('specialites')!.value, specialitesOption)" *ngFor="let specialitesOption of specialites; trackBy: trackById">{{ specialitesOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.domaineformation" for="field_domaineformations">Domaineformation</label>
-                    <select class="form-control" id="field_domaineformations" multiple name="domaineformations" formControlName="domaineformations">
-                        <option [ngValue]="getSelected(editForm.get('domaineformations')!.value, domaineFormationOption)" *ngFor="let domaineFormationOption of domaineformations; trackBy: trackById">{{ domaineFormationOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.contributions" for="field_contributions">Contributions</label>
-                    <select class="form-control" id="field_contributions" multiple name="contributions" formControlName="contributions">
-                        <option [ngValue]="getSelected(editForm.get('contributions')!.value, contributionsOption)" *ngFor="let contributionsOption of contributions; trackBy: trackById">{{ contributionsOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.niveaurecrutement" for="field_niveaurecrutements">Niveaurecrutement</label>
-                    <select class="form-control" id="field_niveaurecrutements" multiple name="niveaurecrutements" formControlName="niveaurecrutements">
-                        <option [ngValue]="getSelected(editForm.get('niveaurecrutements')!.value, niveauRecrutementOption)" *ngFor="let niveauRecrutementOption of niveaurecrutements; trackBy: trackById">{{ niveauRecrutementOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.centreFormation.conditionaccess" for="field_conditionaccesses">Conditionaccess</label>
-                    <select class="form-control" id="field_conditionaccesses" multiple name="conditionaccesses" formControlName="conditionaccesses">
-                        <option [ngValue]="getSelected(editForm.get('conditionaccesses')!.value, conditionAccessOption)" *ngFor="let conditionAccessOption of conditionaccesses; trackBy: trackById">{{ conditionAccessOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.centreFormation.regime" for="field_regime">Regime</label>
-                    <select class="form-control" id="field_regime" name="regime" formControlName="regime">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="regimeOption.id === editForm.get('regime')!.value?.id ? editForm.get('regime')!.value : regimeOption" *ngFor="let regimeOption of regimes; trackBy: trackById">{{ regimeOption.id }}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
-
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+    <br><br>
 </div>

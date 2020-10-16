@@ -7,8 +7,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IRegime } from 'app/shared/model/regime.model';
 import { RegimeService } from './regime.service';
 import { RegimeDeleteDialogComponent } from './regime-delete-dialog.component';
-import { SaveRegimeComponent } from './save-regime/save-regime.component';
-import { UpdateRegimeComponent } from './update-regime/update-regime.component';
 
 @Component({
   selector: 'jhi-regime',
@@ -47,14 +45,5 @@ export class RegimeComponent implements OnInit, OnDestroy {
   delete(regime: IRegime): void {
     const modalRef = this.modalService.open(RegimeDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.regime = regime;
-  }
-
-  savemodal(): void {
-    const savemodale = this.modalService.open(SaveRegimeComponent, { size: 'lg', backdrop: 'static' });
-  }
-
-  updatemodal(regime: IRegime): void {
-    const updatemodale = this.modalService.open(UpdateRegimeComponent, { size: 'lg', backdrop: 'static' });
-    updatemodale.componentInstance.regime = regime;
   }
 }

@@ -2,21 +2,21 @@
   "gestionFormationApp": {
     "specialites": {
       "home": {
-        "title": "Specialites",
-        "createLabel": "Créer un nouveau Specialites",
-        "createOrEditLabel": "Créer ou éditer un Specialites",
-        "notFound": "Aucun Specialites trouvé"
+        "title": "Specialités",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une specialité",
+        "notFound": "Aucune Specialites trouvé"
       },
-      "created": "Un nouveau Specialites a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Specialites avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Specialites avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de la spécialité avec succès",
+      "updated": "Modification de la spécialité avec succès",
+      "deleted": "Suppression de la spécialité avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Specialites {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Specialites"
+        "title": "Specialités"
       },
-      "libelleSpecialite": "Libelle Specialite",
+      "libelleSpecialite": "Specialité",
       "centreformation": "Centreformation"
     }
   }

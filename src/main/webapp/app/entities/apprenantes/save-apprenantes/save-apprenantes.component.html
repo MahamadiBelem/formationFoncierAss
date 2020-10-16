@@ -1,0 +1,171 @@
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ; border-radius: 25px;">
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-apprenantes-heading" jhiTranslate="gestionFormationApp.apprenantes.home.createOrEditLabel">Create or edit a Apprenantes</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="true">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.matricule" for="field_matricule">Matricule</label>
+                            <input readonly type="text" class="form-control" [(ngModel)]="numMatricule" name="matricule" id="field_matricule"
+                                   formControlName="matricule"/>
+                            <div *ngIf="editForm.get('matricule')!.invalid && (editForm.get('matricule')!.dirty || editForm.get('matricule')!.touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('matricule')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">                       
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.nom" for="field_nom">Nom</label>
+                        <input type="text" class="form-control" name="nom" id="field_nom"
+                            formControlName="nom"/>
+                        <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
+                            <small class="form-text text-danger"
+                                *ngIf="editForm.get('nom')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                            </small>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.prenom" for="field_prenom">Prenom</label>
+                        <input type="text" class="form-control" name="prenom" id="field_prenom"
+                            formControlName="prenom"/>
+                        <div *ngIf="editForm.get('prenom')!.invalid && (editForm.get('prenom')!.dirty || editForm.get('prenom')!.touched)">
+                            <small class="form-text text-danger"
+                                *ngIf="editForm.get('prenom')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                            </small>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-6">
+                        
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.dateNaissance" for="field_dateNaissance">Date Naissance</label>
+                    <div class="input-group">
+                        <input id="field_dateNaissance" type="text" class="form-control" name="dateNaissance" ngbDatepicker #dateNaissanceDp="ngbDatepicker" formControlName="dateNaissance"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateNaissanceDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('dateNaissance')!.invalid && (editForm.get('dateNaissance')!.dirty || editForm.get('dateNaissance')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateNaissance')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.sexe" for="field_sexe">Sexe</label>
+                        <select class="form-control" name="sexe" formControlName="sexe" id="field_sexe">
+                            <option value="MASCULIN">{{ 'gestionFormationApp.Sexe.MASCULIN' | translate }}</option>
+                            <option value="FEMININ">{{ 'gestionFormationApp.Sexe.FEMININ' | translate }}</option>
+                        </select>
+                        <div *ngIf="editForm.get('sexe')!.invalid && (editForm.get('sexe')!.dirty || editForm.get('sexe')!.touched)">
+                            <small class="form-text text-danger"
+                                *ngIf="editForm.get('sexe')?.errors?.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                            </small>
+                        </div>
+                    </div>
+                        </div>
+                        <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.contact" for="field_contact">Contact</label>
+                            <input type="text" class="form-control" name="contact" id="field_contact"
+                                formControlName="contact"/>
+                        </div>
+                        </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.typecandidat" for="field_typecandidat">Typecandidat</label>
+                            <select class="form-control" name="typecandidat" formControlName="typecandidat" id="field_typecandidat">
+                                <option value="CQP">{{ 'gestionFormationApp.Examen.CQP' | translate }}</option>
+                                <option value="CQB">{{ 'gestionFormationApp.Examen.CQB' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                          
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.situationMatrimonial" for="field_situationMatrimonial">Situation Matrimonial</label>
+                    <input type="text" class="form-control" name="situationMatrimonial" id="field_situationMatrimonial"
+                           formControlName="situationMatrimonial"/>
+                </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.charger" for="field_charger">Charger</label>
+                    <input type="text" class="form-control" name="charger" id="field_charger"
+                           formControlName="charger"/>
+                </div>
+                    </div>
+
+                    <div class="col-6">
+                        
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.localite" for="field_localite">Localite</label>
+                    <input type="text" class="form-control" name="localite" id="field_localite"
+                           formControlName="localite"/>
+                </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.apprenantes.niveauapprenant" for="field_niveauapprenant">Niveauapprenant</label>
+                        <select class="form-control" id="field_niveauapprenant" name="niveauapprenant" formControlName="niveauapprenant">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="niveauInstructionOption.id === editForm.get('niveauapprenant')!.value?.id ? editForm.get('niveauapprenant')!.value : niveauInstructionOption" *ngFor="let niveauInstructionOption of niveauinstructions; trackBy: trackById">{{ niveauInstructionOption.niveauInstruction }}</option>
+                        </select>
+                    </div>
+                    </div>
+                  
+                </div>
+
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-outline-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<br><br>
+</div>

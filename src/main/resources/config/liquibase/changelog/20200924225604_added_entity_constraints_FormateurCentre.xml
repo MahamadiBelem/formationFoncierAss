@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="formateurs"/>
 
+        <addForeignKeyConstraint baseColumnNames="regimecentreformateur_id"
+                                 baseTableName="formateur_centre"
+                                 constraintName="fk_formateur_centre_regimecentreformateur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="regime"/>
+
     </changeSet>
 </databaseChangeLog>

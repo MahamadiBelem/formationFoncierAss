@@ -3,22 +3,22 @@
     "gestionnaire": {
       "home": {
         "title": "Gestionnaires",
-        "createLabel": "Créer un nouveau Gestionnaire",
-        "createOrEditLabel": "Créer ou éditer un Gestionnaire",
-        "notFound": "Aucun Gestionnaire trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un gestionnaire",
+        "notFound": "Aucun gestionnaire trouvé"
       },
-      "created": "Un nouveau Gestionnaire a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Gestionnaire avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Gestionnaire avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement du gestionnaire avec succès",
+      "updated": "Modification du gestionnaire avec succès",
+      "deleted": "Suppresion du gestionnaire avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Gestionnaire {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Gestionnaire"
       },
-      "nomComplet": "Nom Complet",
-      "contactsGestionnaires": "Contacts Gestionnaires",
-      "emploi": "Emploi"
+      "nomComplet": "Nom & prenom",
+      "contactsGestionnaires": "Contacts ",
+      "emploi": "Emplois"
     }
   }
 }

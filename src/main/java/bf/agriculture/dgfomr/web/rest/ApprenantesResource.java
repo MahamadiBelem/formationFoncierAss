@@ -7,6 +7,7 @@ import bf.agriculture.dgfomr.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,10 +59,17 @@ public class ApprenantesResource {
         if (apprenantes.getId() != null) {
             throw new BadRequestAlertException("A new apprenantes cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        apprenantes.setMatricule(Calendar.getInstance().get(Calendar.YEAR)+apprenantes.getMatricule()+ RandomStringUtils.randomAlphabetic(1).toUpperCase());
         Apprenantes result = apprenantesService.save(apprenantes);
         return ResponseEntity.created(new URI("/api/apprenantes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+    @GetMapping("/generate-matricule")
+    public ResponseEntity<String> getMatricule()
+    {
+        return  ResponseEntity.status(HttpStatus.OK)
+            .body(apprenantesService.generatematricule());
     }
 
     /**

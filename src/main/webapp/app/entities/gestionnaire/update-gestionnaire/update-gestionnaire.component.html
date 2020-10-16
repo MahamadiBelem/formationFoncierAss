@@ -1,0 +1,64 @@
+<div class="card">
+    <div class="card-header save-card-design">
+        <h2 id="jhi-gestionnaire-heading" jhiTranslate="gestionFormationApp.gestionnaire.home.createOrEditLabel">Create or edit a Gestionnaire</h2>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                   
+        
+                    <div>
+                        <jhi-alert-error></jhi-alert-error>
+        
+                        <div class="form-group" [hidden]="true">
+                            <label for="id" jhiTranslate="global.field.id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.gestionnaire.nomComplet" for="field_nomComplet">Nom Complet</label>
+                            <input type="text" class="form-control" name="nomComplet" id="field_nomComplet"
+                                   formControlName="nomComplet"/>
+                            <div *ngIf="editForm.get('nomComplet')!.invalid && (editForm.get('nomComplet')!.dirty || editForm.get('nomComplet')!.touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('nomComplet')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                                </small>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.gestionnaire.contactsGestionnaires" for="field_contactsGestionnaires">Contacts Gestionnaires</label>
+                            <input type="text" class="form-control" name="contactsGestionnaires" id="field_contactsGestionnaires"
+                                   formControlName="contactsGestionnaires"/>
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.gestionnaire.emploi" for="field_emploi">Emploi</label>
+                            <input type="text" class="form-control" name="emploi" id="field_emploi"
+                                   formControlName="emploi"/>
+                            <div *ngIf="editForm.get('emploi')!.invalid && (editForm.get('emploi')!.dirty || editForm.get('emploi')!.touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('emploi')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancel()">
+                            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+        
+                        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>

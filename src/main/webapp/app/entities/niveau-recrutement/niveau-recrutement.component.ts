@@ -7,6 +7,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { INiveauRecrutement } from 'app/shared/model/niveau-recrutement.model';
 import { NiveauRecrutementService } from './niveau-recrutement.service';
 import { NiveauRecrutementDeleteDialogComponent } from './niveau-recrutement-delete-dialog.component';
+import { SaveNiveauComponent } from '../niveau-instruction/save-niveau/save-niveau.component';
+import { SaveNiveauRecrutementComponent } from './save-niveau-recrutement/save-niveau-recrutement.component';
+import { UpdateNiveauRecrutementComponent } from './update-niveau-recrutement/update-niveau-recrutement.component';
 
 @Component({
   selector: 'jhi-niveau-recrutement',
@@ -51,5 +54,14 @@ export class NiveauRecrutementComponent implements OnInit, OnDestroy {
   delete(niveauRecrutement: INiveauRecrutement): void {
     const modalRef = this.modalService.open(NiveauRecrutementDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.niveauRecrutement = niveauRecrutement;
+  }
+
+  savemodal(): void {
+    const savemodal = this.modalService.open(SaveNiveauRecrutementComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodal(niveauRecrutement: INiveauRecrutement): void {
+    const updatemodal = this.modalService.open(UpdateNiveauRecrutementComponent, { size: 'lg', backdrop: 'static' });
+    updatemodal.componentInstance.niveauRecrutement = niveauRecrutement;
   }
 }

@@ -12,13 +12,9 @@
                 <dd>
                     <span>{{ formateurCentre.dateEtablissement }}</span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.formateurCentre.specialite">Specialite</span></dt>
-                <dd>
-                    <span>{{ formateurCentre.specialite }}</span>
-                </dd>
                 <dt><span jhiTranslate="gestionFormationApp.formateurCentre.regimeFormateur">Regime Formateur</span></dt>
                 <dd>
-                    <span>{{ formateurCentre.regimeFormateur }}</span>
+                    <span jhiTranslate="{{ 'gestionFormationApp.RegimeFormateur.' + formateurCentre.regimeFormateur }}">{{ formateurCentre.regimeFormateur }}</span>
                 </dd>
                 <dt><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentreFormation">Formateur Centre Formation</span></dt>
                 <dd>
@@ -30,6 +26,12 @@
                 <dd>
                     <div *ngIf="formateurCentre.formateurCentre">
                         <a [routerLink]="['/formateurs', formateurCentre.formateurCentre?.id, 'view']">{{ formateurCentre.formateurCentre?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.formateurCentre.regimecentreformateur">Regimecentreformateur</span></dt>
+                <dd>
+                    <div *ngIf="formateurCentre.regimecentreformateur">
+                        <a [routerLink]="['/regime', formateurCentre.regimecentreformateur?.id, 'view']">{{ formateurCentre.regimecentreformateur?.id }}</a>
                     </div>
                 </dd>
             </dl>

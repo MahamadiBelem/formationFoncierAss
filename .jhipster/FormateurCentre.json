@@ -6,15 +6,9 @@
       "fieldType": "LocalDate"
     },
     {
-      "fieldName": "specialite",
-      "fieldType": "String",
-      "fieldValidateRules": [
-        "required"
-      ]
-    },
-    {
       "fieldName": "regimeFormateur",
-      "fieldType": "String",
+      "fieldType": "RegimeFormateur",
+      "fieldValues": "Vacataire,Permanent",
       "fieldValidateRules": [
         "required"
       ]
@@ -33,6 +27,13 @@
       "otherEntityName": "formateurs",
       "otherEntityRelationshipName": "formateurCentre",
       "relationshipName": "formateurCentre",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "regime",
+      "otherEntityRelationshipName": "formateurCentre",
+      "relationshipName": "regimecentreformateur",
       "otherEntityField": "id"
     }
   ],

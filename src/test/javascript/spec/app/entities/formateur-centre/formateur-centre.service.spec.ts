@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { FormateurCentreService } from 'app/entities/formateur-centre/formateur-centre.service';
 import { IFormateurCentre, FormateurCentre } from 'app/shared/model/formateur-centre.model';
+import { RegimeFormateur } from 'app/shared/model/enumerations/regime-formateur.model';
 
 describe('Service Tests', () => {
   describe('FormateurCentre Service', () => {
@@ -24,7 +25,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new FormateurCentre(0, currentDate, 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new FormateurCentre(0, currentDate, RegimeFormateur.Vacataire);
     });
 
     describe('Service methods', () => {
@@ -70,7 +71,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             dateEtablissement: currentDate.format(DATE_FORMAT),
-            specialite: 'BBBBBB',
             regimeFormateur: 'BBBBBB',
           },
           elemDefault
@@ -94,7 +94,6 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             dateEtablissement: currentDate.format(DATE_FORMAT),
-            specialite: 'BBBBBB',
             regimeFormateur: 'BBBBBB',
           },
           elemDefault

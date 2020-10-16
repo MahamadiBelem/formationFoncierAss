@@ -18,9 +18,6 @@
             <column name="date_etablissement" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="specialite" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
             <column name="regime_formateur" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
@@ -28,6 +25,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="formateur_centre_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="regimecentreformateur_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -54,7 +54,6 @@
                   tableName="formateur_centre">
             <column name="id" type="numeric"/>
             <column name="date_etablissement" type="date"/>
-            <column name="specialite" type="string"/>
             <column name="regime_formateur" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

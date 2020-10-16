@@ -7,6 +7,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ISpecialites } from 'app/shared/model/specialites.model';
 import { SpecialitesService } from './specialites.service';
 import { SpecialitesDeleteDialogComponent } from './specialites-delete-dialog.component';
+import { SaveSpecialitesComponent } from './save-specialites/save-specialites.component';
+import { UpdatePromoteurComponent } from '../promoteurs/update-promoteur/update-promoteur.component';
+import { UpdateSpecialitesComponent } from './update-specialites/update-specialites.component';
 
 @Component({
   selector: 'jhi-specialites',
@@ -49,5 +52,13 @@ export class SpecialitesComponent implements OnInit, OnDestroy {
   delete(specialites: ISpecialites): void {
     const modalRef = this.modalService.open(SpecialitesDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.specialites = specialites;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveSpecialitesComponent, { size: 'lg', backdrop: 'static' });
+  }
+  updatemodal(specialites: ISpecialites): void {
+    const updatemodale = this.modalService.open(UpdateSpecialitesComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.specialites = specialites;
   }
 }

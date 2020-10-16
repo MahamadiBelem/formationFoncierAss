@@ -23,7 +23,7 @@
         "provinces": "Provinces",
         "communes": "Communes",
         "villages": "Villages",
-        "conditionAccess": "Condition Access",
+        "conditionAccess": "Conditions d'accès",
         "approchePedagogique": "Approche Pedagogique",
         "specialites": "Specialites",
         "domaineFormation": "Domaine Formation",
@@ -49,10 +49,12 @@
         "compositionKits": "Composition Kits",
         "typecandidat": "Typecandidat",
         "regime": "Regime",
-        "inscription": "Inscription",
+        "inscription": "Affectations",
         "inscriptionApprenants": " Affecter un apprenant",
         "formateurCentre": "Affecter un formateur",
         "formationCentreFormation": "Affecter une formation",
+        "inscription": "Inscription",
+        "formateurCentre": "Formateur Centre",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

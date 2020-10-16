@@ -1,62 +1,95 @@
-<div class="row justify-content-center">
-    <div class="col-8">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-inscription-heading" jhiTranslate="gestionFormationApp.inscription.home.createOrEditLabel">Create or edit a Inscription</h2>
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ;border-radius: 25px;">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                <h2 id="jhi-inscription-heading" jhiTranslate="gestionFormationApp.inscription.home.createOrEditLabel">Create or edit a Inscription</h2>
+    
+                <div>
+                    <div class="col-6">
+                        <div class="form-group" [hidden]="true">
+                            <label for="id" jhiTranslate="global.field.id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        </div>
+                    </div>
+                    
+                    <jhi-alert-error></jhi-alert-error>
+                    <div class="row">
+                       
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.anneesAcademique" for="field_anneesAcademique">Annees Academique</label>
+                                <input type="text" class="form-control" name="anneesAcademique" id="field_anneesAcademique"
+                                       formControlName="anneesAcademique"/>
+                            </div>
+            
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.dateInscription" for="field_dateInscription">Date Inscription</label>
+                                <div class="input-group">
+                                    <input id="field_dateInscription" type="text" class="form-control" name="dateInscription" ngbDatepicker #dateInscriptionDp="ngbDatepicker" formControlName="dateInscription"/>
+                                    <span class="input-group-append">
+                                        <button type="button" class="btn btn-secondary" (click)="dateInscriptionDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                                    </span>
+                                </div>
+                            </div>
+            
+                        </div>
 
-            <div>
-                <jhi-alert-error></jhi-alert-error>
+                    </div>
+                    
+                    <div class="row">
+                      
 
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        <div class="col-6">  
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.inscription" for="field_inscription">Inscription</label>
+                            <select class="form-control" id="field_inscription" name="inscription" formControlName="inscription">
+                                <option [ngValue]="null"></option>
+                                <option [ngValue]="formationsOption.id === editForm.get('inscription')!.value?.id ? editForm.get('inscription')!.value : formationsOption" *ngFor="let formationsOption of formations; trackBy: trackById">{{ formationsOption.lebelleFormation }}</option>
+                            </select>
+                        </div> 
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.inscriptionApprenant" for="field_inscriptionApprenant">Inscription Apprenant</label>
+                                <select class="form-control" id="field_inscriptionApprenant" name="inscriptionApprenant" formControlName="inscriptionApprenant">
+                                    <option [ngValue]="null"></option>
+                                    <option [ngValue]="apprenantesOption.id === editForm.get('inscriptionApprenant')!.value?.id ? editForm.get('inscriptionApprenant')!.value : apprenantesOption" *ngFor="let apprenantesOption of apprenantes; trackBy: trackById">{{ apprenantesOption.matricule }}</option>
+                                </select>
+                            </div>
+            
+                        </div>
+                       
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.inscriptionCentreFormation" for="field_inscriptionCentreFormation">Inscription Centre Formation</label>
+                                <select class="form-control" id="field_inscriptionCentreFormation" name="inscriptionCentreFormation" formControlName="inscriptionCentreFormation">
+                                    <option [ngValue]="null"></option>
+                                    <option [ngValue]="centreFormationOption.id === editForm.get('inscriptionCentreFormation')!.value?.id ? editForm.get('inscriptionCentreFormation')!.value : centreFormationOption" *ngFor="let centreFormationOption of centreformations; trackBy: trackById">{{ centreFormationOption.denomination }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+    
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.anneesAcademique" for="field_anneesAcademique">Annees Academique</label>
-                    <input type="text" class="form-control" name="anneesAcademique" id="field_anneesAcademique"
-                           formControlName="anneesAcademique"/>
+    
+                <div>
+                    <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="previousState()">
+                        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    </button>
+    
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-outline-primary">
+                        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    </button>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.dateInscription" for="field_dateInscription">Date Inscription</label>
-                    <input type="text" class="form-control" name="dateInscription" id="field_dateInscription"
-                           formControlName="dateInscription"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.inscription" for="field_inscription">Inscription</label>
-                    <select class="form-control" id="field_inscription" name="inscription" formControlName="inscription">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="formationsOption.id === editForm.get('inscription')!.value?.id ? editForm.get('inscription')!.value : formationsOption" *ngFor="let formationsOption of formations; trackBy: trackById">{{ formationsOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.inscriptionApprenant" for="field_inscriptionApprenant">Inscription Apprenant</label>
-                    <select class="form-control" id="field_inscriptionApprenant" name="inscriptionApprenant" formControlName="inscriptionApprenant">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="apprenantesOption.id === editForm.get('inscriptionApprenant')!.value?.id ? editForm.get('inscriptionApprenant')!.value : apprenantesOption" *ngFor="let apprenantesOption of apprenantes; trackBy: trackById">{{ apprenantesOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.inscription.inscriptionCentreFormation" for="field_inscriptionCentreFormation">Inscription Centre Formation</label>
-                    <select class="form-control" id="field_inscriptionCentreFormation" name="inscriptionCentreFormation" formControlName="inscriptionCentreFormation">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="centreFormationOption.id === editForm.get('inscriptionCentreFormation')!.value?.id ? editForm.get('inscriptionCentreFormation')!.value : centreFormationOption" *ngFor="let centreFormationOption of centreformations; trackBy: trackById">{{ centreFormationOption.id }}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
-
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+   <br><br> 
 </div>

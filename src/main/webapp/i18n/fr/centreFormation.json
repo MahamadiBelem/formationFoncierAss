@@ -2,40 +2,42 @@
   "gestionFormationApp": {
     "centreFormation": {
       "home": {
-        "title": "CentreFormations",
-        "createLabel": "Créer un nouveau Centre Formation",
-        "createOrEditLabel": "Créer ou éditer un Centre Formation",
-        "notFound": "Aucun Centre Formation trouvé"
+        "title": "Centre de Formation",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une centre formation",
+        "notFound": "Aucune centre formation trouvée"
       },
-      "created": "Un nouveau Centre Formation a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Centre Formation avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Centre Formation avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement d'une nouvelle centre de formation avec succès",
+      "updated": "Modification de la centre de formation avec succès",
+      "deleted": "Suppression de la  centre de formation avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Centre Formation {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Centre Formation"
+        "title": "Centre de formation"
       },
       "denomination": "Denomination",
       "localisation": "Localisation",
       "adresse": "Adresse",
       "statuts": "Statuts",
-      "capaciteacceuil": "Capaciteacceuil",
-      "refOuverture": "Ref Ouverture",
-      "dateOuverture": "Date Ouverture",
+      "capaciteacceuil": "Capacite d'acceuil",
+      "refOuverture": "Ref d'ouverture",
+      "dateOuverture": "Date d'ouverture",
       "infrastructure": "Infrastructure",
       "amenagement": "Amenagement",
       "communes": "Communes",
       "promoteurs": "Promoteurs",
       "gestionnaires": "Gestionnaires",
-      "approchepedagogique": "Approchepedagogique",
-      "publiccible": "Publiccible",
-      "specialites": "Specialites",
-      "domaineformation": "Domaineformation",
+      "approchepedagogique": "Approche pédagogique",
+      "publiccible": "Public cible",
+      "specialites": "Specialité",
+      "domaineformation": "Domaine de formation",
       "contributions": "Contributions",
-      "niveaurecrutement": "Niveaurecrutement",
-      "conditionaccess": "Conditionaccess",
-      "regime": "Regime"
+      "niveaurecrutement": "Niveau de recrutement",
+      "conditionaccess": "Condition d'access",
+      "regime": "Regime",
+      "selectapproche": "Selectionner une approche pédagogique",
+      "selectpublic": "Selectionner un publique cible"
     }
   }
 }

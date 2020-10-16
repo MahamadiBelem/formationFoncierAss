@@ -9,6 +9,7 @@ import { IApprenantes, Apprenantes } from 'app/shared/model/apprenantes.model';
 import { ApprenantesService } from './apprenantes.service';
 import { INiveauInstruction } from 'app/shared/model/niveau-instruction.model';
 import { NiveauInstructionService } from 'app/entities/niveau-instruction/niveau-instruction.service';
+import { isEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'jhi-apprenantes-update',
@@ -18,7 +19,7 @@ export class ApprenantesUpdateComponent implements OnInit {
   isSaving = false;
   niveauinstructions: INiveauInstruction[] = [];
   dateNaissanceDp: any;
-
+  numMatricule: any;
   editForm = this.fb.group({
     id: [],
     matricule: [null, [Validators.required]],
@@ -43,11 +44,11 @@ export class ApprenantesUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ apprenantes }) => {
-      this.updateForm(apprenantes);
-
       this.niveauInstructionService
         .query()
         .subscribe((res: HttpResponse<INiveauInstruction[]>) => (this.niveauinstructions = res.body || []));
+
+      this.updateForm(apprenantes);
     });
   }
 

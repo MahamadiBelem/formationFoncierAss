@@ -22,21 +22,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.specialite" for="field_specialite">Specialite</label>
-                    <input type="text" class="form-control" name="specialite" id="field_specialite"
-                           formControlName="specialite"/>
-                    <div *ngIf="editForm.get('specialite')!.invalid && (editForm.get('specialite')!.dirty || editForm.get('specialite')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('specialite')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.regimeFormateur" for="field_regimeFormateur">Regime Formateur</label>
-                    <input type="text" class="form-control" name="regimeFormateur" id="field_regimeFormateur"
-                           formControlName="regimeFormateur"/>
+                    <select class="form-control" name="regimeFormateur" formControlName="regimeFormateur" id="field_regimeFormateur">
+                        <option value="Vacataire">{{ 'gestionFormationApp.RegimeFormateur.Vacataire' | translate }}</option>
+                        <option value="Permanent">{{ 'gestionFormationApp.RegimeFormateur.Permanent' | translate }}</option>
+                    </select>
                     <div *ngIf="editForm.get('regimeFormateur')!.invalid && (editForm.get('regimeFormateur')!.dirty || editForm.get('regimeFormateur')!.touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('regimeFormateur')?.errors?.required" jhiTranslate="entity.validation.required">
@@ -58,6 +48,14 @@
                     <select class="form-control" id="field_formateurCentre" name="formateurCentre" formControlName="formateurCentre">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="formateursOption.id === editForm.get('formateurCentre')!.value?.id ? editForm.get('formateurCentre')!.value : formateursOption" *ngFor="let formateursOption of formateurs; trackBy: trackById">{{ formateursOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formateurCentre.regimecentreformateur" for="field_regimecentreformateur">Regimecentreformateur</label>
+                    <select class="form-control" id="field_regimecentreformateur" name="regimecentreformateur" formControlName="regimecentreformateur">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="regimeOption.id === editForm.get('regimecentreformateur')!.value?.id ? editForm.get('regimecentreformateur')!.value : regimeOption" *ngFor="let regimeOption of regimes; trackBy: trackById">{{ regimeOption.id }}</option>
                     </select>
                 </div>
             </div>

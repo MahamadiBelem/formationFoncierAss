@@ -3,20 +3,20 @@
     "contributions": {
       "home": {
         "title": "Contributions",
-        "createLabel": "Créer un nouveau Contributions",
-        "createOrEditLabel": "Créer ou éditer un Contributions",
-        "notFound": "Aucun Contributions trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une contribution",
+        "notFound": "Aucune contribution trouvé"
       },
-      "created": "Un nouveau Contributions a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Contributions avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Contributions avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de la contribution avec succès",
+      "updated": "Modification de la contribution avec succès",
+      "deleted": "Suppression de la contribution avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Contributions {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
         "title": "Contributions"
       },
-      "libelleContribution": "Libelle Contribution",
+      "libelleContribution": "Contribution",
       "centreformation": "Centreformation"
     }
   }

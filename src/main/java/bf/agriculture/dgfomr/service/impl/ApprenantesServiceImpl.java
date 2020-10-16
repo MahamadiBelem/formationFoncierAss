@@ -3,6 +3,7 @@ package bf.agriculture.dgfomr.service.impl;
 import bf.agriculture.dgfomr.service.ApprenantesService;
 import bf.agriculture.dgfomr.domain.Apprenantes;
 import bf.agriculture.dgfomr.repository.ApprenantesRepository;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,4 +55,14 @@ public class ApprenantesServiceImpl implements ApprenantesService {
         log.debug("Request to delete Apprenantes : {}", id);
         apprenantesRepository.deleteById(id);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public String generatematricule() {
+        String nummatricule=RandomStringUtils.randomNumeric(6);
+        return  nummatricule.toString();
+
+    }
+
+
 }

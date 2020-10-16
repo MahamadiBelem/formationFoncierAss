@@ -1,0 +1,50 @@
+<div class="card">
+    <div class="card-header save-card-design">
+        <h2 id="jhi-promoteurs-heading" jhiTranslate="gestionFormationApp.promoteurs.home.createOrEditLabel">Create or edit a Promoteurs</h2>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                    <div>
+                        <jhi-alert-error></jhi-alert-error>
+        
+                        <div class="form-group" [hidden]="true">
+                            <label for="id" jhiTranslate="global.field.id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.promoteurs.libellePromoteur" for="field_libellePromoteur">Libelle Promoteur</label>
+                            <input type="text" class="form-control" name="libellePromoteur" id="field_libellePromoteur"
+                                   formControlName="libellePromoteur"/>
+                            <div *ngIf="editForm.get('libellePromoteur')!.invalid && (editForm.get('libellePromoteur')!.dirty || editForm.get('libellePromoteur')!.touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('libellePromoteur')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                                </small>
+                            </div>
+                        </div>
+        
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.promoteurs.contactPromoteur" for="field_contactPromoteur">Contact Promoteur</label>
+                            <input type="text" class="form-control" name="contactPromoteur" id="field_contactPromoteur"
+                                   formControlName="contactPromoteur"/>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancel()">
+                            <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+        
+                        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                            <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>

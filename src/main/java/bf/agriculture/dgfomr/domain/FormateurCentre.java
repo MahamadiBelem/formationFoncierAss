@@ -10,6 +10,8 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import bf.agriculture.dgfomr.domain.enumeration.RegimeFormateur;
+
 /**
  * A FormateurCentre.
  */
@@ -29,12 +31,9 @@ public class FormateurCentre implements Serializable {
     private LocalDate dateEtablissement;
 
     @NotNull
-    @Column(name = "specialite", nullable = false)
-    private String specialite;
-
-    @NotNull
+    @Enumerated(EnumType.STRING)
     @Column(name = "regime_formateur", nullable = false)
-    private String regimeFormateur;
+    private RegimeFormateur regimeFormateur;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "formateurCentres", allowSetters = true)
@@ -43,6 +42,10 @@ public class FormateurCentre implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties(value = "formateurCentres", allowSetters = true)
     private Formateurs formateurCentre;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "formateurCentres", allowSetters = true)
+    private Regime regimecentreformateur;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -66,29 +69,16 @@ public class FormateurCentre implements Serializable {
         this.dateEtablissement = dateEtablissement;
     }
 
-    public String getSpecialite() {
-        return specialite;
-    }
-
-    public FormateurCentre specialite(String specialite) {
-        this.specialite = specialite;
-        return this;
-    }
-
-    public void setSpecialite(String specialite) {
-        this.specialite = specialite;
-    }
-
-    public String getRegimeFormateur() {
+    public RegimeFormateur getRegimeFormateur() {
         return regimeFormateur;
     }
 
-    public FormateurCentre regimeFormateur(String regimeFormateur) {
+    public FormateurCentre regimeFormateur(RegimeFormateur regimeFormateur) {
         this.regimeFormateur = regimeFormateur;
         return this;
     }
 
-    public void setRegimeFormateur(String regimeFormateur) {
+    public void setRegimeFormateur(RegimeFormateur regimeFormateur) {
         this.regimeFormateur = regimeFormateur;
     }
 
@@ -117,6 +107,19 @@ public class FormateurCentre implements Serializable {
     public void setFormateurCentre(Formateurs formateurs) {
         this.formateurCentre = formateurs;
     }
+
+    public Regime getRegimecentreformateur() {
+        return regimecentreformateur;
+    }
+
+    public FormateurCentre regimecentreformateur(Regime regime) {
+        this.regimecentreformateur = regime;
+        return this;
+    }
+
+    public void setRegimecentreformateur(Regime regime) {
+        this.regimecentreformateur = regime;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -141,7 +144,6 @@ public class FormateurCentre implements Serializable {
         return "FormateurCentre{" +
             "id=" + getId() +
             ", dateEtablissement='" + getDateEtablissement() + "'" +
-            ", specialite='" + getSpecialite() + "'" +
             ", regimeFormateur='" + getRegimeFormateur() + "'" +
             "}";
     }

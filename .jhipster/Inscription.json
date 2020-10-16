@@ -7,7 +7,7 @@
     },
     {
       "fieldName": "dateInscription",
-      "fieldType": "String"
+      "fieldType": "LocalDate"
     }
   ],
   "relationships": [

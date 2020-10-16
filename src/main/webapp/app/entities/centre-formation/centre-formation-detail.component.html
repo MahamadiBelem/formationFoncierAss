@@ -1,120 +1,186 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="centreFormation">
-            <h2><span jhiTranslate="gestionFormationApp.centreFormation.detail.title">Centre Formation</span> {{ centreFormation.id }}</h2>
 
-            <hr>
 
-            <jhi-alert-error></jhi-alert-error>
+            <div class="card">
+                <div class="card-header"  class="card-header" style="background-color: #0070c0;color: white;">
+                    <h2 align="center"><span jhiTranslate="gestionFormationApp.centreFormation.detail.title">Centre Formation</span> {{ centreFormation.id }}</h2>
 
-            <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.denomination">Denomination</span></dt>
-                <dd>
-                    <span>{{ centreFormation.denomination }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.localisation">Localisation</span></dt>
-                <dd>
-                    <span>{{ centreFormation.localisation }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.adresse">Adresse</span></dt>
-                <dd>
-                    <span>{{ centreFormation.adresse }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.statuts">Statuts</span></dt>
-                <dd>
-                    <span>{{ centreFormation.statuts }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.capaciteacceuil">Capaciteacceuil</span></dt>
-                <dd>
-                    <span>{{ centreFormation.capaciteacceuil }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.refOuverture">Ref Ouverture</span></dt>
-                <dd>
-                    <span>{{ centreFormation.refOuverture }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.dateOuverture">Date Ouverture</span></dt>
-                <dd>
-                    <span>{{ centreFormation.dateOuverture }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.communes">Communes</span></dt>
-                <dd>
-                    <div *ngIf="centreFormation.communes">
-                        <a [routerLink]="['/communes', centreFormation.communes?.id, 'view']">{{ centreFormation.communes?.id }}</a>
+                      <hr>
+
+                     <jhi-alert-error></jhi-alert-error>
+                </div>
+                <div class="card-body">
+                    <dl class="row-md jh-entity-details">
+                        <dt><span jhiTranslate="gestionFormationApp.centreFormation.denomination">Denomination</span></dt>
+                        <div class="row">
+                            <div class="col-6">
+                                <dd>
+                                    <span>{{ centreFormation.denomination }}</span>
+                                </dd>
+                            </div>
+
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.centreFormation.localisation">Localisation</span></dt>
+                                <dd>
+                                    <span>{{ centreFormation.localisation }}</span>
+                                </dd>
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.centreFormation.adresse">Adresse</span></dt>
+                                <dd>
+                                    <span>{{ centreFormation.adresse }}</span>
+                                </dd>
+                            </div>
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.centreFormation.statuts">Statuts</span></dt>
+                                <dd>
+                                    <span>{{ centreFormation.statuts }}</span>
+                                </dd>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.centreFormation.capaciteacceuil">Capaciteacceuil</span></dt>
+                                <dd>
+                                    <span>{{ centreFormation.capaciteacceuil }}</span>
+                                </dd>
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-6">
+ 
+                                <dt><span jhiTranslate="gestionFormationApp.centreFormation.refOuverture">Ref Ouverture</span></dt>
+                                <dd>
+                                    <span>{{ centreFormation.refOuverture }}</span>
+                                </dd>
+                            </div>
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.centreFormation.dateOuverture">Date Ouverture</span></dt>
+                                <dd>
+                                    <span>{{ dateafficher }}</span>
+                                </dd>
+                            </div>
+                        </div>
+                     <div class="row">
+                         <div class="col-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.communes">Communes</span></dt>
+                            <dd>
+                                <div *ngIf="centreFormation.communes">
+                                    {{ centreFormation.communes?.libelleCommune }}
+                                </div>
+                            </dd>
+                         </div>
+                         <div class="col-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.promoteurs">Promoteurs</span></dt>
+                            <dd>
+                                <div *ngIf="centreFormation.promoteurs">
+                                   {{ centreFormation.promoteurs?.libellePromoteur }}
+                                </div>
+                            </dd>
+                         </div>
+                     </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.gestionnaires">Gestionnaires</span></dt>
+                            <dd>
+                                <div *ngIf="centreFormation.gestionnaires">
+                                    {{ centreFormation.gestionnaires?.nomComplet }}
+                                </div>
+                            </dd>
+                        </div>
+                        <div class="col-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.approchepedagogique">Approchepedagogique</span></dt>
+                            <dd>
+                                <span *ngFor="let approchepedagogique of centreFormation.approchepedagogiques; let last = last">
+                                    {{ approchepedagogique.libelleApproche }} {{ last ? '' : ', ' }}
+                                </span>
+                            </dd>
+                        </div>
                     </div>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.promoteurs">Promoteurs</span></dt>
-                <dd>
-                    <div *ngIf="centreFormation.promoteurs">
-                        <a [routerLink]="['/promoteurs', centreFormation.promoteurs?.id, 'view']">{{ centreFormation.promoteurs?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.gestionnaires">Gestionnaires</span></dt>
-                <dd>
-                    <div *ngIf="centreFormation.gestionnaires">
-                        <a [routerLink]="['/gestionnaire', centreFormation.gestionnaires?.id, 'view']">{{ centreFormation.gestionnaires?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.approchepedagogique">Approchepedagogique</span></dt>
-                <dd>
-                    <span *ngFor="let approchepedagogique of centreFormation.approchepedagogiques; let last = last">
-                        <a [routerLink]="['/approche-pedagogique', approchepedagogique?.id, 'view']">{{ approchepedagogique.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.publiccible">Publiccible</span></dt>
-                <dd>
-                    <span *ngFor="let publiccible of centreFormation.publiccibles; let last = last">
-                        <a [routerLink]="['/public-cible', publiccible?.id, 'view']">{{ publiccible.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.specialites">Specialites</span></dt>
-                <dd>
-                    <span *ngFor="let specialites of centreFormation.specialites; let last = last">
-                        <a [routerLink]="['/specialites', specialites?.id, 'view']">{{ specialites.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.domaineformation">Domaineformation</span></dt>
-                <dd>
-                    <span *ngFor="let domaineformation of centreFormation.domaineformations; let last = last">
-                        <a [routerLink]="['/domaine-formation', domaineformation?.id, 'view']">{{ domaineformation.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.contributions">Contributions</span></dt>
-                <dd>
-                    <span *ngFor="let contributions of centreFormation.contributions; let last = last">
-                        <a [routerLink]="['/contributions', contributions?.id, 'view']">{{ contributions.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.niveaurecrutement">Niveaurecrutement</span></dt>
-                <dd>
-                    <span *ngFor="let niveaurecrutement of centreFormation.niveaurecrutements; let last = last">
-                        <a [routerLink]="['/niveau-recrutement', niveaurecrutement?.id, 'view']">{{ niveaurecrutement.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.conditionaccess">Conditionaccess</span></dt>
-                <dd>
-                    <span *ngFor="let conditionaccess of centreFormation.conditionaccesses; let last = last">
-                        <a [routerLink]="['/condition-access', conditionaccess?.id, 'view']">{{ conditionaccess.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.centreFormation.regime">Regime</span></dt>
-                <dd>
-                    <div *ngIf="centreFormation.regime">
-                        <a [routerLink]="['/regime', centreFormation.regime?.id, 'view']">{{ centreFormation.regime?.id }}</a>
-                    </div>
-                </dd>
-            </dl>
-
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-            </button>
-
-            <button type="button"
-                    [routerLink]="['/centre-formation', centreFormation.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
+                     <div class="row">
+                         <div class="col-lg-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.publiccible">Publiccible</span></dt>
+                            <dd>
+                                <span *ngFor="let publiccible of centreFormation.publiccibles; let last = last">
+                                    {{ publiccible.libellePublic }} {{ last ? '' : ', ' }}
+                                </span>
+                            </dd>
+                         </div>
+                         <div class="col-lg-6">
+ 
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.specialites">Specialites</span></dt>
+                            <dd>
+                                <span *ngFor="let specialites of centreFormation.specialites; let last = last">
+                                    {{ specialites.libelleSpecialite }} {{ last ? '' : ', ' }}
+                                </span>
+                            </dd>
+                         </div>
+                     </div>
+                     
+                     <div class="row">
+                         <div class="col-lg-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.domaineformation">Domaineformation</span></dt>
+                            <dd>
+                                <span *ngFor="let domaineformation of centreFormation.domaineformations; let last = last">
+                                    {{ domaineformation.libelleDomaine }}{{ last ? '' : ', ' }}
+                                </span>
+                            </dd>
+                         </div>
+                         <div class="col-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.niveaurecrutement">Niveaurecrutement</span></dt>
+                            <dd>
+                                <span *ngFor="let niveaurecrutement of centreFormation.niveaurecrutements; let last = last">
+                                    {{ niveaurecrutement.libelleNiveau }}  {{ last ? '' : ', ' }}
+                                </span>
+                            </dd>
+                         </div>
+                         <div class="col-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.conditionaccess">Conditionaccess</span></dt>
+                            <dd>
+                                <span *ngFor="let conditionaccess of centreFormation.conditionaccesses; let last = last">
+                                    {{ conditionaccess.libelleConditon }} {{ last ? '' : ', ' }}
+                                </span>
+                            </dd>
+                         </div>
+                     </div>
+                     <div class="row">
+                         <div class="col-6">
+                            <dt><span jhiTranslate="gestionFormationApp.centreFormation.regime">Regime</span></dt>
+                            <dd>
+                                <div *ngIf="centreFormation.regime">
+                                    {{ centreFormation.regime?.libelleRegime }}
+                                </div>
+                            </dd>
+                         </div>
+                     </div>
+                     
+                    </dl>
+        
+                    <button type="submit"
+                            (click)="previousState()"
+                            class="btn btn-outline-warning">
+                        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                    </button>
+        
+                    <button type="button"
+                            [routerLink]="['/centre-formation', centreFormation.id, 'edit']"
+                            class="btn btn-outline-primary">
+                        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        
+                </div>
+            </div>
+
+           
+
+            

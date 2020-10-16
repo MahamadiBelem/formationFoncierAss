@@ -2,25 +2,25 @@
   "gestionFormationApp": {
     "formateurCentre": {
       "home": {
-        "title": "FormateurCentres",
-        "createLabel": "Créer un nouveau Formateur Centre",
-        "createOrEditLabel": "Créer ou éditer un Formateur Centre",
-        "notFound": "Aucun Formateur Centre trouvé"
+        "title": "Affecter un formateur à un centre",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une affectation ",
+        "notFound": "Aucune affectation trouvé"
       },
-      "created": "Un nouveau Formateur Centre a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Formateur Centre avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Formateur Centre avec l'identifiant {{ param }} a été supprimé",
+      "created": "une nouvelle affectation enregister avec succès ",
+      "updated": "Une affectation modifier avec succès",
+      "deleted": "Une affectation supprimer avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Formateur Centre {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Formateur Centre"
+        "title": "Affectation formateurs"
       },
-      "dateEtablissement": "Date Etablissement",
-      "specialite": "Specialite",
-      "regimeFormateur": "Regime Formateur",
+      "dateEtablissement": "Date d'affactation",
+      "regimeFormateur": "Regime du formateur",
       "formateurCentreFormation": "Formateur Centre Formation",
-      "formateurCentre": "Formateur Centre"
+      "formateurCentre": "Formateur Centre",
+      "regimecentreformateur": "Regimecentreformateur"
     }
   }
 }

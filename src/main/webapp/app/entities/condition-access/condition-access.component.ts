@@ -7,6 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IConditionAccess } from 'app/shared/model/condition-access.model';
 import { ConditionAccessService } from './condition-access.service';
 import { ConditionAccessDeleteDialogComponent } from './condition-access-delete-dialog.component';
+import { SaveConditionAccessComponent } from './save-condition-access/save-condition-access.component';
+import { UpdateConditionAccessComponent } from './update-condition-access/update-condition-access.component';
 
 @Component({
   selector: 'jhi-condition-access',
@@ -49,5 +51,15 @@ export class ConditionAccessComponent implements OnInit, OnDestroy {
   delete(conditionAccess: IConditionAccess): void {
     const modalRef = this.modalService.open(ConditionAccessDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.conditionAccess = conditionAccess;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveConditionAccessComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodal(conditionAccess: IConditionAccess): void {
+    const updatemodale = this.modalService.open(UpdateConditionAccessComponent, { size: 'lg', backdrop: 'static' });
+
+    updatemodale.componentInstance.conditionAccess = conditionAccess;
   }
 }

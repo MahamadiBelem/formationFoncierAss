@@ -71,6 +71,8 @@ export class CentreFormationUpdateComponent implements OnInit {
   regimes: IRegime[] = [];
   dateOuvertureDp: any;
 
+  dropdownList = [];
+
   editForm = this.fb.group({
     id: [],
     denomination: [null, [Validators.required]],

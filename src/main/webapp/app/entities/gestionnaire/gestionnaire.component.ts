@@ -10,6 +10,8 @@ import { IGestionnaire } from 'app/shared/model/gestionnaire.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { GestionnaireService } from './gestionnaire.service';
 import { GestionnaireDeleteDialogComponent } from './gestionnaire-delete-dialog.component';
+import { SaveGestionnaireComponent } from './save-gestionnaire/save-gestionnaire.component';
+import { UpdateGestionnaireComponent } from './update-gestionnaire/update-gestionnaire.component';
 
 @Component({
   selector: 'jhi-gestionnaire',
@@ -114,5 +116,14 @@ export class GestionnaireComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveGestionnaireComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodal(gestionnaire: IGestionnaire): void {
+    const updatemodale = this.modalService.open(UpdateGestionnaireComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.gestionnaire = gestionnaire;
   }
 }

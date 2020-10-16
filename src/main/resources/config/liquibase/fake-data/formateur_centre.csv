@@ -1,11 +1,11 @@
-id;date_etablissement;specialite;regime_formateur
-1;2020-09-24;Berkshire;Andorra
-2;2020-09-24;Sharable;Cotton
-3;2020-09-24;COM;Checking Account static Corporate
-4;2020-09-24;Profit-focused relationships Savings Account;Land
-5;2020-09-23;Alaska homogeneous Manager;deposit Virgin Islands, British
-6;2020-09-24;Intelligent Concrete Bacon;Supervisor
-7;2020-09-24;Croatia Credit Card Account Saudi Arabia;SAS payment Plastic
-8;2020-09-24;Licensed;Extensions applications
-9;2020-09-24;Wooden Interactions;plum payment
-10;2020-09-24;deliverables;dedicated Maryland
+id;date_etablissement;regime_formateur
+1;2020-09-24;Vacataire
+2;2020-09-24;Vacataire
+3;2020-09-24;Vacataire
+4;2020-09-24;Permanent
+5;2020-09-24;Vacataire
+6;2020-09-24;Vacataire
+7;2020-09-24;Vacataire
+8;2020-09-24;Vacataire
+9;2020-09-24;Permanent
+10;2020-09-24;Vacataire

@@ -10,6 +10,7 @@ import { IFormations } from 'app/shared/model/formations.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { FormationsService } from './formations.service';
 import { FormationsDeleteDialogComponent } from './formations-delete-dialog.component';
+import { FormationsDetailComponent } from './formations-detail.component';
 
 @Component({
   selector: 'jhi-formations',
@@ -114,5 +115,9 @@ export class FormationsComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+  viewmodal(formations: IFormations): void {
+    const viewmodale = this.modalService.open(FormationsDetailComponent, { size: 'lg', backdrop: 'static' });
+    viewmodale.componentInstance.formations = formations;
   }
 }

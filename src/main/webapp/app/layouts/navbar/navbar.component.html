@@ -30,7 +30,7 @@
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
                     <span>
                         <span jhiTranslate="global.menu.entities.inscription">
-                            Inscription
+                            Affectations
                         </span>
                     </span>
                 </a>
@@ -196,7 +196,12 @@
                 
                 
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-                   
+                    <li>
+                        <a class="dropdown-item" routerLink="condition-access" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+    
+                            <span jhiTranslate="global.menu.entities.conditionAccess">Approche Pedagogique</span>
+                        </a>
+                    </li>
                     <li>
                         <a class="dropdown-item" routerLink="approche-pedagogique" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
     
@@ -401,6 +406,24 @@
                     </li>
                  
                     -->
+                    <li>
+                        <a class="dropdown-item" routerLink="inscription" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.inscription">Inscription</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="formateur-centre" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.formateurCentre">Formateur Centre</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="regime" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.regime">Regime</span>
+                        </a>
+                    </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>

@@ -142,13 +142,12 @@ entity FormationCentreFormation
 entity FormateurCentre
 {
 	dateEtablissement LocalDate,
-	specialite String required,
-	regimeFormateur String required,
+	regimeFormateur RegimeFormateur required,
 }
 entity Inscription
 {
 anneesAcademique String,
-dateInscription String
+dateInscription LocalDate
 }
 entity Kits
 {
@@ -169,6 +168,10 @@ enum Sexe
 enum Examen 
 {
 	CQP, CQB
+}
+enum RegimeFormateur
+{
+	Vacataire, Permanent
 }
 entity Regime
 {
@@ -198,6 +201,7 @@ relationship OneToMany {
      Communes  to Villages {commune} ,
      Provinces  to Communes {provinces} ,
       Regime  to CentreFormation {regime} ,
+	  Regime to FormateurCentre{regimecentreformateur}
 }
 
 relationship ManyToOne {

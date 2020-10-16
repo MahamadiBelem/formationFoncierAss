@@ -7,6 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IContributions } from 'app/shared/model/contributions.model';
 import { ContributionsService } from './contributions.service';
 import { ContributionsDeleteDialogComponent } from './contributions-delete-dialog.component';
+import { SaveContributionComponent } from './save-contribution/save-contribution.component';
+import { UpdateContributionComponent } from './update-contribution/update-contribution.component';
 
 @Component({
   selector: 'jhi-contributions',
@@ -49,5 +51,14 @@ export class ContributionsComponent implements OnInit, OnDestroy {
   delete(contributions: IContributions): void {
     const modalRef = this.modalService.open(ContributionsDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.contributions = contributions;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SaveContributionComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodal(contributions: IContributions): void {
+    const updatemodale = this.modalService.open(UpdateContributionComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.contributions = contributions;
   }
 }

@@ -7,6 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IPublicCible } from 'app/shared/model/public-cible.model';
 import { PublicCibleService } from './public-cible.service';
 import { PublicCibleDeleteDialogComponent } from './public-cible-delete-dialog.component';
+import { SavePublicCibleComponent } from './save-public-cible/save-public-cible.component';
+import { UpdatePublicCibleComponent } from './update-public-cible/update-public-cible.component';
 
 @Component({
   selector: 'jhi-public-cible',
@@ -49,5 +51,14 @@ export class PublicCibleComponent implements OnInit, OnDestroy {
   delete(publicCible: IPublicCible): void {
     const modalRef = this.modalService.open(PublicCibleDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.publicCible = publicCible;
+  }
+
+  savemodal(): void {
+    const savemodale = this.modalService.open(SavePublicCibleComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodal(publicCible: IPublicCible): void {
+    const updatemodale = this.modalService.open(UpdatePublicCibleComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.publicCible = publicCible;
   }
 }
