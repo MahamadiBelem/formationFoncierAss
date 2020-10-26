@@ -1,14 +1,13 @@
 import { Moment } from 'moment';
-import { IApprenantes } from 'app/shared/model/apprenantes.model';
-import { ICentreFormation } from 'app/shared/model/centre-formation.model';
+import { IInscription } from 'app/shared/model/inscription.model';
 
 export interface ISortiePromotion {
   id?: number;
   dateSortie?: Moment;
   anneesSortie?: number;
   motif?: string;
-  sortiepromotion?: IApprenantes;
-  sortieCentreFormation?: ICentreFormation;
+  issortie?: boolean;
+  sortiepromotion?: IInscription;
 }
 
 export class SortiePromotion implements ISortiePromotion {
@@ -17,7 +16,9 @@ export class SortiePromotion implements ISortiePromotion {
     public dateSortie?: Moment,
     public anneesSortie?: number,
     public motif?: string,
-    public sortiepromotion?: IApprenantes,
-    public sortieCentreFormation?: ICentreFormation
-  ) {}
+    public issortie?: boolean,
+    public sortiepromotion?: IInscription
+  ) {
+    this.issortie = this.issortie || false;
+  }
 }

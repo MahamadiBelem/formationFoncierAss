@@ -12,6 +12,14 @@
   "relationships": [
     {
       "relationshipType": "many-to-many",
+      "otherEntityName": "compositionKits",
+      "otherEntityRelationshipName": "installationKits",
+      "relationshipName": "kits",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
       "otherEntityName": "installation",
       "otherEntityRelationshipName": "activiteinstallation",
       "relationshipName": "installation",

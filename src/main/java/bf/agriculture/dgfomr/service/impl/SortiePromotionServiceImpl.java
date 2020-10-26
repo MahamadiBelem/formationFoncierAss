@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -53,5 +54,11 @@ public class SortiePromotionServiceImpl implements SortiePromotionService {
     public void delete(Long id) {
         log.debug("Request to delete SortiePromotion : {}", id);
         sortiePromotionRepository.deleteById(id);
+    }
+
+    @Override
+    public List<SortiePromotion> findbyIsSortie() {
+        log.debug("Request to get student have statuts is sortie");
+        return sortiePromotionRepository.getIsSortie();
     }
 }

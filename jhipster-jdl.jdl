@@ -10,6 +10,12 @@ entity Communes {
 	libelleCommune String required,
 }
 
+entity SourceFiancement
+{
+    libelleSource String required,
+    partenaire Partenaire,
+}
+
 entity Villages {
 	libelleVillage String required,
 }
@@ -120,13 +126,15 @@ entity SortiePromotion
 {
 dateSortie LocalDate required,
 anneesSortie Integer required, 
-motif String
+motif String,
+issortie Boolean
 }
 entity Installation
 {
 	anneesInstallation String required,
     dateIntallation LocalDate required,
-    lieuInstallation String, 
+    lieuInstallation String,
+    iskit Boolean,
     
 }
 entity ActiviteInstallation 
@@ -173,6 +181,10 @@ enum RegimeFormateur
 {
 	Vacataire, Permanent
 }
+enum Partenaire
+{
+    Etat,Partenaire,Contrepartie
+}
 entity Regime
 {
 libelleRegime String required,
@@ -186,8 +198,9 @@ relationship ManyToMany {
     CentreFormation{niveaurecrutement} to NiveauRecrutement{centreformation},
     CentreFormation{conditionaccess} to ConditionAccess{centreformation},
     Installation{activiteinstallation} to ActiviteInstallation{installation},
-    Installation{kits} to Kits{installationKits},
-    CompositionKits{kits} to Kits{installation},
+    ActiviteInstallation{kits} to CompositionKits{installationKits},
+    Installation{sourceIntallation} to SourceFiancement{InstallationSource}
+
    
     
 }
@@ -201,7 +214,6 @@ relationship OneToMany {
      Communes  to Villages {commune} ,
      Provinces  to Communes {provinces} ,
       Regime  to CentreFormation {regime} ,
-	  Regime to FormateurCentre{regimecentreformateur}
 }
 
 relationship ManyToOne {
@@ -225,14 +237,13 @@ relationship ManyToOne {
 
 // defining multiple oneToOne relationships
 relationship OneToOne {
-    SortiePromotion {sortiepromotion} to Apprenantes  ,
-	SortiePromotion {SortieCentreFormation} to CentreFormation ,
+    SortiePromotion {sortiepromotion} to Inscription  ,
 	Installation {installation}  to SortiePromotion ,
 }
 
 // Set pagination options
 paginate Formations with infinite-scroll
-paginate Formations, Infrastructure, CentreFormation,Inscription, Amenagement, Formateurs, Apprenantes, Provinces, Region, Communes, Villages, SortiePromotion, Installation, Kits, CompositionKits, TypeInfratructure, TypeAmenagement,Gestionnaire,Promoteurs  with pagination 
+paginate Formations, Infrastructure, CentreFormation,Inscription, Amenagement, Formateurs, Apprenantes,FormationCentreFormation, Provinces, Region, Communes,FormateurCentre, Villages, SortiePromotion, Installation, Kits, CompositionKits, TypeInfratructure, TypeAmenagement,Gestionnaire,Promoteurs  with pagination 
 
 // Use Data Transfert Objects (DTO)
 // dto * with mapstruct

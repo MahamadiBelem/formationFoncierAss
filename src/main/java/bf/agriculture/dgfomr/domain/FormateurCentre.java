@@ -43,10 +43,6 @@ public class FormateurCentre implements Serializable {
     @JsonIgnoreProperties(value = "formateurCentres", allowSetters = true)
     private Formateurs formateurCentre;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "formateurCentres", allowSetters = true)
-    private Regime regimecentreformateur;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -106,19 +102,6 @@ public class FormateurCentre implements Serializable {
 
     public void setFormateurCentre(Formateurs formateurs) {
         this.formateurCentre = formateurs;
-    }
-
-    public Regime getRegimecentreformateur() {
-        return regimecentreformateur;
-    }
-
-    public FormateurCentre regimecentreformateur(Regime regime) {
-        this.regimecentreformateur = regime;
-        return this;
-    }
-
-    public void setRegimecentreformateur(Regime regime) {
-        this.regimecentreformateur = regime;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

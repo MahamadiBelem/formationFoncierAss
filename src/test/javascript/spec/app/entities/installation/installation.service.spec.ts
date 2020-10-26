@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Installation(0, 'AAAAAAA', currentDate, 'AAAAAAA');
+      elemDefault = new Installation(0, 'AAAAAAA', currentDate, 'AAAAAAA', false);
     });
 
     describe('Service methods', () => {
@@ -72,6 +72,7 @@ describe('Service Tests', () => {
             anneesInstallation: 'BBBBBB',
             dateIntallation: currentDate.format(DATE_FORMAT),
             lieuInstallation: 'BBBBBB',
+            iskit: true,
           },
           elemDefault
         );
@@ -96,6 +97,7 @@ describe('Service Tests', () => {
             anneesInstallation: 'BBBBBB',
             dateIntallation: currentDate.format(DATE_FORMAT),
             lieuInstallation: 'BBBBBB',
+            iskit: true,
           },
           elemDefault
         );

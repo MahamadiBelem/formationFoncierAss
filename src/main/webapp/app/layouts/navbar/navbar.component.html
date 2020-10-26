@@ -86,12 +86,12 @@
                             <span jhiTranslate="global.menu.entities.activiteInstallation">Activite Installation</span>
                         </a>
                     </li>
-                    <li>
+                  <!--  <li>
                         <a class="dropdown-item" routerLink="kits" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
 
                             <span jhiTranslate="global.menu.entities.kits">Kits</span>
                         </a>
-                    </li>
+                    </li>-->
                     <li>
                         <a class="dropdown-item" routerLink="composition-kits" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
 
@@ -206,6 +206,11 @@
                         <a class="dropdown-item" routerLink="approche-pedagogique" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
     
                             <span jhiTranslate="global.menu.entities.approchePedagogique">Approche Pedagogique</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="source-fiancement" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <span jhiTranslate="global.menu.entities.sourceFiancement">Source Fiancement</span>
                         </a>
                     </li>
                     <li>
@@ -406,7 +411,7 @@
                     </li>
                  
                     -->
-                    <li>
+                    <!--<li>
                         <a class="dropdown-item" routerLink="inscription" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.inscription">Inscription</span>
@@ -424,11 +429,25 @@
                             <span jhiTranslate="global.menu.entities.regime">Regime</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="formation-centre-formation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.formationCentreFormation">Formation Centre Formation</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item" routerLink="activite-installation" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.entities.activiteInstallation">Activite Installation</span>
+                        </a>
+                    </li>-->
+
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                 </ul>
             </li>
                 </ul>
-            </li>
+
         </ul>
     </div>
 </nav>

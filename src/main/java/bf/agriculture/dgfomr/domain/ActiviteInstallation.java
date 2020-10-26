@@ -30,6 +30,13 @@ public class ActiviteInstallation implements Serializable {
     @Column(name = "libelle_activite", nullable = false)
     private String libelleActivite;
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    @JoinTable(name = "activite_installation_kits",
+               joinColumns = @JoinColumn(name = "activite_installation_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "kits_id", referencedColumnName = "id"))
+    private Set<CompositionKits> kits = new HashSet<>();
+
     @ManyToMany(mappedBy = "activiteinstallations")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
@@ -55,6 +62,31 @@ public class ActiviteInstallation implements Serializable {
 
     public void setLibelleActivite(String libelleActivite) {
         this.libelleActivite = libelleActivite;
+    }
+
+    public Set<CompositionKits> getKits() {
+        return kits;
+    }
+
+    public ActiviteInstallation kits(Set<CompositionKits> compositionKits) {
+        this.kits = compositionKits;
+        return this;
+    }
+
+    public ActiviteInstallation addKits(CompositionKits compositionKits) {
+        this.kits.add(compositionKits);
+        compositionKits.getInstallationKits().add(this);
+        return this;
+    }
+
+    public ActiviteInstallation removeKits(CompositionKits compositionKits) {
+        this.kits.remove(compositionKits);
+        compositionKits.getInstallationKits().remove(this);
+        return this;
+    }
+
+    public void setKits(Set<CompositionKits> compositionKits) {
+        this.kits = compositionKits;
     }
 
     public Set<Installation> getInstallations() {

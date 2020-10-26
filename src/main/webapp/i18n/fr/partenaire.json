@@ -1,0 +1,10 @@
+{
+  "gestionFormationApp": {
+    "Partenaire": {
+      "null": "",
+      "Etat": "Etat",
+      "Partenaire": "Partenaire",
+      "Contrepartie": "Contrepartie"
+    }
+  }
+}

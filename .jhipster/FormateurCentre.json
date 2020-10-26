@@ -28,19 +28,12 @@
       "otherEntityRelationshipName": "formateurCentre",
       "relationshipName": "formateurCentre",
       "otherEntityField": "id"
-    },
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "regime",
-      "otherEntityRelationshipName": "formateurCentre",
-      "relationshipName": "regimecentreformateur",
-      "otherEntityField": "id"
     }
   ],
   "changelogDate": "20200924225604",
   "entityTableName": "formateur_centre",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

@@ -24,6 +24,9 @@
             <column name="lieu_installation" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="iskit" type="boolean">
+                <constraints nullable="true" />
+            </column>
             <column name="installation_id" type="bigint">
                 <constraints unique="true" nullable="true" uniqueConstraintName="ux_installation_installation_id" />
             </column>
@@ -44,8 +47,8 @@
 
         <addPrimaryKey columnNames="installation_id, activiteinstallation_id" tableName="installation_activiteinstallation"/>
         
-        <createTable tableName="installation_kits">
-            <column name="kits_id" type="bigint">
+        <createTable tableName="installation_source_intallation">
+            <column name="source_intallation_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="installation_id" type="bigint">
@@ -53,7 +56,7 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="installation_id, kits_id" tableName="installation_kits"/>
+        <addPrimaryKey columnNames="installation_id, source_intallation_id" tableName="installation_source_intallation"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -75,6 +78,7 @@
             <column name="annees_installation" type="string"/>
             <column name="date_intallation" type="date"/>
             <column name="lieu_installation" type="string"/>
+            <column name="iskit" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

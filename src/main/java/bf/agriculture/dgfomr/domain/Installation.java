@@ -37,6 +37,9 @@ public class Installation implements Serializable {
     @Column(name = "lieu_installation")
     private String lieuInstallation;
 
+    @Column(name = "iskit")
+    private Boolean iskit;
+
     @OneToOne
     @JoinColumn(unique = true)
     private SortiePromotion installation;
@@ -50,10 +53,10 @@ public class Installation implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "installation_kits",
+    @JoinTable(name = "installation_source_intallation",
                joinColumns = @JoinColumn(name = "installation_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "kits_id", referencedColumnName = "id"))
-    private Set<Kits> kits = new HashSet<>();
+               inverseJoinColumns = @JoinColumn(name = "source_intallation_id", referencedColumnName = "id"))
+    private Set<SourceFiancement> sourceIntallations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -103,6 +106,19 @@ public class Installation implements Serializable {
         this.lieuInstallation = lieuInstallation;
     }
 
+    public Boolean isIskit() {
+        return iskit;
+    }
+
+    public Installation iskit(Boolean iskit) {
+        this.iskit = iskit;
+        return this;
+    }
+
+    public void setIskit(Boolean iskit) {
+        this.iskit = iskit;
+    }
+
     public SortiePromotion getInstallation() {
         return installation;
     }
@@ -141,29 +157,29 @@ public class Installation implements Serializable {
         this.activiteinstallations = activiteInstallations;
     }
 
-    public Set<Kits> getKits() {
-        return kits;
+    public Set<SourceFiancement> getSourceIntallations() {
+        return sourceIntallations;
     }
 
-    public Installation kits(Set<Kits> kits) {
-        this.kits = kits;
+    public Installation sourceIntallations(Set<SourceFiancement> sourceFiancements) {
+        this.sourceIntallations = sourceFiancements;
         return this;
     }
 
-    public Installation addKits(Kits kits) {
-        this.kits.add(kits);
-        kits.getInstallationKits().add(this);
+    public Installation addSourceIntallation(SourceFiancement sourceFiancement) {
+        this.sourceIntallations.add(sourceFiancement);
+        sourceFiancement.getInstallationSources().add(this);
         return this;
     }
 
-    public Installation removeKits(Kits kits) {
-        this.kits.remove(kits);
-        kits.getInstallationKits().remove(this);
+    public Installation removeSourceIntallation(SourceFiancement sourceFiancement) {
+        this.sourceIntallations.remove(sourceFiancement);
+        sourceFiancement.getInstallationSources().remove(this);
         return this;
     }
 
-    public void setKits(Set<Kits> kits) {
-        this.kits = kits;
+    public void setSourceIntallations(Set<SourceFiancement> sourceFiancements) {
+        this.sourceIntallations = sourceFiancements;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -191,6 +207,7 @@ public class Installation implements Serializable {
             ", anneesInstallation='" + getAnneesInstallation() + "'" +
             ", dateIntallation='" + getDateIntallation() + "'" +
             ", lieuInstallation='" + getLieuInstallation() + "'" +
+            ", iskit='" + isIskit() + "'" +
             "}";
     }
 }

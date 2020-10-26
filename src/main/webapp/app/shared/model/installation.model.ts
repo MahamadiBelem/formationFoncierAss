@@ -1,16 +1,17 @@
 import { Moment } from 'moment';
 import { ISortiePromotion } from 'app/shared/model/sortie-promotion.model';
 import { IActiviteInstallation } from 'app/shared/model/activite-installation.model';
-import { IKits } from 'app/shared/model/kits.model';
+import { ISourceFiancement } from 'app/shared/model/source-fiancement.model';
 
 export interface IInstallation {
   id?: number;
   anneesInstallation?: string;
   dateIntallation?: Moment;
   lieuInstallation?: string;
+  iskit?: boolean;
   installation?: ISortiePromotion;
   activiteinstallations?: IActiviteInstallation[];
-  kits?: IKits[];
+  sourceIntallations?: ISourceFiancement[];
 }
 
 export class Installation implements IInstallation {
@@ -19,8 +20,11 @@ export class Installation implements IInstallation {
     public anneesInstallation?: string,
     public dateIntallation?: Moment,
     public lieuInstallation?: string,
+    public iskit?: boolean,
     public installation?: ISortiePromotion,
     public activiteinstallations?: IActiviteInstallation[],
-    public kits?: IKits[]
-  ) {}
+    public sourceIntallations?: ISourceFiancement[]
+  ) {
+    this.iskit = this.iskit || false;
+  }
 }

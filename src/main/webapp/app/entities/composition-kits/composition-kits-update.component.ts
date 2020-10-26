@@ -7,8 +7,6 @@ import { Observable } from 'rxjs';
 
 import { ICompositionKits, CompositionKits } from 'app/shared/model/composition-kits.model';
 import { CompositionKitsService } from './composition-kits.service';
-import { IKits } from 'app/shared/model/kits.model';
-import { KitsService } from 'app/entities/kits/kits.service';
 
 @Component({
   selector: 'jhi-composition-kits-update',
@@ -16,18 +14,15 @@ import { KitsService } from 'app/entities/kits/kits.service';
 })
 export class CompositionKitsUpdateComponent implements OnInit {
   isSaving = false;
-  kits: IKits[] = [];
 
   editForm = this.fb.group({
     id: [],
     libelleKits: [],
     quantiteKits: [],
-    kits: [],
   });
 
   constructor(
     protected compositionKitsService: CompositionKitsService,
-    protected kitsService: KitsService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -35,8 +30,6 @@ export class CompositionKitsUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ compositionKits }) => {
       this.updateForm(compositionKits);
-
-      this.kitsService.query().subscribe((res: HttpResponse<IKits[]>) => (this.kits = res.body || []));
     });
   }
 
@@ -45,7 +38,6 @@ export class CompositionKitsUpdateComponent implements OnInit {
       id: compositionKits.id,
       libelleKits: compositionKits.libelleKits,
       quantiteKits: compositionKits.quantiteKits,
-      kits: compositionKits.kits,
     });
   }
 
@@ -69,7 +61,6 @@ export class CompositionKitsUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       libelleKits: this.editForm.get(['libelleKits'])!.value,
       quantiteKits: this.editForm.get(['quantiteKits'])!.value,
-      kits: this.editForm.get(['kits'])!.value,
     };
   }
 
@@ -87,20 +78,5 @@ export class CompositionKitsUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IKits): any {
-    return item.id;
-  }
-
-  getSelected(selectedVals: IKits[], option: IKits): IKits {
-    if (selectedVals) {
-      for (let i = 0; i < selectedVals.length; i++) {
-        if (option.id === selectedVals[i].id) {
-          return selectedVals[i];
-        }
-      }
-    }
-    return option;
   }
 }

@@ -2,6 +2,9 @@ package bf.agriculture.dgfomr.service;
 
 import bf.agriculture.dgfomr.domain.ActiviteInstallation;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +27,13 @@ public interface ActiviteInstallationService {
      * @return the list of entities.
      */
     List<ActiviteInstallation> findAll();
+
+    /**
+     * Get all the activiteInstallations with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    Page<ActiviteInstallation> findAllWithEagerRelationships(Pageable pageable);
 
 
     /**

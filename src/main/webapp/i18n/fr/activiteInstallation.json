@@ -2,21 +2,22 @@
   "gestionFormationApp": {
     "activiteInstallation": {
       "home": {
-        "title": "ActiviteInstallations",
-        "createLabel": "Créer un nouveau Activite Installation",
-        "createOrEditLabel": "Créer ou éditer un Activite Installation",
-        "notFound": "Aucun Activite Installation trouvé"
+        "title": "Domaine d'installation",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un domaine d'installation",
+        "notFound": "Aucune domaine d'installation  trouvée"
       },
-      "created": "Un nouveau Activite Installation a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Activite Installation avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Activite Installation avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement d'une nouvelle  domaine d'installation avec succès",
+      "updated": "Modification du domaine d'installation avec succès ",
+      "deleted": "Suppression du domaine d'installation avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Activite Installation {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer effectuer cette action ?"
       },
       "detail": {
-        "title": "Activite Installation"
+        "title": "Domaine d'installation"
       },
-      "libelleActivite": "Libelle Activite",
+      "libelleActivite": "Domaine d'installation",
+      "kits": "Kits",
       "installation": "Installation"
     }
   }

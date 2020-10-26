@@ -2,25 +2,24 @@
   "gestionFormationApp": {
     "formateurCentre": {
       "home": {
-        "title": "Affecter un formateur à un centre",
+        "title": "Affecter un formateur a un centre de formation",
         "createLabel": "Nouveau",
-        "createOrEditLabel": "Créer ou modifier une affectation ",
-        "notFound": "Aucune affectation trouvé"
+        "createOrEditLabel": "Créer ou modifier  une centre de formation",
+        "notFound": "Aucune affectation  trouvéé"
       },
-      "created": "une nouvelle affectation enregister avec succès ",
-      "updated": "Une affectation modifier avec succès",
-      "deleted": "Une affectation supprimer avec succès",
+      "created": "Affectation du formateur avec succès",
+      "updated": "Modification du formateur avec succès",
+      "deleted": "Suppression du formateur avec succès",
       "delete": {
         "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Affectation formateurs"
+        "title": "Affectation d'un formateur "
       },
-      "dateEtablissement": "Date d'affactation",
-      "regimeFormateur": "Regime du formateur",
-      "formateurCentreFormation": "Formateur Centre Formation",
-      "formateurCentre": "Formateur Centre",
-      "regimecentreformateur": "Regimecentreformateur"
+      "dateEtablissement": "Date d'affectation",
+      "regimeFormateur": "Regime",
+      "formateurCentreFormation": "Centre de formation",
+      "formateurCentre": "Formateur"
     }
   }
 }

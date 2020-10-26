@@ -24,6 +24,17 @@
 
     <changeSet id="20200822185521-1-relations" author="jhipster">
 
+        <createTable tableName="activite_installation_kits">
+            <column name="kits_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activite_installation_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="activite_installation_id, kits_id" tableName="activite_installation_kits"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 

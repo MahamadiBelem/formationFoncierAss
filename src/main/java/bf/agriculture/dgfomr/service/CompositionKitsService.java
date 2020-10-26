@@ -28,13 +28,6 @@ public interface CompositionKitsService {
      */
     Page<CompositionKits> findAll(Pageable pageable);
 
-    /**
-     * Get all the compositionKits with eager load of many-to-many relationships.
-     *
-     * @return the list of entities.
-     */
-    Page<CompositionKits> findAllWithEagerRelationships(Pageable pageable);
-
 
     /**
      * Get the "id" compositionKits.

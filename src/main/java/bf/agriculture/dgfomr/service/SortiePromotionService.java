@@ -5,6 +5,7 @@ import bf.agriculture.dgfomr.domain.SortiePromotion;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,4 +44,10 @@ public interface SortiePromotionService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * find student have statut is sortie
+     * @return List
+     */
+    List<SortiePromotion>findbyIsSortie();
 }

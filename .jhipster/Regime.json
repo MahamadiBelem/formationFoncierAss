@@ -15,12 +15,6 @@
       "otherEntityName": "centreFormation",
       "otherEntityRelationshipName": "regime",
       "relationshipName": "centreFormation"
-    },
-    {
-      "relationshipType": "one-to-many",
-      "otherEntityName": "formateurCentre",
-      "otherEntityRelationshipName": "regimecentreformateur",
-      "relationshipName": "formateurCentre"
     }
   ],
   "changelogDate": "20200910234840",

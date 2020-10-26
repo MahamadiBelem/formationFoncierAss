@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.formateurCentre.home.title">Formateur Centres</span>
 
-        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-formateur-centre" [routerLink]="['/formateur-centre/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-formateur-centre" (click)="savemodal()">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.formateurCentre.home.createLabel">
             Create a new Formateur Centre
@@ -17,51 +17,49 @@
     <div class="alert alert-warning" id="no-result" *ngIf="formateurCentres?.length === 0">
         <span jhiTranslate="gestionFormationApp.formateurCentre.home.notFound">No formateurCentres found</span>
     </div>
-    <br><br><br>
+    <br><br>
     <div class="table-responsive" id="entities" *ngIf="formateurCentres && formateurCentres.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead class="f-table-header">
-                <tr>
-                   
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.dateEtablissement">Date Etablissement</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.regimeFormateur">Regime Formateur</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentreFormation">Formateur Centre Formation</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentre">Formateur Centre</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formateurCentre.regimecentreformateur">Regimecentreformateur</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="formateurCentre.id"><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentre">Formateur Centre</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="formateurCentreFormation.id"><span jhiTranslate="gestionFormationApp.formateurCentre.formateurCentreFormation">Formateur Centre Formation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="regimeFormateur"><span jhiTranslate="gestionFormationApp.formateurCentre.regimeFormateur">Regime Formateur</span> <fa-icon icon="sort"></fa-icon></th>
+
+                    <th scope="col"  jhiSortBy="dateEtablissement"><span jhiTranslate="gestionFormationApp.formateurCentre.dateEtablissement">Date Etablissement</span> <fa-icon icon="sort"></fa-icon></th>
+
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let formateurCentre of formateurCentres ;trackBy: trackId">
-                    <td>{{ formateurCentre.dateEtablissement | date:'longDate' }}</td>
-                    <td jhiTranslate="{{ 'gestionFormationApp.RegimeFormateur.' + formateurCentre.regimeFormateur }}">{{ formateurCentre.regimeFormateur }}</td>
-                    <td>
-                        <div *ngIf="formateurCentre.formateurCentreFormation">
-                            {{ formateurCentre.formateurCentreFormation?.denomination }}
-                        </div>
-                    </td>
                     <td>
                         <div *ngIf="formateurCentre.formateurCentre">
-                           <strong>Nom & prenom :</strong> {{ formateurCentre.formateurCentre?.nomComplet }} <br>
-                           <strong>Contact: </strong> {{formateurCentre.formateurCentre.contactformateur}}
+                            <strong>Nom & prenom: </strong>{{ formateurCentre.formateurCentre?.nomComplet }} <br>
+                            <strong>Contact: </strong>{{ formateurCentre.formateurCentre?.contactformateur }}
                         </div>
                     </td>
                     <td>
-                        <div *ngIf="formateurCentre.regimecentreformateur">
-                           {{ formateurCentre.regimecentreformateur?.libelleRegime }}
+                        <div *ngIf="formateurCentre.formateurCentreFormation">
+                          {{ formateurCentre.formateurCentreFormation?.denomination }}
                         </div>
                     </td>
+                    <td jhiTranslate="{{ 'gestionFormationApp.RegimeFormateur.' + formateurCentre.regimeFormateur }}">{{ formateurCentre.regimeFormateur }}</td>
+
+                    <td>{{ formateurCentre.dateEtablissement | date:'shortDate' }}</td>
+
+
                     <td class="text-right">
                         <div class="btn-group">
-                           <!--  <button type="submit"
+                           <!-- <button type="submit"
                                     [routerLink]="['/formateur-centre', formateurCentre.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                            </button> -->
+                            </button>-->
 
                             <button type="submit"
-                                    [routerLink]="['/formateur-centre', formateurCentre.id, 'edit']"
+                                    (click)="updatemodal(formateurCentre)"
                                     class="btn btn-outline-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
@@ -77,5 +75,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="formateurCentres && formateurCentres.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

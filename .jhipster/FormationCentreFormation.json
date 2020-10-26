@@ -29,7 +29,7 @@
   "changelogDate": "20200924230751",
   "entityTableName": "formation_centre_formation",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "serviceImpl",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

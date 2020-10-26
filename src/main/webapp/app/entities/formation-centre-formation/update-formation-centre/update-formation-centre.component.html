@@ -1,0 +1,87 @@
+<div class="card">
+    <div class="card-header save-card-design">
+        <h2 id="jhi-formation-centre-formation-heading" jhiTranslate="gestionFormationApp.formationCentreFormation.home.createOrEditLabel">Create or edit a Formation Centre Formation</h2>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+
+                    <div>
+                        <jhi-alert-error></jhi-alert-error>
+
+                        <div class="form-group" [hidden]="true">
+                            <label for="id" jhiTranslate="global.field.id">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationCentreFormation.datedebut" for="field_datedebut">Datedebut</label>
+                                    <div class="input-group">
+                                        <input id="field_datedebut" type="text" class="form-control" name="datedebut" ngbDatepicker #datedebutDp="ngbDatepicker" formControlName="datedebut"/>
+                                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="datedebutDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationCentreFormation.dateClore" for="field_dateClore">Date Clore</label>
+                                    <div class="input-group">
+                                        <input id="field_dateClore" type="text" class="form-control" name="dateClore" ngbDatepicker #dateCloreDp="ngbDatepicker" formControlName="dateClore"/>
+                                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateCloreDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+
+                                <div class="form-group">
+                                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationCentreFormation.formationcentre" for="field_formationcentre">Formationcentre</label>
+                                    <select class="form-control" id="field_formationcentre" name="formationcentre" formControlName="formationcentre">
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="centreFormationOption.id === editForm.get('formationcentre')!.value?.id ? editForm.get('formationcentre')!.value : centreFormationOption" *ngFor="let centreFormationOption of centreformations; trackBy: trackById">{{ centreFormationOption.denomination }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationCentreFormation.centreformation" for="field_centreformation">Centreformation</label>
+                                    <select class="form-control" id="field_centreformation" name="centreformation" formControlName="centreformation">
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="formationsOption.id === editForm.get('centreformation')!.value?.id ? editForm.get('centreformation')!.value : formationsOption" *ngFor="let formationsOption of formations; trackBy: trackById">{{ formationsOption.lebelleFormation }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div>
+                                <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancel()">
+                                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                                </button>
+
+                                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

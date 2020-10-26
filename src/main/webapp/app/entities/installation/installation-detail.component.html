@@ -1,56 +1,98 @@
-<div class="row justify-content-center">
-    <div class="col-8">
-        <div *ngIf="installation">
-            <h2><span jhiTranslate="gestionFormationApp.installation.detail.title">Installation</span> {{ installation.id }}</h2>
-
-            <hr>
-
-            <jhi-alert-error></jhi-alert-error>
-
-            <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="gestionFormationApp.installation.anneesInstallation">Annees Installation</span></dt>
-                <dd>
-                    <span>{{ installation.anneesInstallation }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.installation.dateIntallation">Date Intallation</span></dt>
-                <dd>
-                    <span>{{ installation.dateIntallation }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.installation.lieuInstallation">Lieu Installation</span></dt>
-                <dd>
-                    <span>{{ installation.lieuInstallation }}</span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.installation.installation">Installation</span></dt>
-                <dd>
-                    <div *ngIf="installation.installation">
-                        <a [routerLink]="['/sortie-promotion', installation.installation?.id, 'view']">{{ installation.installation?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.installation.activiteinstallation">Activiteinstallation</span></dt>
-                <dd>
-                    <span *ngFor="let activiteinstallation of installation.activiteinstallations; let last = last">
-                        <a [routerLink]="['/activite-installation', activiteinstallation?.id, 'view']">{{ activiteinstallation.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.installation.kits">Kits</span></dt>
-                <dd>
-                    <span *ngFor="let kits of installation.kits; let last = last">
-                        <a [routerLink]="['/kits', kits?.id, 'view']">{{ kits.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
-            </dl>
-
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
-                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
-            </button>
-
-            <button type="button"
-                    [routerLink]="['/installation', installation.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
-        </div>
+<div class="card">
+    <div class="card-header f-table-header">
+        <h4><span jhiTranslate="gestionFormationApp.installation.detail.title">Installation</span> Matricule: {{ installation?.installation?.sortiepromotion?.inscriptionApprenant?.matricule }}</h4>
     </div>
+
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div *ngIf="installation">
+
+                    <hr>
+
+                    <jhi-alert-error></jhi-alert-error>
+
+                    <dl class="row-md jh-entity-details">
+
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.installation.anneesInstallation">Annees Installation</span></dt>
+                                <dd>
+                                    <span>{{ installation.anneesInstallation }}</span>
+                                </dd>
+                            </div>
+                            <div class="col-6">
+
+                                <dt><span jhiTranslate="gestionFormationApp.installation.dateIntallation">Date Intallation</span></dt>
+                                <dd>
+                                    <span>{{ installation.dateIntallation }}</span>
+                                </dd>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.installation.lieuInstallation">Lieu Installation</span></dt>
+                                <dd>
+                                    <span>{{ installation.lieuInstallation }}</span>
+                                </dd>
+                            </div>
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.installation.iskit">Iskit</span></dt>
+                                <dd>
+                                    <span *ngIf="installation.iskit">Oui</span>
+                                    <span *ngIf="!installation.iskit">Non</span>
+
+                                </dd>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.installation.installation">Installation</span></dt>
+                                <dd>
+                                    <div *ngIf="installation.installation">
+                                      <strong>Matricule</strong>  {{ installation.installation?.sortiepromotion?.inscriptionApprenant?.matricule }}
+                                        <br>
+                                        <strong>Nom & prenom</strong>  {{ installation.installation?.sortiepromotion?.inscriptionApprenant?.nom }} {{ installation.installation?.sortiepromotion?.inscriptionApprenant?.prenom }}
+
+                                    </div>
+                                </dd>
+                            </div>
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.installation.activiteinstallation">Activiteinstallation</span></dt>
+                                <dd>
+                    <span *ngFor="let activiteinstallation of installation.activiteinstallations; let last = last">
+                       {{ activiteinstallation.libelleActivite }}{{ last ? '' : ', ' }}
+                    </span>
+                                </dd>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <dt><span jhiTranslate="gestionFormationApp.installation.sourceIntallation">Source Intallation</span></dt>
+                                <dd>
+                    <span *ngFor="let sourceIntallation of installation.sourceIntallations; let last = last">
+                        {{ sourceIntallation.libelleSource }} {{ last ? '' : ', ' }}
+                    </span>
+                                </dd>
+                            </div>
+                        </div>
+                    </dl>
+
+                    <button type="submit"
+                            (click)="cancel()"
+                            class="btn btn-outline-warning">
+                        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+                    </button>
+
+                    <button type="button"
+                            [routerLink]="['/installation', installation.id, 'edit']"
+                            class="btn btn-primary">
+                        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>

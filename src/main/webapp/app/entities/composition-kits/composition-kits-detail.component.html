@@ -16,12 +16,6 @@
                 <dd>
                     <span>{{ compositionKits.quantiteKits }}</span>
                 </dd>
-                <dt><span jhiTranslate="gestionFormationApp.compositionKits.kits">Kits</span></dt>
-                <dd>
-                    <span *ngFor="let kits of compositionKits.kits; let last = last">
-                        <a [routerLink]="['/kits', kits?.id, 'view']">{{ kits.id }}</a>{{ last ? '' : ', ' }}
-                    </span>
-                </dd>
             </dl>
 
             <button type="submit"

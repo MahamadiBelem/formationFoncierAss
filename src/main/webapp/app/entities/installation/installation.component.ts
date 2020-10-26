@@ -10,6 +10,7 @@ import { IInstallation } from 'app/shared/model/installation.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { InstallationService } from './installation.service';
 import { InstallationDeleteDialogComponent } from './installation-delete-dialog.component';
+import { InstallationDetailComponent } from './installation-detail.component';
 
 @Component({
   selector: 'jhi-installation',
@@ -114,5 +115,10 @@ export class InstallationComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  viewmodal(installation: IInstallation): void {
+    const viewmodale = this.modalService.open(InstallationDetailComponent, { size: 'lg', backdrop: 'static' });
+    viewmodale.componentInstance.installation = installation;
   }
 }

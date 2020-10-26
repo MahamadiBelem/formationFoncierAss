@@ -116,6 +116,11 @@ public class CacheConfiguration {
             createCache(cm, bf.agriculture.dgfomr.domain.FormateurCentre.class.getName());
             createCache(cm, bf.agriculture.dgfomr.domain.FormationCentreFormation.class.getName());
             createCache(cm, bf.agriculture.dgfomr.domain.Regime.class.getName() + ".formateurCentres");
+            createCache(cm, bf.agriculture.dgfomr.domain.ActiviteInstallation.class.getName() + ".kits");
+            createCache(cm, bf.agriculture.dgfomr.domain.CompositionKits.class.getName() + ".installationKits");
+            createCache(cm, bf.agriculture.dgfomr.domain.SourceFiancement.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.SourceFiancement.class.getName() + ".installationSources");
+            createCache(cm, bf.agriculture.dgfomr.domain.Installation.class.getName() + ".sourceIntallations");
             // jhipster-needle-ehcache-add-entry
         };
     }

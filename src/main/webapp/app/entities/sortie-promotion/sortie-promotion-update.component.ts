@@ -8,12 +8,8 @@ import { map } from 'rxjs/operators';
 
 import { ISortiePromotion, SortiePromotion } from 'app/shared/model/sortie-promotion.model';
 import { SortiePromotionService } from './sortie-promotion.service';
-import { IApprenantes } from 'app/shared/model/apprenantes.model';
-import { ApprenantesService } from 'app/entities/apprenantes/apprenantes.service';
-import { ICentreFormation } from 'app/shared/model/centre-formation.model';
-import { CentreFormationService } from 'app/entities/centre-formation/centre-formation.service';
-
-type SelectableEntity = IApprenantes | ICentreFormation;
+import { IInscription } from 'app/shared/model/inscription.model';
+import { InscriptionService } from 'app/entities/inscription/inscription.service';
 
 @Component({
   selector: 'jhi-sortie-promotion-update',
@@ -21,8 +17,7 @@ type SelectableEntity = IApprenantes | ICentreFormation;
 })
 export class SortiePromotionUpdateComponent implements OnInit {
   isSaving = false;
-  sortiepromotions: IApprenantes[] = [];
-  sortiecentreformations: ICentreFormation[] = [];
+  sortiepromotions: IInscription[] = [];
   dateSortieDp: any;
 
   editForm = this.fb.group({
@@ -30,14 +25,13 @@ export class SortiePromotionUpdateComponent implements OnInit {
     dateSortie: [null, [Validators.required]],
     anneesSortie: [null, [Validators.required]],
     motif: [],
+    issortie: [],
     sortiepromotion: [],
-    sortieCentreFormation: [],
   });
 
   constructor(
     protected sortiePromotionService: SortiePromotionService,
-    protected apprenantesService: ApprenantesService,
-    protected centreFormationService: CentreFormationService,
+    protected inscriptionService: InscriptionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -46,47 +40,25 @@ export class SortiePromotionUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ sortiePromotion }) => {
       this.updateForm(sortiePromotion);
 
-      this.apprenantesService
+      this.inscriptionService
         .query({ filter: 'sortiepromotion-is-null' })
         .pipe(
-          map((res: HttpResponse<IApprenantes[]>) => {
+          map((res: HttpResponse<IInscription[]>) => {
             return res.body || [];
           })
         )
-        .subscribe((resBody: IApprenantes[]) => {
+        .subscribe((resBody: IInscription[]) => {
           if (!sortiePromotion.sortiepromotion || !sortiePromotion.sortiepromotion.id) {
             this.sortiepromotions = resBody;
           } else {
-            this.apprenantesService
+            this.inscriptionService
               .find(sortiePromotion.sortiepromotion.id)
               .pipe(
-                map((subRes: HttpResponse<IApprenantes>) => {
+                map((subRes: HttpResponse<IInscription>) => {
                   return subRes.body ? [subRes.body].concat(resBody) : resBody;
                 })
               )
-              .subscribe((concatRes: IApprenantes[]) => (this.sortiepromotions = concatRes));
-          }
-        });
-
-      this.centreFormationService
-        .query({ filter: 'sortiepromotion-is-null' })
-        .pipe(
-          map((res: HttpResponse<ICentreFormation[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: ICentreFormation[]) => {
-          if (!sortiePromotion.sortieCentreFormation || !sortiePromotion.sortieCentreFormation.id) {
-            this.sortiecentreformations = resBody;
-          } else {
-            this.centreFormationService
-              .find(sortiePromotion.sortieCentreFormation.id)
-              .pipe(
-                map((subRes: HttpResponse<ICentreFormation>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: ICentreFormation[]) => (this.sortiecentreformations = concatRes));
+              .subscribe((concatRes: IInscription[]) => (this.sortiepromotions = concatRes));
           }
         });
     });
@@ -98,8 +70,8 @@ export class SortiePromotionUpdateComponent implements OnInit {
       dateSortie: sortiePromotion.dateSortie,
       anneesSortie: sortiePromotion.anneesSortie,
       motif: sortiePromotion.motif,
+      issortie: sortiePromotion.issortie,
       sortiepromotion: sortiePromotion.sortiepromotion,
-      sortieCentreFormation: sortiePromotion.sortieCentreFormation,
     });
   }
 
@@ -124,8 +96,8 @@ export class SortiePromotionUpdateComponent implements OnInit {
       dateSortie: this.editForm.get(['dateSortie'])!.value,
       anneesSortie: this.editForm.get(['anneesSortie'])!.value,
       motif: this.editForm.get(['motif'])!.value,
+      issortie: this.editForm.get(['issortie'])!.value,
       sortiepromotion: this.editForm.get(['sortiepromotion'])!.value,
-      sortieCentreFormation: this.editForm.get(['sortieCentreFormation'])!.value,
     };
   }
 
@@ -145,7 +117,7 @@ export class SortiePromotionUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: SelectableEntity): any {
+  trackById(index: number, item: IInscription): any {
     return item.id;
   }
 }

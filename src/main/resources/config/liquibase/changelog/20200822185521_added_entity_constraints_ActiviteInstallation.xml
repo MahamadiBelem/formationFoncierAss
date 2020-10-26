@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ActiviteInstallation.
+    -->
+    <changeSet id="20200822185521-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="activite_installation_id"
+                                 baseTableName="activite_installation_kits"
+                                 constraintName="fk_activite_installation_kits_activite_installation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="activite_installation"/>
+
+        <addForeignKeyConstraint baseColumnNames="kits_id"
+                                 baseTableName="activite_installation_kits"
+                                 constraintName="fk_activite_installation_kits_kits_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="composition_kits"/>
+        
+    </changeSet>
+</databaseChangeLog>

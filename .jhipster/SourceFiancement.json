@@ -1,0 +1,38 @@
+{
+  "name": "SourceFiancement",
+  "fields": [
+    {
+      "fieldName": "libelleSource",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "partenaire",
+      "fieldType": "Partenaire",
+      "fieldValues": "Etat,Partenaire,Contrepartie"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "installation",
+      "otherEntityRelationshipName": "sourceIntallation",
+      "relationshipName": "installationSource",
+      "otherEntityField": "id",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201021235259",
+  "entityTableName": "source_fiancement",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

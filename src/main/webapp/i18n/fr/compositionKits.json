@@ -2,23 +2,23 @@
   "gestionFormationApp": {
     "compositionKits": {
       "home": {
-        "title": "CompositionKits",
-        "createLabel": "Créer un nouveau Composition Kits",
-        "createOrEditLabel": "Créer ou éditer un Composition Kits",
-        "notFound": "Aucun Composition Kits trouvé"
+        "title": "Kits",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un  kit",
+        "notFound": "Aucun  kit trouvé"
       },
-      "created": "Un nouveau Composition Kits a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Composition Kits avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Composition Kits avec l'identifiant {{ param }} a été supprimé",
+      "created": " Eregistrement d'un nouveau kit avec succès",
+      "updated": "Modification d'un kit avec succès",
+      "deleted": "Suppression d'un kit avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Composition Kits {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Composition Kits"
+        "title": "Kits"
       },
-      "libelleKits": "Libelle Kits",
-      "quantiteKits": "Quantite Kits",
-      "kits": "Kits"
+      "libelleKits": " Kits",
+      "quantiteKits": "Quantite",
+      "installationKits": "Installation Kits"
     }
   }
 }

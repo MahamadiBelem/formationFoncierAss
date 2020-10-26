@@ -7,6 +7,8 @@ import { CompositionKitsDetailComponent } from './composition-kits-detail.compon
 import { CompositionKitsUpdateComponent } from './composition-kits-update.component';
 import { CompositionKitsDeleteDialogComponent } from './composition-kits-delete-dialog.component';
 import { compositionKitsRoute } from './composition-kits.route';
+import { SaveCompositionKitsComponent } from './save-composition-kits/save-composition-kits.component';
+import { UpdateCompositionKitsComponent } from './update-composition-kits/update-composition-kits.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(compositionKitsRoute)],
@@ -15,6 +17,8 @@ import { compositionKitsRoute } from './composition-kits.route';
     CompositionKitsDetailComponent,
     CompositionKitsUpdateComponent,
     CompositionKitsDeleteDialogComponent,
+    SaveCompositionKitsComponent,
+    UpdateCompositionKitsComponent,
   ],
   entryComponents: [CompositionKitsDeleteDialogComponent],
 })

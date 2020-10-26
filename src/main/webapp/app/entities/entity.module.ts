@@ -141,8 +141,13 @@ import { RouterModule } from '@angular/router';
             m => m.GestionFormationFormationCentreFormationModule
           ),
       },
+      {
+        path: 'source-fiancement',
+        loadChildren: () => import('./source-fiancement/source-fiancement.module').then(m => m.GestionFormationSourceFiancementModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
+  declarations: [],
 })
 export class GestionFormationEntityModule {}

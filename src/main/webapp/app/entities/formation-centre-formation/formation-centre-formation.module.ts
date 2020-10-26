@@ -7,6 +7,8 @@ import { FormationCentreFormationDetailComponent } from './formation-centre-form
 import { FormationCentreFormationUpdateComponent } from './formation-centre-formation-update.component';
 import { FormationCentreFormationDeleteDialogComponent } from './formation-centre-formation-delete-dialog.component';
 import { formationCentreFormationRoute } from './formation-centre-formation.route';
+import { SaveFormationCentreComponent } from './save-formation-centre/save-formation-centre.component';
+import { UpdateFormationCentreComponent } from './update-formation-centre/update-formation-centre.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(formationCentreFormationRoute)],
@@ -15,6 +17,8 @@ import { formationCentreFormationRoute } from './formation-centre-formation.rout
     FormationCentreFormationDetailComponent,
     FormationCentreFormationUpdateComponent,
     FormationCentreFormationDeleteDialogComponent,
+    SaveFormationCentreComponent,
+    UpdateFormationCentreComponent,
   ],
   entryComponents: [FormationCentreFormationDeleteDialogComponent],
 })

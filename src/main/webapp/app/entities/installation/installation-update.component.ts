@@ -12,12 +12,12 @@ import { ISortiePromotion } from 'app/shared/model/sortie-promotion.model';
 import { SortiePromotionService } from 'app/entities/sortie-promotion/sortie-promotion.service';
 import { IActiviteInstallation } from 'app/shared/model/activite-installation.model';
 import { ActiviteInstallationService } from 'app/entities/activite-installation/activite-installation.service';
-import { IKits } from 'app/shared/model/kits.model';
-import { KitsService } from 'app/entities/kits/kits.service';
+import { ISourceFiancement } from 'app/shared/model/source-fiancement.model';
+import { SourceFiancementService } from 'app/entities/source-fiancement/source-fiancement.service';
 
-type SelectableEntity = ISortiePromotion | IActiviteInstallation | IKits;
+type SelectableEntity = ISortiePromotion | IActiviteInstallation | ISourceFiancement;
 
-type SelectableManyToManyEntity = IActiviteInstallation | IKits;
+type SelectableManyToManyEntity = IActiviteInstallation | ISourceFiancement;
 
 @Component({
   selector: 'jhi-installation-update',
@@ -27,7 +27,7 @@ export class InstallationUpdateComponent implements OnInit {
   isSaving = false;
   installations: ISortiePromotion[] = [];
   activiteinstallations: IActiviteInstallation[] = [];
-  kits: IKits[] = [];
+  sourcefiancements: ISourceFiancement[] = [];
   dateIntallationDp: any;
 
   editForm = this.fb.group({
@@ -35,16 +35,17 @@ export class InstallationUpdateComponent implements OnInit {
     anneesInstallation: [null, [Validators.required]],
     dateIntallation: [null, [Validators.required]],
     lieuInstallation: [],
+    iskit: [],
     installation: [],
     activiteinstallations: [],
-    kits: [],
+    sourceIntallations: [],
   });
 
   constructor(
     protected installationService: InstallationService,
     protected sortiePromotionService: SortiePromotionService,
     protected activiteInstallationService: ActiviteInstallationService,
-    protected kitsService: KitsService,
+    protected sourceFiancementService: SourceFiancementService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -79,7 +80,7 @@ export class InstallationUpdateComponent implements OnInit {
         .query()
         .subscribe((res: HttpResponse<IActiviteInstallation[]>) => (this.activiteinstallations = res.body || []));
 
-      this.kitsService.query().subscribe((res: HttpResponse<IKits[]>) => (this.kits = res.body || []));
+      this.sourceFiancementService.query().subscribe((res: HttpResponse<ISourceFiancement[]>) => (this.sourcefiancements = res.body || []));
     });
   }
 
@@ -89,9 +90,10 @@ export class InstallationUpdateComponent implements OnInit {
       anneesInstallation: installation.anneesInstallation,
       dateIntallation: installation.dateIntallation,
       lieuInstallation: installation.lieuInstallation,
+      iskit: installation.iskit,
       installation: installation.installation,
       activiteinstallations: installation.activiteinstallations,
-      kits: installation.kits,
+      sourceIntallations: installation.sourceIntallations,
     });
   }
 
@@ -116,9 +118,10 @@ export class InstallationUpdateComponent implements OnInit {
       anneesInstallation: this.editForm.get(['anneesInstallation'])!.value,
       dateIntallation: this.editForm.get(['dateIntallation'])!.value,
       lieuInstallation: this.editForm.get(['lieuInstallation'])!.value,
+      iskit: this.editForm.get(['iskit'])!.value,
       installation: this.editForm.get(['installation'])!.value,
       activiteinstallations: this.editForm.get(['activiteinstallations'])!.value,
-      kits: this.editForm.get(['kits'])!.value,
+      sourceIntallations: this.editForm.get(['sourceIntallations'])!.value,
     };
   }
 

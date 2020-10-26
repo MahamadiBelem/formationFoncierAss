@@ -98,6 +98,13 @@ public class SortiePromotionResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
+    @GetMapping("/sortie-promotion-issortie")
+    public ResponseEntity<List<SortiePromotion>>getIssortie()
+    {
+        log.debug("REST request to get a page of SortiePromotions");
+        return ResponseEntity.ok().body(sortiePromotionService.findbyIsSortie());
+    }
+
     /**
      * {@code GET  /sortie-promotions/:id} : get the "id" sortiePromotion.
      *

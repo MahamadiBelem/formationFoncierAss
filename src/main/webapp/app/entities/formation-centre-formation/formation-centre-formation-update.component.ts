@@ -42,6 +42,10 @@ export class FormationCentreFormationUpdateComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.centreFormationService.query().subscribe((res: HttpResponse<ICentreFormation[]>) => (this.centreformations = res.body || []));
+
+    this.formationsService.query().subscribe((res: HttpResponse<IFormations[]>) => (this.formations = res.body || []));
+
     this.activatedRoute.data.subscribe(({ formationCentreFormation }) => {
       this.updateForm(formationCentreFormation);
 

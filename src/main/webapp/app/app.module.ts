@@ -14,6 +14,7 @@ import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SaveFormationCentreComponent } from './save-formation-centre/save-formation-centre.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -25,7 +26,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
     GestionFormationAppRoutingModule,
     NgSelectModule,
   ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [
+    MainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    SaveFormationCentreComponent,
+  ],
   bootstrap: [MainComponent],
 })
 export class GestionFormationAppModule {}

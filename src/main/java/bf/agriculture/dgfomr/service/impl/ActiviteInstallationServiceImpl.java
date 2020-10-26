@@ -6,6 +6,8 @@ import bf.agriculture.dgfomr.repository.ActiviteInstallationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,15 +39,19 @@ public class ActiviteInstallationServiceImpl implements ActiviteInstallationServ
     @Transactional(readOnly = true)
     public List<ActiviteInstallation> findAll() {
         log.debug("Request to get all ActiviteInstallations");
-        return activiteInstallationRepository.findAll();
+        return activiteInstallationRepository.findAllWithEagerRelationships();
     }
 
+
+    public Page<ActiviteInstallation> findAllWithEagerRelationships(Pageable pageable) {
+        return activiteInstallationRepository.findAllWithEagerRelationships(pageable);
+    }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<ActiviteInstallation> findOne(Long id) {
         log.debug("Request to get ActiviteInstallation : {}", id);
-        return activiteInstallationRepository.findById(id);
+        return activiteInstallationRepository.findOneWithEagerRelationships(id);
     }
 
     @Override

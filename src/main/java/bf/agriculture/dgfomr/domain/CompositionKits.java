@@ -1,5 +1,6 @@
 package bf.agriculture.dgfomr.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -30,12 +31,10 @@ public class CompositionKits implements Serializable {
     @Column(name = "quantite_kits")
     private Long quantiteKits;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "kits")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "composition_kits_kits",
-               joinColumns = @JoinColumn(name = "composition_kits_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "kits_id", referencedColumnName = "id"))
-    private Set<Kits> kits = new HashSet<>();
+    @JsonIgnore
+    private Set<ActiviteInstallation> installationKits = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -72,29 +71,29 @@ public class CompositionKits implements Serializable {
         this.quantiteKits = quantiteKits;
     }
 
-    public Set<Kits> getKits() {
-        return kits;
+    public Set<ActiviteInstallation> getInstallationKits() {
+        return installationKits;
     }
 
-    public CompositionKits kits(Set<Kits> kits) {
-        this.kits = kits;
+    public CompositionKits installationKits(Set<ActiviteInstallation> activiteInstallations) {
+        this.installationKits = activiteInstallations;
         return this;
     }
 
-    public CompositionKits addKits(Kits kits) {
-        this.kits.add(kits);
-        kits.getInstallations().add(this);
+    public CompositionKits addInstallationKits(ActiviteInstallation activiteInstallation) {
+        this.installationKits.add(activiteInstallation);
+        activiteInstallation.getKits().add(this);
         return this;
     }
 
-    public CompositionKits removeKits(Kits kits) {
-        this.kits.remove(kits);
-        kits.getInstallations().remove(this);
+    public CompositionKits removeInstallationKits(ActiviteInstallation activiteInstallation) {
+        this.installationKits.remove(activiteInstallation);
+        activiteInstallation.getKits().remove(this);
         return this;
     }
 
-    public void setKits(Set<Kits> kits) {
-        this.kits = kits;
+    public void setInstallationKits(Set<ActiviteInstallation> activiteInstallations) {
+        this.installationKits = activiteInstallations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

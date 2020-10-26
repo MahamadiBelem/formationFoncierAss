@@ -49,6 +49,9 @@ public class InstallationResourceIT {
     private static final String DEFAULT_LIEU_INSTALLATION = "AAAAAAAAAA";
     private static final String UPDATED_LIEU_INSTALLATION = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_ISKIT = false;
+    private static final Boolean UPDATED_ISKIT = true;
+
     @Autowired
     private InstallationRepository installationRepository;
 
@@ -79,7 +82,8 @@ public class InstallationResourceIT {
         Installation installation = new Installation()
             .anneesInstallation(DEFAULT_ANNEES_INSTALLATION)
             .dateIntallation(DEFAULT_DATE_INTALLATION)
-            .lieuInstallation(DEFAULT_LIEU_INSTALLATION);
+            .lieuInstallation(DEFAULT_LIEU_INSTALLATION)
+            .iskit(DEFAULT_ISKIT);
         return installation;
     }
     /**
@@ -92,7 +96,8 @@ public class InstallationResourceIT {
         Installation installation = new Installation()
             .anneesInstallation(UPDATED_ANNEES_INSTALLATION)
             .dateIntallation(UPDATED_DATE_INTALLATION)
-            .lieuInstallation(UPDATED_LIEU_INSTALLATION);
+            .lieuInstallation(UPDATED_LIEU_INSTALLATION)
+            .iskit(UPDATED_ISKIT);
         return installation;
     }
 
@@ -118,6 +123,7 @@ public class InstallationResourceIT {
         assertThat(testInstallation.getAnneesInstallation()).isEqualTo(DEFAULT_ANNEES_INSTALLATION);
         assertThat(testInstallation.getDateIntallation()).isEqualTo(DEFAULT_DATE_INTALLATION);
         assertThat(testInstallation.getLieuInstallation()).isEqualTo(DEFAULT_LIEU_INSTALLATION);
+        assertThat(testInstallation.isIskit()).isEqualTo(DEFAULT_ISKIT);
     }
 
     @Test
@@ -191,7 +197,8 @@ public class InstallationResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(installation.getId().intValue())))
             .andExpect(jsonPath("$.[*].anneesInstallation").value(hasItem(DEFAULT_ANNEES_INSTALLATION)))
             .andExpect(jsonPath("$.[*].dateIntallation").value(hasItem(DEFAULT_DATE_INTALLATION.toString())))
-            .andExpect(jsonPath("$.[*].lieuInstallation").value(hasItem(DEFAULT_LIEU_INSTALLATION)));
+            .andExpect(jsonPath("$.[*].lieuInstallation").value(hasItem(DEFAULT_LIEU_INSTALLATION)))
+            .andExpect(jsonPath("$.[*].iskit").value(hasItem(DEFAULT_ISKIT.booleanValue())));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -227,7 +234,8 @@ public class InstallationResourceIT {
             .andExpect(jsonPath("$.id").value(installation.getId().intValue()))
             .andExpect(jsonPath("$.anneesInstallation").value(DEFAULT_ANNEES_INSTALLATION))
             .andExpect(jsonPath("$.dateIntallation").value(DEFAULT_DATE_INTALLATION.toString()))
-            .andExpect(jsonPath("$.lieuInstallation").value(DEFAULT_LIEU_INSTALLATION));
+            .andExpect(jsonPath("$.lieuInstallation").value(DEFAULT_LIEU_INSTALLATION))
+            .andExpect(jsonPath("$.iskit").value(DEFAULT_ISKIT.booleanValue()));
     }
     @Test
     @Transactional
@@ -252,7 +260,8 @@ public class InstallationResourceIT {
         updatedInstallation
             .anneesInstallation(UPDATED_ANNEES_INSTALLATION)
             .dateIntallation(UPDATED_DATE_INTALLATION)
-            .lieuInstallation(UPDATED_LIEU_INSTALLATION);
+            .lieuInstallation(UPDATED_LIEU_INSTALLATION)
+            .iskit(UPDATED_ISKIT);
 
         restInstallationMockMvc.perform(put("/api/installations")
             .contentType(MediaType.APPLICATION_JSON)
@@ -266,6 +275,7 @@ public class InstallationResourceIT {
         assertThat(testInstallation.getAnneesInstallation()).isEqualTo(UPDATED_ANNEES_INSTALLATION);
         assertThat(testInstallation.getDateIntallation()).isEqualTo(UPDATED_DATE_INTALLATION);
         assertThat(testInstallation.getLieuInstallation()).isEqualTo(UPDATED_LIEU_INSTALLATION);
+        assertThat(testInstallation.isIskit()).isEqualTo(UPDATED_ISKIT);
     }
 
     @Test

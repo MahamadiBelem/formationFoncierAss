@@ -87,18 +87,12 @@ public class CompositionKitsResource {
      * {@code GET  /composition-kits} : get all the compositionKits.
      *
      * @param pageable the pagination information.
-     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of compositionKits in body.
      */
     @GetMapping("/composition-kits")
-    public ResponseEntity<List<CompositionKits>> getAllCompositionKits(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+    public ResponseEntity<List<CompositionKits>> getAllCompositionKits(Pageable pageable) {
         log.debug("REST request to get a page of CompositionKits");
-        Page<CompositionKits> page;
-        if (eagerload) {
-            page = compositionKitsService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = compositionKitsService.findAll(pageable);
-        }
+        Page<CompositionKits> page = compositionKitsService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

@@ -40,6 +40,7 @@ export const formationCentreFormationRoute: Routes = [
     component: FormationCentreFormationComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'gestionFormationApp.formationCentreFormation.home.title',
     },
     canActivate: [UserRouteAccessService],

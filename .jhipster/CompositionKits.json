@@ -13,11 +13,11 @@
   "relationships": [
     {
       "relationshipType": "many-to-many",
-      "otherEntityName": "kits",
-      "otherEntityRelationshipName": "installation",
-      "relationshipName": "kits",
+      "otherEntityName": "activiteInstallation",
+      "otherEntityRelationshipName": "kits",
+      "relationshipName": "installationKits",
       "otherEntityField": "id",
-      "ownerSide": true
+      "ownerSide": false
     }
   ],
   "changelogDate": "20200822185721",

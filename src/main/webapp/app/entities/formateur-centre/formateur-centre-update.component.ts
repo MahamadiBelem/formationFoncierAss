@@ -11,10 +11,8 @@ import { ICentreFormation } from 'app/shared/model/centre-formation.model';
 import { CentreFormationService } from 'app/entities/centre-formation/centre-formation.service';
 import { IFormateurs } from 'app/shared/model/formateurs.model';
 import { FormateursService } from 'app/entities/formateurs/formateurs.service';
-import { IRegime } from 'app/shared/model/regime.model';
-import { RegimeService } from 'app/entities/regime/regime.service';
 
-type SelectableEntity = ICentreFormation | IFormateurs | IRegime;
+type SelectableEntity = ICentreFormation | IFormateurs;
 
 @Component({
   selector: 'jhi-formateur-centre-update',
@@ -24,7 +22,6 @@ export class FormateurCentreUpdateComponent implements OnInit {
   isSaving = false;
   centreformations: ICentreFormation[] = [];
   formateurs: IFormateurs[] = [];
-  regimes: IRegime[] = [];
   dateEtablissementDp: any;
 
   editForm = this.fb.group({
@@ -33,14 +30,12 @@ export class FormateurCentreUpdateComponent implements OnInit {
     regimeFormateur: [null, [Validators.required]],
     formateurCentreFormation: [],
     formateurCentre: [],
-    regimecentreformateur: [],
   });
 
   constructor(
     protected formateurCentreService: FormateurCentreService,
     protected centreFormationService: CentreFormationService,
     protected formateursService: FormateursService,
-    protected regimeService: RegimeService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -52,8 +47,6 @@ export class FormateurCentreUpdateComponent implements OnInit {
       this.centreFormationService.query().subscribe((res: HttpResponse<ICentreFormation[]>) => (this.centreformations = res.body || []));
 
       this.formateursService.query().subscribe((res: HttpResponse<IFormateurs[]>) => (this.formateurs = res.body || []));
-
-      this.regimeService.query().subscribe((res: HttpResponse<IRegime[]>) => (this.regimes = res.body || []));
     });
   }
 
@@ -64,7 +57,6 @@ export class FormateurCentreUpdateComponent implements OnInit {
       regimeFormateur: formateurCentre.regimeFormateur,
       formateurCentreFormation: formateurCentre.formateurCentreFormation,
       formateurCentre: formateurCentre.formateurCentre,
-      regimecentreformateur: formateurCentre.regimecentreformateur,
     });
   }
 
@@ -90,7 +82,6 @@ export class FormateurCentreUpdateComponent implements OnInit {
       regimeFormateur: this.editForm.get(['regimeFormateur'])!.value,
       formateurCentreFormation: this.editForm.get(['formateurCentreFormation'])!.value,
       formateurCentre: this.editForm.get(['formateurCentre'])!.value,
-      regimecentreformateur: this.editForm.get(['regimecentreformateur'])!.value,
     };
   }
 

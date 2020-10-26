@@ -1,0 +1,206 @@
+
+entity Commune{
+//idCommune Int,
+nomCommune String
+}
+
+entity Region{
+//idRegion Int,
+nomRegion String
+}
+
+entity Province{
+//idProvince Int,
+nomProvince String
+}
+
+entity Sfr{
+//idSfr Int
+nbrPersonne Integer,
+}
+
+entity Personnel{
+//idPersonnel Int,
+nomPers String,
+prenomPers String,
+telPers String,
+emailPers String
+}
+
+entity TypePersonnel{
+//idTypePersonnel Int,
+sgSfr String,
+chefSfr String
+autresType String
+}
+
+entity DossierApfr{
+//idDossierApfr Int,
+numApfr Integer,
+dateReceptionCfv LocalDate,
+dateRetourCt LocalDate,
+dateEnregistrement LocalDate,
+dateDepotSt LocalDate,
+dateRetourSt LocalDate,
+dateNotification LocalDate,
+dateSignature LocalDate,
+taxesTotale LocalDate,
+donCommune Float,
+superficieSecurise Float
+dateConstatation LocalDate
+}
+entity TypeActe{
+//idTypeActe Int,
+apfrInd String,
+apfrCol String,	
+}
+
+entity TypeDemandeur{
+//idTypeDemandeur Int,
+demandeurHomme Boolean,
+demandeurFemme Boolean,
+autresDemandeur Boolean,
+}
+entity Formation{
+//idFormation Int,
+annee Integer,
+nbrAgentForme Integer,
+dureeTotFormation Integer
+}
+entity StructureLocale{
+//idStructureLocale Int,
+annee Integer,
+nbrCfv Integer,
+nbrCfvc Integer
+}
+entity CaracteristiqueSfr{
+//idCaracSfr Int,
+annee Integer,
+nbrAgent Integer,
+equipementInformatique Boolean,
+equipementCartographique Boolean,
+accesInternet Boolean,
+equipemementVehicule Boolean
+}
+entity CharteFonciere{
+//idCharteFonciere Int,
+charteDisponible Boolean,
+charte1 Boolean,
+charte2 Boolean,
+charte3 Boolean
+}
+entity TypeCharte{
+//idTypeCharte Int,
+libelle String
+}
+entity CharteAdopte{
+//idCharteAdopte Int,
+annee Integer,
+nombreCharte Integer
+}
+entity Conflit{
+//idConflit Int,
+nbrTotConflit Integer,
+nbrConflitRegleCfv Integer,
+nbrConflitRegleJustice Integer,
+annee Integer
+}
+entity TypeConflit{
+//idTypeConflit Int
+}
+entity ImmatriculationDomaineCommune{
+//idImmatriculation Int,
+superficeTotInventorie Float,
+superficieTotImmatricule Float,
+superficieTotEncadre Float
+annee Integer
+}
+entity TrancheAge{
+jeune Boolean,
+adulte Boolean,
+vieux Boolean
+}
+// relation : une region a plusieurs provinces et une province n'appartient qu"a une seule region
+relationship OneToMany {
+  Region{Province} to Province{Region}
+}
+
+relationship OneToMany {
+  Province{Commune} to Commune{Province}
+}
+// relation 1 a 1 . Une  commune a un seul Sfr et un Sfr n'appartient qu'a une seul commune
+relationship OneToOne {
+  Commune{Sfr} to Sfr{commune}
+}
+
+relationship OneToOne {
+  Personnel{Sfr} to Sfr{Personnel}
+}
+
+//relationship OneToOne {
+//Confit{Sfr} to Sfr{Conflit}
+//}
+
+//relationship OneToOne {
+//Formation{Sfr} to Sfr{Formation}
+//}
+relationship OneToOne {
+  CaracteristiqueSfr{Sfr} to Sfr{CaracteristiqueSfr}
+}
+
+//relation plusieurs a plusieurs
+relationship ManyToMany {
+  DossierApfr{Sfr} to Sfr{DossierApfr}
+}
+//relation : un demande peut avoir plusieurs dossier et dans un dossier il ya qu'un demandeur
+relationship OneToMany {
+  TypeDemandeur{DossierApfr} to DossierApfr{TypeDemandeur}
+}
+//
+relationship OneToMany {
+  TrancheAge{DossierApfr} to DossierApfr{TrancheAge}
+}
+//relation:un acte peut etre dans plusieurs dossiers et un dossier n'a qu'un type
+relationship OneToMany{
+TypeActe{DossierApfr} to DossierApfr{TypeActe}
+}
+//une structure est lieu qu'un seul sfr
+relationship OneToOne{
+StructureLocale{Sfr} to Sfr{StructureLocale}
+}
+//une charte peut concener plusieurs sfr alors qu'un sfr n'a qu'une charte
+relationship OneToMany {
+  CharteFonciere{Sfr} to Sfr{CharteFonciere}
+}
+//Une charte n'a q'un type et un type peut concerner plusieurs charte
+relationship OneToMany{
+TypeCharte{CharteFonciere} to CharteFonciere{TypeCharte}
+}
+//
+relationship OneToOne {
+  Personnel{Sfr} to Sfr{Personnel}
+}
+// Un personnel n'a qu'un type alors qu'un type peut concerner plusieurs personnes
+relationship OneToMany {
+  TypePersonnel{Personnel} to Personnel{TypePersonnel}
+}
+//Une charte peut concerner plusieurs Sfr alors qu'un Sfr n'a qu'un seul charte
+relationship OneToMany{
+CharteAdopte{Sfr} to Sfr{CharteAdopte}
+}
+//un sfr n'a qu'un
+relationship OneToOne {
+  Conflit{Sfr} to Sfr{Conflit}
+}
+//
+relationship OneToMany{
+TypeConflit{Conflit} to TypeConflit{Conflit}
+}
+//
+relationship OneToMany{
+ImmatriculationDomaineCommune{Sfr} to ImmatriculationDomaineCommune{Sfr}
+}
+//
+relationship OneToMany{
+Formation{Sfr} to Formation{Sfr}
+}

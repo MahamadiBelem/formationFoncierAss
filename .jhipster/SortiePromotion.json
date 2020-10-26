@@ -18,22 +18,18 @@
     {
       "fieldName": "motif",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "issortie",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [
     {
       "relationshipType": "one-to-one",
-      "otherEntityName": "apprenantes",
+      "otherEntityName": "inscription",
       "otherEntityRelationshipName": "sortiePromotion",
       "relationshipName": "sortiepromotion",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "centreFormation",
-      "otherEntityRelationshipName": "sortiePromotion",
-      "relationshipName": "sortieCentreFormation",
       "otherEntityField": "id",
       "ownerSide": true
     }

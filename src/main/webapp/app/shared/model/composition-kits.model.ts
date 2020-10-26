@@ -1,12 +1,17 @@
-import { IKits } from 'app/shared/model/kits.model';
+import { IActiviteInstallation } from 'app/shared/model/activite-installation.model';
 
 export interface ICompositionKits {
   id?: number;
   libelleKits?: string;
   quantiteKits?: number;
-  kits?: IKits[];
+  installationKits?: IActiviteInstallation[];
 }
 
 export class CompositionKits implements ICompositionKits {
-  constructor(public id?: number, public libelleKits?: string, public quantiteKits?: number, public kits?: IKits[]) {}
+  constructor(
+    public id?: number,
+    public libelleKits?: string,
+    public quantiteKits?: number,
+    public installationKits?: IActiviteInstallation[]
+  ) {}
 }

@@ -27,16 +27,16 @@
                                  referencedTableName="activite_installation"/>
         
         <addForeignKeyConstraint baseColumnNames="installation_id"
-                                 baseTableName="installation_kits"
-                                 constraintName="fk_installation_kits_installation_id"
+                                 baseTableName="installation_source_intallation"
+                                 constraintName="fk_installation_source_intallation_installation_id"
                                  referencedColumnNames="id"
                                  referencedTableName="installation"/>
 
-        <addForeignKeyConstraint baseColumnNames="kits_id"
-                                 baseTableName="installation_kits"
-                                 constraintName="fk_installation_kits_kits_id"
+        <addForeignKeyConstraint baseColumnNames="source_intallation_id"
+                                 baseTableName="installation_source_intallation"
+                                 constraintName="fk_installation_source_intallation_source_intallation_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="kits"/>
+                                 referencedTableName="source_fiancement"/>
         
     </changeSet>
 </databaseChangeLog>

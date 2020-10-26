@@ -18,6 +18,10 @@
     {
       "fieldName": "lieuInstallation",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "iskit",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [
@@ -39,9 +43,9 @@
     },
     {
       "relationshipType": "many-to-many",
-      "otherEntityName": "kits",
-      "otherEntityRelationshipName": "installationKits",
-      "relationshipName": "kits",
+      "otherEntityName": "sourceFiancement",
+      "otherEntityRelationshipName": "installationSource",
+      "relationshipName": "sourceIntallation",
       "otherEntityField": "id",
       "ownerSide": true
     }

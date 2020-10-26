@@ -1,82 +1,131 @@
-<div class="row justify-content-center">
-    <div class="col-8">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-installation-heading" jhiTranslate="gestionFormationApp.installation.home.createOrEditLabel">Create or edit a Installation</h2>
+<div style="box-shadow: 3px 3px 3px 3px;background-color: #E5E5E5   ;border-radius: 25px;">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                <h2 id="jhi-installation-heading" jhiTranslate="gestionFormationApp.installation.home.createOrEditLabel">Create or edit a Installation</h2>
 
-            <div>
-                <jhi-alert-error></jhi-alert-error>
+                <div>
+                    <jhi-alert-error></jhi-alert-error>
 
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.anneesInstallation" for="field_anneesInstallation">Annees Installation</label>
-                    <input type="text" class="form-control" name="anneesInstallation" id="field_anneesInstallation"
-                           formControlName="anneesInstallation"/>
-                    <div *ngIf="editForm.get('anneesInstallation')!.invalid && (editForm.get('anneesInstallation')!.dirty || editForm.get('anneesInstallation')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('anneesInstallation')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
+                    <div class="form-group" [hidden]="true">
+                        <label for="id" jhiTranslate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.dateIntallation" for="field_dateIntallation">Date Intallation</label>
-                    <div class="input-group">
-                        <input id="field_dateIntallation" type="text" class="form-control" name="dateIntallation" ngbDatepicker #dateIntallationDp="ngbDatepicker" formControlName="dateIntallation"/>
-                        <span class="input-group-append">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.anneesInstallation" for="field_anneesInstallation">Annees Installation</label>
+                                <input type="text" class="form-control" name="anneesInstallation" id="field_anneesInstallation"
+                                       formControlName="anneesInstallation"/>
+                                <div *ngIf="editForm.get('anneesInstallation')!.invalid && (editForm.get('anneesInstallation')!.dirty || editForm.get('anneesInstallation')!.touched)">
+                                    <small class="form-text text-danger"
+                                           *ngIf="editForm.get('anneesInstallation')?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.dateIntallation" for="field_dateIntallation">Date Intallation</label>
+                                <div class="input-group">
+                                    <input id="field_dateIntallation" type="text" class="form-control" name="dateIntallation" ngbDatepicker #dateIntallationDp="ngbDatepicker" formControlName="dateIntallation"/>
+                                    <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="dateIntallationDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
+                                </div>
+                                <div *ngIf="editForm.get('dateIntallation')!.invalid && (editForm.get('dateIntallation')!.dirty || editForm.get('dateIntallation')!.touched)">
+                                    <small class="form-text text-danger"
+                                           *ngIf="editForm.get('dateIntallation')?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div *ngIf="editForm.get('dateIntallation')!.invalid && (editForm.get('dateIntallation')!.dirty || editForm.get('dateIntallation')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('dateIntallation')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.lieuInstallation" for="field_lieuInstallation">Lieu Installation</label>
+                                <input type="text" class="form-control" name="lieuInstallation" id="field_lieuInstallation"
+                                       formControlName="lieuInstallation"/>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.installation" for="field_installation">Installation</label>
+                                <select class="form-control" id="field_installation" name="installation" formControlName="installation">
+                                    <option [ngValue]="null"></option>
+                                    <option [ngValue]="sortiePromotionOption.id === editForm.get('installation')!.value?.id ? editForm.get('installation')!.value : sortiePromotionOption" *ngFor="let sortiePromotionOption of installations; trackBy: trackById">{{ sortiePromotionOption.sortiepromotion?.inscriptionApprenant?.matricule }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label jhiTranslate="gestionFormationApp.installation.activiteinstallation" for="field_activiteinstallations">Activiteinstallation</label>
+                               <!-- <select class="form-control" id="field_activiteinstallations" multiple name="activiteinstallations" formControlName="activiteinstallations">
+                                    <option [ngValue]="getSelected(editForm.get('activiteinstallations')!.value, activiteInstallationOption)" *ngFor="let activiteInstallationOption of activiteinstallations; trackBy: trackById">{{ activiteInstallationOption.id }}</option>
+                                </select>-->
+
+                                <ng-select
+                                    id="field_activiteinstallations"  name="activiteinstallations" formControlName="activiteinstallations"
+                                    [multiple]="true"
+                                    [closeOnSelect]="false"
+                                    [searchable]="true"
+                                    placeholder="Selectionner une activité d'installation"  >
+                                    <ng-option [value]="getSelected(editForm.get('activiteinstallations')!.value, activiteInstallationOption)" *ngFor="let activiteInstallationOption of activiteinstallations; trackBy: trackById">{{ activiteInstallationOption.libelleActivite }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label jhiTranslate="gestionFormationApp.installation.sourceIntallation" for="field_sourceIntallations">Source Intallation</label>
+                                <!--<select class="form-control" id="field_sourceIntallations" multiple name="sourceIntallations" formControlName="sourceIntallations">
+                                    <option [ngValue]="getSelected(editForm.get('sourceIntallations')!.value, sourceFiancementOption)" *ngFor="let sourceFiancementOption of sourcefiancements; trackBy: trackById">{{ sourceFiancementOption.id }}</option>
+                                </select>-->
+
+                                <ng-select
+                                    id="field_sourceIntallations"  name="sourceIntallations" formControlName="sourceIntallations"
+                                    [multiple]="true"
+                                    [closeOnSelect]="false"
+                                    [searchable]="true"
+                                    placeholder="Selectionner une activité des sources de financement"  >
+                                    <ng-option [value]="getSelected(editForm.get('sourceIntallations')!.value, sourceFiancementOption)" *ngFor="let sourceFiancementOption of sourcefiancements; trackBy: trackById">{{ sourceFiancementOption.libelleSource }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.iskit" for="field_iskit">Iskit</label>
+                                <input type="checkbox" class="form-control" name="iskit" id="field_iskit"
+                                       formControlName="iskit"/>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.lieuInstallation" for="field_lieuInstallation">Lieu Installation</label>
-                    <input type="text" class="form-control" name="lieuInstallation" id="field_lieuInstallation"
-                           formControlName="lieuInstallation"/>
+                <div>
+                    <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    </button>
+
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    </button>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.installation.installation" for="field_installation">Installation</label>
-                    <select class="form-control" id="field_installation" name="installation" formControlName="installation">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="sortiePromotionOption.id === editForm.get('installation')!.value?.id ? editForm.get('installation')!.value : sortiePromotionOption" *ngFor="let sortiePromotionOption of installations; trackBy: trackById">{{ sortiePromotionOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.installation.activiteinstallation" for="field_activiteinstallations">Activiteinstallation</label>
-                    <select class="form-control" id="field_activiteinstallations" multiple name="activiteinstallations" formControlName="activiteinstallations">
-                        <option [ngValue]="getSelected(editForm.get('activiteinstallations')!.value, activiteInstallationOption)" *ngFor="let activiteInstallationOption of activiteinstallations; trackBy: trackById">{{ activiteInstallationOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label jhiTranslate="gestionFormationApp.installation.kits" for="field_kits">Kits</label>
-                    <select class="form-control" id="field_kits" multiple name="kits" formControlName="kits">
-                        <option [ngValue]="getSelected(editForm.get('kits')!.value, kitsOption)" *ngFor="let kitsOption of kits; trackBy: trackById">{{ kitsOption.id }}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
-
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+    <br><br>
 </div>

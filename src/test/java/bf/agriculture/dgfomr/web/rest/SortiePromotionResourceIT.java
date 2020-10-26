@@ -41,6 +41,9 @@ public class SortiePromotionResourceIT {
     private static final String DEFAULT_MOTIF = "AAAAAAAAAA";
     private static final String UPDATED_MOTIF = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_ISSORTIE = false;
+    private static final Boolean UPDATED_ISSORTIE = true;
+
     @Autowired
     private SortiePromotionRepository sortiePromotionRepository;
 
@@ -65,7 +68,8 @@ public class SortiePromotionResourceIT {
         SortiePromotion sortiePromotion = new SortiePromotion()
             .dateSortie(DEFAULT_DATE_SORTIE)
             .anneesSortie(DEFAULT_ANNEES_SORTIE)
-            .motif(DEFAULT_MOTIF);
+            .motif(DEFAULT_MOTIF)
+            .issortie(DEFAULT_ISSORTIE);
         return sortiePromotion;
     }
     /**
@@ -78,7 +82,8 @@ public class SortiePromotionResourceIT {
         SortiePromotion sortiePromotion = new SortiePromotion()
             .dateSortie(UPDATED_DATE_SORTIE)
             .anneesSortie(UPDATED_ANNEES_SORTIE)
-            .motif(UPDATED_MOTIF);
+            .motif(UPDATED_MOTIF)
+            .issortie(UPDATED_ISSORTIE);
         return sortiePromotion;
     }
 
@@ -104,6 +109,7 @@ public class SortiePromotionResourceIT {
         assertThat(testSortiePromotion.getDateSortie()).isEqualTo(DEFAULT_DATE_SORTIE);
         assertThat(testSortiePromotion.getAnneesSortie()).isEqualTo(DEFAULT_ANNEES_SORTIE);
         assertThat(testSortiePromotion.getMotif()).isEqualTo(DEFAULT_MOTIF);
+        assertThat(testSortiePromotion.isIssortie()).isEqualTo(DEFAULT_ISSORTIE);
     }
 
     @Test
@@ -177,7 +183,8 @@ public class SortiePromotionResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(sortiePromotion.getId().intValue())))
             .andExpect(jsonPath("$.[*].dateSortie").value(hasItem(DEFAULT_DATE_SORTIE.toString())))
             .andExpect(jsonPath("$.[*].anneesSortie").value(hasItem(DEFAULT_ANNEES_SORTIE)))
-            .andExpect(jsonPath("$.[*].motif").value(hasItem(DEFAULT_MOTIF)));
+            .andExpect(jsonPath("$.[*].motif").value(hasItem(DEFAULT_MOTIF)))
+            .andExpect(jsonPath("$.[*].issortie").value(hasItem(DEFAULT_ISSORTIE.booleanValue())));
     }
     
     @Test
@@ -193,7 +200,8 @@ public class SortiePromotionResourceIT {
             .andExpect(jsonPath("$.id").value(sortiePromotion.getId().intValue()))
             .andExpect(jsonPath("$.dateSortie").value(DEFAULT_DATE_SORTIE.toString()))
             .andExpect(jsonPath("$.anneesSortie").value(DEFAULT_ANNEES_SORTIE))
-            .andExpect(jsonPath("$.motif").value(DEFAULT_MOTIF));
+            .andExpect(jsonPath("$.motif").value(DEFAULT_MOTIF))
+            .andExpect(jsonPath("$.issortie").value(DEFAULT_ISSORTIE.booleanValue()));
     }
     @Test
     @Transactional
@@ -218,7 +226,8 @@ public class SortiePromotionResourceIT {
         updatedSortiePromotion
             .dateSortie(UPDATED_DATE_SORTIE)
             .anneesSortie(UPDATED_ANNEES_SORTIE)
-            .motif(UPDATED_MOTIF);
+            .motif(UPDATED_MOTIF)
+            .issortie(UPDATED_ISSORTIE);
 
         restSortiePromotionMockMvc.perform(put("/api/sortie-promotions")
             .contentType(MediaType.APPLICATION_JSON)
@@ -232,6 +241,7 @@ public class SortiePromotionResourceIT {
         assertThat(testSortiePromotion.getDateSortie()).isEqualTo(UPDATED_DATE_SORTIE);
         assertThat(testSortiePromotion.getAnneesSortie()).isEqualTo(UPDATED_ANNEES_SORTIE);
         assertThat(testSortiePromotion.getMotif()).isEqualTo(UPDATED_MOTIF);
+        assertThat(testSortiePromotion.isIssortie()).isEqualTo(UPDATED_ISSORTIE);
     }
 
     @Test

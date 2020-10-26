@@ -15,7 +15,7 @@ type EntityArrayResponseType = HttpResponse<ISortiePromotion[]>;
 @Injectable({ providedIn: 'root' })
 export class SortiePromotionService {
   public resourceUrl = SERVER_API_URL + 'api/sortie-promotions';
-
+  public externatresource = SERVER_API_URL + 'api/sortie-promotion-issortie';
   constructor(protected http: HttpClient) {}
 
   create(sortiePromotion: ISortiePromotion): Observable<EntityResponseType> {
@@ -42,6 +42,12 @@ export class SortiePromotionService {
     const options = createRequestOption(req);
     return this.http
       .get<ISortiePromotion[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  findisSortie(): Observable<EntityArrayResponseType> {
+    return this.http
+      .get<ISortiePromotion[]>(this.externatresource, { observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 

@@ -2,26 +2,27 @@
   "gestionFormationApp": {
     "installation": {
       "home": {
-        "title": "Installations",
-        "createLabel": "Créer un nouveau Installation",
-        "createOrEditLabel": "Créer ou éditer un Installation",
-        "notFound": "Aucun Installation trouvé"
+        "title": "Installation des apprenants",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une installation",
+        "notFound": "Aucune installation trouvée"
       },
-      "created": "Un nouveau Installation a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Installation avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Installation avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de l'installation avec succès",
+      "updated": "Modification  de l'installation avec succès",
+      "deleted": "Suppression de l'installation avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Installation {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Installation"
+        "title": "Informations d'installation de l'apprenant"
       },
-      "anneesInstallation": "Annees Installation",
-      "dateIntallation": "Date Intallation",
-      "lieuInstallation": "Lieu Installation",
-      "installation": "Installation",
-      "activiteinstallation": "Activiteinstallation",
-      "kits": "Kits"
+      "anneesInstallation": "Annees d'installation",
+      "dateIntallation": "Date d'intallation",
+      "lieuInstallation": "Lieu d'installation",
+      "iskit": "kit?",
+      "installation": "Apprenantes",
+      "activiteinstallation": "Domaines d'installation",
+      "sourceIntallation": "Sources de financements"
     }
   }
 }

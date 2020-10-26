@@ -3,22 +3,21 @@
     "regime": {
       "home": {
         "title": "Regimes",
-        "createLabel": "Créer un nouveau Regime",
-        "createOrEditLabel": "Créer ou éditer un Regime",
-        "notFound": "Aucun Regime trouvé"
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier un Regime",
+        "notFound": "Aucun regime trouvé"
       },
-      "created": "Un nouveau Regime a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Regime avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Regime avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau regime a été créé succès",
+      "updated": "Le regime  a été mis à jour succès",
+      "deleted": "Le regime  a été supprimé succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Regime {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action?"
       },
       "detail": {
         "title": "Regime"
       },
-      "libelleRegime": "Libelle Regime",
-      "centreFormation": "Centre Formation",
-      "formateurCentre": "Formateur Centre"
+      "libelleRegime": "Regime",
+      "centreFormation": "Centre Formation"
     }
   }
 }

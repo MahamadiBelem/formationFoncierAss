@@ -12,13 +12,7 @@
                                  baseTableName="sortie_promotion"
                                  constraintName="fk_sortie_promotion_sortiepromotion_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="apprenantes"/>
-
-        <addForeignKeyConstraint baseColumnNames="sortie_centre_formation_id"
-                                 baseTableName="sortie_promotion"
-                                 constraintName="fk_sortie_promotion_sortie_centre_formation_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="centre_formation"/>
+                                 referencedTableName="inscription"/>
 
     </changeSet>
 </databaseChangeLog>

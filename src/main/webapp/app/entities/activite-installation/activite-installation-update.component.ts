@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IActiviteInstallation, ActiviteInstallation } from 'app/shared/model/activite-installation.model';
 import { ActiviteInstallationService } from './activite-installation.service';
+import { ICompositionKits } from 'app/shared/model/composition-kits.model';
+import { CompositionKitsService } from 'app/entities/composition-kits/composition-kits.service';
 
 @Component({
   selector: 'jhi-activite-installation-update',
@@ -14,14 +16,17 @@ import { ActiviteInstallationService } from './activite-installation.service';
 })
 export class ActiviteInstallationUpdateComponent implements OnInit {
   isSaving = false;
+  compositionkits: ICompositionKits[] = [];
 
   editForm = this.fb.group({
     id: [],
     libelleActivite: [null, [Validators.required]],
+    kits: [],
   });
 
   constructor(
     protected activiteInstallationService: ActiviteInstallationService,
+    protected compositionKitsService: CompositionKitsService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -29,6 +34,8 @@ export class ActiviteInstallationUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ activiteInstallation }) => {
       this.updateForm(activiteInstallation);
+
+      this.compositionKitsService.query().subscribe((res: HttpResponse<ICompositionKits[]>) => (this.compositionkits = res.body || []));
     });
   }
 
@@ -36,6 +43,7 @@ export class ActiviteInstallationUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: activiteInstallation.id,
       libelleActivite: activiteInstallation.libelleActivite,
+      kits: activiteInstallation.kits,
     });
   }
 
@@ -58,6 +66,7 @@ export class ActiviteInstallationUpdateComponent implements OnInit {
       ...new ActiviteInstallation(),
       id: this.editForm.get(['id'])!.value,
       libelleActivite: this.editForm.get(['libelleActivite'])!.value,
+      kits: this.editForm.get(['kits'])!.value,
     };
   }
 
@@ -75,5 +84,20 @@ export class ActiviteInstallationUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: ICompositionKits): any {
+    return item.id;
+  }
+
+  getSelected(selectedVals: ICompositionKits[], option: ICompositionKits): ICompositionKits {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

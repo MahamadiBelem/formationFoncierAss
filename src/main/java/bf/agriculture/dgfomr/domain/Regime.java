@@ -33,10 +33,6 @@ public class Regime implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<CentreFormation> centreFormations = new HashSet<>();
 
-    @OneToMany(mappedBy = "regimecentreformateur")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<FormateurCentre> formateurCentres = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -82,31 +78,6 @@ public class Regime implements Serializable {
 
     public void setCentreFormations(Set<CentreFormation> centreFormations) {
         this.centreFormations = centreFormations;
-    }
-
-    public Set<FormateurCentre> getFormateurCentres() {
-        return formateurCentres;
-    }
-
-    public Regime formateurCentres(Set<FormateurCentre> formateurCentres) {
-        this.formateurCentres = formateurCentres;
-        return this;
-    }
-
-    public Regime addFormateurCentre(FormateurCentre formateurCentre) {
-        this.formateurCentres.add(formateurCentre);
-        formateurCentre.setRegimecentreformateur(this);
-        return this;
-    }
-
-    public Regime removeFormateurCentre(FormateurCentre formateurCentre) {
-        this.formateurCentres.remove(formateurCentre);
-        formateurCentre.setRegimecentreformateur(null);
-        return this;
-    }
-
-    public void setFormateurCentres(Set<FormateurCentre> formateurCentres) {
-        this.formateurCentres = formateurCentres;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

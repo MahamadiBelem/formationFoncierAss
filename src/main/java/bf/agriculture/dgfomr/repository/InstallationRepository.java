@@ -17,13 +17,13 @@ import java.util.Optional;
 @Repository
 public interface InstallationRepository extends JpaRepository<Installation, Long> {
 
-    @Query(value = "select distinct installation from Installation installation left join fetch installation.activiteinstallations left join fetch installation.kits",
+    @Query(value = "select distinct installation from Installation installation left join fetch installation.activiteinstallations left join fetch installation.sourceIntallations",
         countQuery = "select count(distinct installation) from Installation installation")
     Page<Installation> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct installation from Installation installation left join fetch installation.activiteinstallations left join fetch installation.kits")
+    @Query("select distinct installation from Installation installation left join fetch installation.activiteinstallations left join fetch installation.sourceIntallations")
     List<Installation> findAllWithEagerRelationships();
 
-    @Query("select installation from Installation installation left join fetch installation.activiteinstallations left join fetch installation.kits where installation.id =:id")
+    @Query("select installation from Installation installation left join fetch installation.activiteinstallations left join fetch installation.sourceIntallations where installation.id =:id")
     Optional<Installation> findOneWithEagerRelationships(@Param("id") Long id);
 }

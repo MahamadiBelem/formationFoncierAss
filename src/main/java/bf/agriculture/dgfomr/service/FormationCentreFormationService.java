@@ -2,7 +2,9 @@ package bf.agriculture.dgfomr.service;
 
 import bf.agriculture.dgfomr.domain.FormationCentreFormation;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Optional;
 
 /**
@@ -21,9 +23,10 @@ public interface FormationCentreFormationService {
     /**
      * Get all the formationCentreFormations.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<FormationCentreFormation> findAll();
+    Page<FormationCentreFormation> findAll(Pageable pageable);
 
 
     /**

@@ -7,6 +7,8 @@ import { ActiviteInstallationDetailComponent } from './activite-installation-det
 import { ActiviteInstallationUpdateComponent } from './activite-installation-update.component';
 import { ActiviteInstallationDeleteDialogComponent } from './activite-installation-delete-dialog.component';
 import { activiteInstallationRoute } from './activite-installation.route';
+import { SaveActiviteInstallationComponent } from './save-activite-installation/save-activite-installation.component';
+import { UpdateActiviteInstallationComponent } from './update-activite-installation/update-activite-installation.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(activiteInstallationRoute)],
@@ -15,6 +17,8 @@ import { activiteInstallationRoute } from './activite-installation.route';
     ActiviteInstallationDetailComponent,
     ActiviteInstallationUpdateComponent,
     ActiviteInstallationDeleteDialogComponent,
+    SaveActiviteInstallationComponent,
+    UpdateActiviteInstallationComponent,
   ],
   entryComponents: [ActiviteInstallationDeleteDialogComponent],
 })

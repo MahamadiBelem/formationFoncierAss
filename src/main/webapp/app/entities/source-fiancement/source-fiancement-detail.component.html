@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="sourceFiancement">
+            <h2><span jhiTranslate="gestionFormationApp.sourceFiancement.detail.title">Source Fiancement</span> {{ sourceFiancement.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.sourceFiancement.libelleSource">Libelle Source</span></dt>
+                <dd>
+                    <span>{{ sourceFiancement.libelleSource }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.sourceFiancement.partenaire">Partenaire</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gestionFormationApp.Partenaire.' + sourceFiancement.partenaire }}">{{ sourceFiancement.partenaire }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/source-fiancement', sourceFiancement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

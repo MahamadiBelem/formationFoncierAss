@@ -1,19 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { RegimeService } from '../regime.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-import { IRegime, Regime } from 'app/shared/model/regime.model';
+import { IRegime, Regime } from '../../../shared/model/regime.model';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'jhi-update-regime',
-  templateUrl: './update-regime.component.html',
-  styleUrls: ['./update-regime.component.scss'],
+  selector: 'jhi-upate-regime',
+  templateUrl: './upate-regime.component.html',
+  styleUrls: ['./upate-regime.component.scss'],
 })
-export class UpdateRegimeComponent implements OnInit {
+export class UpateRegimeComponent implements OnInit {
   isSaving = false;
   @Input() public regime: any;
   editForm = this.fb.group({
@@ -25,17 +25,16 @@ export class UpdateRegimeComponent implements OnInit {
     protected regimeService: RegimeService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private activemodal: NgbActiveModal,
+    private activemodale: NgbActiveModal,
     protected eventManager: JhiEventManager
   ) {}
 
   ngOnInit(): void {
     this.updateForm(this.regime);
-    /*
-    this.activatedRoute.data.subscribe(({ regime }) => {
-      
-    });
-    */
+
+    /* this.activatedRoute.data.subscribe(({ regime }) => {
+
+    });*/
   }
 
   updateForm(regime: IRegime): void {
@@ -52,6 +51,7 @@ export class UpdateRegimeComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const regime = this.createFromForm();
+
     if (regime.id !== undefined) {
       this.subscribeToSaveResponse(this.regimeService.update(regime));
     } else {
@@ -85,6 +85,6 @@ export class UpdateRegimeComponent implements OnInit {
   }
 
   cancel(): void {
-    this.activemodal.dismiss();
+    this.activemodale.dismiss();
   }
 }

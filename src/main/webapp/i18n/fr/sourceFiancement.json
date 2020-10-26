@@ -1,0 +1,24 @@
+{
+  "gestionFormationApp": {
+    "sourceFiancement": {
+      "home": {
+        "title": "Source de financement",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une source financement",
+        "notFound": "Aucune source financement trouvéé"
+      },
+      "created": "Enregistrement de la source de financement avec succès",
+      "updated": "Modification de la source de financement avec succès",
+      "deleted": "Suppression de la source de financement avec succès",
+      "delete": {
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
+      },
+      "detail": {
+        "title": "Source de financement"
+      },
+      "libelleSource": "Source de financement",
+      "partenaire": "Partenaires",
+      "installationSource": "Installation Source"
+    }
+  }
+}

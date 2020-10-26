@@ -42,15 +42,11 @@ public class CompositionKitsServiceImpl implements CompositionKitsService {
     }
 
 
-    public Page<CompositionKits> findAllWithEagerRelationships(Pageable pageable) {
-        return compositionKitsRepository.findAllWithEagerRelationships(pageable);
-    }
-
     @Override
     @Transactional(readOnly = true)
     public Optional<CompositionKits> findOne(Long id) {
         log.debug("Request to get CompositionKits : {}", id);
-        return compositionKitsRepository.findOneWithEagerRelationships(id);
+        return compositionKitsRepository.findById(id);
     }
 
     @Override

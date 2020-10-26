@@ -35,13 +35,12 @@ public class SortiePromotion implements Serializable {
     @Column(name = "motif")
     private String motif;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Apprenantes sortiepromotion;
+    @Column(name = "issortie")
+    private Boolean issortie;
 
     @OneToOne
     @JoinColumn(unique = true)
-    private CentreFormation sortieCentreFormation;
+    private Inscription sortiepromotion;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -91,30 +90,30 @@ public class SortiePromotion implements Serializable {
         this.motif = motif;
     }
 
-    public Apprenantes getSortiepromotion() {
+    public Boolean isIssortie() {
+        return issortie;
+    }
+
+    public SortiePromotion issortie(Boolean issortie) {
+        this.issortie = issortie;
+        return this;
+    }
+
+    public void setIssortie(Boolean issortie) {
+        this.issortie = issortie;
+    }
+
+    public Inscription getSortiepromotion() {
         return sortiepromotion;
     }
 
-    public SortiePromotion sortiepromotion(Apprenantes apprenantes) {
-        this.sortiepromotion = apprenantes;
+    public SortiePromotion sortiepromotion(Inscription inscription) {
+        this.sortiepromotion = inscription;
         return this;
     }
 
-    public void setSortiepromotion(Apprenantes apprenantes) {
-        this.sortiepromotion = apprenantes;
-    }
-
-    public CentreFormation getSortieCentreFormation() {
-        return sortieCentreFormation;
-    }
-
-    public SortiePromotion sortieCentreFormation(CentreFormation centreFormation) {
-        this.sortieCentreFormation = centreFormation;
-        return this;
-    }
-
-    public void setSortieCentreFormation(CentreFormation centreFormation) {
-        this.sortieCentreFormation = centreFormation;
+    public void setSortiepromotion(Inscription inscription) {
+        this.sortiepromotion = inscription;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
@@ -142,6 +141,7 @@ public class SortiePromotion implements Serializable {
             ", dateSortie='" + getDateSortie() + "'" +
             ", anneesSortie=" + getAnneesSortie() +
             ", motif='" + getMotif() + "'" +
+            ", issortie='" + isIssortie() + "'" +
             "}";
     }
 }

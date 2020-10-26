@@ -20,16 +20,14 @@
                 <dd>
                     <span>{{ sortiePromotion.motif }}</span>
                 </dd>
+                <dt><span jhiTranslate="gestionFormationApp.sortiePromotion.issortie">Issortie</span></dt>
+                <dd>
+                    <span>{{ sortiePromotion.issortie }}</span>
+                </dd>
                 <dt><span jhiTranslate="gestionFormationApp.sortiePromotion.sortiepromotion">Sortiepromotion</span></dt>
                 <dd>
                     <div *ngIf="sortiePromotion.sortiepromotion">
-                        <a [routerLink]="['/apprenantes', sortiePromotion.sortiepromotion?.id, 'view']">{{ sortiePromotion.sortiepromotion?.id }}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="gestionFormationApp.sortiePromotion.sortieCentreFormation">Sortie Centre Formation</span></dt>
-                <dd>
-                    <div *ngIf="sortiePromotion.sortieCentreFormation">
-                        <a [routerLink]="['/centre-formation', sortiePromotion.sortieCentreFormation?.id, 'view']">{{ sortiePromotion.sortieCentreFormation?.id }}</a>
+                        <a [routerLink]="['/inscription', sortiePromotion.sortiepromotion?.id, 'view']">{{ sortiePromotion.sortiepromotion?.id }}</a>
                     </div>
                 </dd>
             </dl>

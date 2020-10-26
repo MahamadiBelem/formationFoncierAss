@@ -10,6 +10,8 @@ import { ICompositionKits } from 'app/shared/model/composition-kits.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { CompositionKitsService } from './composition-kits.service';
 import { CompositionKitsDeleteDialogComponent } from './composition-kits-delete-dialog.component';
+import { SaveCompositionKitsComponent } from './save-composition-kits/save-composition-kits.component';
+import { UpdateCompositionKitsComponent } from './update-composition-kits/update-composition-kits.component';
 
 @Component({
   selector: 'jhi-composition-kits',
@@ -114,5 +116,14 @@ export class CompositionKitsComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  savemodale(): void {
+    const savemodal = this.modalService.open(SaveCompositionKitsComponent, { size: 'lg', backdrop: 'static' });
+  }
+
+  updatemodale(compositionKits: ICompositionKits): void {
+    const updatemodal = this.modalService.open(UpdateCompositionKitsComponent, { size: 'lg', backdrop: 'static' });
+    updatemodal.componentInstance.compositionKits = compositionKits;
   }
 }

@@ -1,7 +1,6 @@
 import { Moment } from 'moment';
 import { ICentreFormation } from 'app/shared/model/centre-formation.model';
 import { IFormateurs } from 'app/shared/model/formateurs.model';
-import { IRegime } from 'app/shared/model/regime.model';
 import { RegimeFormateur } from 'app/shared/model/enumerations/regime-formateur.model';
 
 export interface IFormateurCentre {
@@ -10,7 +9,6 @@ export interface IFormateurCentre {
   regimeFormateur?: RegimeFormateur;
   formateurCentreFormation?: ICentreFormation;
   formateurCentre?: IFormateurs;
-  regimecentreformateur?: IRegime;
 }
 
 export class FormateurCentre implements IFormateurCentre {
@@ -19,7 +17,6 @@ export class FormateurCentre implements IFormateurCentre {
     public dateEtablissement?: Moment,
     public regimeFormateur?: RegimeFormateur,
     public formateurCentreFormation?: ICentreFormation,
-    public formateurCentre?: IFormateurs,
-    public regimecentreformateur?: IRegime
+    public formateurCentre?: IFormateurs
   ) {}
 }

@@ -7,6 +7,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IActiviteInstallation } from 'app/shared/model/activite-installation.model';
 import { ActiviteInstallationService } from './activite-installation.service';
 import { ActiviteInstallationDeleteDialogComponent } from './activite-installation-delete-dialog.component';
+import { SaveActiviteInstallationComponent } from './save-activite-installation/save-activite-installation.component';
+import { UpdateActiviteInstallationComponent } from './update-activite-installation/update-activite-installation.component';
 
 @Component({
   selector: 'jhi-activite-installation',
@@ -51,5 +53,13 @@ export class ActiviteInstallationComponent implements OnInit, OnDestroy {
   delete(activiteInstallation: IActiviteInstallation): void {
     const modalRef = this.modalService.open(ActiviteInstallationDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.activiteInstallation = activiteInstallation;
+  }
+
+  savemodale(): void {
+    const savemodal = this.modalService.open(SaveActiviteInstallationComponent, { size: 'lg', backdrop: 'static' });
+  }
+  updatemodale(activiteInstallation: IActiviteInstallation): void {
+    const updatemodale = this.modalService.open(UpdateActiviteInstallationComponent, { size: 'lg', backdrop: 'static' });
+    updatemodale.componentInstance.activiteInstallation = activiteInstallation;
   }
 }

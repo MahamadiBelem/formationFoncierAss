@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.formationCentreFormation.home.title">Formation Centre Formations</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-formation-centre-formation" [routerLink]="['/formation-centre-formation/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-formation-centre-formation" (click)="savemodale()">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.formationCentreFormation.home.createLabel">
             Create a new Formation Centre Formation
@@ -13,49 +13,47 @@
     <jhi-alert-error></jhi-alert-error>
 
     <jhi-alert></jhi-alert>
-
+    <br><br>
     <div class="alert alert-warning" id="no-result" *ngIf="formationCentreFormations?.length === 0">
         <span jhiTranslate="gestionFormationApp.formationCentreFormation.home.notFound">No formationCentreFormations found</span>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="formationCentreFormations && formationCentreFormations.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.datedebut">Datedebut</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.dateClore">Date Clore</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.formationcentre">Formationcentre</span></th>
-                    <th scope="col" ><span jhiTranslate="gestionFormationApp.formationCentreFormation.centreformation">Centreformation</span></th>
+            <thead class="f-table-header">
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="datedebut"><span jhiTranslate="gestionFormationApp.formationCentreFormation.datedebut">Datedebut</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateClore"><span jhiTranslate="gestionFormationApp.formationCentreFormation.dateClore">Date Clore</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="formationcentre.id"><span jhiTranslate="gestionFormationApp.formationCentreFormation.formationcentre">Formationcentre</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="centreformation.id"><span jhiTranslate="gestionFormationApp.formationCentreFormation.centreformation">Centreformation</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let formationCentreFormation of formationCentreFormations ;trackBy: trackId">
-                    <td><a [routerLink]="['/formation-centre-formation', formationCentreFormation.id, 'view']">{{ formationCentreFormation.id }}</a></td>
-                    <td>{{ formationCentreFormation.datedebut | date:'mediumDate' }}</td>
-                    <td>{{ formationCentreFormation.dateClore | date:'mediumDate' }}</td>
+                    <td>{{ formationCentreFormation.datedebut | date:'shortDate' }}</td>
+                    <td>{{ formationCentreFormation.dateClore | date:'shortDate' }}</td>
                     <td>
                         <div *ngIf="formationCentreFormation.formationcentre">
-                            <a [routerLink]="['/centre-formation', formationCentreFormation.formationcentre?.id, 'view']" >{{ formationCentreFormation.formationcentre?.id }}</a>
+                            {{ formationCentreFormation.formationcentre?.denomination}}
                         </div>
                     </td>
                     <td>
                         <div *ngIf="formationCentreFormation.centreformation">
-                            <a [routerLink]="['/formations', formationCentreFormation.centreformation?.id, 'view']" >{{ formationCentreFormation.centreformation?.id }}</a>
+                            {{ formationCentreFormation.centreformation?.lebelleFormation }}
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
+                           <!-- <button type="submit"
                                     [routerLink]="['/formation-centre-formation', formationCentreFormation.id, 'view']"
                                     class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                            </button>
+                            </button>-->
 
                             <button type="submit"
-                                    [routerLink]="['/formation-centre-formation', formationCentreFormation.id, 'edit']"
+                                    (click)="updatemodale(formationCentreFormation)"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
@@ -71,5 +69,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="formationCentreFormations && formationCentreFormations.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

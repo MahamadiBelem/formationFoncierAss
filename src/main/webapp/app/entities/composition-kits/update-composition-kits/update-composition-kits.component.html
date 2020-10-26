@@ -1,39 +1,38 @@
 <div class="card">
     <div class="card-header save-card-design">
-        <h2 id="jhi-regime-heading" jhiTranslate="gestionFormationApp.regime.home.createOrEditLabel">Create or edit a Regime</h2>
+        <h2 id="jhi-composition-kits-heading" jhiTranslate="gestionFormationApp.compositionKits.home.createOrEditLabel">Create or edit a Composition Kits</h2>
     </div>
     <div class="card-body">
         <div class="row justify-content-center">
             <div class="col-8">
                 <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-                   
-        
+
                     <div>
                         <jhi-alert-error></jhi-alert-error>
-        
+
                         <div class="form-group" [hidden]="true">
                             <label for="id" jhiTranslate="global.field.id">ID</label>
                             <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                         </div>
-        
+
                         <div class="form-group">
-                            <label class="form-control-label" jhiTranslate="gestionFormationApp.regime.libelleRegime" for="field_libelleRegime">Libelle Regime</label>
-                            <input type="text" class="form-control" name="libelleRegime" id="field_libelleRegime"
-                                   formControlName="libelleRegime"/>
-                            <div *ngIf="editForm.get('libelleRegime')!.invalid && (editForm.get('libelleRegime')!.dirty || editForm.get('libelleRegime')!.touched)">
-                                <small class="form-text text-danger"
-                                       *ngIf="editForm.get('libelleRegime')?.errors?.required" jhiTranslate="entity.validation.required">
-                                This field is required.
-                                </small>
-                            </div>
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.compositionKits.libelleKits" for="field_libelleKits">Libelle Kits</label>
+                            <input type="text" class="form-control" name="libelleKits" id="field_libelleKits"
+                                   formControlName="libelleKits"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="gestionFormationApp.compositionKits.quantiteKits" for="field_quantiteKits">Quantite Kits</label>
+                            <input type="number" class="form-control" name="quantiteKits" id="field_quantiteKits"
+                                   formControlName="quantiteKits"/>
                         </div>
                     </div>
-        
+
                     <div>
                         <button type="button" id="cancel-save" class="btn btn-outline-warning" (click)="cancel()">
                             <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                         </button>
-        
+
                         <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
                             <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                         </button>
@@ -41,6 +40,6 @@
                 </form>
             </div>
         </div>
+
     </div>
 </div>
-

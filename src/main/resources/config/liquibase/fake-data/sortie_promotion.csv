@@ -1,11 +1,11 @@
-id;date_sortie;annees_sortie;motif
-1;2020-08-22;4373;Ergonomic Toys solid state
-2;2020-08-21;60979;Danish Krone Games
-3;2020-08-22;79558;deposit
-4;2020-08-22;98015;Functionality synthesize Liaison
-5;2020-08-21;51627;models
-6;2020-08-21;55659;Fantastic
-7;2020-08-21;93880;interactive Regional Auto Loan Account
-8;2020-08-21;64692;invoice
-9;2020-08-22;48685;PCI
-10;2020-08-22;37626;system engine systems Via
+id;date_sortie;annees_sortie;motif;issortie
+1;2020-08-22;4373;Ergonomic Toys solid state;true
+2;2020-08-22;65009;green Hat open-source;true
+3;2020-08-22;55626;mobile Right-sized Yemeni Rial;false
+4;2020-08-21;51627;models;true
+5;2020-08-22;2735;revolutionize;true
+6;2020-08-22;26396;Regional Auto Loan Account;true
+7;2020-08-22;4067;navigating Bedfordshire;true
+8;2020-08-22;38722;FTP Division;true
+9;2020-08-22;92660;4th generation Fantastic Metal Chips;false
+10;2020-08-21;38828;European Unit of Account 17(E.U.A.-17) PCI;false

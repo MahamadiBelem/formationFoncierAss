@@ -81,10 +81,11 @@ public class ActiviteInstallationResource {
     /**
      * {@code GET  /activite-installations} : get all the activiteInstallations.
      *
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of activiteInstallations in body.
      */
     @GetMapping("/activite-installations")
-    public List<ActiviteInstallation> getAllActiviteInstallations() {
+    public List<ActiviteInstallation> getAllActiviteInstallations(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all ActiviteInstallations");
         return activiteInstallationService.findAll();
     }

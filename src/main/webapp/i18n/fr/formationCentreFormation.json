@@ -2,24 +2,24 @@
   "gestionFormationApp": {
     "formationCentreFormation": {
       "home": {
-        "title": "FormationCentreFormations",
-        "createLabel": "Créer un nouveau Formation Centre Formation",
-        "createOrEditLabel": "Créer ou éditer un Formation Centre Formation",
-        "notFound": "Aucun Formation Centre Formation trouvé"
+        "title": "Affecter une formation à un centre de formation",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une affectation",
+        "notFound": "Aucune affectation trouvée"
       },
-      "created": "Un nouveau Formation Centre Formation a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Formation Centre Formation avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Formation Centre Formation avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de l'affectation avec succès ",
+      "updated": "Modification de l'affectation avec succès",
+      "deleted": "Suppression de l'affectation avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Formation Centre Formation {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action ?"
       },
       "detail": {
-        "title": "Formation Centre Formation"
+        "title": "affectation d'une formation"
       },
-      "datedebut": "Datedebut",
-      "dateClore": "Date Clore",
-      "formationcentre": "Formationcentre",
-      "centreformation": "Centreformation"
+      "datedebut": "Date de debut",
+      "dateClore": "Date de Cloture",
+      "formationcentre": "Centre de formation",
+      "centreformation": "formation"
     }
   }
 }

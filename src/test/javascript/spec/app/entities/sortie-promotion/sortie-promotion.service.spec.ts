@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new SortiePromotion(0, currentDate, 0, 'AAAAAAA');
+      elemDefault = new SortiePromotion(0, currentDate, 0, 'AAAAAAA', false);
     });
 
     describe('Service methods', () => {
@@ -72,6 +72,7 @@ describe('Service Tests', () => {
             dateSortie: currentDate.format(DATE_FORMAT),
             anneesSortie: 1,
             motif: 'BBBBBB',
+            issortie: true,
           },
           elemDefault
         );
@@ -96,6 +97,7 @@ describe('Service Tests', () => {
             dateSortie: currentDate.format(DATE_FORMAT),
             anneesSortie: 1,
             motif: 'BBBBBB',
+            issortie: true,
           },
           elemDefault
         );

@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.sortiePromotion.home.title">Sortie Promotions</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-sortie-promotion" [routerLink]="['/sortie-promotion/new']">
+        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-sortie-promotion" [routerLink]="['/sortie-promotion/new']">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.sortiePromotion.home.createLabel">
             Create a new Sortie Promotion
@@ -17,60 +17,56 @@
     <div class="alert alert-warning" id="no-result" *ngIf="sortiePromotions?.length === 0">
         <span jhiTranslate="gestionFormationApp.sortiePromotion.home.notFound">No sortiePromotions found</span>
     </div>
-
+<br><br>
     <div class="table-responsive" id="entities" *ngIf="sortiePromotions && sortiePromotions.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="dateSortie"><span jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie">Date Sortie</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="anneesSortie"><span jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie">Annees Sortie</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="motif"><span jhiTranslate="gestionFormationApp.sortiePromotion.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="sortiepromotion.id"><span jhiTranslate="gestionFormationApp.sortiePromotion.sortiepromotion">Sortiepromotion</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="sortieCentreFormation.id"><span jhiTranslate="gestionFormationApp.sortiePromotion.sortieCentreFormation">Sortie Centre Formation</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"></th>
-                </tr>
+            <thead class="f-table-header">
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                <th scope="col"  jhiSortBy="dateSortie"><span jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie">Date Sortie</span> <fa-icon icon="sort"></fa-icon></th>
+                <th scope="col"  jhiSortBy="anneesSortie"><span jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie">Annees Sortie</span> <fa-icon icon="sort"></fa-icon></th>
+                <th scope="col"  jhiSortBy="motif"><span jhiTranslate="gestionFormationApp.sortiePromotion.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>
+                <th scope="col"  jhiSortBy="sortiepromotion.id"><span jhiTranslate="gestionFormationApp.sortiePromotion.sortiepromotion">Sortiepromotion</span> <fa-icon icon="sort"></fa-icon></th>
+
+                <th scope="col"></th>
+            </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let sortiePromotion of sortiePromotions ;trackBy: trackId">
-                    <td><a [routerLink]="['/sortie-promotion', sortiePromotion.id, 'view']">{{ sortiePromotion.id }}</a></td>
-                    <td>{{ sortiePromotion.dateSortie | date:'mediumDate' }}</td>
-                    <td>{{ sortiePromotion.anneesSortie }}</td>
-                    <td>{{ sortiePromotion.motif }}</td>
-                    <td>
-                        <div *ngIf="sortiePromotion.sortiepromotion">
-                            <a [routerLink]="['/apprenantes', sortiePromotion.sortiepromotion?.id, 'view']" >{{ sortiePromotion.sortiepromotion?.id }}</a>
-                        </div>
-                    </td>
-                    <td>
-                        <div *ngIf="sortiePromotion.sortieCentreFormation">
-                            <a [routerLink]="['/centre-formation', sortiePromotion.sortieCentreFormation?.id, 'view']" >{{ sortiePromotion.sortieCentreFormation?.id }}</a>
-                        </div>
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/sortie-promotion', sortiePromotion.id, 'view']"
-                                    class="btn btn-info btn-sm">
-                                <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                            </button>
+            <tr *ngFor="let sortiePromotion of sortiePromotions ;trackBy: trackId">
+                <td>{{ sortiePromotion.dateSortie | date:'mediumDate' }}</td>
+                <td>{{ sortiePromotion.anneesSortie }}</td>
+                <td>{{ sortiePromotion.motif }}</td>
+                <td>
+                    <div *ngIf="sortiePromotion.sortiepromotion">
+                        <strong>Matricule: </strong>{{ sortiePromotion.sortiepromotion?.inscriptionApprenant?.matricule }}<br>
+                        <strong>Nom: </strong>{{ sortiePromotion.sortiepromotion?.inscriptionApprenant?.nom }} <br>
+                        <strong>Prenom</strong>{{ sortiePromotion.sortiepromotion?.inscriptionApprenant?.prenom }}
 
-                            <button type="submit"
-                                    [routerLink]="['/sortie-promotion', sortiePromotion.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
-                                <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                            </button>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <!--<button type="submit"
+                                [routerLink]="['/sortie-promotion', sortiePromotion.id, 'view']"
+                                class="btn btn-info btn-sm">
+                            <fa-icon icon="eye"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>-->
 
-                            <button type="submit" (click)="delete(sortiePromotion)"
-                                    class="btn btn-danger btn-sm">
-                                <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                        <button type="submit"
+                                [routerLink]="['/sortie-promotion', sortiePromotion.id, 'edit']"
+                                class="btn btn-outline-primary btn-sm">
+                            <fa-icon icon="pencil-alt"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+
+                        <button type="submit" (click)="delete(sortiePromotion)"
+                                class="btn btn-outline-danger btn-sm">
+                            <fa-icon icon="times"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -84,4 +80,5 @@
             <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
         </div>
     </div>
+    <br><br>
 </div>

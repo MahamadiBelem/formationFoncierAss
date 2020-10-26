@@ -2,25 +2,25 @@
   "gestionFormationApp": {
     "sortiePromotion": {
       "home": {
-        "title": "SortiePromotions",
-        "createLabel": "Créer un nouveau Sortie Promotion",
-        "createOrEditLabel": "Créer ou éditer un Sortie Promotion",
-        "notFound": "Aucun Sortie Promotion trouvé"
+        "title": "Fin de formation",
+        "createLabel": "Nouveau",
+        "createOrEditLabel": "Créer ou modifier une fin de formation",
+        "notFound": "Aucune fin de formation  trouvée"
       },
-      "created": "Un nouveau Sortie Promotion a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Sortie Promotion avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Sortie Promotion avec l'identifiant {{ param }} a été supprimé",
+      "created": "Enregistrement de la fin de la formation avec succès",
+      "updated": "Modification  de la fin de la formation avec succès",
+      "deleted": "Suppression de la fin de la formation avec succès",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Sortie Promotion {{ id }} ?"
+        "question": "Etes-vous certain de vouloir effectuer cette action?"
       },
       "detail": {
-        "title": "Sortie Promotion"
+        "title": "Fin de formation"
       },
-      "dateSortie": "Date Sortie",
-      "anneesSortie": "Annees Sortie",
+      "dateSortie": "Date fin de formation",
+      "anneesSortie": "Annees fin de formation",
       "motif": "Motif",
-      "sortiepromotion": "Sortiepromotion",
-      "sortieCentreFormation": "Sortie Centre Formation"
+      "issortie": "sortie ?",
+      "sortiepromotion": "Apprenants"
     }
   }
 }

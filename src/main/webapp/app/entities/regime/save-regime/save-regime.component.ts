@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { RegimeService } from '../regime.service';
 import { ActivatedRoute } from '@angular/router';
-import { IRegime, Regime } from 'app/shared/model/regime.model';
+import { IRegime, Regime } from '../../../shared/model/regime.model';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -25,7 +25,7 @@ export class SaveRegimeComponent implements OnInit {
     protected regimeService: RegimeService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private activemodal: NgbActiveModal,
+    private activemodale: NgbActiveModal,
     protected eventManager: JhiEventManager
   ) {}
 
@@ -51,14 +51,11 @@ export class SaveRegimeComponent implements OnInit {
     const regime = this.createFromForm();
     this.subscribeToSaveResponse(this.regimeService.create(regime));
 
-    this.cancel();
-    /*
-    if (regime.id !== undefined) {
+    /* if (regime.id !== undefined) {
       this.subscribeToSaveResponse(this.regimeService.update(regime));
     } else {
-     
-    }
-    */
+
+    }*/
   }
 
   private createFromForm(): IRegime {
@@ -87,6 +84,6 @@ export class SaveRegimeComponent implements OnInit {
   }
 
   cancel(): void {
-    this.activemodal.dismiss();
+    this.activemodale.dismiss();
   }
 }

@@ -1,80 +1,81 @@
-<div class="row justify-content-center">
-    <div class="col-8">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-sortie-promotion-heading" jhiTranslate="gestionFormationApp.sortiePromotion.home.createOrEditLabel">Create or edit a Sortie Promotion</h2>
+<div style="box-shadow: 3px 3px 3px 3px; background-color: #E5E5E5 ;border-radius: 25px;">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                <h2 id="jhi-sortie-promotion-heading" jhiTranslate="gestionFormationApp.sortiePromotion.home.createOrEditLabel">Create or edit a Sortie Promotion</h2>
 
-            <div>
-                <jhi-alert-error></jhi-alert-error>
+                <div>
+                    <jhi-alert-error></jhi-alert-error>
 
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                </div>
+                    <div class="form-group" [hidden]="true">
+                        <label for="id" jhiTranslate="global.field.id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie" for="field_dateSortie">Date Sortie</label>
-                    <div class="input-group">
-                        <input id="field_dateSortie" type="text" class="form-control" name="dateSortie" ngbDatepicker #dateSortieDp="ngbDatepicker" formControlName="dateSortie"/>
-                        <span class="input-group-append">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.dateSortie" for="field_dateSortie">Date Sortie</label>
+                        <div class="input-group">
+                            <input id="field_dateSortie" type="text" class="form-control" name="dateSortie" ngbDatepicker #dateSortieDp="ngbDatepicker" formControlName="dateSortie"/>
+                            <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="dateSortieDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
+                        </div>
+                        <div *ngIf="editForm.get('dateSortie')!.invalid && (editForm.get('dateSortie')!.dirty || editForm.get('dateSortie')!.touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('dateSortie')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                        </div>
                     </div>
-                    <div *ngIf="editForm.get('dateSortie')!.invalid && (editForm.get('dateSortie')!.dirty || editForm.get('dateSortie')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('dateSortie')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
+
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie" for="field_anneesSortie">Annees Sortie</label>
+                        <input type="number" class="form-control" name="anneesSortie" id="field_anneesSortie"
+                               formControlName="anneesSortie"/>
+                        <div *ngIf="editForm.get('anneesSortie')!.invalid && (editForm.get('anneesSortie')!.dirty || editForm.get('anneesSortie')!.touched)">
+                            <small class="form-text text-danger"
+                                   *ngIf="editForm.get('anneesSortie')?.errors?.required" jhiTranslate="entity.validation.required">
+                                This field is required.
+                            </small>
+                            <small class="form-text text-danger"
+                                   [hidden]="!editForm.get('anneesSortie')?.errors?.number" jhiTranslate="entity.validation.number">
+                                This field should be a number.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.motif" for="field_motif">Motif</label>
+                        <input type="text" class="form-control" name="motif" id="field_motif"
+                               formControlName="motif"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.issortie" for="field_issortie">Issortie</label>
+                        <input type="checkbox" class="form-control" name="issortie" id="field_issortie"
+                               formControlName="issortie"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.sortiepromotion" for="field_sortiepromotion">Sortiepromotion</label>
+                        <select class="form-control" id="field_sortiepromotion" name="sortiepromotion" formControlName="sortiepromotion">
+                            <option [ngValue]="null"></option>
+                            <option [ngValue]="inscriptionOption.id === editForm.get('sortiepromotion')!.value?.id ? editForm.get('sortiepromotion')!.value : inscriptionOption" *ngFor="let inscriptionOption of sortiepromotions; trackBy: trackById">Matricule:{{ inscriptionOption?.inscriptionApprenant?.matricule }} Nom: {{ inscriptionOption?.inscriptionApprenant?.nom }} Prenom: {{ inscriptionOption?.inscriptionApprenant?.prenom }}</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.anneesSortie" for="field_anneesSortie">Annees Sortie</label>
-                    <input type="number" class="form-control" name="anneesSortie" id="field_anneesSortie"
-                           formControlName="anneesSortie"/>
-                    <div *ngIf="editForm.get('anneesSortie')!.invalid && (editForm.get('anneesSortie')!.dirty || editForm.get('anneesSortie')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('anneesSortie')?.errors?.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('anneesSortie')?.errors?.number" jhiTranslate="entity.validation.number">
-                            This field should be a number.
-                        </small>
-                    </div>
+                <div>
+                    <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                    </button>
+
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                    </button>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.motif" for="field_motif">Motif</label>
-                    <input type="text" class="form-control" name="motif" id="field_motif"
-                           formControlName="motif"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.sortiepromotion" for="field_sortiepromotion">Sortiepromotion</label>
-                    <select class="form-control" id="field_sortiepromotion" name="sortiepromotion" formControlName="sortiepromotion">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="apprenantesOption.id === editForm.get('sortiepromotion')!.value?.id ? editForm.get('sortiepromotion')!.value : apprenantesOption" *ngFor="let apprenantesOption of sortiepromotions; trackBy: trackById">{{ apprenantesOption.id }}</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="gestionFormationApp.sortiePromotion.sortieCentreFormation" for="field_sortieCentreFormation">Sortie Centre Formation</label>
-                    <select class="form-control" id="field_sortieCentreFormation" name="sortieCentreFormation" formControlName="sortieCentreFormation">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="centreFormationOption.id === editForm.get('sortieCentreFormation')!.value?.id ? editForm.get('sortieCentreFormation')!.value : centreFormationOption" *ngFor="let centreFormationOption of sortiecentreformations; trackBy: trackById">{{ centreFormationOption.id }}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
-
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-                </button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
+    <br><br>
 </div>
