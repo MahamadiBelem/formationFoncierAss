@@ -1,0 +1,11 @@
+id;annee;nbr_agent;equipement_informatique;equipement_cartographique;acces_internet;equipemement_vehicule
+1;51462;85475;false;false;true;false
+2;26717;24204;false;true;true;false
+3;42721;35492;false;true;true;false
+4;89091;94846;false;false;true;true
+5;55668;1079;false;false;true;true
+6;45942;23456;false;true;false;true
+7;43197;50168;true;true;true;true
+8;57522;98787;false;false;true;false
+9;37764;53796;false;true;true;true
+10;66493;97510;true;false;false;true

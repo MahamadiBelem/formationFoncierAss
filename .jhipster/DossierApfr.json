@@ -1,0 +1,92 @@
+{
+  "name": "DossierApfr",
+  "fields": [
+    {
+      "fieldName": "numApfr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "trancheAge",
+      "fieldType": "TrancheAge",
+      "fieldValues": "Vieux,Jeune,Adulte"
+    },
+    {
+      "fieldName": "dateReceptionCfv",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateRetourCt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateEnregistrement",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateDepotSt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateRetourSt",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateNotification",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateSignature",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "taxesTotale",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "donCommune",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "superficieSecurise",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "dateConstatation",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "dossierApfr",
+      "relationshipName": "sfrDossierApfr",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeDemandeur",
+      "otherEntityRelationshipName": "dossierApfr",
+      "relationshipName": "dossierApfrTypeDemandeur",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "typeActe",
+      "otherEntityRelationshipName": "dossierApfr",
+      "relationshipName": "typeDossierApfr",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104132633",
+  "entityTableName": "dossier_apfr",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

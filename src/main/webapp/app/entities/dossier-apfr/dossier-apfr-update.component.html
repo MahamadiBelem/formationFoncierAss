@@ -1,0 +1,167 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-dossier-apfr-heading" jhiTranslate="gestionFormationApp.dossierApfr.home.createOrEditLabel">Create or edit a Dossier Apfr</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.numApfr" for="field_numApfr">Num Apfr</label>
+                    <input type="text" class="form-control" name="numApfr" id="field_numApfr"
+                           formControlName="numApfr"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.trancheAge" for="field_trancheAge">Tranche Age</label>
+                    <select class="form-control" name="trancheAge" formControlName="trancheAge" id="field_trancheAge">
+                        <option value="Vieux">{{ 'gestionFormationApp.TrancheAge.Vieux' | translate }}</option>
+                        <option value="Jeune">{{ 'gestionFormationApp.TrancheAge.Jeune' | translate }}</option>
+                        <option value="Adulte">{{ 'gestionFormationApp.TrancheAge.Adulte' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateReceptionCfv" for="field_dateReceptionCfv">Date Reception Cfv</label>
+                    <div class="input-group">
+                        <input id="field_dateReceptionCfv" type="text" class="form-control" name="dateReceptionCfv" ngbDatepicker #dateReceptionCfvDp="ngbDatepicker" formControlName="dateReceptionCfv"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateReceptionCfvDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateRetourCt" for="field_dateRetourCt">Date Retour Ct</label>
+                    <div class="input-group">
+                        <input id="field_dateRetourCt" type="text" class="form-control" name="dateRetourCt" ngbDatepicker #dateRetourCtDp="ngbDatepicker" formControlName="dateRetourCt"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateRetourCtDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateEnregistrement" for="field_dateEnregistrement">Date Enregistrement</label>
+                    <div class="input-group">
+                        <input id="field_dateEnregistrement" type="text" class="form-control" name="dateEnregistrement" ngbDatepicker #dateEnregistrementDp="ngbDatepicker" formControlName="dateEnregistrement"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateEnregistrementDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateDepotSt" for="field_dateDepotSt">Date Depot St</label>
+                    <div class="input-group">
+                        <input id="field_dateDepotSt" type="text" class="form-control" name="dateDepotSt" ngbDatepicker #dateDepotStDp="ngbDatepicker" formControlName="dateDepotSt"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDepotStDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateRetourSt" for="field_dateRetourSt">Date Retour St</label>
+                    <div class="input-group">
+                        <input id="field_dateRetourSt" type="text" class="form-control" name="dateRetourSt" ngbDatepicker #dateRetourStDp="ngbDatepicker" formControlName="dateRetourSt"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateRetourStDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateNotification" for="field_dateNotification">Date Notification</label>
+                    <div class="input-group">
+                        <input id="field_dateNotification" type="text" class="form-control" name="dateNotification" ngbDatepicker #dateNotificationDp="ngbDatepicker" formControlName="dateNotification"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateNotificationDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateSignature" for="field_dateSignature">Date Signature</label>
+                    <div class="input-group">
+                        <input id="field_dateSignature" type="text" class="form-control" name="dateSignature" ngbDatepicker #dateSignatureDp="ngbDatepicker" formControlName="dateSignature"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateSignatureDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.taxesTotale" for="field_taxesTotale">Taxes Totale</label>
+                    <div class="input-group">
+                        <input id="field_taxesTotale" type="text" class="form-control" name="taxesTotale" ngbDatepicker #taxesTotaleDp="ngbDatepicker" formControlName="taxesTotale"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="taxesTotaleDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.donCommune" for="field_donCommune">Don Commune</label>
+                    <input type="number" class="form-control" name="donCommune" id="field_donCommune"
+                           formControlName="donCommune"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.superficieSecurise" for="field_superficieSecurise">Superficie Securise</label>
+                    <input type="number" class="form-control" name="superficieSecurise" id="field_superficieSecurise"
+                           formControlName="superficieSecurise"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dateConstatation" for="field_dateConstatation">Date Constatation</label>
+                    <div class="input-group">
+                        <input id="field_dateConstatation" type="text" class="form-control" name="dateConstatation" ngbDatepicker #dateConstatationDp="ngbDatepicker" formControlName="dateConstatation"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateConstatationDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.sfrDossierApfr" for="field_sfrDossierApfr">Sfr Dossier Apfr</label>
+                    <select class="form-control" id="field_sfrDossierApfr" name="sfrDossierApfr" formControlName="sfrDossierApfr">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sfrOption.id === editForm.get('sfrDossierApfr')!.value?.id ? editForm.get('sfrDossierApfr')!.value : sfrOption" *ngFor="let sfrOption of sfrs; trackBy: trackById">{{ sfrOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.dossierApfrTypeDemandeur" for="field_dossierApfrTypeDemandeur">Dossier Apfr Type Demandeur</label>
+                    <select class="form-control" id="field_dossierApfrTypeDemandeur" name="dossierApfrTypeDemandeur" formControlName="dossierApfrTypeDemandeur">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeDemandeurOption.id === editForm.get('dossierApfrTypeDemandeur')!.value?.id ? editForm.get('dossierApfrTypeDemandeur')!.value : typeDemandeurOption" *ngFor="let typeDemandeurOption of typedemandeurs; trackBy: trackById">{{ typeDemandeurOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.dossierApfr.typeDossierApfr" for="field_typeDossierApfr">Type Dossier Apfr</label>
+                    <select class="form-control" id="field_typeDossierApfr" name="typeDossierApfr" formControlName="typeDossierApfr">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="typeActeOption.id === editForm.get('typeDossierApfr')!.value?.id ? editForm.get('typeDossierApfr')!.value : typeActeOption" *ngFor="let typeActeOption of typeactes; trackBy: trackById">{{ typeActeOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

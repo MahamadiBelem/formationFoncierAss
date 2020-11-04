@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.communes.home.title">Communes</span>
 
-        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-communes" (click)="savemodal()">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-communes" [routerLink]="['/communes/new']">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.communes.home.createLabel">
             Create a new Communes
@@ -17,45 +17,50 @@
     <div class="alert alert-warning" id="no-result" *ngIf="communes?.length === 0">
         <span jhiTranslate="gestionFormationApp.communes.home.notFound">No communes found</span>
     </div>
-<br><br>
+
     <div class="table-responsive" id="entities" *ngIf="communes && communes.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
-            <thead style="background-color: #0070c0;color: white;">
+            <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="libelleCommune"><span jhiTranslate="gestionFormationApp.communes.libelleCommune">Libelle Commune</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sfr.id"><span jhiTranslate="gestionFormationApp.communes.sfr">Sfr</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="provinces.id"><span jhiTranslate="gestionFormationApp.communes.provinces">Provinces</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let communes of communes ;trackBy: trackId">
+                    <td><a [routerLink]="['/communes', communes.id, 'view']">{{ communes.id }}</a></td>
                     <td>{{ communes.libelleCommune }}</td>
                     <td>
+                        <div *ngIf="communes.sfr">
+                            <a [routerLink]="['/sfr', communes.sfr?.id, 'view']" >{{ communes.sfr?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
                         <div *ngIf="communes.provinces">
-                            {{ communes.provinces?.libelleProvince }}
+                            <a [routerLink]="['/provinces', communes.provinces?.id, 'view']" >{{ communes.provinces?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                           <!--
-                                <button type="submit"
+                            <button type="submit"
                                     [routerLink]="['/communes', communes.id, 'view']"
-                                    class="btn btn-outline-info btn-sm">
+                                    class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
-                           -->
 
                             <button type="submit"
-                                (click)="updatemodal(communes)"
-                                    
-                                    class="btn btn-outline-primary btn-sm">
+                                    [routerLink]="['/communes', communes.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
                             <button type="submit" (click)="delete(communes)"
-                                    class="btn btn-outline-danger btn-sm">
+                                    class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                             </button>

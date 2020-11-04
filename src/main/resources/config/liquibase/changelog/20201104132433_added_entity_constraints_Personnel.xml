@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Personnel.
+    -->
+    <changeSet id="20201104132433-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="sfr_personnel_id"
+                                 baseTableName="personnel"
+                                 constraintName="fk_personnel_sfr_personnel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sfr"/>
+
+        <addForeignKeyConstraint baseColumnNames="personnel_id"
+                                 baseTableName="personnel"
+                                 constraintName="fk_personnel_personnel_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="profil_personnel"/>
+
+    </changeSet>
+</databaseChangeLog>

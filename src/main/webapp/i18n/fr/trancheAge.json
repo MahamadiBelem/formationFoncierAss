@@ -1,0 +1,10 @@
+{
+  "gestionFormationApp": {
+    "TrancheAge": {
+      "null": "",
+      "Vieux": "Vieux",
+      "Jeune": "Jeune",
+      "Adulte": "Adulte"
+    }
+  }
+}

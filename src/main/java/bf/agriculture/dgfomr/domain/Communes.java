@@ -30,6 +30,10 @@ public class Communes implements Serializable {
     @Column(name = "libelle_commune", nullable = false)
     private String libelleCommune;
 
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Sfr sfr;
+
     @OneToMany(mappedBy = "commune")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Villages> villages = new HashSet<>();
@@ -58,6 +62,19 @@ public class Communes implements Serializable {
 
     public void setLibelleCommune(String libelleCommune) {
         this.libelleCommune = libelleCommune;
+    }
+
+    public Sfr getSfr() {
+        return sfr;
+    }
+
+    public Communes sfr(Sfr sfr) {
+        this.sfr = sfr;
+        return this;
+    }
+
+    public void setSfr(Sfr sfr) {
+        this.sfr = sfr;
     }
 
     public Set<Villages> getVillages() {

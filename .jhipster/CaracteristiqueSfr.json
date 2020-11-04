@@ -1,0 +1,49 @@
+{
+  "name": "CaracteristiqueSfr",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrAgent",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "equipementInformatique",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "equipementCartographique",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "accesInternet",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "equipemementVehicule",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "caracteristiqueSfr",
+      "relationshipName": "caracteristiqueSfr",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104133133",
+  "entityTableName": "caracteristique_sfr",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

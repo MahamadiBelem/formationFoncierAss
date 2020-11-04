@@ -1,0 +1,28 @@
+{
+  "name": "ProfilPersonnel",
+  "fields": [
+    {
+      "fieldName": "libelleProfil",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "personnel",
+      "otherEntityRelationshipName": "personnel",
+      "relationshipName": "personnel"
+    }
+  ],
+  "changelogDate": "20201104132533",
+  "entityTableName": "profil_personnel",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

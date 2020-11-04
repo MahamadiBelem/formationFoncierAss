@@ -1,0 +1,41 @@
+{
+  "name": "ImmatriculationDomaineCommune",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "superficeTotInventorie",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "superficieTotImmatricule",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "superficieTotEncadre",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "sfr",
+      "relationshipName": "sfr",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104133533",
+  "entityTableName": "immatriculation_domaine_commune",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

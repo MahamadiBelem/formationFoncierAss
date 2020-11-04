@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="caracteristiqueSfr">
+            <h2><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.detail.title">Caracteristique Sfr</span> {{ caracteristiqueSfr.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.annee">Annee</span></dt>
+                <dd>
+                    <span>{{ caracteristiqueSfr.annee }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.nbrAgent">Nbr Agent</span></dt>
+                <dd>
+                    <span>{{ caracteristiqueSfr.nbrAgent }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipementInformatique">Equipement Informatique</span></dt>
+                <dd>
+                    <span>{{ caracteristiqueSfr.equipementInformatique }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipementCartographique">Equipement Cartographique</span></dt>
+                <dd>
+                    <span>{{ caracteristiqueSfr.equipementCartographique }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.accesInternet">Acces Internet</span></dt>
+                <dd>
+                    <span>{{ caracteristiqueSfr.accesInternet }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipemementVehicule">Equipemement Vehicule</span></dt>
+                <dd>
+                    <span>{{ caracteristiqueSfr.equipemementVehicule }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.caracteristiqueSfr">Caracteristique Sfr</span></dt>
+                <dd>
+                    <div *ngIf="caracteristiqueSfr.caracteristiqueSfr">
+                        <a [routerLink]="['/sfr', caracteristiqueSfr.caracteristiqueSfr?.id, 'view']">{{ caracteristiqueSfr.caracteristiqueSfr?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/caracteristique-sfr', caracteristiqueSfr.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -145,6 +145,47 @@ import { RouterModule } from '@angular/router';
         path: 'source-fiancement',
         loadChildren: () => import('./source-fiancement/source-fiancement.module').then(m => m.GestionFormationSourceFiancementModule),
       },
+      {
+        path: 'sfr',
+        loadChildren: () => import('./sfr/sfr.module').then(m => m.GestionFormationSfrModule),
+      },
+      {
+        path: 'personnel',
+        loadChildren: () => import('./personnel/personnel.module').then(m => m.GestionFormationPersonnelModule),
+      },
+      {
+        path: 'profil-personnel',
+        loadChildren: () => import('./profil-personnel/profil-personnel.module').then(m => m.GestionFormationProfilPersonnelModule),
+      },
+      {
+        path: 'dossier-apfr',
+        loadChildren: () => import('./dossier-apfr/dossier-apfr.module').then(m => m.GestionFormationDossierApfrModule),
+      },
+      {
+        path: 'type-acte',
+        loadChildren: () => import('./type-acte/type-acte.module').then(m => m.GestionFormationTypeActeModule),
+      },
+      {
+        path: 'type-demandeur',
+        loadChildren: () => import('./type-demandeur/type-demandeur.module').then(m => m.GestionFormationTypeDemandeurModule),
+      },
+      {
+        path: 'formation',
+        loadChildren: () => import('./formation/formation.module').then(m => m.GestionFormationFormationModule),
+      },
+      {
+        path: 'caracteristique-sfr',
+        loadChildren: () =>
+          import('./caracteristique-sfr/caracteristique-sfr.module').then(m => m.GestionFormationCaracteristiqueSfrModule),
+      },
+      {
+        path: 'imma-domaine',
+        loadChildren: () => import('./imma-domaine/imma-domaine.module').then(m => m.GestionFormationImmaDomaineModule),
+      },
+      {
+        path: 'formation-sfr',
+        loadChildren: () => import('./formation-sfr/formation-sfr.module').then(m => m.GestionFormationFormationSFRModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

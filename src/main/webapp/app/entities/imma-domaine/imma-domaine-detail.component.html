@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="immaDomaine">
+            <h2><span jhiTranslate="gestionFormationApp.immaDomaine.detail.title">Imma Domaine</span> {{ immaDomaine.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.immaDomaine.annee">Annee</span></dt>
+                <dd>
+                    <span>{{ immaDomaine.annee }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.immaDomaine.superficeTotInventorie">Superfice Tot Inventorie</span></dt>
+                <dd>
+                    <span>{{ immaDomaine.superficeTotInventorie }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.immaDomaine.superficieTotImmatricule">Superficie Tot Immatricule</span></dt>
+                <dd>
+                    <span>{{ immaDomaine.superficieTotImmatricule }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.immaDomaine.superficieTotEncadre">Superficie Tot Encadre</span></dt>
+                <dd>
+                    <span>{{ immaDomaine.superficieTotEncadre }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.immaDomaine.sfrImmaDomaine">Sfr Imma Domaine</span></dt>
+                <dd>
+                    <div *ngIf="immaDomaine.sfrImmaDomaine">
+                        <a [routerLink]="['/sfr', immaDomaine.sfrImmaDomaine?.id, 'view']">{{ immaDomaine.sfrImmaDomaine?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/imma-domaine', immaDomaine.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

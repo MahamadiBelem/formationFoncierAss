@@ -1,0 +1,113 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.dossierApfr.home.title">Dossier Apfrs</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dossier-apfr" [routerLink]="['/dossier-apfr/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.dossierApfr.home.createLabel">
+            Create a new Dossier Apfr
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="dossierApfrs?.length === 0">
+        <span jhiTranslate="gestionFormationApp.dossierApfr.home.notFound">No dossierApfrs found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="dossierApfrs && dossierApfrs.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numApfr"><span jhiTranslate="gestionFormationApp.dossierApfr.numApfr">Num Apfr</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="trancheAge"><span jhiTranslate="gestionFormationApp.dossierApfr.trancheAge">Tranche Age</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateReceptionCfv"><span jhiTranslate="gestionFormationApp.dossierApfr.dateReceptionCfv">Date Reception Cfv</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateRetourCt"><span jhiTranslate="gestionFormationApp.dossierApfr.dateRetourCt">Date Retour Ct</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateEnregistrement"><span jhiTranslate="gestionFormationApp.dossierApfr.dateEnregistrement">Date Enregistrement</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateDepotSt"><span jhiTranslate="gestionFormationApp.dossierApfr.dateDepotSt">Date Depot St</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateRetourSt"><span jhiTranslate="gestionFormationApp.dossierApfr.dateRetourSt">Date Retour St</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateNotification"><span jhiTranslate="gestionFormationApp.dossierApfr.dateNotification">Date Notification</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateSignature"><span jhiTranslate="gestionFormationApp.dossierApfr.dateSignature">Date Signature</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="taxesTotale"><span jhiTranslate="gestionFormationApp.dossierApfr.taxesTotale">Taxes Totale</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="donCommune"><span jhiTranslate="gestionFormationApp.dossierApfr.donCommune">Don Commune</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="superficieSecurise"><span jhiTranslate="gestionFormationApp.dossierApfr.superficieSecurise">Superficie Securise</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dateConstatation"><span jhiTranslate="gestionFormationApp.dossierApfr.dateConstatation">Date Constatation</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="sfrDossierApfr.id"><span jhiTranslate="gestionFormationApp.dossierApfr.sfrDossierApfr">Sfr Dossier Apfr</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dossierApfrTypeDemandeur.id"><span jhiTranslate="gestionFormationApp.dossierApfr.dossierApfrTypeDemandeur">Dossier Apfr Type Demandeur</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="typeDossierApfr.id"><span jhiTranslate="gestionFormationApp.dossierApfr.typeDossierApfr">Type Dossier Apfr</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dossierApfr of dossierApfrs ;trackBy: trackId">
+                    <td><a [routerLink]="['/dossier-apfr', dossierApfr.id, 'view']">{{ dossierApfr.id }}</a></td>
+                    <td>{{ dossierApfr.numApfr }}</td>
+                    <td jhiTranslate="{{ 'gestionFormationApp.TrancheAge.' + dossierApfr.trancheAge }}">{{ dossierApfr.trancheAge }}</td>
+                    <td>{{ dossierApfr.dateReceptionCfv | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.dateRetourCt | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.dateEnregistrement | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.dateDepotSt | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.dateRetourSt | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.dateNotification | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.dateSignature | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.taxesTotale | date:'mediumDate' }}</td>
+                    <td>{{ dossierApfr.donCommune }}</td>
+                    <td>{{ dossierApfr.superficieSecurise }}</td>
+                    <td>{{ dossierApfr.dateConstatation | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="dossierApfr.sfrDossierApfr">
+                            <a [routerLink]="['/sfr', dossierApfr.sfrDossierApfr?.id, 'view']" >{{ dossierApfr.sfrDossierApfr?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="dossierApfr.dossierApfrTypeDemandeur">
+                            <a [routerLink]="['/type-demandeur', dossierApfr.dossierApfrTypeDemandeur?.id, 'view']" >{{ dossierApfr.dossierApfrTypeDemandeur?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="dossierApfr.typeDossierApfr">
+                            <a [routerLink]="['/type-acte', dossierApfr.typeDossierApfr?.id, 'view']" >{{ dossierApfr.typeDossierApfr?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/dossier-apfr', dossierApfr.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/dossier-apfr', dossierApfr.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(dossierApfr)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="dossierApfrs && dossierApfrs.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

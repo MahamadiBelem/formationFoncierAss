@@ -1,0 +1,41 @@
+{
+  "name": "ImmaDomaine",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "superficeTotInventorie",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "superficieTotImmatricule",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "superficieTotEncadre",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "immaDomaine",
+      "relationshipName": "sfrImmaDomaine",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104134049",
+  "entityTableName": "imma_domaine",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,26 @@
+{
+  "gestionFormationApp": {
+    "immaDomaine": {
+      "home": {
+        "title": "ImmaDomaines",
+        "createLabel": "Créer un nouveau Imma Domaine",
+        "createOrEditLabel": "Créer ou éditer un Imma Domaine",
+        "notFound": "Aucun Imma Domaine trouvé"
+      },
+      "created": "Un nouveau Imma Domaine a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Imma Domaine avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Imma Domaine avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Imma Domaine {{ id }} ?"
+      },
+      "detail": {
+        "title": "Imma Domaine"
+      },
+      "annee": "Annee",
+      "superficeTotInventorie": "Superfice Tot Inventorie",
+      "superficieTotImmatricule": "Superficie Tot Immatricule",
+      "superficieTotEncadre": "Superficie Tot Encadre",
+      "sfrImmaDomaine": "Sfr Imma Domaine"
+    }
+  }
+}

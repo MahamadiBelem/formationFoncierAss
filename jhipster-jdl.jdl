@@ -189,6 +189,111 @@ entity Regime
 {
 libelleRegime String required,
 }
+
+
+entity Sfr{
+//idSfr Int
+nbrPersonne Integer,
+}
+
+entity Personnel{
+//idPersonnel Int,
+nomPers String,
+prenomPers String,
+telPers String,
+emailPers String
+}
+
+entity ProfilPersonnel{
+//idTypePersonnel Int,
+libelleProfil String,
+
+}
+
+entity DossierApfr{
+//idDossierApfr Int,
+numApfr String,
+trancheAge TrancheAge,
+dateReceptionCfv LocalDate,
+dateRetourCt LocalDate,
+dateEnregistrement LocalDate,
+dateDepotSt LocalDate,
+dateRetourSt LocalDate,
+dateNotification LocalDate,
+dateSignature LocalDate,
+taxesTotale LocalDate,
+donCommune Float,
+superficieSecurise Float
+dateConstatation LocalDate
+}
+entity TypeActe{
+//idTypeActe Int,
+libelleTypeActe String,
+}
+
+entity TypeDemandeur{
+//idTypeDemandeur Int,
+libelleTypeDemandeur String,
+}
+entity FormationSFR{
+//idFormation Int,
+annee Integer,
+nbrAgentForme Integer,
+themeFormation String,
+dureeTotFormation Integer
+}
+
+entity StructureLocale{
+
+annee Integer,
+nbrCfv Integer,
+nbrCfvc Integer
+}
+
+entity CaracteristiqueSfr{
+//idCaracSfr Int,
+annee Integer,
+nbrAgent Integer,
+equipementInformatique Boolean,
+equipementCartographique Boolean,
+accesInternet Boolean,
+equipemementVehicule Boolean
+}
+
+entity TypeCharte{
+//idTypeCharte Int,
+libelle String
+}
+entity CharteAdopte{
+//idCharteAdopte Int,
+annee Integer,
+nombreCharte Integer
+}
+entity Conflit{
+//idConflit Int,
+nbrTotConflit Integer,
+nbrConflitRegleCfv Integer,
+nbrConflitRegleJustice Integer,
+annee Integer
+}
+
+entity ImmaDomaine{
+//idImmatriculation Int,
+annee Integer
+superficeTotInventorie Float,
+superficieTotImmatricule Float,
+superficieTotEncadre Float
+
+}
+
+enum TrancheAge
+{
+Vieux, Jeune, Adulte
+}
+
+
+
+
 relationship ManyToMany {
 	CentreFormation{approchepedagogique} to ApprochePedagogique{centreformation},
     CentreFormation{publiccible} to PublicCible{centreformation},
@@ -214,6 +319,15 @@ relationship OneToMany {
      Communes  to Villages {commune} ,
      Provinces  to Communes {provinces} ,
       Regime  to CentreFormation {regime} ,
+        Sfr to  Personnel{sfrPersonnel},
+       Sfr   to CaracteristiqueSfr{CaracteristiqueSfr} ,
+       StructureLocale to Sfr{StructureLocale}
+       Sfr to  DossierApfr{SfrDossierApfr} ,
+       TypeDemandeur to DossierApfr{DossierApfrTypeDemandeur},
+       TypeActe to DossierApfr{TypeDossierApfr},
+       ProfilPersonnel to Personnel {Personnel},
+       Sfr to ImmaDomaine{SfrImmaDomaine},
+       Sfr to FormationSFR{SfrFormation}
 }
 
 relationship ManyToOne {
@@ -230,9 +344,18 @@ relationship ManyToOne {
 	FormateurCentre {formateurCentre} to Formateurs
 	FormationCentreFormation {formationcentre} to CentreFormation,
 	FormationCentreFormation {centreformation} to Formations,
+
+	CharteAdopte{Sfr} to Sfr,
+    Conflit{Sfr} to Sfr ,
 	
 	  
     
+}
+
+relationship OneToOne {
+  Communes{Sfr} to Sfr{communes
+  },
+
 }
 
 // defining multiple oneToOne relationships
@@ -243,7 +366,7 @@ relationship OneToOne {
 
 // Set pagination options
 paginate Formations with infinite-scroll
-paginate Formations, Infrastructure, CentreFormation,Inscription, Amenagement, Formateurs, Apprenantes,FormationCentreFormation, Provinces, Region, Communes,FormateurCentre, Villages, SortiePromotion, Installation, Kits, CompositionKits, TypeInfratructure, TypeAmenagement,Gestionnaire,Promoteurs  with pagination 
+paginate Formations,DossierApfr,FormationSFR,CaracteristiqueSfr,CharteAdopte,Conflit,ImmaDomaine, Infrastructure, CentreFormation,Inscription, Amenagement, Formateurs, Apprenantes,FormationCentreFormation, Provinces, Region, Communes,FormateurCentre, Villages, SortiePromotion, Installation, Kits, CompositionKits, TypeInfratructure, TypeAmenagement,Gestionnaire,Promoteurs,Sfr,StructureLocale,Personnel  with pagination
 
 // Use Data Transfert Objects (DTO)
 // dto * with mapstruct

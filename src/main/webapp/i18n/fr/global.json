@@ -59,6 +59,16 @@
         "sourceFiancement": "Source de Fiancement",
         "export": "Exporter",
         "formateurCentre": "Affecter un formateur",
+        "sfr": "Sfr",
+        "personnel": "Personnel",
+        "profilPersonnel": "Profil Personnel",
+        "dossierApfr": "Dossier Apfr",
+        "typeActe": "Type Acte",
+        "typeDemandeur": "Type Demandeur",
+        "formation": "Formation",
+        "caracteristiqueSfr": "Caracteristique Sfr",
+        "immaDomaine": "Imma Domaine",
+        "formationSfr": "Formation SFR",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

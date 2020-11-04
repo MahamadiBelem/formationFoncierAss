@@ -1,0 +1,28 @@
+{
+  "name": "TypeActe",
+  "fields": [
+    {
+      "fieldName": "libelleTypeActe",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dossierApfr",
+      "otherEntityRelationshipName": "typeDossierApfr",
+      "relationshipName": "dossierApfr"
+    }
+  ],
+  "changelogDate": "20201104132733",
+  "entityTableName": "type_acte",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

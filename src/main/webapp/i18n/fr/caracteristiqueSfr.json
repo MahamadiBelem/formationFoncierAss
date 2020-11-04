@@ -1,0 +1,28 @@
+{
+  "gestionFormationApp": {
+    "caracteristiqueSfr": {
+      "home": {
+        "title": "CaracteristiqueSfrs",
+        "createLabel": "Créer un nouveau Caracteristique Sfr",
+        "createOrEditLabel": "Créer ou éditer un Caracteristique Sfr",
+        "notFound": "Aucun Caracteristique Sfr trouvé"
+      },
+      "created": "Un nouveau Caracteristique Sfr a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Caracteristique Sfr avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Caracteristique Sfr avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Caracteristique Sfr {{ id }} ?"
+      },
+      "detail": {
+        "title": "Caracteristique Sfr"
+      },
+      "annee": "Annee",
+      "nbrAgent": "Nbr Agent",
+      "equipementInformatique": "Equipement Informatique",
+      "equipementCartographique": "Equipement Cartographique",
+      "accesInternet": "Acces Internet",
+      "equipemementVehicule": "Equipemement Vehicule",
+      "caracteristiqueSfr": "Caracteristique Sfr"
+    }
+  }
+}

@@ -8,6 +8,12 @@
     -->
     <changeSet id="20200822183221-2" author="jhipster">
         
+        <addForeignKeyConstraint baseColumnNames="sfr_id"
+                                 baseTableName="communes"
+                                 constraintName="fk_communes_sfr_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sfr"/>
+
         <addForeignKeyConstraint baseColumnNames="provinces_id"
                                  baseTableName="communes"
                                  constraintName="fk_communes_provinces_id"

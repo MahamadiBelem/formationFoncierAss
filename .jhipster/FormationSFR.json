@@ -1,0 +1,41 @@
+{
+  "name": "FormationSFR",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrAgentForme",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "themeFormation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dureeTotFormation",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "formationSFR",
+      "relationshipName": "sfrFormation",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104134525",
+  "entityTableName": "formation_sfr",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

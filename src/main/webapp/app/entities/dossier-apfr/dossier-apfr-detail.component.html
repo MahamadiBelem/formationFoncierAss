@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="dossierApfr">
+            <h2><span jhiTranslate="gestionFormationApp.dossierApfr.detail.title">Dossier Apfr</span> {{ dossierApfr.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.numApfr">Num Apfr</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.numApfr }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.trancheAge">Tranche Age</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gestionFormationApp.TrancheAge.' + dossierApfr.trancheAge }}">{{ dossierApfr.trancheAge }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateReceptionCfv">Date Reception Cfv</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateReceptionCfv }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateRetourCt">Date Retour Ct</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateRetourCt }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateEnregistrement">Date Enregistrement</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateEnregistrement }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateDepotSt">Date Depot St</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateDepotSt }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateRetourSt">Date Retour St</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateRetourSt }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateNotification">Date Notification</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateNotification }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateSignature">Date Signature</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateSignature }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.taxesTotale">Taxes Totale</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.taxesTotale }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.donCommune">Don Commune</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.donCommune }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.superficieSecurise">Superficie Securise</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.superficieSecurise }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dateConstatation">Date Constatation</span></dt>
+                <dd>
+                    <span>{{ dossierApfr.dateConstatation }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.sfrDossierApfr">Sfr Dossier Apfr</span></dt>
+                <dd>
+                    <div *ngIf="dossierApfr.sfrDossierApfr">
+                        <a [routerLink]="['/sfr', dossierApfr.sfrDossierApfr?.id, 'view']">{{ dossierApfr.sfrDossierApfr?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.dossierApfrTypeDemandeur">Dossier Apfr Type Demandeur</span></dt>
+                <dd>
+                    <div *ngIf="dossierApfr.dossierApfrTypeDemandeur">
+                        <a [routerLink]="['/type-demandeur', dossierApfr.dossierApfrTypeDemandeur?.id, 'view']">{{ dossierApfr.dossierApfrTypeDemandeur?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionFormationApp.dossierApfr.typeDossierApfr">Type Dossier Apfr</span></dt>
+                <dd>
+                    <div *ngIf="dossierApfr.typeDossierApfr">
+                        <a [routerLink]="['/type-acte', dossierApfr.typeDossierApfr?.id, 'view']">{{ dossierApfr.typeDossierApfr?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/dossier-apfr', dossierApfr.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

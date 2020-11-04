@@ -1,0 +1,28 @@
+{
+  "name": "TypeDemandeur",
+  "fields": [
+    {
+      "fieldName": "libelleTypeDemandeur",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dossierApfr",
+      "otherEntityRelationshipName": "dossierApfrTypeDemandeur",
+      "relationshipName": "dossierApfr"
+    }
+  ],
+  "changelogDate": "20201104132833",
+  "entityTableName": "type_demandeur",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Conflit",
+  "fields": [
+    {
+      "fieldName": "nbrTotConflit",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrConflitRegleCfv",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrConflitRegleJustice",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "conflit",
+      "relationshipName": "sfr",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104133433",
+  "entityTableName": "conflit",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -11,6 +11,14 @@
   ],
   "relationships": [
     {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "communes",
+      "relationshipName": "sfr",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
       "relationshipType": "one-to-many",
       "otherEntityName": "villages",
       "otherEntityRelationshipName": "commune",

@@ -1,0 +1,27 @@
+{
+  "gestionFormationApp": {
+    "personnel": {
+      "home": {
+        "title": "Personnel",
+        "createLabel": "Créer un nouveau Personnel",
+        "createOrEditLabel": "Créer ou éditer un Personnel",
+        "notFound": "Aucun Personnel trouvé"
+      },
+      "created": "Un nouveau Personnel a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Personnel avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Personnel avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Personnel {{ id }} ?"
+      },
+      "detail": {
+        "title": "Personnel"
+      },
+      "nomPers": "Nom Pers",
+      "prenomPers": "Prenom Pers",
+      "telPers": "Tel Pers",
+      "emailPers": "Email Pers",
+      "sfrPersonnel": "Sfr Personnel",
+      "personnel": "Personnel"
+    }
+  }
+}

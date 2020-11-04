@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity DossierApfr.
+    -->
+    <changeSet id="20201104132633-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="sfr_dossier_apfr_id"
+                                 baseTableName="dossier_apfr"
+                                 constraintName="fk_dossier_apfr_sfr_dossier_apfr_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sfr"/>
+
+        <addForeignKeyConstraint baseColumnNames="dossier_apfr_type_demandeur_id"
+                                 baseTableName="dossier_apfr"
+                                 constraintName="fk_dossier_apfr_dossier_apfr_type_demandeur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_demandeur"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_dossier_apfr_id"
+                                 baseTableName="dossier_apfr"
+                                 constraintName="fk_dossier_apfr_type_dossier_apfr_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_acte"/>
+
+    </changeSet>
+</databaseChangeLog>

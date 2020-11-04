@@ -1,0 +1,36 @@
+{
+  "name": "StructureLocale",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrCfv",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nbrCfvc",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "structureLocale",
+      "relationshipName": "sfr"
+    }
+  ],
+  "changelogDate": "20201104133033",
+  "entityTableName": "structure_locale",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

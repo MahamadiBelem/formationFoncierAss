@@ -12,6 +12,12 @@
                 <dd>
                     <span>{{ communes.libelleCommune }}</span>
                 </dd>
+                <dt><span jhiTranslate="gestionFormationApp.communes.sfr">Sfr</span></dt>
+                <dd>
+                    <div *ngIf="communes.sfr">
+                        <a [routerLink]="['/sfr', communes.sfr?.id, 'view']">{{ communes.sfr?.id }}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="gestionFormationApp.communes.provinces">Provinces</span></dt>
                 <dd>
                     <div *ngIf="communes.provinces">

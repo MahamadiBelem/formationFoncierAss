@@ -121,6 +121,25 @@ public class CacheConfiguration {
             createCache(cm, bf.agriculture.dgfomr.domain.SourceFiancement.class.getName());
             createCache(cm, bf.agriculture.dgfomr.domain.SourceFiancement.class.getName() + ".installationSources");
             createCache(cm, bf.agriculture.dgfomr.domain.Installation.class.getName() + ".sourceIntallations");
+            createCache(cm, bf.agriculture.dgfomr.domain.Sfr.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.Sfr.class.getName() + ".personnel");
+            createCache(cm, bf.agriculture.dgfomr.domain.Sfr.class.getName() + ".caracteristiqueSfrs");
+            createCache(cm, bf.agriculture.dgfomr.domain.Sfr.class.getName() + ".dossierApfrs");
+            createCache(cm, bf.agriculture.dgfomr.domain.Sfr.class.getName() + ".immaDomaines");
+            createCache(cm, bf.agriculture.dgfomr.domain.Sfr.class.getName() + ".formations");
+            createCache(cm, bf.agriculture.dgfomr.domain.Personnel.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.ProfilPersonnel.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.ProfilPersonnel.class.getName() + ".personnel");
+            createCache(cm, bf.agriculture.dgfomr.domain.DossierApfr.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.TypeActe.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.TypeActe.class.getName() + ".dossierApfrs");
+            createCache(cm, bf.agriculture.dgfomr.domain.TypeDemandeur.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.TypeDemandeur.class.getName() + ".dossierApfrs");
+            createCache(cm, bf.agriculture.dgfomr.domain.Formation.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.CaracteristiqueSfr.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.ImmaDomaine.class.getName());
+            createCache(cm, bf.agriculture.dgfomr.domain.Sfr.class.getName() + ".formationSFRS");
+            createCache(cm, bf.agriculture.dgfomr.domain.FormationSFR.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

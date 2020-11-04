@@ -7,19 +7,10 @@ import { CommunesDetailComponent } from './communes-detail.component';
 import { CommunesUpdateComponent } from './communes-update.component';
 import { CommunesDeleteDialogComponent } from './communes-delete-dialog.component';
 import { communesRoute } from './communes.route';
-import { SaveCommunesComponent } from './save-communes/save-communes.component';
-import { UpdateCommunesComponent } from './update-communes/update-communes.component';
 
 @NgModule({
   imports: [GestionFormationSharedModule, RouterModule.forChild(communesRoute)],
-  declarations: [
-    CommunesComponent,
-    CommunesDetailComponent,
-    CommunesUpdateComponent,
-    CommunesDeleteDialogComponent,
-    SaveCommunesComponent,
-    UpdateCommunesComponent,
-  ],
+  declarations: [CommunesComponent, CommunesDetailComponent, CommunesUpdateComponent, CommunesDeleteDialogComponent],
   entryComponents: [CommunesDeleteDialogComponent],
 })
 export class GestionFormationCommunesModule {}

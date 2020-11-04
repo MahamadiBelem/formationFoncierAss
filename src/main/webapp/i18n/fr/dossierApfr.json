@@ -1,0 +1,37 @@
+{
+  "gestionFormationApp": {
+    "dossierApfr": {
+      "home": {
+        "title": "DossierApfrs",
+        "createLabel": "Créer un nouveau Dossier Apfr",
+        "createOrEditLabel": "Créer ou éditer un Dossier Apfr",
+        "notFound": "Aucun Dossier Apfr trouvé"
+      },
+      "created": "Un nouveau Dossier Apfr a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Dossier Apfr avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Dossier Apfr avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Dossier Apfr {{ id }} ?"
+      },
+      "detail": {
+        "title": "Dossier Apfr"
+      },
+      "numApfr": "Num Apfr",
+      "trancheAge": "Tranche Age",
+      "dateReceptionCfv": "Date Reception Cfv",
+      "dateRetourCt": "Date Retour Ct",
+      "dateEnregistrement": "Date Enregistrement",
+      "dateDepotSt": "Date Depot St",
+      "dateRetourSt": "Date Retour St",
+      "dateNotification": "Date Notification",
+      "dateSignature": "Date Signature",
+      "taxesTotale": "Taxes Totale",
+      "donCommune": "Don Commune",
+      "superficieSecurise": "Superficie Securise",
+      "dateConstatation": "Date Constatation",
+      "sfrDossierApfr": "Sfr Dossier Apfr",
+      "dossierApfrTypeDemandeur": "Dossier Apfr Type Demandeur",
+      "typeDossierApfr": "Type Dossier Apfr"
+    }
+  }
+}

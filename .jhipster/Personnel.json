@@ -1,0 +1,48 @@
+{
+  "name": "Personnel",
+  "fields": [
+    {
+      "fieldName": "nomPers",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomPers",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telPers",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailPers",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "personnel",
+      "relationshipName": "sfrPersonnel",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "profilPersonnel",
+      "otherEntityRelationshipName": "personnel",
+      "relationshipName": "personnel",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104132433",
+  "entityTableName": "personnel",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

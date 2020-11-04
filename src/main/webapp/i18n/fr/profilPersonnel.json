@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "profilPersonnel": {
+      "home": {
+        "title": "ProfilPersonnels",
+        "createLabel": "Créer un nouveau Profil Personnel",
+        "createOrEditLabel": "Créer ou éditer un Profil Personnel",
+        "notFound": "Aucun Profil Personnel trouvé"
+      },
+      "created": "Un nouveau Profil Personnel a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Profil Personnel avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Profil Personnel avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Profil Personnel {{ id }} ?"
+      },
+      "detail": {
+        "title": "Profil Personnel"
+      },
+      "libelleProfil": "Libelle Profil",
+      "personnel": "Personnel"
+    }
+  }
+}

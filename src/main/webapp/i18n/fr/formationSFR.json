@@ -1,0 +1,26 @@
+{
+  "gestionFormationApp": {
+    "formationSFR": {
+      "home": {
+        "title": "FormationSFRS",
+        "createLabel": "Créer un nouveau Formation SFR",
+        "createOrEditLabel": "Créer ou éditer un Formation SFR",
+        "notFound": "Aucun Formation SFR trouvé"
+      },
+      "created": "Un nouveau Formation SFR a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Formation SFR avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Formation SFR avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Formation SFR {{ id }} ?"
+      },
+      "detail": {
+        "title": "Formation SFR"
+      },
+      "annee": "Annee",
+      "nbrAgentForme": "Nbr Agent Forme",
+      "themeFormation": "Theme Formation",
+      "dureeTotFormation": "Duree Tot Formation",
+      "sfrFormation": "Sfr Formation"
+    }
+  }
+}

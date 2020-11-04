@@ -1,0 +1,66 @@
+{
+  "name": "Sfr",
+  "fields": [
+    {
+      "fieldName": "nbrPersonne",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "personnel",
+      "otherEntityRelationshipName": "sfrPersonnel",
+      "relationshipName": "personnel"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "caracteristiqueSfr",
+      "otherEntityRelationshipName": "caracteristiqueSfr",
+      "relationshipName": "caracteristiqueSfr"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dossierApfr",
+      "otherEntityRelationshipName": "sfrDossierApfr",
+      "relationshipName": "dossierApfr"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "immaDomaine",
+      "otherEntityRelationshipName": "sfrImmaDomaine",
+      "relationshipName": "immaDomaine"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "formationSFR",
+      "otherEntityRelationshipName": "sfrFormation",
+      "relationshipName": "formationSFR"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "communes",
+      "otherEntityRelationshipName": "sfr",
+      "relationshipName": "communes",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "structureLocale",
+      "otherEntityRelationshipName": "sfr",
+      "relationshipName": "structureLocale",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104132333",
+  "entityTableName": "sfr",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

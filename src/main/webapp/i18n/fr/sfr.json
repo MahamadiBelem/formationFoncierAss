@@ -1,0 +1,29 @@
+{
+  "gestionFormationApp": {
+    "sfr": {
+      "home": {
+        "title": "Sfrs",
+        "createLabel": "Créer un nouveau Sfr",
+        "createOrEditLabel": "Créer ou éditer un Sfr",
+        "notFound": "Aucun Sfr trouvé"
+      },
+      "created": "Un nouveau Sfr a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Sfr avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Sfr avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Sfr {{ id }} ?"
+      },
+      "detail": {
+        "title": "Sfr"
+      },
+      "nbrPersonne": "Nbr Personne",
+      "personnel": "Personnel",
+      "caracteristiqueSfr": "Caracteristique Sfr",
+      "dossierApfr": "Dossier Apfr",
+      "immaDomaine": "Imma Domaine",
+      "formationSFR": "Formation SFR",
+      "communes": "Communes",
+      "structureLocale": "Structure Locale"
+    }
+  }
+}

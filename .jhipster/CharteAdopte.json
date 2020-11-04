@@ -1,0 +1,33 @@
+{
+  "name": "CharteAdopte",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nombreCharte",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sfr",
+      "otherEntityRelationshipName": "charteAdopte",
+      "relationshipName": "sfr",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201104133333",
+  "entityTableName": "charte_adopte",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

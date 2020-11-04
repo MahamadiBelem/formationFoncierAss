@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-formation-sfr-heading" jhiTranslate="gestionFormationApp.formationSFR.home.createOrEditLabel">Create or edit a Formation SFR</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationSFR.annee" for="field_annee">Annee</label>
+                    <input type="number" class="form-control" name="annee" id="field_annee"
+                           formControlName="annee"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationSFR.nbrAgentForme" for="field_nbrAgentForme">Nbr Agent Forme</label>
+                    <input type="number" class="form-control" name="nbrAgentForme" id="field_nbrAgentForme"
+                           formControlName="nbrAgentForme"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationSFR.themeFormation" for="field_themeFormation">Theme Formation</label>
+                    <input type="text" class="form-control" name="themeFormation" id="field_themeFormation"
+                           formControlName="themeFormation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationSFR.dureeTotFormation" for="field_dureeTotFormation">Duree Tot Formation</label>
+                    <input type="number" class="form-control" name="dureeTotFormation" id="field_dureeTotFormation"
+                           formControlName="dureeTotFormation"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.formationSFR.sfrFormation" for="field_sfrFormation">Sfr Formation</label>
+                    <select class="form-control" id="field_sfrFormation" name="sfrFormation" formControlName="sfrFormation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sfrOption.id === editForm.get('sfrFormation')!.value?.id ? editForm.get('sfrFormation')!.value : sfrOption" *ngFor="let sfrOption of sfrs; trackBy: trackById">{{ sfrOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

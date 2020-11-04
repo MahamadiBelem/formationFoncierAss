@@ -1,0 +1,23 @@
+{
+  "gestionFormationApp": {
+    "typeActe": {
+      "home": {
+        "title": "TypeActes",
+        "createLabel": "Créer un nouveau Type Acte",
+        "createOrEditLabel": "Créer ou éditer un Type Acte",
+        "notFound": "Aucun Type Acte trouvé"
+      },
+      "created": "Un nouveau Type Acte a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Acte avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Acte avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Type Acte {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Acte"
+      },
+      "libelleTypeActe": "Libelle Type Acte",
+      "dossierApfr": "Dossier Apfr"
+    }
+  }
+}

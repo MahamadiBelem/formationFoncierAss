@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionFormationApp.caracteristiqueSfr.home.title">Caracteristique Sfrs</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-caracteristique-sfr" [routerLink]="['/caracteristique-sfr/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionFormationApp.caracteristiqueSfr.home.createLabel">
+            Create a new Caracteristique Sfr
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="caracteristiqueSfrs?.length === 0">
+        <span jhiTranslate="gestionFormationApp.caracteristiqueSfr.home.notFound">No caracteristiqueSfrs found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="caracteristiqueSfrs && caracteristiqueSfrs.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="annee"><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.annee">Annee</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nbrAgent"><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.nbrAgent">Nbr Agent</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="equipementInformatique"><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipementInformatique">Equipement Informatique</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="equipementCartographique"><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipementCartographique">Equipement Cartographique</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="accesInternet"><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.accesInternet">Acces Internet</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="equipemementVehicule"><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipemementVehicule">Equipemement Vehicule</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="caracteristiqueSfr.id"><span jhiTranslate="gestionFormationApp.caracteristiqueSfr.caracteristiqueSfr">Caracteristique Sfr</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let caracteristiqueSfr of caracteristiqueSfrs ;trackBy: trackId">
+                    <td><a [routerLink]="['/caracteristique-sfr', caracteristiqueSfr.id, 'view']">{{ caracteristiqueSfr.id }}</a></td>
+                    <td>{{ caracteristiqueSfr.annee }}</td>
+                    <td>{{ caracteristiqueSfr.nbrAgent }}</td>
+                    <td>{{ caracteristiqueSfr.equipementInformatique }}</td>
+                    <td>{{ caracteristiqueSfr.equipementCartographique }}</td>
+                    <td>{{ caracteristiqueSfr.accesInternet }}</td>
+                    <td>{{ caracteristiqueSfr.equipemementVehicule }}</td>
+                    <td>
+                        <div *ngIf="caracteristiqueSfr.caracteristiqueSfr">
+                            <a [routerLink]="['/sfr', caracteristiqueSfr.caracteristiqueSfr?.id, 'view']" >{{ caracteristiqueSfr.caracteristiqueSfr?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/caracteristique-sfr', caracteristiqueSfr.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/caracteristique-sfr', caracteristiqueSfr.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(caracteristiqueSfr)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="caracteristiqueSfrs && caracteristiqueSfrs.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-caracteristique-sfr-heading" jhiTranslate="gestionFormationApp.caracteristiqueSfr.home.createOrEditLabel">Create or edit a Caracteristique Sfr</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.caracteristiqueSfr.annee" for="field_annee">Annee</label>
+                    <input type="number" class="form-control" name="annee" id="field_annee"
+                           formControlName="annee"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.caracteristiqueSfr.nbrAgent" for="field_nbrAgent">Nbr Agent</label>
+                    <input type="number" class="form-control" name="nbrAgent" id="field_nbrAgent"
+                           formControlName="nbrAgent"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipementInformatique" for="field_equipementInformatique">Equipement Informatique</label>
+                    <input type="checkbox" class="form-control" name="equipementInformatique" id="field_equipementInformatique"
+                           formControlName="equipementInformatique"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipementCartographique" for="field_equipementCartographique">Equipement Cartographique</label>
+                    <input type="checkbox" class="form-control" name="equipementCartographique" id="field_equipementCartographique"
+                           formControlName="equipementCartographique"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.caracteristiqueSfr.accesInternet" for="field_accesInternet">Acces Internet</label>
+                    <input type="checkbox" class="form-control" name="accesInternet" id="field_accesInternet"
+                           formControlName="accesInternet"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.caracteristiqueSfr.equipemementVehicule" for="field_equipemementVehicule">Equipemement Vehicule</label>
+                    <input type="checkbox" class="form-control" name="equipemementVehicule" id="field_equipemementVehicule"
+                           formControlName="equipemementVehicule"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gestionFormationApp.caracteristiqueSfr.caracteristiqueSfr" for="field_caracteristiqueSfr">Caracteristique Sfr</label>
+                    <select class="form-control" id="field_caracteristiqueSfr" name="caracteristiqueSfr" formControlName="caracteristiqueSfr">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="sfrOption.id === editForm.get('caracteristiqueSfr')!.value?.id ? editForm.get('caracteristiqueSfr')!.value : sfrOption" *ngFor="let sfrOption of sfrs; trackBy: trackById">{{ sfrOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
