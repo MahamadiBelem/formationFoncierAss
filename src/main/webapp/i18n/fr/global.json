@@ -57,6 +57,7 @@
         "formateurCentre": "affecter un formateur",
         "formationCentreFormation": "Affecter une formation",
         "sourceFiancement": "Source de Fiancement",
+        "export": "Exporter",
         "formateurCentre": "Affecter un formateur",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },

@@ -2,14 +2,25 @@
     <h2 id="page-heading">
         <span jhiTranslate="gestionFormationApp.installation.home.title">Installations</span>
 
-        <button id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-installation" [routerLink]="['/installation/new']">
+        <button style="margin-left: 2%"  id="jh-create-entity" class="btn btn-success float-right jh-create-entity create-installation" [routerLink]="['/installation/new']">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="gestionFormationApp.installation.home.createLabel">
             Create a new Installation
             </span>
         </button>
+
+        <button id="jh-create-entity" class="btn btn-warning float-right jh-create-entity create-installation" [routerLink]="['/installation/new']">
+            <fa-icon icon="save"></fa-icon>
+            <span>
+            Exporter
+            </span>
+        </button>
     </h2>
 
+
+            <label>Recherche:</label><input style="width: 20%" class="form-control" name="filtre" type="text" [formControl]="filter" />
+
+    <br><br>
     <jhi-alert-error></jhi-alert-error>
 
     <jhi-alert></jhi-alert>
@@ -17,6 +28,7 @@
     <div class="alert alert-warning" id="no-result" *ngIf="installations?.length === 0">
         <span jhiTranslate="gestionFormationApp.installation.home.notFound">No installations found</span>
     </div>
+    <br><br>
 
     <br><br>
 

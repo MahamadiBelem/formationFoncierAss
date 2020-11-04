@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, PipeTransform } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, ParamMap, Router, Data } from '@angular/router';
-import { Subscription, combineLatest } from 'rxjs';
+import { Subscription, combineLatest, pipe } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,6 +11,9 @@ import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { InstallationService } from './installation.service';
 import { InstallationDeleteDialogComponent } from './installation-delete-dialog.component';
 import { InstallationDetailComponent } from './installation-detail.component';
+import { FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'jhi-installation',
@@ -25,6 +28,7 @@ export class InstallationComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  filter = new FormControl('');
 
   constructor(
     protected installationService: InstallationService,
@@ -32,7 +36,11 @@ export class InstallationComponent implements OnInit, OnDestroy {
     protected router: Router,
     protected eventManager: JhiEventManager,
     protected modalService: NgbModal
-  ) {}
+  ) {
+    this.filter.valueChanges.subscribe(data => {
+      alert(data);
+    });
+  }
 
   loadPage(page?: number, dontNavigate?: boolean): void {
     const pageToLoad: number = page || this.page || 1;
